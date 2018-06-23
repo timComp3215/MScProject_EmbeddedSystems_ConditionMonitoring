@@ -1,0 +1,2 @@
+# MScProject_EmbeddedSystems_ConditionMonitoring
+Developing condition monitoring system for marine pumps
