@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;uart_echo_signed_minus/uart_pc_echo_12mhz_brclk.c&apos; to &apos;signed_minus.c&apos;" description="Rename resource &apos;uart_pc_echo_12mhz_brclk.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="uart_pc_echo_12mhz_brclk.c" name="signed_minus.c" stamp="1529064500051" updateReferences="true"/>
+</session>

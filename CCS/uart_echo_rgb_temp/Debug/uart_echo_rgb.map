@@ -1,0 +1,408 @@
+******************************************************************************
+                  TI ARM Linker PC v18.1.1                     
+******************************************************************************
+>> Linked Sat May 12 12:28:04 2018
+
+OUTPUT FILE NAME:   <uart_echo_rgb.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000749
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  00000a74  0003f58c  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000215  0000fdeb  RW X
+  SRAM_DATA             20000000   00010000  00000215  0000fdeb  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00000a78   00000a78    r-x
+  00000000    00000000    000000e4   000000e4    r-- .intvecs
+  000000e4    000000e4    0000088c   0000088c    r-x .text
+  00000970    00000970    000000d4   000000d4    r-- .const
+  00000a48    00000a48    00000030   00000030    r-- .cinit
+20000000    20000000    00000015   00000000    rw-
+  20000000    20000000    00000014   00000000    rw- .bss
+  20000014    20000014    00000001   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000e4     
+                  00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
+
+.text      0    000000e4    0000088c     
+                  000000e4    000001bc     uart_pc_echo_12mhz_brclk.obj (.text:main)
+                  000002a0    00000154     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:_getIndexForMemRegister)
+                  000003f4    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000490    00000078     system_msp432p401r.obj (.text:SystemInit)
+                  00000508    0000006c     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:ADC14_configureConversionMemory)
+                  00000574    0000006c     uart_pc_echo_12mhz_brclk.obj (.text:RGB)
+                  000005e0    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000648    00000044     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:ADC14_configureSingleSampleMode)
+                  0000068c    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000006d0    00000040     uart_pc_echo_12mhz_brclk.obj (.text:EUSCIA0_IRQHandler)
+                  00000710    00000038     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:ADC14_initModule)
+                  00000748    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000780    0000002c     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:ADC14_enableConversion)
+                  000007ac    0000002c                              : adc14_MSP432P4XX.obj (.text:ADC14_setSampleHoldTime)
+                  000007d8    00000024                              : cs_MSP432P4XX.obj (.text:CS_setDCOCenteredFrequency)
+                  000007fc    00000024                              : gpio_MSP432P4XX.obj (.text:GPIO_setAsOutputPin)
+                  00000820    00000024                              : uart_MSP432P4XX.obj (.text:UART_transmitData)
+                  00000844    00000020                              : adc14_MSP432P4XX.obj (.text:ADC14_toggleConversionTrigger)
+                  00000864    00000018                              : adc14_MSP432P4XX.obj (.text:ADC14_getResult)
+                  0000087c    00000018                              : gpio_MSP432P4XX.obj (.text:GPIO_setOutputLowOnPin)
+                  00000894    00000018                              : wdt_a_MSP432P4XX.obj (.text:WDT_A_holdTimer)
+                  000008ac    00000014                              : adc14_MSP432P4XX.obj (.text:ADCIsConversionRunning)
+                  000008c0    00000014                              : gpio_MSP432P4XX.obj (.text:GPIO_setOutputHighOnPin)
+                  000008d4    00000014                              : gpio_MSP432P4XX.obj (.text:GPIO_toggleOutputOnPin)
+                  000008e8    00000014                              : ref_a_MSP432P4XX.obj (.text:REF_A_setReferenceVoltage)
+                  000008fc    00000012     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000090e    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
+                  00000910    00000010     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.text:ADC14_enableModule)
+                  00000920    00000010                              : ref_a_MSP432P4XX.obj (.text:REF_A_enableReferenceVoltage)
+                  00000930    00000010                              : ref_a_MSP432P4XX.obj (.text:REF_A_enableTempSensor)
+                  00000940    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  0000094e    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
+                  0000095a    00000002     --HOLE-- [fill = 0]
+                  0000095c    0000000c     msp432p4xx_driverlib.lib : sysctl_MSP432P4XX.obj (.text:SysCtl_getTempCalibrationConstant)
+                  00000968    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  0000096c    00000004                                   : exit.c.obj (.text:abort:abort)
+
+.const     0    00000970    000000d4     
+                  00000970    00000080     msp432p4xx_driverlib.lib : adc14_MSP432P4XX.obj (.const:_ctlRegs)
+                  000009f0    00000030                              : gpio_MSP432P4XX.obj (.const:GPIO_PORT_TO_BASE)
+                  00000a20    00000024     uart_pc_echo_12mhz_brclk.obj (.const:uartConfig)
+
+.cinit     0    00000a48    00000030     
+                  00000a48    0000000c     (__TI_handler_table)
+                  00000a54    00000004     --HOLE-- [fill = 0]
+                  00000a58    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000a60    00000005     (.cinit..data.load) [load image, compression = lzss]
+                  00000a65    00000003     --HOLE-- [fill = 0]
+                  00000a68    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.bss       0    20000000    00000014     UNINITIALIZED
+                  20000000    00000004     (.common:cal30)
+                  20000004    00000004     (.common:cal85)
+                  20000008    00000004     (.common:calDifference)
+                  2000000c    00000004     (.common:tempC)
+                  20000010    00000004     (.common:tempF)
+
+.data      0    20000014    00000001     UNINITIALIZED
+                  20000014    00000001     uart_pc_echo_12mhz_brclk.obj (.data)
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
+                  2000fe04    000001fc     --HOLE--
+
+MODULE SUMMARY
+
+       Module                         code   ro data   rw data
+       ------                         ----   -------   -------
+    .\
+       uart_pc_echo_12mhz_brclk.obj   616    36        42     
+       system_msp432p401r.obj         120    0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         736    36        42     
+                                                              
+    .\ccs\
+       startup_msp432p401r_ccs.obj    14     228       0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         14     228       0      
+                                                              
+    C:/ti/simplelink_msp432p4_sdk_2_10_00_14/source/ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib
+       adc14_MSP432P4XX.obj           752    128       0      
+       gpio_MSP432P4XX.obj            100    48        0      
+       ref_a_MSP432P4XX.obj           52     0         0      
+       cs_MSP432P4XX.obj              36     0         0      
+       uart_MSP432P4XX.obj            36     0         0      
+       wdt_a_MSP432P4XX.obj           24     0         0      
+       sysctl_MSP432P4XX.obj          12     0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         1012   176       0      
+                                                              
+    C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.1.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+       memcpy_t2.asm.obj              156    0         0      
+       copy_decompress_lzss.c.obj     104    0         0      
+       autoinit.c.obj                 68     0         0      
+       boot_cortex_m.c.obj            56     0         0      
+       copy_zero_init.c.obj           18     0         0      
+       copy_decompress_none.c.obj     14     0         0      
+       exit.c.obj                     4      0         0      
+       pre_init.c.obj                 4      0         0      
+    +--+------------------------------+------+---------+---------+
+       Total:                         424    0         0      
+                                                              
+       Stack:                         0      0         1024   
+       Linker Generated:              0      41        0      
+    +--+------------------------------+------+---------+---------+
+       Grand Total:                   2186   481       1066   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00000a68 records: 2, size/record: 8, table size: 16
+	.bss: load addr=00000a58, load size=00000008 bytes, run addr=20000000, run size=00000014 bytes, compression=zero_init
+	.data: load addr=00000a60, load size=00000005 bytes, run addr=20000014, run size=00000001 bytes, compression=lzss
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00000a48 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                             
+-------   ----                             
+0000090f  ADC14_IRQHandler                 
+00000509  ADC14_configureConversionMemory  
+00000649  ADC14_configureSingleSampleMode  
+00000781  ADC14_enableConversion           
+00000911  ADC14_enableModule               
+00000865  ADC14_getResult                  
+00000711  ADC14_initModule                 
+000007ad  ADC14_setSampleHoldTime          
+00000845  ADC14_toggleConversionTrigger    
+0000090f  AES256_IRQHandler                
+0000090f  BusFault_Handler                 
+0000096d  C$$EXIT                          
+0000090f  COMP_E0_IRQHandler               
+0000090f  COMP_E1_IRQHandler               
+0000090f  CS_IRQHandler                    
+000007d9  CS_setDCOCenteredFrequency       
+0000090f  DMA_ERR_IRQHandler               
+0000090f  DMA_INT0_IRQHandler              
+0000090f  DMA_INT1_IRQHandler              
+0000090f  DMA_INT2_IRQHandler              
+0000090f  DMA_INT3_IRQHandler              
+0000090f  DebugMon_Handler                 
+0000090f  Default_Handler                  
+000006d1  EUSCIA0_IRQHandler               
+000006d1  EUSCIA0_IRQHandler               
+0000090f  EUSCIA1_IRQHandler               
+0000090f  EUSCIA2_IRQHandler               
+0000090f  EUSCIA3_IRQHandler               
+0000090f  EUSCIB0_IRQHandler               
+0000090f  EUSCIB1_IRQHandler               
+0000090f  EUSCIB2_IRQHandler               
+0000090f  EUSCIB3_IRQHandler               
+0000090f  FLCTL_IRQHandler                 
+0000090f  FPU_IRQHandler                   
+000007fd  GPIO_setAsOutputPin              
+000008c1  GPIO_setOutputHighOnPin          
+0000087d  GPIO_setOutputLowOnPin           
+000008d5  GPIO_toggleOutputOnPin           
+0000090f  HardFault_Handler                
+0000090f  MemManage_Handler                
+0000090f  NMI_Handler                      
+0000090f  PCM_IRQHandler                   
+0000090f  PORT1_IRQHandler                 
+0000090f  PORT2_IRQHandler                 
+0000090f  PORT3_IRQHandler                 
+0000090f  PORT4_IRQHandler                 
+0000090f  PORT5_IRQHandler                 
+0000090f  PORT6_IRQHandler                 
+0000090f  PSS_IRQHandler                   
+0000090f  PendSV_Handler                   
+00000921  REF_A_enableReferenceVoltage     
+00000931  REF_A_enableTempSensor           
+000008e9  REF_A_setReferenceVoltage        
+00000575  RGB                              
+0000090f  RTC_C_IRQHandler                 
+0000094f  Reset_Handler                    
+0000090f  SVC_Handler                      
+0000095d  SysCtl_getTempCalibrationConstant
+0000090f  SysTick_Handler                  
+00000491  SystemInit                       
+0000090f  T32_INT1_IRQHandler              
+0000090f  T32_INT2_IRQHandler              
+0000090f  T32_INTC_IRQHandler              
+0000090f  TA0_0_IRQHandler                 
+0000090f  TA0_N_IRQHandler                 
+0000090f  TA1_0_IRQHandler                 
+0000090f  TA1_N_IRQHandler                 
+0000090f  TA2_0_IRQHandler                 
+0000090f  TA2_N_IRQHandler                 
+0000090f  TA3_0_IRQHandler                 
+0000090f  TA3_N_IRQHandler                 
+00000821  UART_transmitData                
+0000090f  UsageFault_Handler               
+4000480c  WDTCTL_SYM                       
+0000090f  WDT_A_IRQHandler                 
+00000895  WDT_A_holdTimer                  
+20010000  __STACK_END                      
+00000200  __STACK_SIZE                     
+00000a68  __TI_CINIT_Base                  
+00000a78  __TI_CINIT_Limit                 
+00000a48  __TI_Handler_Table_Base          
+00000a54  __TI_Handler_Table_Limit         
+0000068d  __TI_auto_init_nobinit_nopinit   
+000005e1  __TI_decompress_lzss             
+00000941  __TI_decompress_none             
+ffffffff  __TI_pprof_out_hndl              
+ffffffff  __TI_prof_data_size              
+ffffffff  __TI_prof_data_start             
+00000000  __TI_static_base__               
+000008fd  __TI_zero_init_nomemset          
+000003f5  __aeabi_memcpy                   
+000003f5  __aeabi_memcpy4                  
+000003f5  __aeabi_memcpy8                  
+ffffffff  __binit__                        
+ffffffff  __c_args__                       
+UNDEFED   __mpu_init                       
+2000fe00  __stack                          
+00000749  _c_int00_noargs                  
+UNDEFED   _system_post_cinit               
+00000969  _system_pre_init                 
+0000096d  abort                            
+ffffffff  binit                            
+20000000  cal30                            
+20000004  cal85                            
+20000008  calDifference                    
+20000014  color                            
+00000000  interruptVectors                 
+000000e5  main                             
+000003f5  memcpy                           
+2000000c  tempC                            
+20000010  tempF                            
+00000a20  uartConfig                       
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                             
+-------   ----                             
+00000000  __TI_static_base__               
+00000000  interruptVectors                 
+000000e5  main                             
+00000200  __STACK_SIZE                     
+000003f5  __aeabi_memcpy                   
+000003f5  __aeabi_memcpy4                  
+000003f5  __aeabi_memcpy8                  
+000003f5  memcpy                           
+00000491  SystemInit                       
+00000509  ADC14_configureConversionMemory  
+00000575  RGB                              
+000005e1  __TI_decompress_lzss             
+00000649  ADC14_configureSingleSampleMode  
+0000068d  __TI_auto_init_nobinit_nopinit   
+000006d1  EUSCIA0_IRQHandler               
+000006d1  EUSCIA0_IRQHandler               
+00000711  ADC14_initModule                 
+00000749  _c_int00_noargs                  
+00000781  ADC14_enableConversion           
+000007ad  ADC14_setSampleHoldTime          
+000007d9  CS_setDCOCenteredFrequency       
+000007fd  GPIO_setAsOutputPin              
+00000821  UART_transmitData                
+00000845  ADC14_toggleConversionTrigger    
+00000865  ADC14_getResult                  
+0000087d  GPIO_setOutputLowOnPin           
+00000895  WDT_A_holdTimer                  
+000008c1  GPIO_setOutputHighOnPin          
+000008d5  GPIO_toggleOutputOnPin           
+000008e9  REF_A_setReferenceVoltage        
+000008fd  __TI_zero_init_nomemset          
+0000090f  ADC14_IRQHandler                 
+0000090f  AES256_IRQHandler                
+0000090f  BusFault_Handler                 
+0000090f  COMP_E0_IRQHandler               
+0000090f  COMP_E1_IRQHandler               
+0000090f  CS_IRQHandler                    
+0000090f  DMA_ERR_IRQHandler               
+0000090f  DMA_INT0_IRQHandler              
+0000090f  DMA_INT1_IRQHandler              
+0000090f  DMA_INT2_IRQHandler              
+0000090f  DMA_INT3_IRQHandler              
+0000090f  DebugMon_Handler                 
+0000090f  Default_Handler                  
+0000090f  EUSCIA1_IRQHandler               
+0000090f  EUSCIA2_IRQHandler               
+0000090f  EUSCIA3_IRQHandler               
+0000090f  EUSCIB0_IRQHandler               
+0000090f  EUSCIB1_IRQHandler               
+0000090f  EUSCIB2_IRQHandler               
+0000090f  EUSCIB3_IRQHandler               
+0000090f  FLCTL_IRQHandler                 
+0000090f  FPU_IRQHandler                   
+0000090f  HardFault_Handler                
+0000090f  MemManage_Handler                
+0000090f  NMI_Handler                      
+0000090f  PCM_IRQHandler                   
+0000090f  PORT1_IRQHandler                 
+0000090f  PORT2_IRQHandler                 
+0000090f  PORT3_IRQHandler                 
+0000090f  PORT4_IRQHandler                 
+0000090f  PORT5_IRQHandler                 
+0000090f  PORT6_IRQHandler                 
+0000090f  PSS_IRQHandler                   
+0000090f  PendSV_Handler                   
+0000090f  RTC_C_IRQHandler                 
+0000090f  SVC_Handler                      
+0000090f  SysTick_Handler                  
+0000090f  T32_INT1_IRQHandler              
+0000090f  T32_INT2_IRQHandler              
+0000090f  T32_INTC_IRQHandler              
+0000090f  TA0_0_IRQHandler                 
+0000090f  TA0_N_IRQHandler                 
+0000090f  TA1_0_IRQHandler                 
+0000090f  TA1_N_IRQHandler                 
+0000090f  TA2_0_IRQHandler                 
+0000090f  TA2_N_IRQHandler                 
+0000090f  TA3_0_IRQHandler                 
+0000090f  TA3_N_IRQHandler                 
+0000090f  UsageFault_Handler               
+0000090f  WDT_A_IRQHandler                 
+00000911  ADC14_enableModule               
+00000921  REF_A_enableReferenceVoltage     
+00000931  REF_A_enableTempSensor           
+00000941  __TI_decompress_none             
+0000094f  Reset_Handler                    
+0000095d  SysCtl_getTempCalibrationConstant
+00000969  _system_pre_init                 
+0000096d  C$$EXIT                          
+0000096d  abort                            
+00000a20  uartConfig                       
+00000a48  __TI_Handler_Table_Base          
+00000a54  __TI_Handler_Table_Limit         
+00000a68  __TI_CINIT_Base                  
+00000a78  __TI_CINIT_Limit                 
+20000000  cal30                            
+20000004  cal85                            
+20000008  calDifference                    
+2000000c  tempC                            
+20000010  tempF                            
+20000014  color                            
+2000fe00  __stack                          
+20010000  __STACK_END                      
+4000480c  WDTCTL_SYM                       
+ffffffff  __TI_pprof_out_hndl              
+ffffffff  __TI_prof_data_size              
+ffffffff  __TI_prof_data_start             
+ffffffff  __binit__                        
+ffffffff  __c_args__                       
+ffffffff  binit                            
+UNDEFED   __mpu_init                       
+UNDEFED   _system_post_cinit               
+
+[112 symbols]

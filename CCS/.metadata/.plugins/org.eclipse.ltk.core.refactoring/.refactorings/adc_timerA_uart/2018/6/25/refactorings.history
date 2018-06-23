@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;adc_timerA_uart/adc14_single_conversion_repeat_timera_source.c&apos; to &apos;adc_timerA_uart.c&apos;" description="Rename resource &apos;adc14_single_conversion_repeat_timera_source.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="adc14_single_conversion_repeat_timera_source.c" name="adc_timerA_uart.c" stamp="1529588376205" updateReferences="true"/>
+</session>

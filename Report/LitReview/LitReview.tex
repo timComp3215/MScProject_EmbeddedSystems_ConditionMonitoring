@@ -1,0 +1,333 @@
+
+%% bare_conf.tex
+%% V1.3
+%% 2007/01/11
+%% by Michael Shell
+
+\documentclass[conference]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+
+% *** CITATION PACKAGES ***
+%
+\usepackage{cite}
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  \usepackage{subcaption}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\newcommand*\abs[1]{\lvert#1\rvert}
+
+\usepackage{hyperref}
+
+\usepackage{siunitx}
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+
+%\usepackage{mdwmath}
+%\usepackage{mdwtab}
+
+% *** SUBFIGURE PACKAGES ***
+%\usepackage[tight,footnotesize]{subfigure}
+
+%\usepackage[caption=false]{caption}
+%\usepackage[font=footnotesize]{subfig}
+
+%\usepackage[caption=false,font=footnotesize]{subfig}
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+
+%\usepackage{stfloats}
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/misc/
+% Read the url.sty source comments for usage information. Basically,
+% \url{my_url_here}.
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Review: State of the Art in Motor Condition Monitoring}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Timothy Guite}
+\IEEEauthorblockA{School of Electrical and\\Computer Science\\University of Southampton}}
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+
+\begin{abstract}
+%\boldmath
+This paper reviews state of the art techniques for condition monitoring of motors. Condition monitoring describes using data which can be collected from a machine during operation to create an accurate picture of the underlying state of the machine. This information is then used to make intelligent decisions about when to schedule maintenance operations. The well-known Fourier Transform has long been used to extract useful information from time-based data, but more recent developments have enabled detection of faults by monitoring how frequency signals change with time. Wavelet Analysis is currently the preferred method. There is also a considerable amount of knowledge on separating specific fault signatures from the data. Modern applications of artificial intelligence and machine learning are being used to enable data and model driven prognostics. 
+%The principle of condition monitoring and its use is explained, followed by demonstrations of use in industry. The methods of vibration analysis and motor current sensing analysis are described and specific techniques such as Fast Fourier Transform, Wavelet Transformation and scale-invariant feature transformation are highlighted. Modern application of artificial intelligence and machine learning to condition monitoring is also discussed.
+\end{abstract}
+% IEEEtran.cls defaults to using nonbold math in the Abstract.
+% This preserves the distinction between vectors and scalars. However,
+% if the conference you are submitting to favors bold math in the abstract,
+% then you can use LaTeX's standard command \boldmath at the very start
+% of the abstract to achieve this. Many IEEE journals/conferences frown on
+% math in the abstract anyway.
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+\section{Introduction}
+Condition monitoring describes a method whereby the health of a piece of machinery, equipment or an individual component is inferred from data collected during operation. The condition is often given with respect to expected lifetime, a known healthy condition and faults. Condition monitoring enables condition based maintenance (CBM), which allows for a more efficient use of resources for maintenance than older more traditional methods, such as schedule based maintenance \cite{CardenFanning}\cite{ArmyTrucks}. The grand aim of CBM is to allow machinery and components to run for their maximum life without having to shut the system unnecessarily or failing in such a way that the system is damaged. Time and money can then be spent effectively and operators of the system can have confidence in the state of their system. By knowing the condition of components within a system, maintenance can be targeted at the components most in danger of failing and causing disruption to system function. The condition of components also serves as an important input into the Failure Modes and Effects Analysis (FMEA) which is widely used in industry to direct maintenance resources. With the advancement of sensor technology and computing capability in recent decades, this field has greatly expanded and been implemented into many industries such as manufacturing, aviation and shipping \cite{Vibration Book}.\\
+In particular, vibration analysis and Motor Current Sensing Analysis (MCSA) have proven extremely effective across a wide range of use scenarios. Vibration analysis describes monitoring vibrations through displacement, velocity and acceleration measurements \cite{CardenFanning}. This data can be viewed as is, in the time-domain, or transferred to the frequency-domain and joint time-frequency-domain \cite{DaiGao}. Feautures in the signal are correlated with subcomponents within the component and faults are identified by comparing the signal to known fault signatures \cite{CardenFanning}. Specific techniques for analysing vibration data will be discussed in Section \ref{Section:VibAn}. MCSA is used for induction motors. The stator current is related to the power being exerted by the motor and can be measured without intrusion by detecting the strength of the electric field surrounding the wire. Similarly to vibration analysis, features in the power signal are related to subcomponents and the performance of these subcomponents can be accurately measured based on this data. MCSA is used to detect damage to bearings and rotor bars, and the presence of eccentricity of the shaft \cite{Wavelets}. The fact that this feature can be added after original installation of equipment, and that is is so effective, has led to widespread deployment of MCSA \cite{Wavelets}.\\
+The problem of feature recognition and identification is primarily a problem of searching large amounts of data from healthy and damaged components. This area has been targeted by machine learning and artificial intelligence methods, such as artifical neural networks and expert systems.
+
+\section{Signal Analysis}
+
+\subsection{Frequency Analysis}
+
+\subsubsection{Discrete-Time Fourier Transform (DFT)}
+The Discrete-Time Fourier Transform is a method for transferring time based signals to the frequency-domain \cite{Vibration Book}. The principle behind the DFT is that any periodic signal is composed of the infinite sum of weighted sinusoids of different frequency. By considering the signal in the frequency-domain, the underlying sources of the signal can be understood. In practice, signals are collected at instants of time by sensors, creating discrete-time data of finite length. This data is transformed to the frequency-domain using the DTFT: \cite{Vibration Book}
+\begin{equation*} %DFT
+F(j\omega) = \sum^{N-1}_{k=0} f[k]e^{-j\omega kT}
+\end{equation*}
+The time signal $f$ is multiplied with the exponential form of waves and integrated via summation over the available time. The result is a measurement of how well the time data matches a sinusoid of known frequency. Plotting the magnitude of these values with respect to frequency generates a frequency spectrum. The DFT is often computed using the Fast Fourier Transform (FFT) method which is computationally efficient. While the DFT offers excellent resolution in the frequency-domain, no information about how the signal is positioned in time is preserved \cite{Wavelets}.\\
+Motor operating frequency which will show up as the largest amplitude on the FFT plot. Subcomponents and subsystems of the motor - such as ball bearings or gear teeth - show up at certain multiples of the motor frequency\cite{Vibration Book}. By studying the frequency-domain signal of the motor in a healthy condition, these features can be extracted in order to compare them to a system in operation. The differences between healthy and damaged motors can be noted with a relatively small number of statistical markers from the frequency-domain signal \cite{Wavelet Study}.
+\subsubsection{Envelope Analysis} \label{Envelopes}
+Envelope analysis is a method for further investigating a band of frequencies and has been established as the prominent method for diagnosing faults in rolling bearings. It has been further enhanced by the use of digital processing techniques \cite{Vibration Book}. The Hilbert transform is described in \cite{Bonnardot}, \cite{Vibration Book} and allows the impulses generated at high frequencies by bearings to be separated from noise and resonance of other vibration sources. Frequency band $[f_1, f_2]$ is selected, extracted and shifted to $[0, f_2-f_1]$ and the new signal is zero padded to the length of the original sample. This signal is then transformed to the time domain using the Fourier Transform. The modulus of the time domain signal is transformed back to the frequency domain. The end result is greatly enhanced frequency information within the selected band. This method is used in Case Study 1.
+%Useful markers highlighted are:
+%\begin{itemize}
+%  \item Maximum FFT magnitude
+%  \item Standard deviation of FFT magnitude
+%  \item Root mean square of FFT magnitude
+%\end{itemize}
+%Using these markers, clear demonstration of healthy and unhealthy motors has been demonstrated in the literature, for simple issues at least \cite{Moosavian}. While these markers do not provide comprehensive monitoring of a motor, they are simple to compute and therefore require fewer resources. This is important for devices which may be resource-constrained such as low-power embedded processors.
+
+\subsection{Time-Frequency Analysis}
+
+The purpose of Time-Frequency Analysis is to see how signals change with time. This has been sought to detect subtle changes and particularly changes at high frequency which are often the results of impulses and do not last very long \cite{Wavelets}\cite{Vibration Book}. All of the methods discussed below are attempting to find an effective compromise to the problem posed by Heisenburg's uncertainty principle, namely, that the exact time and frequency of a signal cannot be known and that as resolution in one domain is improved, resolution in the other is necessarily worsened \cite{Wavelets}.
+\subsubsection{Short-Time Fourier Transform (STFT)}
+The STFT applies the DFT method over windows of the signal in time \cite{DaiGao}\cite{WangChen}.  Formally, the STFT of a signal ${x(t)}$ is calculated as:
+\begin{equation*}
+STFT_x(t, \omega) = \frac{1}{\sqrt{2\pi}}\int^{+\infty}_{-\infty}x(\tau)h(\tau-t)e^{-j\omega \tau}d\tau
+\end{equation*}
+where $h(\tau)$ the windowing function. Expertise is required to choose an appropriate windowing function but popular variants are Hanning and Gaussian \cite{Wavelets}\cite{Vibration Book}. The main limitation of the STFT is that as the window narrows, the resolution is sharper in the time domain but can be poor in the frequency domain \cite{DaiGao}. This is directly related to the uncertainty principle \cite{Wavelets}. STFT also treats all frequencies equally which can lead to inaccuracies. However, the STFT is less computationally intensive than Wavelet Analysis or WVD \cite{WangChen} and gives results which are easy to interpret.
+
+\subsubsection{Wavelet Analysis (WA)}
+Wavelet analysis differs from STFT, allowing windows of varying sizes by using a scalable basis function $\psi()$, the wavelet function \cite{DaiGao}. This is known as multiresolution analysis and takes advantage of the fact that in real systems, low frequencies tend to persist in time while high frequencies exist only for a small period of time \cite{Wavelets}. The width of the basis function is related to the frequency component being sampled. The Continuous Wavelet Transform (CWT) of $x(t)$ is expressed as:
+\begin{equation*}
+  CWT_x(a, b) = \frac{1}{\sqrt{\abs{a}}}\int^{+\infty}_{-\infty}x(t)\psi*\left(\frac{t-b}{a}\right)dt\;a, b\in \mathbb{R}
+\end{equation*}
+where $a$ and $b$ are parameters related to scale and time respectively \cite{WangChen}. Wavelet analysis is more computationally intensive than STFT and can be difficult to interpret as it does not directly show the signal in seconds and Hz \cite{Wavelets}. Nevertheless, despite being developed relatively recently, it has already become widespread for diagnosis of faults in bearings, gearboxes and compressors, and has been praised for its ability to extract useful information from noisy signals. \cite{DaiGao}\cite{WangChen}. This is known as denoising and WA executes in the time and frequency domains simultaneously by removing components which are below a threshold amplitude. The original signal can be reconstructed from this compressed form \cite{Wavelets}\cite{Vibration Book}.
+
+\subsubsection{Wigner-Ville Distribution (WVD)}
+The WVD is a joint time-frequency domain distribution with optimized resolutions in both time and frequency \cite{DaiGao}\cite{WangChen}. It offers superior resolution to STFT but introduces interference in the components \cite{Vibration Book}. There are variations of the WVD to lessen the effects of intereference from the transformation. The psuedo-WVD (PWVD) is one such variation which has imporved resolution and better estimates the instantaneous frequency. The PWVD is expressed as:
+\begin{align*}
+  PWVD_x(t, \omega) = \frac{1}{2\pi}\int^{+\infty}_{-\infty}&x^{*}\left(t-\frac{\tau}{2}\right)&\\ 
+  \times &x\left(t+\frac{\tau}{2}\right)h(\tau)e^{-j\omega\tau}d\tau
+\end{align*}
+where $x^*$ is the complex conjugate of $x$. In \cite{WangChen} PWVD was found to be more sensitive than either STFT or WA for condition monitoring of rotating machinery. The increased sensitivity proved important when the load of the machinery, and therefore the rotational speed, was variable rather than constant.
+
+%\subsection{Scale-Invariant Feature Transform (SIFT)}
+%SIFT is a method for understanding time-domain signals as 2-D images. First, the magnitudes of the 1-D time signal are interpreted as pixel density, and the data points are placed on an $M \times N$ grey image, where $M \times N$ equals the number of data points. SIFT is then applied to the image, using pattern recognition and image processing algorithms to extract local features. The local features are associated with faults in the equipment. This allows the work and expertise that has been developed for analysing images to be utilised within the field of condition monitoring.
+
+\section{Diagnostics}
+
+\section{Prognostics}
+
+Prognostics represents the final piece of the condition monitoring puzzle. It is also the most difficult and the least developed. Prognostics systems are generally based around detailed physical models or large data sets \cite{CardenFanning}\cite{Vibration Book}. Many physical models are based around crack growth based on current crack size, which can be difficult or impossible to directly measure and so must be estimated through other methods such as vibration or wear debris analysis \cite{Vibration Book}. In statistical methods, Advanced Neural Networks (ANNs) and genetic algorithms are trained with historical data to detect anomalies in data \cite{CardenFanning}\cite{Vibration Book}. Hybrid models have also been developed, which combine model and data based systems with records of actual failure or information extracted from testing \cite{Vibration Book}. This is an area of active research with clear implications for industry. As these methods continue to improve in accuracy, the cost of collecting accurate quantitative data over the lifetime of machines will drop, relative to the cost of failing to accurately predict failures.
+
+\section{Case Studies}
+
+\subsection{Noise cancelling with angular resampling}
+In \cite{Bonnardot} envelope analysis is combined with noise cancelling methods to diagnose faults in bearings in the planetary gear system of a helicopter. Planetary gear systems are used to convert between shaft frequencies and provide difficulties for vibration analysis methods as fault signals do not have a clear path to travel through and there is considerable interference from the gears. Helicopters are also extremely noisy environments in which to attempt vibration analysis.\\
+Envelope analysis was performed as described in \ref{Envelopes}. An unsupervised noise cancelling method is then applied. This method uses statistical properties, rather than frequency properties, to extract unpredictable parts of the signal which are related to the bearings. Although this leads to some improvements, it is not sufficient in this case, so the authors apply an "enhanced method". The angular position is estimated from the acceleration signal to allow angular resampling. This avoids the requirement of a tachometer. Using this method, the fault frequency is able to be detected from the frequency data.\\
+While the authors show a novel method, it is not immediately clear from their figures how well the method worked or how feasible it would be to employ on a system where the fault frequency was not known beforehand. However, angular resampling is often of interest and the ability to do so without a tachometer would reduce the cost and complexity of a condition monitoring system.
+
+\subsection{Faulty pattern classification of water pumps}
+In \cite{Moosavian} statistical parameters of the frequency signal collected from water pumps in various conditions were used as inputs to an Adaptive Neuro-Fuzzy Inference System (ANFIS) - a combination of an ANN and a fuzzy inference system which sorts data into classes based on adaptive weights on the inputs.\\
+Acceleration data for a centrifugal pump with a constant rotation speed of 2970 rpm was collected with a VMI-102 type accelerometer - resonant frequency of 30 kHz, sensitivity of 100 mV/g - mounted vertically on the pump. Samples were collected over 100 s at 8192 Hz and split into 50 samples of 2 s. Each of these samples was then transformed to the frequency domain with FFT.\\
+The authors identified the maximum, standard deviation and root mean square of the FFT magnitude as useful parameters to describe the frequency signal and effective inputs to the ANFIS system. Half of the samples were used to train the system, which was then tested with the remaining samples. The system was able to exactly identify a healthy system and systems with looseness and misalignment in the shaft. This method was proposed as a useful solution for similar water pumps.\\
+It would be of interest to discover how well this method performs for a wider range of faults, although the authors note that looseness and misalignment of the shaft are particularly common for water pumps. Additionally, the analysis was executed in Matlab, using experimental data. A natural extension would be to deploy the system within a live environment.
+
+\subsection{Fault Diagnosis of Induction Machines with WA}
+In \cite{Wavelet Study}, WA is combined with MCSA to assess the health of an induction machine (IM). IMs with broken rotor bars and a broken end ring are compared with a healthy IM by measuring the stator current only. The current is measured at 10 kHz for \num{100000} samples to give a 0.1 Hz resolution. A 3-phase 4kW IM was used, with 28 bars and a power supply voltage of 220 V at 50 Hz. Two different WA methods were applied to identify the condition of the IM.\\
+WA is found to be effective in separating the healthy and faulty IMs and also at locating separate faults which are introduced during the test. Several nonstationary faults are identified which could be located by this method.\\
+The authors conclude that WA is required for variable torque or nonstationary signals and that many faults can be detected by measuring only the stator current. Although they lay out aims to compare the effectiveness of the Fourier method for the steady state case, this is not followed through. It is clear that the Fourier method would fail at detecting nonstationary faults, but the STFT could be compared in effecetiveness and computational efficiency to WA.
+
+\section{Conclusion}
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgement
+%\section*{Acknowledgment}
+
+
+%The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{CardenFanning}
+E. Carden and P. Fanning, "Vibration Based Condition Monitoring: A Review", Structural Health Monitoring: An International Journal, vol. 3, no. 4, pp. 355-377, 2004
+\bibitem{DaiGao}
+X. Dai and Z. Gao, "From Model, Signal to Knowledge: A Data-Driven Perspective of Fault Detection and Diagnosis", IEEE Transactions on Industrial Informatics, vol. 9, no. 4, pp. 2226-2238, 2013
+\bibitem{Bonnardot}
+F. Bonnardot, R. Randall and J. Antoni, "Enhanced Unsupervised Noise Cancellation using Angular Resampling for Planetary Bearing Fault Diagnosis", The International Journal of Acoustics and Vibration, vol. 9, no. 2, 2004
+\bibitem{Moosavian}
+A. Moosavian, M. Khazaee, H. Ahmadi, M. Khazaee and G. Najafi, "Fault diagnosis and classification of water pump using adaptive neuro-fuzzy inference system based on vibration signals", Structural Health Monitoring: An International Journal, vol. 14, no. 5, pp. 402-410, 2015
+\bibitem{Wavelet Study}
+A. Bouzida, O. Touhami, R. Ibtiouen, A. Belouchrani, M. Fadel and A. Rezzoug, "Fault Diagnosis in Industrial Induction Machines Through Discrete Wavelet Transform", IEEE Transactions on Industrial Electronics, vol. 58, no. 9, pp. 4385-4395, 2011
+\bibitem{WangChen}
+H. Wang and P. Chen, "Fuzzy Diagnosis Method for Rotating Machinery in Variable Rotating Speed", IEEE Sensors Journal, vol. 11, no. 1, pp. 23-34, 2011
+\bibitem{Wavelets}
+Polikar, "The Wavelet Tutorial - Second Edition", Web.iitd.ac.in, 2018, [Online] Available: \url{http://web.iitd.ac.in/~sumeet/WaveletTutorial.pdf} [Accessed: 09- Apr- 2018]
+\bibitem{Vibration Book}
+R. Randall, Vibration-based condition monitoring, Hoboken, N.J.: Wiley, 2013
+
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;uart_FFT_csv/uart_pc_echo_12mhz_brclk.c&apos; to &apos;uart_FFT_csv.c&apos;" description="Rename resource &apos;uart_pc_echo_12mhz_brclk.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="uart_pc_echo_12mhz_brclk.c" name="uart_FFT_csv.c" stamp="1529073001925" updateReferences="true"/>
+</session>
