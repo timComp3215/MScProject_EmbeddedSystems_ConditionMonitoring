@@ -8969,6 +8969,77 @@
     ]
   },
   {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_automotive_toolbox",
+    "name": "Automotive Toolbox",
+    "version": "2.1.2",
+    "type": "software",
+    "license": "mmwave_automotive_toolbox_2_1_2/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "AWR1XXX",
+      "AWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_automotive_toolbox_2_1_2/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Automotive Toolbox!  The mmmWave Automotive Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors for automotive applications.  The series includes technical collateral and demo labs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Automotive Toolbox"
+    ],
+    "_id": "BV3NpDJ2HqrVGs",
+    "package": "Automotive Toolbox",
+    "semver": "2.1.2",
+    "advanced": {},
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_automotive_toolbox_2_1_2",
+    "packageOrder": 158,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_automotive_toolbox__2.1.2"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_automotive_toolbox",
+    "packageVersion": "2.1.2",
+    "packageUId": "com.ti.mmwave_automotive_toolbox__2.1.2",
+    "includedFilesForDownload": [
+      "mmwave_automotive_toolbox_2_1_2"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "AWR1642"
+    ],
+    "devtools": [
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "mmWave Sensors Development Pack",
+      "AWR1642 Automotive EVM",
+      "Code Composer Studio (CCS)",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer"
+    ]
+  },
+  {
     "id": "msp430ware",
     "installFolder": {
       "mac": "msp/MSP430Ware_3_60_00_10",
@@ -9003,7 +9074,7 @@
       ]
     ],
     "packagePath": "msp/MSP430Ware_3_60_00_10",
-    "packageOrder": 158,
+    "packageOrder": 159,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9058,7 +9129,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_02_10",
-    "packageOrder": 159,
+    "packageOrder": 160,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9113,7 +9184,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_03_07",
-    "packageOrder": 160,
+    "packageOrder": 161,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9168,7 +9239,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_04_05",
-    "packageOrder": 161,
+    "packageOrder": 162,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9216,7 +9287,7 @@
       ]
     ],
     "packagePath": "TivaWare_C_Series-2.1.3.156",
-    "packageOrder": 162,
+    "packageOrder": 163,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9263,7 +9334,7 @@
       ]
     ],
     "packagePath": "Sitara_1_02_00_00",
-    "packageOrder": 163,
+    "packageOrder": 164,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9318,7 +9389,7 @@
       ]
     ],
     "packagePath": "tirtos_msp43x_2_20_00_06",
-    "packageOrder": 164,
+    "packageOrder": 165,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9373,7 +9444,7 @@
       ]
     ],
     "packagePath": "tirtos_cc13xx_cc26xx_2_21_00_06",
-    "packageOrder": 165,
+    "packageOrder": 166,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9428,7 +9499,7 @@
       ]
     ],
     "packagePath": "tirtos_tivac_2_16_00_08",
-    "packageOrder": 166,
+    "packageOrder": 167,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9483,7 +9554,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_01_00_03",
-    "packageOrder": 167,
+    "packageOrder": 168,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9538,7 +9609,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_00_06",
-    "packageOrder": 168,
+    "packageOrder": 169,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9593,7 +9664,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_01_09",
-    "packageOrder": 169,
+    "packageOrder": 170,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9640,7 +9711,7 @@
       ]
     ],
     "packagePath": "bios_6_50_01_12",
-    "packageOrder": 170,
+    "packageOrder": 171,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9686,7 +9757,7 @@
       ]
     ],
     "packagePath": "xdctools_3_30_04_52_core",
-    "packageOrder": 171,
+    "packageOrder": 172,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9735,7 +9806,7 @@
       ]
     ],
     "packagePath": "xdctools_3_31_01_33_core",
-    "packageOrder": 172,
+    "packageOrder": 173,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9781,7 +9852,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_00_06_core",
-    "packageOrder": 173,
+    "packageOrder": 174,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9827,7 +9898,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_01_22_core",
-    "packageOrder": 174,
+    "packageOrder": 175,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9873,7 +9944,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_00_10_core",
-    "packageOrder": 175,
+    "packageOrder": 176,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9919,7 +9990,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_01_12_core",
-    "packageOrder": 176,
+    "packageOrder": 177,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9965,7 +10036,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_02_20_core",
-    "packageOrder": 177,
+    "packageOrder": 178,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10014,7 +10085,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_03_33_core",
-    "packageOrder": 178,
+    "packageOrder": 179,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10062,7 +10133,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_04_43_core",
-    "packageOrder": 179,
+    "packageOrder": 180,
     "resourceType": "packageOverview",
     "includedResources": [
       {

@@ -7875,3 +7875,244 @@ Caused by: org.json.JSONException: Module Closed
 
 !ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-22 17:45:56.591
 !MESSAGE REX Sending 'GET' request to URL : http://localhost:55432/api/exit
+!SESSION 2018-06-24 15:49:12.958 -----------------------------------------------
+eclipse.buildId=4.7.1.M20171009-0410
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-06-24 15:49:30.295
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-06-24 15:49:30.303
+!MESSAGE debugServerDir=C:/ti/ccsv8/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-06-24 16:01:51.026
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-06-24 16:01:51.026
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE >>1529853898412 Ta: (ResourceExplorerPlugin::start discoverCCSPort()) took 15
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE Plugin start call t.start()
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE >>1529853898412 Tb: (ResourceExplorerPlugin::new Thread to start plugin 0
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX 1529853898412 [A:plugin start] Starting Server
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX OpenExplorerHandler:: Open Explorer
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX [OS:plugin start] win32
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX OpenExplorerHandler:: just_started_plugin = true
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX [A] startServer()
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX 1529853898412 Tc: Utilities::startServer preamble0
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX 1529853898412 [D:plugin start] ccs_eclipse_folder: file:/C:/ti/ccsv8/eclipse/
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.412
+!MESSAGE REX 1529853898412 [E:plugin start] ccs_eclipse_folder: C:/ti/ccsv8/eclipse/
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.475
+!MESSAGE REX 1529853898475 Tz: ResourceExplorerPage::createMainArea took 0
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.490
+!MESSAGE REX 1529853898490 Launching Browser
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.568
+!MESSAGE REX 1529853898568 Ti: Utilities::proxy 156
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.568
+!MESSAGE REX 1529853898568 These are the commands [C:\ti\ccsv8\tirex/node.exe, app.js, C:\ti\ccsv8\tirex\ti-rex-core/dinfra-desktop/dinfra.js, C:\ti\ccsv8\tirex\ti-rex-core/config/dconfig_localserver.json, C:\ti\ccsv8\tirex\ti-rex-core/config/app_localserver_win.json, --ccs_port=61966, --myHttpPort=55432, --logsDirUncaughtException=C:\Users\Tim\AppData\Local\TEXASI~1\CCS\ti\0\dmp\]
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.568
+!MESSAGE REX 1529853898568 Td: Utilities::before pb.start() 156
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.631
+!MESSAGE REX 1529853898631 Te: Utilities::before isAlive loop 63
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.631
+!MESSAGE REX 1529853898631 Tf: Utilities::after ResourceExplorerPlugin.p.isAlive() loop 0
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.631
+!MESSAGE REX pollServerState for up or ready
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:24:58.631
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:00.167
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:01.680
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:03.202
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:03.486
+!MESSAGE REX 1529853903486 Tz: ResourceExplorerPage::createBrowser took 4996
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:03.490
+!MESSAGE REX Using browser port 55432
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:03.490
+!MESSAGE REX 1529853903490 server starting page: file:/C:/ti/ccsv8/eclipse/..\tirex\ti-rex-core\public\plugin\serverstarting.html
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:04.709
+!MESSAGE REX 1529853904709 [] setUrl: file:/C:/ti/ccsv8/eclipse/..\tirex\ti-rex-core\public\plugin\serverstarting.html
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:04.724
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:04.740
+!MESSAGE REX 1529853904740 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:05.241
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:05.249
+!MESSAGE REX 1529853905249 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:05.752
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:05.764
+!MESSAGE REX 1529853905764 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:06.270
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:06.562
+!MESSAGE REX 1529853906562 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:07.066
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:07.066
+!MESSAGE REX 1529853907066 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:07.569
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:07.573
+!MESSAGE REX 1529853907573 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:08.073
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:08.077
+!MESSAGE REX 1529853908077 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:08.580
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:08.584
+!MESSAGE REX 1529853908584 Utilities::sendGet Response Code from local server: 503
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.086
+!MESSAGE REX Sending 'GET' request to URL : http://127.0.0.1:55432/api/serverstate
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.090
+!MESSAGE REX 1529853909090 Utilities::sendGet Response Code from local server: 200
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.094
+!MESSAGE REX [serverStatus] ready
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.094
+!MESSAGE REX serverState is ready
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.102
+!MESSAGE REX 1529853909102 Tg: Utilities::after server isAlive 10471
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.106
+!MESSAGE REX 1529853909102 Th: Utilities::refreshEditor 0
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.106
+!MESSAGE REX Sending 'POST' request to URL : http://127.0.0.1:55432/localpkg/scan
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.593
+!MESSAGE REX 1529853909593 Utilities::sendPost Response Code from local server: 200
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 16:25:09.609
+!MESSAGE REX 1529853909605 Changing URL to http://localhost:55432
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:16:58.251
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:24:35.218
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:29:35.860
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:35:41.685
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:42:14.729
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:47:36.116
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 17:55:20.604
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 18:02:12.905
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 18:16:14.392
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 18:21:53.884
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 18:27:42.476
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.ui.ide 4 4 2018-06-24 18:30:01.480
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2018-06-24 18:30:01.495
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2018-06-24 18:30:01.495
+!MESSAGE Could not write workspace metadata 'D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/.metadata/.plugins/org.eclipse.core.resources/.root/6.tree'.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.core.internal.watson.ElementTreeWriter.sortTrees(ElementTreeWriter.java:125)
+	at org.eclipse.core.internal.watson.ElementTreeWriter.writeDeltaChain(ElementTreeWriter.java:195)
+	at org.eclipse.core.internal.resources.SaveManager.writeTree(SaveManager.java:2011)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1411)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1190)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2283)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:526)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 18:30:02.261
+!MESSAGE >>1529861402261  killing node server
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 18:30:02.261
+!MESSAGE REX Sending 'GET' request to URL : http://localhost:55432/api/exit
+
+!ENTRY org.eclipse.core.resources 2 566 2018-06-24 18:30:03.998
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.e4.ui.workbench 1 0 2018-06-24 18:30:04.018
+!MESSAGE REX 1529861404018 Monitor thread discovered server process problem. Have set error page
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-06-24 18:30:04.023
+!MESSAGE The workspace will exit with unsaved changes in this session.

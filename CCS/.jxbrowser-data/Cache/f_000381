@@ -1,0 +1,1347 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<title>SimpleLink SDK - Precision ADC: 1MSPS Sampling Rate on the MSP432P4</title>
+<link rel="stylesheet" href="../../../web_support/strapdown/v/0.2/fonts/ubuntu-regular-woff.css"><link rel="stylesheet" href="../../../web_support/strapdown/v/0.2/fonts/glyphicons-halflings-regular.css"><link rel="stylesheet" href="../../../web_support/strapdown/v/0.2/themes/united2.min.css"><link rel="stylesheet" href="../../../web_support/strapdown/v/0.2/themes/bootstrap-responsive.min.css"><link rel="stylesheet" href="../../../web_support/strapdown/v/0.2/strapdown.css"><link rel="shortcut icon" type="image/x-icon" href="../../../.metadata/favicon.ico"></head>
+<!-- START PRE -->
+
+
+
+
+
+
+<!-- END PRE -->
+
+<body style=""><div class="container"><nav class="navbar navbar-default navbar-static-top"><div class="container-fluid"> <div class="navbar-header">  <div id="headline" class="navbar-brand">SimpleLink SDK - Precision ADC: 1MSPS Sampling Rate on the MSP432P4</div> </div> </div></nav><div class="container"><div class="row row-offcanvas row-offcanvas-left"><div class="col-xs-12 col-sm-9" id="content"><h1 class="body-heading" id="introduction">Introduction<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#introduction"></a></h1><p>This lab introduces how to use the Precision ADC available on the SimpleLink MSP432P4 MCUs. The Precision ADC is a 1MSPS ADC on the MSP432P4 devices that features up to 16-bit performance with software oversampling. This ADC provides a host of flexibility without compromising on performance. In this example project, we will start with an ADC example pulled from the SimpleLink MSP432P4 SDK and adjust it, showcasing all of the necessary considerations that need to be made in order to increase the sampling rate of the ADC to 1MSPS using TI-Drivers.</p>
+<h1 class="body-heading" id="prerequisites">Prerequisites<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#prerequisites"></a></h1><h2 class="body-heading" id="hardware">Hardware<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#hardware"></a></h2><p>Please feel free to use either of the following:</p>
+<ul>
+<li><a href="http://www.ti.com/tool/msp-exp432p401r" title="MSP432 LaunchPad Page">MSP432P401R LaunchPad</a></li>
+<li><a href="http://www.ti.com/tool/msp-exp432p4111" title="MSP432P4111 LaunchPad Page">MSP432P4111 LaunchPad</a></li>
+</ul>
+<p>Not required but recommended</p>
+<ul>
+<li>A simple logic analyzer</li>
+</ul>
+<h2 class="body-heading" id="software-for-desktop-development">Software for desktop development<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#software-for-desktop-development"></a></h2><ul>
+<li><a href="http://www.ti.com/tool/CCSTUDIO">Code Composer Studio v7.3.0 or later</a></li>
+<li><a href="http://www.ti.com/tool/simplelink-msp432-sdk">SimpleLink MSP432P4 SDK v1.60.00.12 or later</a></li>
+</ul>
+<h3 class="body-heading" id="installing-the-sdk">Installing the SDK<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#installing-the-sdk"></a></h3><div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">NOTE:
+</span></h4>
+<p>Prior to Importing a Project, you first need to download the project (or the entire SDK)
+to the Desktop in order to be able to import the examples to the CCS IDE.  This is done
+by clicking the "Download and Install" icon </p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/iconInstallOnDesktop.jpg" alt="Labs" class="img-responsive"></div><p></p>
+<p>Find the MSP432P4 SimpleLink SDK in TI Resource Explorer. Select it and click on the "Download and Install"
+icon to create a local copy of all the SDK material used in these labs.
+Click the button <strong>"Make Available Offline"</strong>  that appears when you hover over the
+Desktop install icon, and click "Yes" to confirm the popup.</p>
+</div>
+<h2 class="body-heading" id="recommended-reading">Recommended reading<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#recommended-reading"></a></h2><p>All Documentation can be accessed from the <a href="http://dev.ti.com/tirex/#">TI Resource Explorer</a> on dev.ti.com.
+The following documents are recommended both as an introduction and as reference as you work through the labs.</p>
+<ol>
+<li><a href="http://www.ti.com/lit/an/slaa821/slaa821.pdf">Precision ADC Application Note</a></li>
+<li>Introduction to SimpleLink SDK</li>
+<li>TI Resource Explorer Documentation Overview - under <strong>Software→&lt;MSP432_SDK_Dir&gt;→Documents</strong> </li>
+<li>TI Drivers API Guide - under <strong>Software→&lt;MSP432_SDK_Dir&gt;→Documents→TI Drivers</strong></li>
+<li>Project Documentation from CCS Project Explorer (in their respective project directories)<ul>
+<li>Board.html - MSP432 LaunchPad Documentation</li>
+<li>README.html - Project Documentation</li>
+</ul>
+</li>
+<li><a href="../../rtos/tirtos_basics/tirtos_basics.html">TI-RTOS Basics</a></li>
+</ol>
+<h1 class="body-heading" id="overview">Overview<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#overview"></a></h1><h2 class="body-heading" id="introduction">Introduction<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#introduction"></a></h2><p>In this lab, first we will cover how to use the Precision ADC on the SimpleLink MSP432P4 MCU. To do this, we will start with the <code>adcbufcontinuous</code> example that is located in the SimpleLink MSP432P4 SDK. This will be the foundation of the rest of this lab, in which we will walk through making changes to the example to push the sampling rate of our ADC from 200 samples per second (SPS), up to 1 MSPS stopping at various points along the way. As we increase the sampling rate of the ADC, we will stop and discuss various considerations that need to be made when using the Precision ADC with the SimpleLink TI-Drivers. For more information on the Precision ADC, please read the <a href="http://www.ti.com/lit/an/slaa821/slaa821.pdf">Precision ADC Application Note</a>.</p>
+<p>Before starting, it's important to make a distinction on when it is appropriate to use the ADCBuf and ADC drivers. The ADC driver is best to use when wanting to do a single shot measurement of a channel. The ADCBuf is best to be used when you are sampling a channel or sequence of channels continuously. In the course of this lab, we are sampling channel A0 on the MSP432P4 continuously so we will use the ADCBuf driver. </p>
+<h2 class="body-heading" id="code-overview">Code Overview<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#code-overview"></a></h2><p>This project uses the <code>adcbufcontinuous</code> TI Drivers example that is shipped with the SDK as the foundation for the rest of the lab. </p>
+<p>This project uses just one thread, which is used to demonstrate how to utilize the Precision ADC using the ADCBuf TI-Driver.</p>
+<ol>
+<li><code>mainThread()</code>: in source file: <strong>adcbufcontinous.c</strong><ul>
+<li>Initializes the ADCBuf TI-Driver</li>
+<li>Initializes the ADCBuf as extended pulse sample mode. In this mode, the sample-and-hold time is a function of the delay between trigger source edges. This is accomplished with a timer PWM, where the duty cycle of the timer determines the sample-and-hold time, and the period determines the sampling rate. </li>
+<li>Sets up ADCBuf Callback function to handle the printing of the ADC buffer to a terminal.</li>
+</ul>
+</li>
+<li><code>main()</code>: in source file: <strong>main_tirtos.c</strong><ul>
+<li>Initializes the peripherals</li>
+<li>Defines Global variables</li>
+<li>Creates the thread</li>
+</ul>
+</li>
+</ol>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">Need Help Building the Code?
+</span></h4>
+<p><a href="#solutions">Click here for Lab solution files.</a></p>
+<p>The solution files are useful if you are unsure where to
+paste any code fragments into their respective source files.</p>
+</div>
+<h1 class="body-heading" id="task-1-import-the-ti-rtos-adcbufcontinuous-project">Task 1. Import the TI-RTOS adcbufcontinuous Project<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-1-import-the-ti-rtos-adcbufcontinuous-project"></a></h1><ul>
+<li><p>Navigate TI Resource Explorer to find the <code>adcbufcontinuous</code> example &amp; Import it into CCS. The example can be found at the path:
+<strong>&gt;</strong></p><p><strong>SimpleLink MSP432P4 SDK→Examples→Development Tools→MSP432P401R or MSP432P4111 LaunchPad→TI Drivers→<code>adcbufcontinuous</code>→TI-RTOS→CCS Compiler→adcbufcontinuous</strong>
+</p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/importlab_adcbuf.PNG" alt="Labs" class="img-responsive"></div><p></p>
+</li>
+<li><p><strong>Import</strong> the project into the IDE by clicking on the "Import to IDE" icon </p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/iconImportToIDE.jpg" alt="Labs" class="img-responsive"></div> which is in the upper right corner of the window.<p></p>
+<ul>
+<li>This will import TWO projects- <code>adcbufcontinuous</code> AND <code>tirtos_builds_MSP_EXP432P401R_release_ccs</code> if you selected the MSP432P401R and <code>tirtos_builds_MSP_EXP432P4111_release_ccs</code> if you selected the MSP432P4111 LaunchPad. The 2nd project is the TIRTOS project.</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Build</strong> the <code>adcbufcontinuous</code> project to verify that you have everything in place to run this demo.<ul>
+<li>Note that this only compiles the program but does not actually load it onto the LaunchPad.<ul>
+<li>Since <code>adcbufcontinuous</code> is dependent on TI-RTOS, that project will be automatically built as well and may take some time to complete if building for the first time.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 class="body-heading" id="task-2-setting-up-the-launchpad">Task 2. Setting up the LaunchPad<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-2-setting-up-the-launchpad"></a></h1><h3 class="body-heading" id="initial-hardware-setup">Initial Hardware setup<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#initial-hardware-setup"></a></h3><p>As this lab continues, there will be more considerations that will need to be made with regards to hardware in order to ensure that only the device itself is being powered when measurements are being taken. These considerations will help achieve the lowest power numbers possible. </p>
+<ol>
+<li>Plug your MSP432 LaunchPad into your computer via USB</li>
+<li>Ensure your jumpers are connected on the pins in the boxes in the image below. Through the lab, these settings will change.
+<div class="modal-pop" style="cursor:zoom-in;"><img src="resources/MSP-EXP432P401R.jpg" alt="Labs" class="img-responsive"></div></li>
+</ol>
+<h1 class="body-heading" id="task-3-running-the-example">Task 3. Running the example<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-3-running-the-example"></a></h1><p>The first step is to examine the example. To do this, you can refer to the <code>README.html</code> file that is located within the <code>adcbufcontinuous</code> example that you imported. To test this example, you can connect the ADC channel to a sampling source by connecting <code>Board_ADCBUF0CHANNEL0</code> (<code>P5.5</code>) to GND or 3V3.</p>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/readme.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>After running, the application should send 100 samples and a header to the serial session twice per second. The values displayed on the console are in micro-volts.</p>
+<p>The ADCBuf driver performs 100 samples at 200Hz each. The driver supports higher sampling rates; however, 200Hz was chosen for easily interpretable output. In this lab, we will increase the sampling rate to 1,000,000 samples per second (1MSPS). THe ADCBuf driver has the ADC fill up a sample buffer of size 100, and then uses the DMA to transfer the results into SRAM, upon which the device will wake up from sleep (LPM0) and print the results to the serial terminal.</p>
+<p>To verify, that everything works, you should see each buffer full of zeros when connected to GND and 2,500,000uV when connected to 3V3. 
+</p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/initTest.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>We see 2,500,00uV when measuring as our returned voltage because the voltage reference used for the ADC is set to 2.5V. Therefore, even though we are measuring a 3v3 signal, we only measure 2.5V because this is the maximum value the ADC can measure. The measured results are being converted in this instance to microvolts using the following API.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_1')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_1" class="hljs perl">/* Adjust raw adc <span class="hljs-keyword">values</span> <span class="hljs-keyword">and</span> convert them to microvolts *<span class="hljs-regexp">/
+ADCBuf_adjustRawValues(handle, completedADCBuffer, ADCBUFFERSIZE,
+    completedChannel);
+ADCBuf_convertAdjustedToMicroVolts(handle, completedChannel,
+    completedADCBuffer, microVoltBuffer, ADCBUFFERSIZE);
+</span></code></pre></div></div>
+<h1 class="body-heading" id="task-4-setup-for-future-tasks">Task 4. Setup for future tasks<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-4-setup-for-future-tasks"></a></h1><p>For the purposes of this lab, we will need to make a few modifications to the example in order to ensure that we get the maximum out of the precision ADC. </p>
+<p>As we increase the sampling rate of the ADC, the device will be gather data at a rate that is not feasible to print out to the UART terminal, therefore, we will have to comment out this code in the <code>adcBufContinuousSampling.c</code>.</p>
+<h3 class="body-heading" id="changes-for-adcbufcontinuoussampling-c-">Changes for <code>adcBufContinuousSampling.c</code><a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#changes-for-adcbufcontinuoussampling-c-"></a></h3><p>First comment out the header file:</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_2')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_2" class="hljs javascript"><span class="hljs-comment">//#include &lt;ti/drivers/UART.h&gt;</span>
+</code></pre></div></div>
+<p>Then comment out the parameters that are used for the UART Driver.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_3')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_3" class="hljs javascript"><span class="hljs-comment">//char uartTxBuffer[(10 * ADCBUFFERSIZE) + 25];</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">///* Driver handle shared between the task and the callback function */</span>
+<span class="hljs-comment">//UART_Handle uart;</span>
+</code></pre></div></div>
+<p>Then comment out the <code>uartCallback</code> function.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_4')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_4" class="hljs javascript"><span class="hljs-comment">//void uartCallback(UART_Handle handle, void *buf, size_t count) {</span>
+<span class="hljs-comment">//   return;</span>
+<span class="hljs-comment">//}</span>
+</code></pre></div></div>
+<p>Then comment out everything within the <code>adcBufCallback</code> function as most of this code is used for converting the raw values that are sampled by the ADC and then printed out to the serial terminal.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_5')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_5" class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">adcBufCallback</span><span class="hljs-params">(ADCBuf_Handle handle, ADCBuf_Conversion *conversion,
+    <span class="hljs-keyword">void</span> *completedADCBuffer, <span class="hljs-keyword">uint32_t</span> completedChannel)</span> </span>{
+
+    <span class="hljs-comment">//    uint_fast16_t i;</span>
+    <span class="hljs-comment">//    uint_fast16_t uartTxBufferOffset;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">//    /* Adjust raw adc values and convert them to microvolts */</span>
+    <span class="hljs-comment">//    ADCBuf_adjustRawValues(handle, completedADCBuffer, ADCBUFFERSIZE,</span>
+    <span class="hljs-comment">//        completedChannel);</span>
+    <span class="hljs-comment">//    ADCBuf_convertAdjustedToMicroVolts(handle, completedChannel,</span>
+    <span class="hljs-comment">//        completedADCBuffer, microVoltBuffer, ADCBUFFERSIZE);</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">//    /*</span>
+    <span class="hljs-comment">//     * Start with a header message and convert each entry in the current buffer</span>
+    <span class="hljs-comment">//     * to a human-readable format</span>
+    <span class="hljs-comment">//     */</span>
+    <span class="hljs-comment">//    uartTxBufferOffset = sprintf(uartTxBuffer,</span>
+    <span class="hljs-comment">//        "\r\nBuffer %u finished:\r\n", (unsigned int)buffersCompletedCounter++);</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">//    for (i = 0; i &lt; ADCBUFFERSIZE; i++) {</span>
+    <span class="hljs-comment">//        uartTxBufferOffset += sprintf(uartTxBuffer + uartTxBufferOffset,</span>
+    <span class="hljs-comment">//            "%u,", (unsigned int)microVoltBuffer[i]);</span>
+    <span class="hljs-comment">//    }</span>
+    <span class="hljs-comment">//    uartTxBuffer[uartTxBufferOffset] = '\n';</span>
+    <span class="hljs-comment">//    /* Send out the data via UART */</span>
+    <span class="hljs-comment">//    UART_write(uart, uartTxBuffer, uartTxBufferOffset + 1);</span>
+}
+</code></pre></div></div>
+<p>As you may notice above, the whole ADCBuf callback function is not commented out, as the <code>adcBufCallback</code> function is needed in order to see how fast we are sampling at. In order to do this, we are going to toggle <code>P1.0</code> every time the ADC is done filling the buffer. This is how we will determine the sampling speed roughly. Each time the ADCBuf driver reaches the callback function, we will toggle a GPIO to show that one buffer has been filled and the ADCBuf Driver will switch to filling the next buffer. </p>
+<p>If you keep the jumper attached to <code>P1.0</code> on the MSP432 LaunchPad, then you will see a Red LED blink. However, for the purposes of this lab in order to accurately measure the sampling rate of the ADC, a logic analyzer will be used to sample the toggling of this pin. </p>
+<p>To do this, we need to add the GPIO.h file to our project. Add the following to the Driver Header Files section:</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_6')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_6" class="hljs cpp"><span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;ti/drivers/GPIO.h&gt;</span>
+</code></pre></div></div>
+<p>Next, we need to add the following to the <code>adcBufCallback</code> function.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_7')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_7" class="hljs">GPIO_toggle(Board_GPIO_LED0);
+</code></pre></div></div>
+<p>This section is also a great place to post a semaphore for another thread to perform computations. It is a good practice to not put a lot of code here because the <code>adcBufCallback</code> function is essentially a part of your Interrupt Service Routine (ISR).</p>
+<p>We also have to include the following code in the <code>*mainThread</code>. Underneath the call driver init functions section, add the following line to ensure that the direction of <code>P1.0</code> is set as an output. </p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_8')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_8" class="hljs objectivec">GPIO_init();
+GPIO_setConfig(Board_GPIO_LED0, GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_LOW</span>);
+</code></pre></div></div>
+<p>Next, we will also need to increase the buffer size of the ADC to 1024. The buffer size can pretty much be anything but in this case we will use 1024 bytes as this is the maximum number of bytes that the DMA can transfer at a time. </p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_9')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_9" class="hljs cpp"><span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> ADCBUFFERSIZE    (1024)</span>
+</code></pre></div></div>
+<h3 class="body-heading" id="changes-for-msp_exp432p401r-c-">Changes for <code>MSP_EXP432P401R.c</code><a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#changes-for-msp_exp432p401r-c-"></a></h3><p>Next we need to change the <code>adcTimerTriggersource</code> in the <code>adcbufMSP432HWAttrs</code> to ensure that the Timer used to source the trigger for the ADC isn't being used by another resource. In this case, we will use Timer A3 Capture Compare 1. To change this, <code>adcTimerTriggerSource</code> to the following:</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_10')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_10" class="hljs objectivec"><span class="hljs-variable">.adcTimerTriggerSource</span> = ADCBufMSP432_TIMERA3_<span class="hljs-built_in">CAPTURECOMPARE1</span>,
+</code></pre></div></div>
+<p>While changing this, take note of the fact that the DMA is by default on (set to 1) when using the ADCBuf TI-Driver. </p>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">NOTE:
+</span></h4>
+<p>If the DMA is not turned on, then the CPU has to wake up and move the data manually to SRAM, but it is more efficient to have the DMA automatically move the data for us. Be careful not using the DMA as the CPU is not quick enough to move the data before the next buffer is full and ready to be transferred when sampling at higher speeds, so it is best to use the DMA in order to ensure that the data is reliable. For the purposes of this lab, we will not play with the DMA settings.</p>
+</div>
+<p>Through the rest of this lab, we will also be playing with the <code>timerDutyCycle</code> to control our sample-and-hold time of the ADC.</p>
+<p>After all of this, please build the code and check to see if there are any errors. If there are, please review the solution files to compare and find any mistakes. </p>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">Need Help Building the Code?
+</span></h4>
+<p><a href="#solutions">Click here for Lab solution files.</a></p>
+<p>The solution files are useful if you are unsure where to
+paste any code fragments into their respective source files.</p>
+</div>
+<h1 class="body-heading" id="task-5-increasing-the-sampling-rate-to-100ksps">Task 5. Increasing the sampling rate to 100kSPS<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-5-increasing-the-sampling-rate-to-100ksps"></a></h1><p>Next, we need to adjust the sampling rate to 100kSPS. To do this, first we must change the <code>adcBufParams.samplingFrequency</code> paramater to 100,000. The ADCBuf driver will take this parameter and automatically set up the Timer to trigger the ADC to sample at the appropriate rate.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_11')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_11" class="hljs">adcBufParams.samplingFrequency = 100000;
+</code></pre></div></div>
+<p>Here, we should see the GPIO P1.0 toggle at a rate of roughly 49Hz. </p>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/100klsa.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>The <code>adcBufCallback</code> function will be executed once every 1024 samples of the ADC. Since we know that we are taking 1024 samples per toggle, and a toggle happens once every 10.19ms, we can find our effective sampling rate to verify that the drivers set everything up correctly and we are sampling at the correct speed. </p>
+<p>10.19ms is effectively 0.01019s. Therefore we divide 1024 samples / 0.01019s to get our samples/second. </p>
+<p>In this case, we get 1024samples/0.01019s = 100490 samples/second. </p>
+<h1 class="body-heading" id="task-6-increasing-the-sampling-rate-to-500ksps">Task 6. Increasing the sampling rate to 500kSPS<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-6-increasing-the-sampling-rate-to-500ksps"></a></h1><p>Next, we will increase the sampling rate to 500kSPS. To do this, we will again change the <code>adcBufParams.samplingFrequency</code> parameter, but this time to 500,000. </p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_12')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_12" class="hljs">adcBufParams.samplingFrequency = 500000;
+</code></pre></div></div>
+<p>After building and running this change, we should see the GPIO P1.0 toggle at a rate of roughly 245Hz.</p>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/500klsa.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>The <code>adcBufCallback</code> function we can see is being executed every 2.037ms. Again, working through the math presented in Task 5, we can find that 1024/0.002037 = 502,700samples/second. </p>
+<p>Would a sampling rate of 500kSPS be sustainable if I was not using the DMA?</p>
+<div class="quiz-toolbar"><div>
+<input type="radio" id="q1.0" class="answer-wrong" name="quiz-1"><label for="q1.0" class="quiz-label " data-toggle="tooltip" data-html="true" data-container="body" data-placement="auto top" data-trigger="click" title="" data-original-title="&lt;p&gt; Incorrect. The DMA is useful to transfer data without using the CPU. The CPU cannot transfer data at the same rate as the DMA. If the CPU is being used to move the results buffer from ADCMEM to SRAM, the ADC is busy and will effectively miss triggers for the ADC to start sampling the next round of samples. By missing these triggers, the ADC will effectively only service this trigger after the CPU is done transferring the buffer essentially decreasing the sampling rate.&lt;/p&gt;
+">Yes! </label>
+<input type="radio" id="q1.1" class="answer-right" name="quiz-1"><label for="q1.1" class="quiz-label " data-toggle="tooltip" data-html="true" data-container="body" data-placement="auto top" data-trigger="click" title="" data-original-title="&lt;p&gt; Correct! The DMA is useful to transfer data without using the CPU. The CPU cannot transfer data at the same rate as the DMA. If the CPU is being used to move the results buffer from ADCMEM to SRAM, the ADC is busy and will effectively miss triggers for the ADC to start sampling the next round of samples. By missing these triggers, the ADC will effectively only service this trigger after the CPU is done transferring the buffer essentially decreasing the sampling rate.&lt;/p&gt;
+">No! </label>
+</div></div>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">Need Help Building the Code?
+</span></h4>
+<p><a href="#solutions">Click here for Lab solution files.</a></p>
+<p>The solution files are useful if you are unsure where to
+paste any code fragments into their respective source files.</p>
+</div>
+<h1 class="body-heading" id="task-7-achieving-1msps">Task 7. Achieving 1MSPS<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#task-7-achieving-1msps"></a></h1><p>Next, we will increase the sampling rate to 1MSPS. To do this, we will again change the <code>adcBufParams.samplingFrequency</code> parameter, but this time to 1,000,000. </p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_13')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_13" class="hljs">adcBufParams.samplingFrequency = 1000000;
+</code></pre></div></div>
+<p>After building and running this change, we should see the GPIO P1.0 toggle at a rate of roughly 491Hz.</p>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/1msps50dc.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>However, after examining the image, we see that this is false. We are sampling at 245Hz. Based on Task 6, we know this to be about 500,000 samples/second.</p>
+<p>Here, the sample-and-hold time and the conversion time are critical. With the ADC's maximum source clock frequency of 25MHz, you have only 24 cycles at 1MSPS to do a sample-and-hold and conversion. As a minimum, the sample-and-hold time should be 4 ADC clock cycles. </p>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/1msps_graph.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>In the image above, you can see that while we have the <code>timerDutyCycle</code> set to 50, our Tsample time becomes too big and causes the device to miss the trigger for the next conversion.</p>
+<p>To fix this, we have set the timer period by setting the <code>samplingFrequency</code> parameter. To control the PWM duty cycle, we must go into the <code>MSP_EXP432P401R.c</code> (<code>MSP432P4111.c</code> if using the P4111 MCU) and change the <code>.timerDutyCycle</code> in <code>adcbufMSP432HWAttrs</code> structure. </p>
+<p>To calculate the duty cycle, we first need to remember that we have 24 cycles for the entire sample. We need 19 cycles for the conversion, leaving us 5 clock cycles for the sample-and-hold. 5/24 = 0.2083. In this case we would round this up to 21 since we aren't able to pass decimals to the <code>timerDutyCycle</code> attribute. By doing this, we can clearly see that we will complete our measurement before the next trigger for conversion. </p>
+<p>Therefore we would place the following in the <code>adcbufMSP432HWAttrs</code> structure.</p>
+<div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_14')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_14" class="hljs">.timerDutyCycle = 21,
+</code></pre></div></div>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">NOTE:
+</span></h4>
+<p>The duty cycle cannot be set to less than 21 in this case as the ADC will then not have enough time to sample-and-hold. This can cause unpredictable measurement results.</p>
+</div>
+<p></p><div class="modal-pop" style="cursor:zoom-in;"><img src="resources/1mspslsa.PNG" alt="Labs" class="img-responsive"></div><p></p>
+<p>After building and running the code, we now see that P1.0 toggles at about 491Hz, roughly 1.018ms per toggle. This gives us 1024/0.001018 = 1,005,893 samples/second. Great!</p>
+<p>Section 6 of the <a href="http://www.ti.com/lit/an/slaa821/slaa821.pdf">Precision ADC Application Note</a> has more information on the sample-and-hold timings and the considerations that need to be made when adjusting this parameter.  </p>
+<div class="bs-callout bs-callout-info "><h4><span class="glyphicon glyphicon-info-sign gi-2x" style="vertical-align: middle; margin-right: 0.2em;"></span><span style="vertical-align: middle;">Need Help Building the Code?
+</span></h4>
+<p><a href="#solutions">Click here for Lab solution files.</a></p>
+<p>The solution files are useful if you are unsure where to
+paste any code fragments into their respective source files.</p>
+</div>
+<p><a name="solutions"></a></p>
+<h1 class="body-heading" id="lab-solution-files">Lab Solution files<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#lab-solution-files"></a></h1><div class="panel-group">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#expandable_-full-source-for-adcbufcontinuoussampling-c-"><p> Full source for <code>adcBufContinuousSampling.c</code></p>
+</a>
+      </h4>
+    </div>
+    <div id="expandable_-full-source-for-adcbufcontinuoussampling-c-" class="panel-collapse collapse">
+      <div class="panel-body"><div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_15')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_15" class="hljs cpp"><span class="hljs-comment">/*
+ * Copyright (c) 2015-2017, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */</span>
+<span class="hljs-comment">/*
+ *  ======== adcBufContinuousSampling.c ========
+ */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;stdint.h&gt;</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;stdio.h&gt;</span>
+<span class="hljs-comment">/* For usleep() */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;unistd.h&gt;</span>
+
+<span class="hljs-comment">/* Driver Header files */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;ti/drivers/ADCBuf.h&gt;</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;ti/drivers/GPIO.h&gt;</span>
+<span class="hljs-comment">//#include &lt;ti/drivers/UART.h&gt;</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> &lt;ti/devices/msp432p4xx/driverlib/driverlib.h&gt;</span>
+
+<span class="hljs-comment">/* Example/Board Header files */</span>
+<span class="hljs-preprocessor">#<span class="hljs-keyword">include</span> "Board.h"</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> ADCBUFFERSIZE    (1024)</span>
+
+<span class="hljs-keyword">uint16_t</span> sampleBufferOne[ADCBUFFERSIZE];
+<span class="hljs-keyword">uint16_t</span> sampleBufferTwo[ADCBUFFERSIZE];
+<span class="hljs-keyword">uint32_t</span> microVoltBuffer[ADCBUFFERSIZE];
+<span class="hljs-keyword">uint32_t</span> buffersCompletedCounter = <span class="hljs-number">0</span>;
+<span class="hljs-comment">//char uartTxBuffer[(10 * ADCBUFFERSIZE) + 25];</span>
+
+<span class="hljs-comment">/* Driver handle shared between the task and the callback function */</span>
+<span class="hljs-comment">//UART_Handle uart;</span>
+
+<span class="hljs-comment">/*
+ * This function is called whenever a buffer is full.
+ * The content of the buffer is then converted into human-readable format and
+ * sent to the PC via UART.
+ *
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">adcBufCallback</span><span class="hljs-params">(ADCBuf_Handle handle, ADCBuf_Conversion *conversion,
+    <span class="hljs-keyword">void</span> *completedADCBuffer, <span class="hljs-keyword">uint32_t</span> completedChannel)</span> </span>{
+
+    GPIO_toggle(Board_GPIO_LED0);
+<span class="hljs-comment">//    uint_fast16_t i;</span>
+<span class="hljs-comment">//    uint_fast16_t uartTxBufferOffset;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//    /* Adjust raw adc values and convert them to microvolts */</span>
+<span class="hljs-comment">//    ADCBuf_adjustRawValues(handle, completedADCBuffer, ADCBUFFERSIZE,</span>
+<span class="hljs-comment">//        completedChannel);</span>
+<span class="hljs-comment">//    ADCBuf_convertAdjustedToMicroVolts(handle, completedChannel,</span>
+<span class="hljs-comment">//        completedADCBuffer, microVoltBuffer, ADCBUFFERSIZE);</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//    /*</span>
+<span class="hljs-comment">//     * Start with a header message and convert each entry in the current buffer</span>
+<span class="hljs-comment">//     * to a human-readable format</span>
+<span class="hljs-comment">//     */</span>
+<span class="hljs-comment">//    uartTxBufferOffset = sprintf(uartTxBuffer,</span>
+<span class="hljs-comment">//        "\r\nBuffer %u finished:\r\n", (unsigned int)buffersCompletedCounter++);</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//    for (i = 0; i &lt; ADCBUFFERSIZE; i++) {</span>
+<span class="hljs-comment">//        uartTxBufferOffset += sprintf(uartTxBuffer + uartTxBufferOffset,</span>
+<span class="hljs-comment">//            "%u,", (unsigned int)microVoltBuffer[i]);</span>
+<span class="hljs-comment">//    }</span>
+<span class="hljs-comment">//    uartTxBuffer[uartTxBufferOffset] = '\n';</span>
+<span class="hljs-comment">//    /* Send out the data via UART */</span>
+<span class="hljs-comment">//    UART_write(uart, uartTxBuffer, uartTxBufferOffset + 1);</span>
+}
+
+<span class="hljs-comment">/*
+ * Callback function to use the UART in callback mode. It does nothing.
+ */</span>
+<span class="hljs-comment">//void uartCallback(UART_Handle handle, void *buf, size_t count) {</span>
+<span class="hljs-comment">//   return;</span>
+<span class="hljs-comment">//}</span>
+
+<span class="hljs-comment">/*
+ *  ======== mainThread ========
+ */</span>
+<span class="hljs-keyword">void</span> *mainThread(<span class="hljs-keyword">void</span> *arg0)
+{
+<span class="hljs-comment">//    UART_Params uartParams;</span>
+    ADCBuf_Handle adcBuf;
+    ADCBuf_Params adcBufParams;
+    ADCBuf_Conversion continuousConversion;
+
+    <span class="hljs-comment">/* Call driver init functions */</span>
+    ADCBuf_init();
+<span class="hljs-comment">//    UART_init();</span>
+
+    GPIO_init();
+    GPIO_setConfig(Board_GPIO_LED0, GPIO_CFG_OUT_STD | GPIO_CFG_OUT_LOW);
+
+    <span class="hljs-comment">/* Create a UART with data processing off. */</span>
+<span class="hljs-comment">//    UART_Params_init(&amp;uartParams);</span>
+<span class="hljs-comment">//    uartParams.writeDataMode = UART_DATA_BINARY;</span>
+<span class="hljs-comment">//    uartParams.writeMode = UART_MODE_CALLBACK;</span>
+<span class="hljs-comment">//    uartParams.writeCallback = uartCallback;</span>
+<span class="hljs-comment">//    uartParams.baudRate = 115200;</span>
+<span class="hljs-comment">//    uart = UART_open(Board_UART0, &amp;uartParams);</span>
+
+    <span class="hljs-comment">/* Set up an ADCBuf peripheral in ADCBuf_RECURRENCE_MODE_CONTINUOUS */</span>
+    ADCBuf_Params_init(&amp;adcBufParams);
+    adcBufParams.callbackFxn = adcBufCallback;
+    adcBufParams.recurrenceMode = ADCBuf_RECURRENCE_MODE_CONTINUOUS;
+    adcBufParams.returnMode = ADCBuf_RETURN_MODE_CALLBACK;
+    adcBufParams.samplingFrequency = <span class="hljs-number">1000000</span>;
+    adcBuf = ADCBuf_open(Board_ADCBUF0, &amp;adcBufParams);
+
+
+    <span class="hljs-comment">/* Configure the conversion struct */</span>
+    continuousConversion.arg = NULL;
+    continuousConversion.adcChannel = Board_ADCBUF0CHANNEL0;
+    continuousConversion.sampleBuffer = sampleBufferOne;
+    continuousConversion.sampleBufferTwo = sampleBufferTwo;
+    continuousConversion.samplesRequestedCount = ADCBUFFERSIZE;
+
+    <span class="hljs-keyword">if</span> (!adcBuf){
+        <span class="hljs-comment">/* AdcBuf did not open correctly. */</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-comment">/* Start converting. */</span>
+    <span class="hljs-keyword">if</span> (ADCBuf_convert(adcBuf, &amp;continuousConversion, <span class="hljs-number">1</span>) !=
+        ADCBuf_STATUS_SUCCESS) {
+        <span class="hljs-comment">/* Did not start conversion process correctly. */</span>
+        <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>);
+    }
+
+    <span class="hljs-comment">/*
+     * Go to sleep in the foreground thread forever. The data will be collected
+     * and transfered in the background thread
+     */</span>
+    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) {
+        sleep(<span class="hljs-number">1000</span>);
+    }
+
+}
+</code></pre></div></div>
+</div>
+    </div>
+  </div>
+</div><div class="panel-group">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a class="accordion-toggle collapsed" data-toggle="collapse" href="#expandable_-full-source-for-msp_exp432p401r-c-"><p> Full source for <code>MSP_EXP432P401R.c</code></p>
+</a>
+      </h4>
+    </div>
+    <div id="expandable_-full-source-for-msp_exp432p401r-c-" class="panel-collapse collapse">
+      <div class="panel-body"><div style="display:inline-block"><div style="display:block"><button type="button" class="btn btn-xs btn-warning float-right select-text" style="margin: 0; position: relative;" onclick="SelectText('codeBlock_16')">Select text</button></div><div class="pre-container"><pre><code id="codeBlock_16" class="hljs objectivec"><span class="hljs-comment">/*
+ * Copyright (c) 2015-2017, Texas Instruments Incorporated
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * *  Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * *  Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * *  Neither the name of Texas Instruments Incorporated nor the names of
+ *    its contributors may be used to endorse or promote products derived
+ *    from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+ * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */</span>
+
+<span class="hljs-comment">/*
+ *  ======== MSP_EXP432P401R.c ========
+ *  This file is responsible for setting up the board specific items for the
+ *  MSP_EXP432P401R board.
+ */</span>
+
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;stdbool.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;stddef.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;stdint.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/Power.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/power/PowerMSP432.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/inc/msp.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/rom.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/rom_map.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/adc14.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/dma.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/gpio.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/i2c.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/interrupt.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/pmap.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/ref_a.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/spi.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/timer_a.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/timer32.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/uart.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/devices/msp432p4xx/driverlib/wdt_a.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#include <span class="hljs-title">"MSP_EXP432P401R.h"</span></span>
+
+<span class="hljs-comment">/*
+ *  =============================== ADC ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/ADC.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/adc/ADCMSP432.h&gt;</span></span>
+
+<span class="hljs-comment">/* ADC objects */</span>
+ADCMSP432_Object adcMSP432Objects[MSP_EXP432P401R_ADCCOUNT];
+
+<span class="hljs-comment">/* ADC configuration structure */</span>
+<span class="hljs-keyword">const</span> ADCMSP432_HWAttrsV1 adcMSP432HWAttrs[MSP_EXP432P401R_ADCCOUNT] = {
+    {
+        <span class="hljs-variable">.adcPin</span> = ADCMSP432_P5_5_A0,
+        <span class="hljs-variable">.refVoltage</span> = ADCMSP432_REF_VOLTAGE_INT_2_5V,
+        <span class="hljs-variable">.resolution</span> = ADC_14BIT
+    },
+    {
+        <span class="hljs-variable">.adcPin</span> = ADCMSP432_P5_4_A1,
+        <span class="hljs-variable">.refVoltage</span> = ADCMSP432_REF_VOLTAGE_INT_1_45V,
+        <span class="hljs-variable">.resolution</span> = ADC_8BIT
+    }
+};
+
+<span class="hljs-keyword">const</span> ADC_Config ADC_config[MSP_EXP432P401R_ADCCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;ADCMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;adcMSP432Objects[MSP_EXP432P401R_ADC0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;adcMSP432HWAttrs[MSP_EXP432P401R_ADC0]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;ADCMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;adcMSP432Objects[MSP_EXP432P401R_ADC1],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;adcMSP432HWAttrs[MSP_EXP432P401R_ADC1]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t ADC_count = MSP_EXP432P401R_ADCCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== ADCBuf ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/ADCBuf.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/adcbuf/ADCBufMSP432.h&gt;</span></span>
+
+<span class="hljs-comment">/* ADC objects */</span>
+ADCBufMSP432_Object adcbufMSP432Objects[MSP_EXP432P401R_ADCBUFCOUNT];
+
+ADCBufMSP432_Channels adcBuf0MSP432Channels[MSP_EXP432P401R_ADCBUF0CHANNELCOUNT] = {
+    {
+        <span class="hljs-variable">.adcPin</span> = ADCBufMSP432_P5_5_A0,
+        <span class="hljs-variable">.refSource</span> = ADCBufMSP432_VREFPOS_INTBUF_VREFNEG_VSS,
+        <span class="hljs-variable">.refVoltage</span> = <span class="hljs-number">2500000</span>,
+        <span class="hljs-variable">.adcInputMode</span> = ADCBufMSP432_SINGLE_ENDED,
+        <span class="hljs-variable">.adcDifferentialPin</span> = ADCBufMSP432_PIN_NONE,
+        <span class="hljs-variable">.adcInternalSource</span> = ADCBufMSP432_INTERNAL_SOURCE_MODE_OFF
+    },
+    {
+        <span class="hljs-variable">.adcPin</span> = ADCBufMSP432_P5_4_A1,
+        <span class="hljs-variable">.refSource</span> = ADCBufMSP432_VREFPOS_INTBUF_VREFNEG_VSS,
+        <span class="hljs-variable">.refVoltage</span> = <span class="hljs-number">2500000</span>,
+        <span class="hljs-variable">.adcInputMode</span> = ADCBufMSP432_SINGLE_ENDED,
+        <span class="hljs-variable">.adcDifferentialPin</span> = ADCBufMSP432_PIN_NONE,
+        <span class="hljs-variable">.adcInternalSource</span> = ADCBufMSP432_INTERNAL_SOURCE_MODE_OFF
+    }
+};
+
+<span class="hljs-comment">/* ADC configuration structure */</span>
+<span class="hljs-keyword">const</span> ADCBufMSP432_HWAttrs adcbufMSP432HWAttrs[MSP_EXP432P401R_ADCBUFCOUNT] = {
+    {
+        <span class="hljs-variable">.intPriority</span> =  ~<span class="hljs-number">0</span>,
+        <span class="hljs-variable">.channelSetting</span> = adcBuf0MSP432Channels,
+        <span class="hljs-variable">.adcTimerTriggerSource</span> = ADCBufMSP432_TIMERA3_<span class="hljs-built_in">CAPTURECOMPARE1</span>,
+        <span class="hljs-variable">.useDMA</span> = <span class="hljs-number">0</span>,
+        <span class="hljs-variable">.dmaIntNum</span> = DMA_INT0,
+        <span class="hljs-variable">.adcTriggerSource</span> = ADCBufMSP432_TIMER_TRIGGER,
+        <span class="hljs-variable">.timerDutyCycle</span> = <span class="hljs-number">21</span>,
+        <span class="hljs-variable">.clockSource</span> = ADCBufMSP432_ADC_CLOCK
+    }
+};
+
+<span class="hljs-keyword">const</span> ADCBuf_Config ADCBuf_config[MSP_EXP432P401R_ADCBUFCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;ADCBufMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;adcbufMSP432Objects[MSP_EXP432P401R_ADCBUF0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;adcbufMSP432HWAttrs[MSP_EXP432P401R_ADCBUF0]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t ADCBuf_count = MSP_EXP432P401R_ADCBUFCOUNT;
+
+<span class="hljs-comment">/*
+ *  ============================= Capture =============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/Capture.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/capture/CaptureMSP432.h&gt;</span></span>
+
+CaptureMSP432_Object captureMSP432Objects[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURECOUNT</span>];
+
+<span class="hljs-keyword">const</span> CaptureMSP432_HWAttrs captureMSP432HWAttrs[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURECOUNT</span>] = {
+    <span class="hljs-comment">/* Timer_A1 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A1_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.clockDivider</span> = TIMER_A_CLOCKSOURCE_DIVIDER_64,
+        <span class="hljs-variable">.capturePort</span> = CaptureMSP432_P7_7_TA1,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    <span class="hljs-comment">/* Timer_A2 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A2_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.clockDivider</span> = TIMER_A_CLOCKSOURCE_DIVIDER_64,
+        <span class="hljs-variable">.capturePort</span> = CaptureMSP432_P6_7_TA2,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    <span class="hljs-comment">/* Timer_A3 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A3_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.clockDivider</span> = TIMER_A_CLOCKSOURCE_DIVIDER_1,
+        <span class="hljs-variable">.capturePort</span> = CaptureMSP432_P8_2_TA3,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    }
+};
+
+<span class="hljs-keyword">const</span> Capture_Config Capture_config[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURECOUNT</span>] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;CaptureMSP432_captureFxnTable,
+        <span class="hljs-variable">.object</span> = &amp;captureMSP432Objects[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA1</span>],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;captureMSP432HWAttrs[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA1</span>]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;CaptureMSP432_captureFxnTable,
+        <span class="hljs-variable">.object</span> = &amp;captureMSP432Objects[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA2</span>],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;captureMSP432HWAttrs[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA2</span>]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;CaptureMSP432_captureFxnTable,
+        <span class="hljs-variable">.object</span> = &amp;captureMSP432Objects[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA3</span>],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;captureMSP432HWAttrs[MSP_EXP432P401R_<span class="hljs-built_in">CAPTURE_TA3</span>]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t Capture_count = MSP_EXP432P401R_<span class="hljs-built_in">CAPTURECOUNT</span>;
+
+<span class="hljs-comment">/*
+ *  =============================== DMA ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/dma/UDMAMSP432.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#if defined(__TI_COMPILER_VERSION__)</span>
+<span class="hljs-preprocessor">#pragma DATA_ALIGN(dmaControlTable, 256)</span>
+<span class="hljs-preprocessor">#elif defined(__IAR_SYSTEMS_ICC__)</span>
+<span class="hljs-preprocessor">#pragma data_alignment=256</span>
+<span class="hljs-preprocessor">#elif defined(__GNUC__)</span>
+__attribute__ ((aligned (<span class="hljs-number">256</span>)))
+<span class="hljs-preprocessor">#endif</span>
+<span class="hljs-keyword">static</span> DMA_ControlTable dmaControlTable[<span class="hljs-number">16</span>];
+
+<span class="hljs-comment">/*
+ *  ======== dmaErrorHwi ========
+ *  This is the handler for the uDMA error interrupt.
+ */</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> dmaErrorHwi(uintptr_t arg)
+{
+    <span class="hljs-keyword">int</span> status = MAP_DMA_getErrorStatus();
+    MAP_DMA_clearErrorStatus();
+
+    <span class="hljs-comment">/* Suppress unused variable warning */</span>
+    (<span class="hljs-keyword">void</span>)status;
+
+    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>);
+}
+
+UDMAMSP432_Object udmaMSP432Object;
+
+<span class="hljs-keyword">const</span> UDMAMSP432_HWAttrs udmaMSP432HWAttrs = {
+    <span class="hljs-variable">.controlBaseAddr</span> = (<span class="hljs-keyword">void</span> *)dmaControlTable,
+    <span class="hljs-variable">.dmaErrorFxn</span> = (UDMAMSP432_ErrorFxn)dmaErrorHwi,
+    <span class="hljs-variable">.intNum</span> = INT_DMA_ERR,
+    <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>)
+};
+
+<span class="hljs-keyword">const</span> UDMAMSP432_Config UDMAMSP432_config = {
+    <span class="hljs-variable">.object</span> = &amp;udmaMSP432Object,
+    <span class="hljs-variable">.hwAttrs</span> = &amp;udmaMSP432HWAttrs
+};
+
+<span class="hljs-comment">/*
+ *  ============================= Display =============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/display/Display.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/display/DisplayUart.h&gt;</span></span>
+<span class="hljs-preprocessor">#define MAXPRINTLEN 1024</span>
+
+DisplayUart_Object displayUartObject;
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> displayBuf[MAXPRINTLEN];
+
+<span class="hljs-keyword">const</span> DisplayUart_HWAttrs displayUartHWAttrs = {
+    <span class="hljs-variable">.uartIdx</span> = MSP_EXP432P401R_UARTA0,
+    <span class="hljs-variable">.baudRate</span> = <span class="hljs-number">115200</span>,
+    <span class="hljs-variable">.mutexTimeout</span> = (<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span>)(-<span class="hljs-number">1</span>),
+    <span class="hljs-variable">.strBuf</span> = displayBuf,
+    <span class="hljs-variable">.strBufLen</span> = MAXPRINTLEN
+};
+
+<span class="hljs-preprocessor">#ifndef BOARD_DISPLAY_USE_UART_ANSI</span>
+<span class="hljs-preprocessor">#define BOARD_DISPLAY_USE_UART_ANSI 0</span>
+<span class="hljs-preprocessor">#endif</span>
+
+<span class="hljs-keyword">const</span> Display_Config Display_config[] = {
+    {
+<span class="hljs-preprocessor">#  if (BOARD_DISPLAY_USE_UART_ANSI)</span>
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;DisplayUartAnsi_fxnTable,
+<span class="hljs-preprocessor">#  else /* Default to minimal UART with no cursor placement */</span>
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;DisplayUartMin_fxnTable,
+<span class="hljs-preprocessor">#  endif</span>
+        <span class="hljs-variable">.object</span> = &amp;displayUartObject,
+        <span class="hljs-variable">.hwAttrs</span> = &amp;displayUartHWAttrs
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t Display_count = <span class="hljs-keyword">sizeof</span>(Display_config) / <span class="hljs-keyword">sizeof</span>(Display_Config);
+
+<span class="hljs-comment">/*
+ *  ======== MSP_EXP432P401R_initGeneral ========
+ */</span>
+<span class="hljs-keyword">void</span> MSP_EXP432P401R_initGeneral(<span class="hljs-keyword">void</span>)
+{
+    Power_init();
+}
+
+<span class="hljs-comment">/*
+ *  =============================== GPIO ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/GPIO.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/gpio/GPIOMSP432.h&gt;</span></span>
+
+<span class="hljs-comment">/*
+ * Array of Pin configurations
+ * NOTE: The order of the pin configurations must coincide with what was
+ *       defined in MSP_EXP432P401R.h
+ * NOTE: Pins not used for interrupts should be placed at the end of the
+ *       array.  Callback entries can be omitted from callbacks array to
+ *       reduce memory usage.
+ */</span>
+GPIO_PinConfig gpioPinConfigs[] = {
+    <span class="hljs-comment">/* Input pins */</span>
+    <span class="hljs-comment">/*
+     * NOTE: Specifying FALLING edge triggering for these buttons to ensure the
+     * interrupts are signaled immediately.  See the description of the
+     * PowerMSP432 driver's automatic pin parking feature for this rationale.
+     */</span>
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_S1 */</span>
+    GPIOMSP432_P1_1 | GPIO_<span class="hljs-built_in">CFG_IN_PU</span> | GPIO_<span class="hljs-built_in">CFG_IN_INT_FALLING</span>,
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_S2 */</span>
+    GPIOMSP432_P1_4 | GPIO_<span class="hljs-built_in">CFG_IN_PU</span> | GPIO_<span class="hljs-built_in">CFG_IN_INT_FALLING</span>,
+
+    <span class="hljs-comment">/* Output pins */</span>
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_LED1 */</span>
+    GPIOMSP432_P1_0 | GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_STR_LOW</span> | GPIO_<span class="hljs-built_in">CFG_OUT_LOW</span>,
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_LED_RED */</span>
+    GPIOMSP432_P2_0 | GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_STR_HIGH</span> | GPIO_<span class="hljs-built_in">CFG_OUT_LOW</span>,
+
+    <span class="hljs-comment">/*
+     * MSP_EXP432P401R_GPIO_LED_GREEN &amp; MSP_EXP432P401R_GPIO_LED_BLUE are used for
+     * PWM examples.  Uncomment the following lines if you would like to control
+     * the LEDs with the GPIO driver.
+     */</span>
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_LED_GREEN */</span>
+    <span class="hljs-comment">/* GPIOMSP432_P2_1 | GPIO_CFG_OUT_STD | GPIO_CFG_OUT_STR_HIGH | GPIO_CFG_OUT_LOW, */</span>
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_LED_BLUE */</span>
+    <span class="hljs-comment">/* GPIOMSP432_P2_2 | GPIO_CFG_OUT_STD | GPIO_CFG_OUT_STR_HIGH | GPIO_CFG_OUT_LOW */</span>
+    <span class="hljs-comment">/* MSP_EXP432P401R_SPI_CS1 */</span>
+    GPIOMSP432_P5_4 | GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_STR_LOW</span> | GPIO_<span class="hljs-built_in">CFG_OUT_HIGH</span>,
+    <span class="hljs-comment">/* MSP_EXP432P401R_SPI_CS2 */</span>
+    GPIOMSP432_P5_5 | GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_STR_LOW</span> | GPIO_<span class="hljs-built_in">CFG_OUT_HIGH</span>,
+
+    <span class="hljs-comment">/* MSP_EXP432P401R_SDSPI_CS */</span>
+    GPIOMSP432_P4_6 | GPIO_<span class="hljs-built_in">CFG_OUT_STD</span> | GPIO_<span class="hljs-built_in">CFG_OUT_STR_LOW</span> | GPIO_<span class="hljs-built_in">CFG_OUT_HIGH</span>,
+};
+
+<span class="hljs-comment">/*
+ * Array of callback function pointers
+ * NOTE: The order of the pin configurations must coincide with what was
+ *       defined in MSP_EXP432P401R.h
+ * NOTE: Pins not used for interrupts can be omitted from callbacks array to
+ *       reduce memory usage (if placed at end of gpioPinConfigs array).
+ */</span>
+GPIO_CallbackFxn gpioCallbackFunctions[] = {
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_S1 */</span>
+    <span class="hljs-literal">NULL</span>,
+    <span class="hljs-comment">/* MSP_EXP432P401R_GPIO_S2 */</span>
+    <span class="hljs-literal">NULL</span>
+};
+
+<span class="hljs-keyword">const</span> GPIOMSP432_Config GPIOMSP432_config = {
+    <span class="hljs-variable">.pinConfigs</span> = (GPIO_PinConfig *)gpioPinConfigs,
+    <span class="hljs-variable">.callbacks</span> = (GPIO_CallbackFxn *)gpioCallbackFunctions,
+    <span class="hljs-variable">.numberOfPinConfigs</span> = <span class="hljs-keyword">sizeof</span>(gpioPinConfigs)/<span class="hljs-keyword">sizeof</span>(GPIO_PinConfig),
+    <span class="hljs-variable">.numberOfCallbacks</span> = <span class="hljs-keyword">sizeof</span>(gpioCallbackFunctions)/<span class="hljs-keyword">sizeof</span>(GPIO_CallbackFxn),
+    <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>)
+};
+
+<span class="hljs-comment">/*
+ *  =============================== I2C ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/I2C.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/i2c/I2CMSP432.h&gt;</span></span>
+
+I2CMSP432_Object i2cMSP432Objects[MSP_EXP432P401R_I2CCOUNT];
+
+<span class="hljs-keyword">const</span> I2CMSP432_HWAttrsV1 i2cMSP432HWAttrs[MSP_EXP432P401R_I2CCOUNT] = {
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B0_BASE</span>,
+        <span class="hljs-variable">.intNum</span> = INT_EUS<span class="hljs-built_in">CIB0</span>,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_B_I2C_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.dataPin</span> = I2CMSP432_P1_6_UCB0SDA,
+        <span class="hljs-variable">.clkPin</span> = I2CMSP432_P1_7_UCB0SCL
+    },
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B1_BASE</span>,
+        <span class="hljs-variable">.intNum</span> = INT_EUS<span class="hljs-built_in">CIB1</span>,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_B_I2C_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.dataPin</span> = I2CMSP432_P6_4_UCB1SDA,
+        <span class="hljs-variable">.clkPin</span> = I2CMSP432_P6_5_UCB1SCL
+    }
+};
+
+<span class="hljs-keyword">const</span> I2C_Config I2C_config[MSP_EXP432P401R_I2CCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;I2CMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;i2cMSP432Objects[MSP_EXP432P401R_I2CB0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;i2cMSP432HWAttrs[MSP_EXP432P401R_I2CB0]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;I2CMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;i2cMSP432Objects[MSP_EXP432P401R_I2CB1],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;i2cMSP432HWAttrs[MSP_EXP432P401R_I2CB1]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t I2C_count = MSP_EXP432P401R_I2CCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== I2CSlave ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/I2CSlave.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/i2cslave/I2CSlaveMSP432.h&gt;</span></span>
+
+I2CSlaveMSP432_Object i2cSlaveMSP432Objects[MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVECOUNT</span>];
+
+<span class="hljs-keyword">const</span> I2CSlaveMSP432_HWAttrs i2cSlaveMSP432HWAttrs[MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVECOUNT</span>] = {
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B0_BASE</span>,
+        <span class="hljs-variable">.intNum</span> = INT_EUS<span class="hljs-built_in">CIB0</span>,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>,
+        <span class="hljs-variable">.slaveAddress</span> = <span class="hljs-number">0x48</span>,
+        <span class="hljs-variable">.dataPin</span> = I2CSL<span class="hljs-built_in">AVEMSP432_P1_6_UCB0SDA</span>,
+        <span class="hljs-variable">.clkPin</span> = I2CSL<span class="hljs-built_in">AVEMSP432_P1_7_UCB0SCL</span>
+    }
+};
+
+<span class="hljs-keyword">const</span> I2CSlave_Config I2CSlave_config[MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVECOUNT</span>] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;I2CSlaveMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;i2cSlaveMSP432Objects[MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVEB0</span>],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;i2cSlaveMSP432HWAttrs[MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVEB0</span>]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t I2CSlave_count = MSP_EXP432P401R_I2CSL<span class="hljs-built_in">AVECOUNT</span>;
+
+<span class="hljs-comment">/*
+ *  =============================== NVS ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/NVS.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/nvs/NVSMSP432.h&gt;</span></span>
+
+<span class="hljs-preprocessor">#define SECTORSIZE       0x1000</span>
+<span class="hljs-preprocessor">#define NVS_REGIONS_BASE 0x3B000</span>
+<span class="hljs-preprocessor">#define REGIONSIZE       (SECTORSIZE * 4)</span>
+
+<span class="hljs-comment">/*
+ * Reserve flash sectors for NVS driver use
+ * by placing an uninitialized byte array
+ * at the desired flash address.
+ */</span>
+<span class="hljs-preprocessor">#if defined(__TI_COMPILER_VERSION__)</span>
+
+<span class="hljs-comment">/*
+ * Place uninitialized array at NVS_REGIONS_BASE
+ */</span>
+<span class="hljs-preprocessor">#pragma LOCATION(flashBuf, NVS_REGIONS_BASE);</span>
+<span class="hljs-preprocessor">#pragma NOINIT(flashBuf);</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> flashBuf[REGIO<span class="hljs-built_in">NSIZE</span>];
+
+<span class="hljs-preprocessor">#elif defined(__IAR_SYSTEMS_ICC__)</span>
+
+<span class="hljs-comment">/*
+ * Place uninitialized array at NVS_REGIONS_BASE
+ */</span>
+__no_init <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> flashBuf[REGIO<span class="hljs-built_in">NSIZE</span>] @ NVS_REGIO<span class="hljs-built_in">NS_BASE</span>;
+
+<span class="hljs-preprocessor">#elif defined(__GNUC__)</span>
+
+<span class="hljs-comment">/*
+ * Place the flash buffers in the .nvs section created in the gcc linker file.
+ * The .nvs section enforces alignment on a sector boundary but may
+ * be placed anywhere in flash memory.  If desired the .nvs section can be set
+ * to a fixed address by changing the following in the gcc linker file:
+ *
+ * .nvs (FIXED_FLASH_ADDR) (NOLOAD) : AT (FIXED_FLASH_ADDR) {
+ *      *(.nvs)
+ * } &gt; REGION_TEXT
+ */</span>
+__attribute__ ((section (<span class="hljs-string">".nvs"</span>)))
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> flashBuf[REGIO<span class="hljs-built_in">NSIZE</span>];
+
+<span class="hljs-preprocessor">#endif</span>
+
+NVSMSP432_Object nvsMSP432Objects[MSP_EXP432P401R_NVSCOUNT];
+
+<span class="hljs-keyword">const</span> NVSMSP432_HWAttrs nvsMSP432HWAttrs[MSP_EXP432P401R_NVSCOUNT] = {
+    {
+        <span class="hljs-variable">.regionBase</span> = (<span class="hljs-keyword">void</span> *) flashBuf,
+        <span class="hljs-variable">.regionSize</span> = REGIO<span class="hljs-built_in">NSIZE</span>,
+    },
+};
+
+<span class="hljs-keyword">const</span> NVS_Config NVS_config[MSP_EXP432P401R_NVSCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;NVSMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;nvsMSP432Objects[MSP_EXP432P401R_NVSMSP4320],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;nvsMSP432HWAttrs[MSP_EXP432P401R_NVSMSP4320],
+    },
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t NVS_count = MSP_EXP432P401R_NVSCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== Power ===============================
+ */</span>
+<span class="hljs-keyword">const</span> PowerMSP432_ConfigV1 PowerMSP432_config = {
+    <span class="hljs-variable">.policyInitFxn</span> = &amp;PowerMSP432_initPolicy,
+    <span class="hljs-variable">.policyFxn</span> = &amp;PowerMSP432_sleepPolicy,
+    <span class="hljs-variable">.initialPerfLevel</span> = <span class="hljs-number">2</span>,
+    <span class="hljs-variable">.enablePolicy</span> = <span class="hljs-literal">true</span>,
+    <span class="hljs-variable">.enablePerf</span> = <span class="hljs-literal">true</span>,
+    <span class="hljs-variable">.enableParking</span> = <span class="hljs-literal">true</span>
+};
+
+<span class="hljs-comment">/*
+ *  =============================== PWM ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/PWM.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/pwm/PWMTimerMSP432.h&gt;</span></span>
+
+PWMTimerMSP432_Object pwmTimerMSP432Objects[MSP_EXP432P401R_PWMCOUNT];
+
+<span class="hljs-keyword">const</span> PWMTimerMSP432_HWAttrsV2 pwmTimerMSP432HWAttrs[MSP_EXP432P401R_PWMCOUNT] = {
+    {
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_SMCLK,
+        <span class="hljs-variable">.pwmPin</span> = PWMTimerMSP432_P2_1_TA1CCR1A
+    },
+    {
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_SMCLK,
+        <span class="hljs-variable">.pwmPin</span> = PWMTimerMSP432_P2_2_TA1CCR2A
+    }
+};
+
+<span class="hljs-keyword">const</span> PWM_Config PWM_config[MSP_EXP432P401R_PWMCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;PWMTimerMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;pwmTimerMSP432Objects[MSP_EXP432P401R_PWM_TA1_1],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;pwmTimerMSP432HWAttrs[MSP_EXP432P401R_PWM_TA1_1]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;PWMTimerMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;pwmTimerMSP432Objects[MSP_EXP432P401R_PWM_TA1_2],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;pwmTimerMSP432HWAttrs[MSP_EXP432P401R_PWM_TA1_2]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t PWM_count = MSP_EXP432P401R_PWMCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== SDFatFS ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/SD.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/SDFatFS.h&gt;</span></span>
+
+<span class="hljs-comment">/*
+ * Note: The SDFatFS driver provides interface functions to enable FatFs
+ * but relies on the SD driver to communicate with SD cards.  Opening a
+ * SDFatFs driver instance will internally try to open a SD driver instance
+ * reusing the same index number (opening SDFatFs driver at index 0 will try to
+ * open SD driver at index 0).  This requires that all SDFatFs driver instances
+ * have an accompanying SD driver instance defined with the same index.  It is
+ * acceptable to have more SD driver instances than SDFatFs driver instances
+ * but the opposite is not supported &amp; the SDFatFs will fail to open.
+ */</span>
+SDFatFS_Object sdfatfsObjects[MSP_EXP432P401R_SDFatFSCOUNT];
+
+<span class="hljs-keyword">const</span> SDFatFS_Config SDFatFS_config[MSP_EXP432P401R_SDFatFSCOUNT] = {
+    {
+        <span class="hljs-variable">.object</span> = &amp;sdfatfsObjects[MSP_EXP432P401R_SDFatFS0]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t SDFatFS_count = MSP_EXP432P401R_SDFatFSCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== SD ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/SD.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/sd/SDSPI.h&gt;</span></span>
+
+SDSPI_Object sdspiObjects[MSP_EXP432P401R_SDCOUNT];
+
+<span class="hljs-keyword">const</span> SDSPI_HWAttrs sdspiHWAttrs[MSP_EXP432P401R_SDCOUNT] = {
+    {
+        <span class="hljs-variable">.spiIndex</span> = MSP_EXP432P401R_SPIB0,
+        <span class="hljs-variable">.spiCsGpioIndex</span> = MSP_EXP432P401R_SDSPI_CS
+    }
+};
+
+<span class="hljs-keyword">const</span> SD_Config SD_config[MSP_EXP432P401R_SDCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;SDSPI_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;sdspiObjects[MSP_EXP432P401R_SDSPI0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;sdspiHWAttrs[MSP_EXP432P401R_SDSPI0]
+    },
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t SD_count = MSP_EXP432P401R_SDCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== SPI ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/SPI.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/spi/SPIMSP432DMA.h&gt;</span></span>
+
+SPIMSP432DMA_Object spiMSP432DMAObjects[MSP_EXP432P401R_SPICOUNT];
+
+<span class="hljs-comment">/*
+ * NOTE: The SPI instances below can be used by the SD driver to communicate
+ * with a SD card via SPI.  The 'defaultTxBufValue' fields below are set to 0xFF
+ * to satisfy the SDSPI driver requirement.
+ */</span>
+<span class="hljs-keyword">const</span> SPIMSP432DMA_HWAttrsV1 spiMSP432DMAHWAttrs[MSP_EXP432P401R_SPICOUNT] = {
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B0_BASE</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_B_SPI_MSB_FIRST</span>,
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_B_SPI_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.defaultTxBufValue</span> = <span class="hljs-number">0xFF</span>,
+        <span class="hljs-variable">.dmaIntNum</span> = INT_DMA_INT1,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.rxDMAChannelIndex</span> = DMA_CH1_EUS<span class="hljs-built_in">CIB0RX0</span>,
+        <span class="hljs-variable">.txDMAChannelIndex</span> = DMA_CH0_EUS<span class="hljs-built_in">CIB0TX0</span>,
+        <span class="hljs-variable">.clkPin</span>  = SPIMSP432DMA_P1_5_UCB0CLK,
+        <span class="hljs-variable">.simoPin</span> = SPIMSP432DMA_P1_6_UCB0SIMO,
+        <span class="hljs-variable">.somiPin</span> = SPIMSP432DMA_P1_7_UCB0SOMI,
+        <span class="hljs-variable">.stePin</span>  = SPIMSP432DMA_P1_4_UCB0STE,
+        <span class="hljs-variable">.pinMode</span>  = EUS<span class="hljs-built_in">CI_SPI_3PIN</span>,
+        <span class="hljs-variable">.minDmaTransferSize</span> = <span class="hljs-number">10</span>
+    },
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B2_BASE</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_B_SPI_MSB_FIRST</span>,
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_B_SPI_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.defaultTxBufValue</span> = <span class="hljs-number">0xFF</span>,
+        <span class="hljs-variable">.dmaIntNum</span> = INT_DMA_INT2,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.rxDMAChannelIndex</span> = DMA_CH5_EUS<span class="hljs-built_in">CIB2RX0</span>,
+        <span class="hljs-variable">.txDMAChannelIndex</span> = DMA_CH4_EUS<span class="hljs-built_in">CIB2TX0</span>,
+        <span class="hljs-variable">.clkPin</span>  = SPIMSP432DMA_P3_5_UCB2CLK,
+        <span class="hljs-variable">.simoPin</span> = SPIMSP432DMA_P3_6_UCB2SIMO,
+        <span class="hljs-variable">.somiPin</span> = SPIMSP432DMA_P3_7_UCB2SOMI,
+        <span class="hljs-variable">.stePin</span>  = SPIMSP432DMA_P3_4_UCB2STE,
+        <span class="hljs-variable">.pinMode</span>  = EUS<span class="hljs-built_in">CI_SPI_3PIN</span>,
+        <span class="hljs-variable">.minDmaTransferSize</span> = <span class="hljs-number">10</span>
+    },
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_A1_BASE</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_A_SPI_MSB_FIRST</span>,
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_A_SPI_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.defaultTxBufValue</span> = <span class="hljs-number">0xFF</span>,
+        <span class="hljs-variable">.dmaIntNum</span> = INT_DMA_INT2,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.rxDMAChannelIndex</span> = DMA_CH3_EUS<span class="hljs-built_in">CIA1RX</span>,
+        <span class="hljs-variable">.txDMAChannelIndex</span> = DMA_CH2_EUS<span class="hljs-built_in">CIA1TX</span>,
+        <span class="hljs-variable">.clkPin</span>  = SPIMSP432DMA_P2_5_U<span class="hljs-built_in">CA1CLK</span>,
+        <span class="hljs-variable">.simoPin</span> = SPIMSP432DMA_P2_6_U<span class="hljs-built_in">CA1SIMO</span>,
+        <span class="hljs-variable">.somiPin</span> = SPIMSP432DMA_P2_7_U<span class="hljs-built_in">CA1SOMI</span>,
+        <span class="hljs-variable">.stePin</span>  = SPIMSP432DMA_P2_3_U<span class="hljs-built_in">CA1STE</span>,
+        <span class="hljs-variable">.pinMode</span>  = EUS<span class="hljs-built_in">CI_SPI_4PIN_UCxSTE_ACTIVE_LOW</span>,
+        <span class="hljs-variable">.minDmaTransferSize</span> = <span class="hljs-number">10</span>
+    },
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_B2_BASE</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_B_SPI_MSB_FIRST</span>,
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_B_SPI_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.defaultTxBufValue</span> = <span class="hljs-number">0xFF</span>,
+        <span class="hljs-variable">.dmaIntNum</span> = INT_DMA_INT3,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.rxDMAChannelIndex</span> = DMA_CH5_EUS<span class="hljs-built_in">CIB2RX0</span>,
+        <span class="hljs-variable">.txDMAChannelIndex</span> = DMA_CH4_EUS<span class="hljs-built_in">CIB2TX0</span>,
+        <span class="hljs-variable">.clkPin</span>  = SPIMSP432DMA_P3_5_UCB2CLK,
+        <span class="hljs-variable">.simoPin</span> = SPIMSP432DMA_P3_6_UCB2SIMO,
+        <span class="hljs-variable">.somiPin</span> = SPIMSP432DMA_P3_7_UCB2SOMI,
+        <span class="hljs-variable">.stePin</span>  = SPIMSP432DMA_P2_4_UCB2STE,
+        <span class="hljs-variable">.pinMode</span>  = EUS<span class="hljs-built_in">CI_SPI_4PIN_UCxSTE_ACTIVE_LOW</span>,
+        <span class="hljs-variable">.minDmaTransferSize</span> = <span class="hljs-number">10</span>
+    }
+};
+
+<span class="hljs-keyword">const</span> SPI_Config SPI_config[MSP_EXP432P401R_SPICOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;SPIMSP432DMA_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;spiMSP432DMAObjects[MSP_EXP432P401R_SPIB0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;spiMSP432DMAHWAttrs[MSP_EXP432P401R_SPIB0]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;SPIMSP432DMA_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;spiMSP432DMAObjects[MSP_EXP432P401R_SPIB2],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;spiMSP432DMAHWAttrs[MSP_EXP432P401R_SPIB2]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;SPIMSP432DMA_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;spiMSP432DMAObjects[MSP_EXP432P401R_SPIB3],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;spiMSP432DMAHWAttrs[MSP_EXP432P401R_SPIB3]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;SPIMSP432DMA_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;spiMSP432DMAObjects[MSP_EXP432P401R_SPIB4],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;spiMSP432DMAHWAttrs[MSP_EXP432P401R_SPIB4]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t SPI_count = MSP_EXP432P401R_SPICOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== Timer ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/Timer.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/timer/TimerMSP432.h&gt;</span></span>
+
+TimerMSP432_Object timerMSP432Objects[MSP_EXP432P401R_TIMERCOUNT];
+
+<span class="hljs-keyword">const</span> TimerMSP432_HWAttrs timerMSP432HWAttrs[MSP_EXP432P401R_TIMERCOUNT] = {
+    <span class="hljs-comment">/* Timer32_0 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER32_0_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_SMCLK,
+        <span class="hljs-variable">.intNum</span> = INT_T32_INT1,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER32_1_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_SMCLK,
+        <span class="hljs-variable">.intNum</span> = INT_T32_INT2,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    <span class="hljs-comment">/* Timer_A1 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A1_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.intNum</span> = INT_TA1_0,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    <span class="hljs-comment">/* Timer_A2 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A2_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.intNum</span> = INT_TA2_0,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    },
+    <span class="hljs-comment">/* Timer_A3 */</span>
+    {
+        <span class="hljs-variable">.timerBaseAddress</span> = TIMER_A3_BASE,
+        <span class="hljs-variable">.clockSource</span> = TIMER_A_CLOCKSOURCE_ACLK,
+        <span class="hljs-variable">.intNum</span> = INT_TA3_0,
+        <span class="hljs-variable">.intPriority</span> = ~<span class="hljs-number">0</span>
+    }
+};
+
+<span class="hljs-keyword">const</span> Timer_Config Timer_config[MSP_EXP432P401R_TIMERCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;TimerMSP432_Timer32_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;timerMSP432Objects[MSP_EXP432P401R_TIMER_T32_0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;timerMSP432HWAttrs[MSP_EXP432P401R_TIMER_T32_0]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;TimerMSP432_Timer32_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;timerMSP432Objects[MSP_EXP432P401R_TIMER_T32_1],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;timerMSP432HWAttrs[MSP_EXP432P401R_TIMER_T32_1]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;TimerMSP432_Timer_A_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;timerMSP432Objects[MSP_EXP432P401R_TIMER_TA_1],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;timerMSP432HWAttrs[MSP_EXP432P401R_TIMER_TA_1]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;TimerMSP432_Timer_A_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;timerMSP432Objects[MSP_EXP432P401R_TIMER_TA_2],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;timerMSP432HWAttrs[MSP_EXP432P401R_TIMER_TA_2]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;TimerMSP432_Timer_A_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;timerMSP432Objects[MSP_EXP432P401R_TIMER_TA_3],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;timerMSP432HWAttrs[MSP_EXP432P401R_TIMER_TA_3]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t Timer_count = MSP_EXP432P401R_TIMERCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== UART ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/UART.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/uart/UARTMSP432.h&gt;</span></span>
+
+UARTMSP432_Object uartMSP432Objects[MSP_EXP432P401R_UARTCOUNT];
+<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> uartMSP432RingBuffer[MSP_EXP432P401R_UARTCOUNT][<span class="hljs-number">32</span>];
+
+<span class="hljs-comment">/*
+ * The baudrate dividers were determined by using the MSP432 baudrate
+ * calculator
+ * http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html
+ */</span>
+<span class="hljs-keyword">const</span> UARTMSP432_BaudrateConfig uartMSP432Baudrates[] = {
+    <span class="hljs-comment">/* {baudrate, input clock, prescalar, UCBRFx, UCBRSx, oversampling} */</span>
+    {
+        <span class="hljs-variable">.outputBaudrate</span> = <span class="hljs-number">115200</span>,
+        <span class="hljs-variable">.inputClockFreq</span> = <span class="hljs-number">24000000</span>,
+        <span class="hljs-variable">.prescalar</span> = <span class="hljs-number">13</span>,
+        <span class="hljs-variable">.hwRegUCBRFx</span> = <span class="hljs-number">0</span>,
+        <span class="hljs-variable">.hwRegUCBRSx</span> = <span class="hljs-number">37</span>,
+        <span class="hljs-variable">.oversampling</span> = <span class="hljs-number">1</span>
+    },
+    {<span class="hljs-number">115200</span>, <span class="hljs-number">12000000</span>,  <span class="hljs-number">6</span>,  <span class="hljs-number">8</span>,  <span class="hljs-number">32</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">115200</span>, <span class="hljs-number">6000000</span>,   <span class="hljs-number">3</span>,  <span class="hljs-number">4</span>,   <span class="hljs-number">2</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">115200</span>, <span class="hljs-number">3000000</span>,   <span class="hljs-number">1</span>, <span class="hljs-number">10</span>,   <span class="hljs-number">0</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">9600</span>,   <span class="hljs-number">24000000</span>, <span class="hljs-number">156</span>,  <span class="hljs-number">4</span>,   <span class="hljs-number">0</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">9600</span>,   <span class="hljs-number">12000000</span>, <span class="hljs-number">78</span>,  <span class="hljs-number">2</span>,   <span class="hljs-number">0</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">9600</span>,   <span class="hljs-number">6000000</span>,  <span class="hljs-number">39</span>,  <span class="hljs-number">1</span>,   <span class="hljs-number">0</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">9600</span>,   <span class="hljs-number">3000000</span>,  <span class="hljs-number">19</span>,  <span class="hljs-number">8</span>,  <span class="hljs-number">85</span>, <span class="hljs-number">1</span>},
+    {<span class="hljs-number">9600</span>,   <span class="hljs-number">32768</span>,     <span class="hljs-number">3</span>,  <span class="hljs-number">0</span>, <span class="hljs-number">146</span>, <span class="hljs-number">0</span>}
+};
+
+<span class="hljs-keyword">const</span> UARTMSP432_HWAttrsV1 uartMSP432HWAttrs[MSP_EXP432P401R_UARTCOUNT] = {
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_A0_BASE</span>,
+        <span class="hljs-variable">.intNum</span> = INT_EUS<span class="hljs-built_in">CIA0</span>,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_A_UART_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_A_UART_LSB_FIRST</span>,
+        <span class="hljs-variable">.numBaudrateEntries</span> = <span class="hljs-keyword">sizeof</span>(uartMSP432Baudrates) /
+            <span class="hljs-keyword">sizeof</span>(UARTMSP432_BaudrateConfig),
+        <span class="hljs-variable">.baudrateLUT</span> = uartMSP432Baudrates,
+        <span class="hljs-variable">.ringBufPtr</span>  = uartMSP432RingBuffer[MSP_EXP432P401R_UARTA0],
+        <span class="hljs-variable">.ringBufSize</span> = <span class="hljs-keyword">sizeof</span>(uartMSP432RingBuffer[MSP_EXP432P401R_UARTA0]),
+        <span class="hljs-variable">.rxPin</span> = UARTMSP432_P1_2_U<span class="hljs-built_in">CA0RXD</span>,
+        <span class="hljs-variable">.txPin</span> = UARTMSP432_P1_3_U<span class="hljs-built_in">CA0TXD</span>,
+        <span class="hljs-variable">.errorFxn</span> = <span class="hljs-literal">NULL</span>
+    },
+    {
+        <span class="hljs-variable">.baseAddr</span> = EUS<span class="hljs-built_in">CI_A2_BASE</span>,
+        <span class="hljs-variable">.intNum</span> = INT_EUS<span class="hljs-built_in">CIA2</span>,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.clockSource</span> = EUS<span class="hljs-built_in">CI_A_UART_CLOCKSOURCE_SMCLK</span>,
+        <span class="hljs-variable">.bitOrder</span> = EUS<span class="hljs-built_in">CI_A_UART_LSB_FIRST</span>,
+        <span class="hljs-variable">.numBaudrateEntries</span> = <span class="hljs-keyword">sizeof</span>(uartMSP432Baudrates) /
+            <span class="hljs-keyword">sizeof</span>(UARTMSP432_BaudrateConfig),
+        <span class="hljs-variable">.baudrateLUT</span> = uartMSP432Baudrates,
+        <span class="hljs-variable">.ringBufPtr</span>  = uartMSP432RingBuffer[MSP_EXP432P401R_UARTA2],
+        <span class="hljs-variable">.ringBufSize</span> = <span class="hljs-keyword">sizeof</span>(uartMSP432RingBuffer[MSP_EXP432P401R_UARTA2]),
+        <span class="hljs-variable">.rxPin</span> = UARTMSP432_P3_2_U<span class="hljs-built_in">CA2RXD</span>,
+        <span class="hljs-variable">.txPin</span> = UARTMSP432_P3_3_U<span class="hljs-built_in">CA2TXD</span>,
+        <span class="hljs-variable">.errorFxn</span> = <span class="hljs-literal">NULL</span>
+    }
+};
+
+<span class="hljs-keyword">const</span> UART_Config UART_config[MSP_EXP432P401R_UARTCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;UARTMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;uartMSP432Objects[MSP_EXP432P401R_UARTA0],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;uartMSP432HWAttrs[MSP_EXP432P401R_UARTA0]
+    },
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;UARTMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;uartMSP432Objects[MSP_EXP432P401R_UARTA2],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;uartMSP432HWAttrs[MSP_EXP432P401R_UARTA2]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t UART_count = MSP_EXP432P401R_UARTCOUNT;
+
+<span class="hljs-comment">/*
+ *  =============================== Watchdog ===============================
+ */</span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/Watchdog.h&gt;</span></span>
+<span class="hljs-preprocessor">#include <span class="hljs-title">&lt;ti/drivers/watchdog/WatchdogMSP432.h&gt;</span></span>
+
+WatchdogMSP432_Object watchdogMSP432Objects[MSP_EXP432P401R_WATCHDOGCOUNT];
+
+<span class="hljs-keyword">const</span> WatchdogMSP432_HWAttrs
+    watchdogMSP432HWAttrs[MSP_EXP432P401R_WATCHDOGCOUNT] = {
+    {
+        <span class="hljs-variable">.baseAddr</span> = WDT_A_BASE,
+        <span class="hljs-variable">.intNum</span> = INT_WDT_A,
+        <span class="hljs-variable">.intPriority</span> = (~<span class="hljs-number">0</span>),
+        <span class="hljs-variable">.clockSource</span> = WDT_A_CLOCKSOURCE_SMCLK,
+        <span class="hljs-variable">.clockDivider</span> = WDT_A_CLOCKDIVIDER_8192K
+    }
+};
+
+<span class="hljs-keyword">const</span> Watchdog_Config Watchdog_config[MSP_EXP432P401R_WATCHDOGCOUNT] = {
+    {
+        <span class="hljs-variable">.fxnTablePtr</span> = &amp;WatchdogMSP432_fxnTable,
+        <span class="hljs-variable">.object</span> = &amp;watchdogMSP432Objects[MSP_EXP432P401R_WATCHDOG],
+        <span class="hljs-variable">.hwAttrs</span> = &amp;watchdogMSP432HWAttrs[MSP_EXP432P401R_WATCHDOG]
+    }
+};
+
+<span class="hljs-keyword">const</span> uint_least8_t Watchdog_count = MSP_EXP432P401R_WATCHDOGCOUNT;
+</code></pre></div></div>
+</div>
+    </div>
+  </div>
+</div><h1 class="body-heading" id="summary">Summary<a class="anchor-link glyphicon glyphicon-link" aria-hidden="true" href="#summary"></a></h1><p>At the end of these labs, you should now be able to:</p>
+<ul>
+<li>Understand how to setup and use the ADCBuf TI-Driver. </li>
+<li>Have a more clear understanding of the precision ADC on the SimpleLink MSP432P4 devices.</li>
+</ul>
+<p>To check out other labs, please navigate to the <a href="../../../overview.html">Overview Page</a></p>
+<div align="center" style="margin-top: 4em; font-size: smaller;">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../web_support/cc_license_icon.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.</div>
+
+</div><div class="col-xs-4 col-sm-2 sidebar-offcanvas bs-docs-sidebar hidden-print" id="sidebar-overview"><ul class="nav nav-stacked fixed" id="sidebar"><li><a href="#introduction">Introduction</a></li><li><a href="#prerequisites">Prerequisites</a><ul class="nav nav-stacked"><li><a href="#hardware">Hardware</a></li><li><a href="#software-for-desktop-development">Software for desktop development</a><ul class="nav nav-stacked"><li><a href="#installing-the-sdk">Installing the SDK</a></li></ul></li><li><a href="#recommended-reading">Recommended reading</a></li></ul></li><li><a href="#overview">Overview</a><ul class="nav nav-stacked"><li><a href="#introduction">Introduction</a></li><li><a href="#code-overview">Code Overview</a></li></ul></li><li><a href="#task-1-import-the-ti-rtos-adcbufcontinuous-project">Task 1. Import the TI-RTOS adcbufcontinuous Project</a></li><li><a href="#task-2-setting-up-the-launchpad">Task 2. Setting up the LaunchPad</a><ul class="nav nav-stacked"><ul class="nav nav-stacked"><li><a href="#initial-hardware-setup">Initial Hardware setup</a></li></ul></ul></li><li><a href="#task-3-running-the-example">Task 3. Running the example</a></li><li><a href="#task-4-setup-for-future-tasks">Task 4. Setup for future tasks</a><ul class="nav nav-stacked"><ul class="nav nav-stacked"><li><a href="#changes-for-adcbufcontinuoussampling-c-">Changes for adcBufContinuousSampling.c</a></li><li><a href="#changes-for-msp_exp432p401r-c-">Changes for MSP_EXP432P401R.c</a></li></ul></ul></li><li><a href="#task-5-increasing-the-sampling-rate-to-100ksps">Task 5. Increasing the sampling rate to 100kSPS</a></li><li><a href="#task-6-increasing-the-sampling-rate-to-500ksps">Task 6. Increasing the sampling rate to 500kSPS</a></li><li><a href="#task-7-achieving-1msps">Task 7. Achieving 1MSPS</a></li><li><a href="#lab-solution-files">Lab Solution files</a></li><li><a href="#summary">Summary</a></li></ul></div></div></div></div>
+
+<link rel="stylesheet" href="../../../web_support/highlight/styles/zenburn.css">
+<script src="../../../web_support/strapdown/vendor/jquery-1.11.2.min.js"></script>
+<script src="../../../web_support/strapdown/vendor/bootstrap.min.js"></script>
+<script src="../../../web_support/highlight/highlight.pack.js"></script>
+<script type="text/javascript">document.isPreRendered = true;</script><script src="../../../web_support/strapdown/v/0.2/strapdown.js"></script>      <div class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">        <div class="vertical-alignment-helper">          <div class="modal-dialog vertical-align-center">             <div class="modal-dialog">               <div class="modal-content" style="margin-left: auto;margin-right: auto;">                 <div class="modal-body">                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>                   <img src="" class="imagepreview img-responsive">                 </div>              </div>            </div>          </div>        </div>      </div>
+
+</body></html>

@@ -59,6 +59,9 @@
  *
  * Read SAMPLES no of ADC reading on push button 1.1 (S1)
  *
+ * Adding averaging function as preprocessing for FFT
+ * Time data then centred around 0
+ *
  ******************************************************************************/
 /* DriverLib Includes */
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
@@ -78,18 +81,10 @@
  *http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html
  */
 
-void sendReading(uint16_t reading)
+void sendReading(int16_t reading)
 {
-    /*Convert reading to ASCII and send over serial */
-
-    uint8_t ascii_num[10] = {0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39};
-
-    UART_transmitData(EUSCI_A0_BASE, ascii_num[(reading / 10000)]);
-    UART_transmitData(EUSCI_A0_BASE, ascii_num[((reading % 10000)/1000)]);
-    UART_transmitData(EUSCI_A0_BASE, ascii_num[((reading % 1000)/100)]);
-    UART_transmitData(EUSCI_A0_BASE, ascii_num[((reading % 100)/10)]);
-    UART_transmitData(EUSCI_A0_BASE, ascii_num[(reading % 10)]);
-    UART_transmitData(EUSCI_A0_BASE, '\n');
+    UART_transmitData(EUSCI_A0_BASE, (reading%256));
+    UART_transmitData(EUSCI_A0_BASE, (reading/256));
 }
 
 //Configures to 9600 baud rate at this clock speed
@@ -121,7 +116,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_SMCLK,            // SMCLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 12 MHz
-        2400,
+        12000,                                // 12 Mhz / 12000 = 1 kHz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -137,7 +132,7 @@ const Timer_A_CompareModeConfig compareConfig =
 };
 
 /* Statics */
-volatile uint16_t resultsBuffer[SAMPLES];
+volatile int16_t resultsBuffer[SAMPLES];
 volatile uint16_t resPos = 0;
 volatile uint8_t sendValues = 0;
 
@@ -180,7 +175,7 @@ int main(void)
     MAP_ADC14_enableModule();
     MAP_ADC14_initModule(ADC_CLOCKSOURCE_MCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
             0);
-    MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_16, ADC_PULSE_WIDTH_16);
+    MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
     MAP_ADC14_setResolution(ADC_14BIT);
 
     /* Configuring GPIOs (5.5 A0) */
@@ -214,12 +209,31 @@ int main(void)
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
+    int i;
+
     while (1)
     {
         //MAP_PCM_gotoLPM0();
         if (sendValues == 1)
         {
-            int i;
+            //Calculate average
+            float mean = 0.0;
+            for (i=0; i<SAMPLES;i++)
+            {
+                mean += (float)(resultsBuffer[i]);
+            }
+
+            mean /= SAMPLES;
+
+            int16_t int_mean = (int16_t)(mean + 0.5);
+
+            //Pre process data by centering on zero
+            for (i=0; i<SAMPLES; i++)
+            {
+                resultsBuffer[i] -= int_mean;
+                resultsBuffer[i] -= 127;
+            }
+
             for (i=0; i<SAMPLES; i++)
             {
                 sendReading(resultsBuffer[i]);
@@ -234,7 +248,7 @@ int main(void)
  * ADC_MEM0 */
 void ADC14_IRQHandler(void)
 {
-    uint64_t status;
+    /*uint64_t status;
 
     status = MAP_ADC14_getEnabledInterruptStatus();
     MAP_ADC14_clearInterruptFlag(status);
@@ -253,6 +267,19 @@ void ADC14_IRQHandler(void)
             //Send values
             sendValues = 1;
         }
+    }*/
+
+    if(resPos < SAMPLES)
+    {
+        resultsBuffer[resPos] = MAP_ADC14_getResult(ADC_MEM0);
+        resPos++;
+    }
+    else
+    {
+        //Stop reading values
+        MAP_Interrupt_disableInterrupt(INT_ADC14);
+        //Send values
+        sendValues = 1;
     }
 }
 
