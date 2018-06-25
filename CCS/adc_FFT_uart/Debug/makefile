@@ -13,6 +13,8 @@ ORDERED_OBJS += \
 "./adc_FFT_uart.obj" \
 "./system_msp432p401r.obj" \
 "./ccs/startup_msp432p401r_ccs.obj" \
+"./kissFFT/kiss_fft.obj" \
+"./kissFFT/kiss_fftr.obj" \
 "../msp432p401r.cmd" \
 $(GEN_CMDS__FLAG) \
 -l"ti/display/lib/display.aem4f" \
@@ -22,6 +24,7 @@ $(GEN_CMDS__FLAG) \
 -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" \
 -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" \
 -llibc.a \
+-l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" \
 
 -include ../makefile.init
 
@@ -32,8 +35,10 @@ RMDIR := RMDIR /S/Q
 -include sources.mk
 -include subdir_vars.mk
 -include ccs/subdir_vars.mk
+-include kissFFT/subdir_vars.mk
 -include subdir_rules.mk
 -include ccs/subdir_rules.mk
+-include kissFFT/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -150,7 +155,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 adc_FFT_uart.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_uart.map" --stack_size=512 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_uart_linkInfo.xml" --rom_model -o "adc_FFT_uart.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_uart.map" --heap_size=5480 --stack_size=1024 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_uart_linkInfo.xml" --rom_model -o "adc_FFT_uart.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
@@ -164,8 +169,8 @@ adc_FFT_uart.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "adc_FFT_uart.obj" "system_msp432p401r.obj" "ccs\startup_msp432p401r_ccs.obj" 
-	-$(RM) "adc_FFT_uart.d" "system_msp432p401r.d" "ccs\startup_msp432p401r_ccs.d" 
+	-$(RM) "adc_FFT_uart.obj" "system_msp432p401r.obj" "ccs\startup_msp432p401r_ccs.obj" "kissFFT\kiss_fft.obj" "kissFFT\kiss_fftr.obj" 
+	-$(RM) "adc_FFT_uart.d" "system_msp432p401r.d" "ccs\startup_msp432p401r_ccs.d" "kissFFT\kiss_fft.d" "kissFFT\kiss_fftr.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

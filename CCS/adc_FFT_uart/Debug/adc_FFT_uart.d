@@ -47,6 +47,30 @@ adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp
 adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/wdt_a.h
 adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/sysctl.h
 adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/flash.h
+adc_FFT_uart.obj: ../kissFFT/kiss_fftr.h
+adc_FFT_uart.obj: ../kissFFT/kiss_fft.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_ti_config.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/linkage.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdio.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdarg.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/math.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_defs.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_limits.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/string.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/types.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/endian.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/select.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_sigset.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_timeval.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/timespec.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_timespec.h
+adc_FFT_uart.obj: ../kissFFT/kiss_fft_guts.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/limits.h
+adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/QmathLib.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h
+adc_FFT_uart.obj: C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/IQmathLib.h
+adc_FFT_uart.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h
 
 ../adc_FFT_uart.c: 
 C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/driverlib.h: 
@@ -95,3 +119,27 @@ C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/
 C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/wdt_a.h: 
 C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/sysctl.h: 
 C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/devices/msp432p4xx/driverlib/flash.h: 
+../kissFFT/kiss_fftr.h: 
+../kissFFT/kiss_fft.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_ti_config.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/linkage.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdio.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdarg.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/math.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/_defs.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/_limits.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/string.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/types.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/machine/endian.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/select.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_sigset.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_timeval.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/timespec.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/sys/_timespec.h: 
+../kissFFT/kiss_fft_guts.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/limits.h: 
+C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/QmathLib.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h: 
+C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/IQmathLib.h: 
+C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include/stdlib.h: 

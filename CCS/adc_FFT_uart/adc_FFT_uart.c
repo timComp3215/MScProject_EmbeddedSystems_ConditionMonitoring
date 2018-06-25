@@ -62,6 +62,10 @@
  * Adding averaging function as preprocessing for FFT
  * Time data then centred around 0
  *
+ * Calculate FFT using kissFFT
+ *
+ * Also send magnitudes via serial
+ *
  ******************************************************************************/
 /* DriverLib Includes */
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
@@ -70,8 +74,21 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+ /* Select the global Q value */
+ #define GLOBAL_Q    12
+
+/* Select FIXED point option for kissFFT */
+#define FIXED_POINT 16
+
+#include "kissFFT/kiss_fftr.h"
+#include "kissFFT/kiss_fft_guts.h"
+
+ /* Include the iqmathlib header files */
+ #include <ti/iqmathlib/QmathLib.h>
+ #include <ti/iqmathlib/IQmathLib.h>
+
 //Sample size
-#define SAMPLES 512
+#define SAMPLES 1024
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -109,12 +126,12 @@ void average_preprocess(volatile int16_t *readings, uint16_t n)
         mean += (float)(readings[i]);
     }
 
-    mean /= SAMPLES;
+    mean /= n;
 
     int16_t int_mean = (int16_t)(mean + 0.5);
 
     //Subtract
-    for (i=0; i<SAMPLES; i++)
+    for (i=0; i<n; i++)
     {
         readings[i] -= int_mean;
     }
@@ -135,17 +152,17 @@ const eUSCI_UART_Config uartConfig =
 };
 
 /* Timer_A Continuous Mode Configuration Parameter */
-/*const Timer_A_UpModeConfig upModeConfig =
+const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
-        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        125,
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 32.768 kHz
+        15,                                 // 32.768 kHz / 16 = 2048 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
-};*/
+};
 
-const Timer_A_UpModeConfig upModeConfig =
+/*const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_SMCLK,            // SMCLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 12 MHz
@@ -153,7 +170,7 @@ const Timer_A_UpModeConfig upModeConfig =
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
-};
+};*/
 
 /* Timer_A Compare Configuration Parameter */
 const Timer_A_CompareModeConfig compareConfig =
@@ -161,7 +178,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        100                                       // 16000 Period
+        10                                       // 16000 Period
 };
 
 /* Statics */
@@ -180,7 +197,7 @@ int main(void)
     /* Setting DCO to 12MHz */
     CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_12);
     //Increase oscillator frequency to 128 kHz
-    CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
+    CS_setReferenceOscillatorFrequency(CS_REFO_32KHZ);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
 
     //Set serial pins to serial mode
@@ -242,6 +259,11 @@ int main(void)
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
+    //Set up variables for kissFFT
+    kiss_fft_cpx  fft_out[SAMPLES];
+    kiss_fftr_cfg  kiss_fftr_state;
+    kiss_fftr_state = kiss_fftr_alloc(SAMPLES,0,0,0);
+
     int i;
 
     while (1)
@@ -249,30 +271,29 @@ int main(void)
         //MAP_PCM_gotoLPM0();
         if (sendValues == 1)
         {
-            //Calculate average
-            /*float mean = 0.0;
-            for (i=0; i<SAMPLES;i++)
-            {
-                mean += (float)(resultsBuffer[i]);
-            }
-
-            mean /= SAMPLES;
-
-            int16_t int_mean = (int16_t)(mean + 0.5);*/
-
-            //Pre process data by centering on zero
-            /*for (i=0; i<SAMPLES; i++)
-            {
-                resultsBuffer[i] -= int_mean;
-                //resultsBuffer[i] -= 127;
-            }*/
-
+            //Preprocess data
             average_preprocess(resultsBuffer, SAMPLES);
 
+            //Send time data
             for (i=0; i<SAMPLES; i++)
             {
                 sendReading(resultsBuffer[i]);
             }
+
+            //Perform FFT
+            kiss_fftr(kiss_fftr_state,resultsBuffer,fft_out);
+
+            /* Calculate the magnitude of the results. */
+            for (i = 0; i < SAMPLES/2; i++) {
+                resultsBuffer[i] = _Qmag(fft_out[i].r, fft_out[i].i);
+            }
+
+            //Send frequency data
+            for (i=0; i<((SAMPLES/2)); i++)
+            {
+                sendReading(resultsBuffer[i]);
+            }
+
             resPos = 0;
             sendValues = 0;
         }
@@ -283,31 +304,10 @@ int main(void)
  * ADC_MEM0 */
 void ADC14_IRQHandler(void)
 {
-    /*uint64_t status;
-
-    status = MAP_ADC14_getEnabledInterruptStatus();
-    MAP_ADC14_clearInterruptFlag(status);
-
-    if (status & ADC_INT0)
-    {
-        if(resPos < SAMPLES)
-        {
-            resultsBuffer[resPos] = MAP_ADC14_getResult(ADC_MEM0);
-            resPos++;
-        }
-        else
-        {
-            //Stop reading values
-            MAP_Interrupt_disableInterrupt(INT_ADC14);
-            //Send values
-            sendValues = 1;
-        }
-    }*/
-
     if(resPos < SAMPLES)
     {
-        resultsBuffer[resPos] = MAP_ADC14_getResult(ADC_MEM0);
-        resPos++;
+        resultsBuffer[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
+        //resPos++;
     }
     else
     {
