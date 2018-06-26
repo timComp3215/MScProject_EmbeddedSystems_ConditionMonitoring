@@ -155,7 +155,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 adc_FFT_uart.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_uart.map" --heap_size=5480 --stack_size=1024 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_uart_linkInfo.xml" --rom_model -o "adc_FFT_uart.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_uart.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_uart_linkInfo.xml" --rom_model -o "adc_FFT_uart.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

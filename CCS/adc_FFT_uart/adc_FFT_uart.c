@@ -88,7 +88,7 @@
  #include <ti/iqmathlib/IQmathLib.h>
 
 //Sample size
-#define SAMPLES 1024
+#define SAMPLES 4000
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -155,8 +155,8 @@ const eUSCI_UART_Config uartConfig =
 const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
-        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 32.768 kHz
-        15,                                 // 32.768 kHz / 16 = 2048 Hz
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
+        3,                                  // 128 kHz / 4 = 32 kHz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -178,11 +178,12 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        10                                       // 16000 Period
+        3                                       // 16000 Period
 };
 
 /* Statics */
-volatile int16_t resultsBuffer[SAMPLES];
+//volatile int16_t resultsBuffer[SAMPLES];
+int16_t *information_bytes;
 volatile uint16_t resPos = 0;
 volatile uint8_t sendValues = 0;
 
@@ -197,7 +198,7 @@ int main(void)
     /* Setting DCO to 12MHz */
     CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_12);
     //Increase oscillator frequency to 128 kHz
-    CS_setReferenceOscillatorFrequency(CS_REFO_32KHZ);
+    CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
 
     //Set serial pins to serial mode
@@ -252,17 +253,21 @@ int main(void)
     MAP_ADC14_enableInterrupt(ADC_INT0);
     MAP_ADC14_enableConversion();
 
-    /* Enabling Interrupts */
-    MAP_Interrupt_enableInterrupt(INT_ADC14);
-    MAP_Interrupt_enableMaster();
-
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
     //Set up variables for kissFFT
+    int16_t resultsBuffer[SAMPLES];
     kiss_fft_cpx  fft_out[SAMPLES];
     kiss_fftr_cfg  kiss_fftr_state;
     kiss_fftr_state = kiss_fftr_alloc(SAMPLES,0,0,0);
+
+    //Point information to input buffer
+    information_bytes = resultsBuffer;
+
+    /* Enabling Interrupts */
+    MAP_Interrupt_enableInterrupt(INT_ADC14);
+    MAP_Interrupt_enableMaster();
 
     int i;
 
@@ -306,7 +311,8 @@ void ADC14_IRQHandler(void)
 {
     if(resPos < SAMPLES)
     {
-        resultsBuffer[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
+        //resultsBuffer[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
+        information_bytes[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
         //resPos++;
     }
     else

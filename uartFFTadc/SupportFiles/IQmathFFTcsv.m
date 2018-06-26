@@ -3,15 +3,15 @@ close all
 
 %Include noise
 
-fs = 2048; %Sample frequency
+fs = 32000; %Sample frequency
 %T = 0.125/4; %Measurement time period
-T = 1024/fs;
+T = 4000/fs;
 
-model_frequency = 1000;
+model_frequency = 15015;
 
 N = fs * T;
 
-board_N = 512;
+board_N = 2000;
 
 t = linspace(0, T, N);
 
@@ -25,8 +25,6 @@ M = csvread('adc_output.csv');
 
 board_F = csvread('fft_output.csv');
 
-[min_m, i_m] = min(abs(M));
-
 for n = 1:N
     %x(n) = 1.33*cos(128*2*pi*t(n) + pi*0.5) + 2*cos(512*2*pi*t(n)) + ...
     %    0.6*cos(2048*2*pi*t(n) - pi*0.5) + 5*noise(n) + ...
@@ -39,13 +37,13 @@ for n = 1:N
     %x2(n) = int16(x(n)*(2^12));
 end
 
-mean(M)
+%mean(M)
 
 %figure;
 %plot(t, x)
 
 freq = (0:N-1) .* fs/N;
-board_freq = (0:board_N-1) .* fs/(board_N*2);
+board_freq = ((0:board_N-1) .* fs/(board_N*2))';
 
 F = fft(x);
 
@@ -90,3 +88,12 @@ hold on
 %plot(FT(:, 1), FT(:, 2));
 plot(FT(:, 1), FT(:, 3));
 legend('Board', 'Model');
+
+disp('Max');
+disp(max(board_F));
+
+disp('RMS');
+disp(rms(board_F));
+
+disp('Std')
+disp(std(board_F)^2);

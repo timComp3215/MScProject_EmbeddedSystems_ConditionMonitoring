@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="SAMPLE_FREQ" key="selection"/>
+		<item value="FFT" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="fft"/>
 			<item value="SAMPLE_FREQ"/>
 			<item value="sampleBuf"/>
 			<item value="sampleBuffer"/>
@@ -22,7 +23,6 @@
 			<item value="gpio"/>
 			<item value="compareC"/>
 			<item value="hz"/>
-			<item value="mhz"/>
 		</list>
 		<list key="replacehistory">
 		</list>
