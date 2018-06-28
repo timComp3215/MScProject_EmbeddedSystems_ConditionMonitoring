@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 SAMPLES = 4000
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 32000
+fs = 1000
 
 #set name of output file
 output_file = 'adc_output.csv'
