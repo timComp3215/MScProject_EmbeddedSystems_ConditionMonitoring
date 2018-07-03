@@ -1,0 +1,55 @@
+%This is the main file which pulls together all of the separate sections
+
+\documentclass[12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {Images/} }
+
+\usepackage{afterpage}
+
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+
+\title{
+	{\small University of Southampton}\\
+	{\small Faculty of Physical Sciences and Engineering}\\
+	{\small School of Electronics and Computer Science}\\
+	[2cm]
+	{\includegraphics{Images/coat_of_arms.jpg}}\\[2cm]
+	\textbf{{Embedded System for Condition Monitoring of Marine Pumps}}
+}
+\author{By\\ \\
+	Timothy James Guite}
+\date{\today}
+
+
+
+
+
+\begin{document}
+
+\maketitle
+%
+\maketitle
+
+\begin{abstract}
+
+This will be the abstract which discusses the findings of the paper in $<$ 600 words.
+
+\end{abstract}
+
+\chapter*{Acknowledgements}
+This is the page which includes acknowledgements of people who have been helpful in completion of the dissertation.
+
+\tableofcontents
+
+\listoffigures
+
+\input{Chapters/Introduction}
+
+\end{document}
