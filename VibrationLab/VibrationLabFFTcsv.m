@@ -93,40 +93,29 @@ for i = 1:3
     end
 end
 
-acc = 3;
-%{
-figure
-for z = 1:slices
-    scatter3(F_stats(1, acc, z), F_stats(2, acc, z), F_stats(3, acc, z), 'r');
-    hold on  
+for acc = 1:3
+    figure
+    for z = 1:slices
+        scatter3(F_stats(1, acc, z), F_stats(2, acc, z), F_stats(3, acc, z), 'r');
+        hold on  
+        scatter3(G_stats(1, acc, z), G_stats(2, acc, z), G_stats(3, acc, z), 'b');
+    end
+    legend('Healthy', 'Bent');
+    xlabel('Maximum')
+    ylabel('RMS')
+    zlabel('Standard deviation')
 end
-title('Healthy')
-xlabel('Maximum')
-ylabel('RMS')
-zlabel('Standard deviation')
 
 figure
-for z = 1:slices
-    scatter3(G_stats(1, acc, z), G_stats(2, acc, z), G_stats(3, acc, z), 'b');
-    hold on
+for acc = 1:3
+    subplot(3, 1, acc);
+    for z = 1:slices
+        scatter3(F_stats(1, acc, z), F_stats(2, acc, z), F_stats(3, acc, z), 'r');
+        hold on  
+        scatter3(G_stats(1, acc, z), G_stats(2, acc, z), G_stats(3, acc, z), 'b');
+    end
+    legend('Healthy', 'Bent');
+    xlabel('Maximum')
+    ylabel('RMS')
+    zlabel('Standard deviation')
 end
-title('Bent')
-xlabel('Maximum')
-ylabel('RMS')
-zlabel('Standard deviation')
-%}
-figure
-for z = 1:slices
-    scatter3(F_stats(1, acc, z), F_stats(2, acc, z), F_stats(3, acc, z), 'r');
-    hold on  
-    scatter3(G_stats(1, acc, z), G_stats(2, acc, z), G_stats(3, acc, z), 'b');
-end
-legend('Healthy', 'Bent');
-xlabel('Maximum')
-ylabel('RMS')
-zlabel('Standard deviation')
-%xlim([0 0.4])
-%xlim([0 0.3])
-%ylim([0 0.035])
-%zlim([0 0.0007])
-%zlim([0 0.0005])
