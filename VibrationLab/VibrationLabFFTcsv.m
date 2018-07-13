@@ -5,13 +5,13 @@ close all
 
 fs = 5000; %Sample frequency
 %T = 0.125/4; %Measurement time period
-T = 1250/fs;
+T = 625/fs;
 
 N = fs * T;
 
 t = linspace(0, T, N);
 
-slices = 20;
+slices = 40;
 
 x = zeros(N, 3, slices);
 
