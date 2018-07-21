@@ -88,7 +88,7 @@
  #include <ti/iqmathlib/IQmathLib.h>
 
 //Sample size
-#define SAMPLES 4000
+#define SAMPLES 4096
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -156,7 +156,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        128,                                  // 128 kHz / 128 = 1 kHz
+        7,                                  // 128 kHz / 128 = 1 kHz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -178,7 +178,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        3                                       // 16000 Period
+        4// 16000 Period
 };
 
 /* Statics */
@@ -198,7 +198,7 @@ int main(void)
     /* Setting DCO to 12MHz */
     CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_12);
     //Increase oscillator frequency to 128 kHz
-    CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
+    CS_setReferenceOscillatorFrequency(CS_REFO_32KHZ);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
 
     //Set serial pins to serial mode

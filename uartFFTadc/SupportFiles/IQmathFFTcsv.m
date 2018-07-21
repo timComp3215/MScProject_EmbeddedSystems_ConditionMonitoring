@@ -3,15 +3,15 @@ close all
 
 %Include noise
 
-fs = 1000; %Sample frequency
+fs = 4096; %Sample frequency
 %T = 0.125/4; %Measurement time period
-T = 4000/fs;
+T = 4096/fs;
 
-model_frequency = 100;
+model_frequency = 350;
 
 N = fs * T;
 
-board_N = 2000;
+board_N = 2048;
 
 t = linspace(0, T, N);
 
@@ -77,7 +77,7 @@ plot(t, x);
 subplot(2, 1, 2);
 plot(board_freq, board_F);
 hold on
-plot(FT(:, 1), FT(:, 2));
+plot(FT(:, 1), FT(:, 2), 'rx', 'MarkerSize', 2);
 
 plot(FT(:, 1), FT(:, 3));
 legend('Board', 'ADC', 'Model');
