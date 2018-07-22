@@ -13,10 +13,10 @@ import csv
 import matplotlib.pyplot as plt
 
 #Set length of signal
-SAMPLES = 4000
+SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 1000
+fs = 4096
 
 #set name of output file
 output_file = 'adc_output.csv'
