@@ -1,5 +1,4 @@
 %This is the main file which pulls together all of the separate sections
-
 \documentclass[12pt]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -15,7 +14,7 @@
 
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
 
-\title{
+\title{\vspace{-10ex}
 	{\small University of Southampton}\\
 	{\small Faculty of Physical Sciences and Engineering}\\
 	{\small School of Electronics and Computer Science}\\
@@ -25,7 +24,17 @@
 }
 \author{By\\ \\
 	Timothy James Guite}
-\date{\today}
+\date{\parbox{\linewidth}{\centering%
+  \today\endgraf\bigskip
+  Supervisor: Dr Alex Weddell\\
+Second Examiner:\endgraf\bigskip
+A dissertation submitted in partial fulfillment of the degree of \\
+\textbf{MSc Embedded Systems}}}
+%\date{\parbox{\linewidth}\today\\ \\
+%	Supervisor: Dr Alex Weddell\\
+%Second Examiner:\\
+%A dissertation submitted in partial fulfillment of the degree of \\
+%MSc Embedded Systems}}
 
 
 
@@ -33,8 +42,6 @@
 
 \begin{document}
 
-\maketitle
-%
 \maketitle
 
 \begin{abstract}
