@@ -89,7 +89,7 @@ int main(void)
     MAP_CS_startLFXT(CS_LFXT_DRIVE0);
 
     /* Initializing RTC to 11/19/2013 10:10:00 */ //Already initialised
-    MAP_RTC_C_initCalendar(&calendarTime, RTC_C_FORMAT_BINARY);
+    //MAP_RTC_C_initCalendar(&calendarTime, RTC_C_FORMAT_BINARY);
 
     /* Setting event for every minute */
     //MAP_RTC_C_setCalendarAlarm(11,10,2,19);
