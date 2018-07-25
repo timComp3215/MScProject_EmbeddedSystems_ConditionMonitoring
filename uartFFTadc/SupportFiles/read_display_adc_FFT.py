@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 4096
+fs = 16384
 
 #set name of output file
 output_file = 'adc_output.csv'
@@ -81,12 +81,47 @@ for n in range(SAMPLES/2):
 
     magnitude.append(receivedMsg)
 
+#Get maximum
+msg = s.read(2)
+#Turn signed 16 bit number back into python integer
+receivedMsg = int(msg[0].encode('hex'), 16) + 256*int(msg[1].encode('hex'), 16)
+#Signed -> Normal
+if (receivedMsg > (2**15)-1):
+    receivedMsg = receivedMsg - (2**16)
+fft_max = receivedMsg
+
+print "Maximum: ", str(fft_max);
+
+#Get RMSE
+msg = s.read(2)
+#Turn signed 16 bit number back into python integer
+receivedMsg = int(msg[0].encode('hex'), 16) + 256*int(msg[1].encode('hex'), 16)
+#Signed -> Normal
+if (receivedMsg > (2**15)-1):
+    receivedMsg = receivedMsg - (2**16)
+fft_RMSE = receivedMsg
+
+print "RMS: ", str(fft_RMSE);
+
+#Get std
+msg = s.read(2)
+#Turn signed 16 bit number back into python integer
+receivedMsg = int(msg[0].encode('hex'), 16) + 256*int(msg[1].encode('hex'), 16)
+#Signed -> Normal
+if (receivedMsg > (2**15)-1):
+    receivedMsg = receivedMsg - (2**16)
+fft_std = receivedMsg
+
+print "Std: ", str(fft_std);
+
 #Close serial channel
 s.close()
 print "Reading finished"
 
 for n in range(0, SAMPLES):
-    float_values.append((float(values[n])/16384) * 3.3)
+    #float_values.append((float(values[n])/16384) * 3.3)
+    #Convert to g
+    float_values.append(((float(values[n])/16384) * 3.3)*10)
 
 #print values
 #Store readings in csv
@@ -127,7 +162,8 @@ fig = plt.figure(1)
 #Time signal
 plt.subplot(211)
 plt.plot(time, float_values, linewidth=0.5)
-plt.ylabel('Voltage')
+#plt.ylabel('Voltage')
+plt.ylabel('Acceleration (g)')
 plt.xlabel('Time (s)')
 plt.title('Time based data')
 #Get rid of white space on x axis

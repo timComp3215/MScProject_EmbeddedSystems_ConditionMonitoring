@@ -100,6 +100,7 @@
 
 void sendReading(int16_t reading)
 {
+    //Sends readings as 2 8bit bytes (16 bit data)
     uint16_t reading_send;
     if (reading >= 0)
     {
@@ -111,6 +112,21 @@ void sendReading(int16_t reading)
     }
     UART_transmitData(EUSCI_A0_BASE, (reading_send%256));
     UART_transmitData(EUSCI_A0_BASE, (reading_send/256));
+}
+
+int16_t calc_mean(volatile int16_t *readings, uint16_t n)
+{
+    float mean = 0.0;
+    int i=0;
+    //Calculate mean
+    for (i=0; i<n;i++)
+    {
+        mean += (float)(readings[i]);
+    }
+
+    mean /= n;
+
+    return (int16_t)(mean + 0.5);
 }
 
 void average_preprocess(volatile int16_t *readings, uint16_t n)
@@ -137,6 +153,58 @@ void average_preprocess(volatile int16_t *readings, uint16_t n)
     }
 }
 
+int16_t max(volatile int16_t *readings, uint16_t n)
+{
+    //This function finds the maximum value in a range
+    int16_t maximum = 0;
+    int i;
+    for (i=0; i<n; i++)
+    {
+        if (readings[i] > maximum)
+        {
+            maximum = readings[i];
+        }
+    }
+
+    return maximum;
+}
+
+int16_t RMS(volatile int16_t *readings, uint16_t n)
+{
+    //Calculate the root mean square of a range
+    int i;
+
+    float RMS;
+
+    for (i=0; i<n; i++)
+    {
+        //RMSE += (readings[i]-mean)*(readings[i]-mean)/n;
+        RMS += ((float)readings[i])*((float)readings[i])/(float)n;
+    }
+
+    RMS = sqrt(RMS);
+
+    return (int16_t)(RMS+0.5);
+}
+
+int16_t STD(volatile int16_t *readings, uint16_t n)
+{
+    int16_t mean = calc_mean(readings, n);
+
+    float STD;
+
+    int i;
+
+    for (i=0; i<n; i++)
+    {
+        STD += ((float)readings[i]-mean)*((float)readings[i]-mean)/(float)n;
+    }
+
+    STD = sqrt(STD);
+
+    return (int16_t)(STD+0.5);
+}
+
 //Configures to 9600 baud rate at this clock speed
 const eUSCI_UART_Config uartConfig =
 {
@@ -156,7 +224,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        7,                                  // 128 kHz / 128 = 1 kHz
+        1,                                  // 32.768 kHz / 8 = 4096 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -178,7 +246,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        4// 16000 Period
+        1// 16000 Period
 };
 
 /* Statics */
@@ -200,6 +268,7 @@ int main(void)
     //Increase oscillator frequency to 128 kHz
     CS_setReferenceOscillatorFrequency(CS_REFO_32KHZ);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
+    //MAP_CS_initClockSignal(CS_SMCLK, CS_DCOCLK_SELECT, CS_CLOCK_DIVIDER_1);
 
     //Set serial pins to serial mode
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
@@ -298,6 +367,15 @@ int main(void)
             {
                 sendReading(resultsBuffer[i]);
             }
+
+            int16_t fft_max = max(resultsBuffer, (SAMPLES/2));
+            sendReading(fft_max);
+
+            int16_t fft_RMS = RMS(resultsBuffer, (SAMPLES/2));
+            sendReading(fft_RMS);
+
+            int16_t fft_std = STD(resultsBuffer, (SAMPLES/2));
+            sendReading(fft_std);
 
             resPos = 0;
             sendValues = 0;
