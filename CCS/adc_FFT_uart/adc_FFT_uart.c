@@ -383,10 +383,10 @@ int main(void)
     }
 }
 
-/* This interrupt is fired whenever a conversion is completed and placed in
- * ADC_MEM0 */
 void ADC14_IRQHandler(void)
 {
+    /* This interrupt is fired whenever a conversion is completed and placed in
+     * ADC_MEM0 */
     if(resPos < SAMPLES)
     {
         //resultsBuffer[resPos++] = MAP_ADC14_getResult(ADC_MEM0);

@@ -7,7 +7,7 @@ fs = 16384; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
-model_frequency = 2560;
+model_frequency = 6473;
 
 N = fs * T;
 
@@ -71,7 +71,9 @@ FT(:, 3) = model_F;
 
 figure
 subplot(2, 1, 1);
-plot(t, x);
+plot(t,(x/16384)*10*3.3);
+ylabel('Acceleration (g)')
+xlabel('Time (s)')
 %hold on
 %plot(t, model_x);
 subplot(2, 1, 2);
@@ -81,7 +83,10 @@ plot(FT(:, 1), FT(:, 2), 'rx', 'MarkerSize', 2);
 
 plot(FT(:, 1), FT(:, 3));
 legend('Board', 'ADC', 'Model');
-
+ylabel('Power (dB)')
+xlabel('Frequency (Hz)')
+xlim([0 fs/2])
+%%
 figure;
 plot(board_freq, board_F);
 hold on

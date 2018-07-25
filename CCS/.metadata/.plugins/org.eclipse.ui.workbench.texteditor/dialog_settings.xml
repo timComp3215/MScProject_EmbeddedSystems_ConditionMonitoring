@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="EUSCI_SPI_BUSY" key="selection"/>
+		<item value="ADC_MEM0" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="adc_mem0"/>
+			<item value="adcmem0"/>
+			<item value="sendValues"/>
+			<item value="adc14"/>
+			<item value="ADC_INPUT_A0"/>
+			<item value="ADC_INPUT_A1"/>
+			<item value="mclk"/>
+			<item value="SMCLK"/>
+			<item value="cs_init"/>
 			<item value="EUSCI_SPI_BUSY"/>
 			<item value="EUSCI"/>
 			<item value="fft"/>
 			<item value="SAMPLE_FREQ"/>
 			<item value="sampleBuf"/>
 			<item value="sampleBuffer"/>
-			<item value="SMCLK"/>
-			<item value="HSMCLK"/>
-			<item value="CS_SMCLK"/>
-			<item value="CS_HSMCLK"/>
-			<item value="CS_setDCOCenteredFrequency"/>
-			<item value="button_debounce"/>
-			<item value="adc"/>
-			<item value="MAP_Interrupt_enableInterr"/>
-			<item value="gpio"/>
 		</list>
 		<list key="replacehistory">
 		</list>

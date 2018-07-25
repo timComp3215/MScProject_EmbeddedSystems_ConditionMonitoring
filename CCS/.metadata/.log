@@ -4773,3 +4773,143 @@ com.ti.xpcom.XPCOMException: The function "findRegisterByName" returned an error
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:653)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:590)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1499)
+
+!ENTRY org.eclipse.jface 2 0 2018-07-25 16:41:34.152
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-07-25 16:41:34.152
+!MESSAGE A conflict occurred for ALT+E:
+Binding(ALT+E,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.command1,Terminal view insert,
+		,
+		Category(org.eclipse.tm.terminal.category1,Terminal view commands,Terminal view commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1dc9114,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.tm.terminal.TerminalContext,,,system)
+Binding(ALT+E,
+	ParameterizedCommand(Command(com.ti.ccstudio.debug.ui.command.restoreDebugState,Restore Debug State,
+		Restore debug state for the selected core(s),
+		Category(com.ti.ccstudio.debug.ui.commandCategory,Code Composer Studio Debug Commands,Set of commands for Code Composer Studio debug actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@e32b12,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.debug.ui.debugging,,,system)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-25 16:50:04.579
+!MESSAGE Indexed 'adc_FFT_Multi_Input' (6 sources, 73 headers) in 1.55 sec: 6,604 declarations; 11,883 references; 1 unresolved inclusions; 28 syntax errors; 1,703 unresolved names (8.4%)
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 16:50:47.383
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 16:57:38.505
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:04:07.466
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:10:54.539
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:18:03.227
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:23:36.063
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:29:10.444
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:34:22.880
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:42:57.259
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 17:54:36.989
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:05:38.879
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:15:16.489
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:23:12.641
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:33:10.208
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:47:31.772
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 18:54:02.223
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 19:07:18.583
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.ui.ide 4 4 2018-07-25 19:09:37.512
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2018-07-25 19:09:37.520
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2018-07-25 19:09:37.520
+!MESSAGE Could not write workspace metadata 'D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/.metadata/.plugins/org.eclipse.core.resources/.root/8.tree'.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.core.internal.watson.ElementTreeWriter.sortTrees(ElementTreeWriter.java:125)
+	at org.eclipse.core.internal.watson.ElementTreeWriter.writeDeltaChain(ElementTreeWriter.java:195)
+	at org.eclipse.core.internal.resources.SaveManager.writeTree(SaveManager.java:2011)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1411)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1190)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2283)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$5.run(IDEWorkbenchAdvisor.java:526)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+
+!ENTRY org.eclipse.core.resources 2 566 2018-07-25 19:09:38.466
+!MESSAGE null parent found while collapsing trees
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-07-25 19:09:38.478
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2018-07-25 19:11:41.952 -----------------------------------------------
+eclipse.buildId=4.7.1.M20171009-0410
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-07-25 19:11:46.798
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.ti.common.core 4 0 2018-07-25 19:11:46.983
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-07-25 19:11:46.984
+!MESSAGE debugServerDir=C:/ti/ccsv8/ccs_base/DebugServer
+
+!ENTRY org.eclipse.equinox.p2.updatechecker 4 0 2018-07-25 19:12:12.065
+!MESSAGE Exception in update check thread
+!STACK 0
+org.eclipse.core.runtime.OperationCanceledException
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:125)
+	at org.eclipse.equinox.internal.p2.transport.ecf.RepositoryTransport.download(RepositoryTransport.java:156)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadIndexFile(AbstractRepositoryManager.java:735)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:657)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-07-25 19:12:12.394
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.ti.ccstudio.app.center.internal.CCSAppCenter$2
