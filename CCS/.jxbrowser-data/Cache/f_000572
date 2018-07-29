@@ -2190,10 +2190,10 @@
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_MSP432E4SDK",
-        "versionRange": "2.20.00.06",
+        "versionRange": "2.20.01.04",
         "require": "optional",
-        "semver": "2.20.0",
-        "version": "2.20.00.06"
+        "semver": "2.20.1",
+        "version": "2.20.01.04"
       }
     ],
     "allowPartialDownload": false,
@@ -3039,6 +3039,94 @@
     ]
   },
   {
+    "metadataVersion": "3.0.0",
+    "id": "com.ti.SIMPLELINK_CC2640R2_SDK",
+    "name": "SimpleLink CC2640R2 SDK",
+    "version": "2.20.00.49",
+    "type": "software",
+    "devices": [
+      "CC26X0",
+      "CC2640R2F"
+    ],
+    "allowPartialDownload": false,
+    "image": "simplelink_cc2640r2_sdk_2_20_00_49/.metadata/.tirex/cc2640r2-tirex.png",
+    "license": "simplelink_cc2640r2_sdk_2_20_00_49/license_simplelink_cc2640r2_sdk_2_20_00_49.txt",
+    "dependencies": [
+      {
+        "version": "3.50.07.20",
+        "require": "optional",
+        "refId": "xdctools",
+        "semver": "3.50.7",
+        "versionRange": "3.50.07.20"
+      }
+    ],
+    "description": "Welcome to the SimpleLink CC2640R2 SDK",
+    "_id": "BV3P7JlgLrNuug",
+    "package": "SimpleLink CC2640R2 SDK",
+    "semver": "2.20.0",
+    "advanced": {},
+    "rootCategory": [
+      "Software",
+      "SimpleLink CC2640R2 SDK"
+    ],
+    "categories": [
+      [
+        "Software"
+      ]
+    ],
+    "packagePath": "simplelink_cc2640r2_sdk_2_20_00_49",
+    "packageOrder": 49,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.SIMPLELINK_CC2640R2_SDK__2.20.00.49"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.SIMPLELINK_CC2640R2_SDK",
+    "packageVersion": "2.20.00.49",
+    "packageUId": "com.ti.SIMPLELINK_CC2640R2_SDK__2.20.00.49",
+    "includedFilesForDownload": [
+      "simplelink_cc2640r2_sdk_2_20_00_49"
+    ],
+    "fullPaths": [
+      [
+        "Software"
+      ]
+    ],
+    "devicesVariants": [
+      "CC2640R2F"
+    ],
+    "devtools": [
+      "CC2640R2 LaunchPad",
+      "CC2640R2 Remote Control",
+      "SEGGER J-Link",
+      "IAR I-JET",
+      "IAR Embedded Workbench for ARM",
+      "ELPROTRONIC",
+      "SEGGER",
+      "ELNEC",
+      "BPM Microsystems",
+      "DATA IO",
+      "Sensor Controller Studio",
+      "SmartRF Studio",
+      "SmartRF Packet Sniffer 2",
+      "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
+      "Code Composer Studio (CCS)",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe"
+    ]
+  },
+  {
     "description": "Welcome to the SimpleLink CC32XX SDK",
     "version": "1.30.01.03",
     "metadataVersion": "2.1.0",
@@ -3082,7 +3170,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_1_30_01_03",
-    "packageOrder": 49,
+    "packageOrder": 50,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3168,7 +3256,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_1_40_00_03",
-    "packageOrder": 50,
+    "packageOrder": 51,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3254,7 +3342,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_1_40_01_00",
-    "packageOrder": 51,
+    "packageOrder": 52,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3341,7 +3429,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_1_50_00_06",
-    "packageOrder": 52,
+    "packageOrder": 53,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3428,7 +3516,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_1_60_00_04",
-    "packageOrder": 53,
+    "packageOrder": 54,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3515,7 +3603,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_2_10_00_04",
-    "packageOrder": 54,
+    "packageOrder": 55,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3571,7 +3659,7 @@
     ],
     "license": "simplelink_cc32xx_sdk_2_20_00_10/license_simplelink_cc32xx_sdk_2_20_00_10.txt",
     "metadataVersion": "2.1.0",
-    "name": "SimpleLink CC3220 SDK",
+    "name": "SimpleLink CC32xx SDK",
     "dependencies": [
       {
         "version": "3.50.07.20",
@@ -3582,19 +3670,19 @@
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC32XXSDK",
-        "versionRange": "2.10.00.16",
+        "versionRange": "2.20.01.04",
         "require": "optional",
-        "semver": "2.10.0",
-        "version": "2.10.00.16"
+        "semver": "2.20.1",
+        "version": "2.20.01.04"
       }
     ],
-    "_id": "BV3J4mW21btWWg",
-    "package": "SimpleLink CC3220 SDK",
+    "_id": "BV3hHl7EUNLyrU",
+    "package": "SimpleLink CC32xx SDK",
     "semver": "2.20.0",
     "advanced": {},
     "rootCategory": [
       "Software",
-      "SimpleLink CC3220 SDK"
+      "SimpleLink CC32xx SDK"
     ],
     "categories": [
       [
@@ -3602,7 +3690,7 @@
       ]
     ],
     "packagePath": "simplelink_cc32xx_sdk_2_20_00_10",
-    "packageOrder": 55,
+    "packageOrder": 56,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3684,7 +3772,7 @@
       ]
     ],
     "packagePath": "simplelink_cc2640r2_sdk_ble_example_pack_1_30_00_27",
-    "packageOrder": 56,
+    "packageOrder": 57,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3777,7 +3865,7 @@
       ]
     ],
     "packagePath": "simplelink_cc2640r2_sdk_ble_example_pack_1_35_00_37",
-    "packageOrder": 57,
+    "packageOrder": 58,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3870,7 +3958,7 @@
       ]
     ],
     "packagePath": "simplelink_cc2640r2_sdk_ble_example_pack_1_40_00_50",
-    "packageOrder": 58,
+    "packageOrder": 59,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -3963,7 +4051,7 @@
       ]
     ],
     "packagePath": "simplelink_cc2640r2_sdk_ble_example_pack_1_50_00_62",
-    "packageOrder": 59,
+    "packageOrder": 60,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4068,7 +4156,7 @@
       ]
     ],
     "packagePath": "simplelink_msp432_sdk_bluetooth_plugin_1_20_00_42",
-    "packageOrder": 60,
+    "packageOrder": 61,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4184,7 +4272,7 @@
       ]
     ],
     "packagePath": "simplelink_msp432_sdk_bluetooth_plugin_1_25_00_42",
-    "packageOrder": 61,
+    "packageOrder": 62,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4298,7 +4386,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_ble_plugin_1_30_00_42",
-    "packageOrder": 62,
+    "packageOrder": 63,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4412,7 +4500,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_ble_plugin_1_30_01_42",
-    "packageOrder": 63,
+    "packageOrder": 64,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4534,7 +4622,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_ble_plugin_1_40_00_42",
-    "packageOrder": 64,
+    "packageOrder": 65,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4637,7 +4725,7 @@
       ]
     ],
     "packagePath": "simplelink_msp432_sdk_wifi_plugin_1_30_00_03",
-    "packageOrder": 65,
+    "packageOrder": 66,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4748,7 +4836,7 @@
       ]
     ],
     "packagePath": "simplelink_msp432_sdk_wifi_plugin_1_40_00_02",
-    "packageOrder": 66,
+    "packageOrder": 67,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4871,7 +4959,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_wifi_plugin_1_50_00_38",
-    "packageOrder": 67,
+    "packageOrder": 68,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -4987,7 +5075,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_wifi_plugin_1_55_00_42",
-    "packageOrder": 68,
+    "packageOrder": 69,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5103,7 +5191,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_wifi_plugin_1_60_00_07",
-    "packageOrder": 69,
+    "packageOrder": 70,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5211,7 +5299,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_voice_detection_plugin_1_50_00_15",
-    "packageOrder": 70,
+    "packageOrder": 71,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5334,7 +5422,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_ti_15_4_stack_plugin_1_60_00_16",
-    "packageOrder": 71,
+    "packageOrder": 72,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5460,7 +5548,7 @@
       ]
     ],
     "packagePath": "simplelink_sdk_ti_15_4_stack_plugin_2_20_00_05",
-    "packageOrder": 72,
+    "packageOrder": 73,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5573,7 +5661,7 @@
       ]
     ],
     "packagePath": "simplelink_zigbee_sdk_plugin_1_60_00_14",
-    "packageOrder": 73,
+    "packageOrder": 74,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5672,7 +5760,7 @@
       ]
     ],
     "packagePath": "simplelink_zigbee_sdk_plugin_1_60_01_09",
-    "packageOrder": 74,
+    "packageOrder": 75,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5753,6 +5841,13 @@
         "refId": "com.ti.SIMPLELINK_CC13X2_SDK",
         "semver": "2.20.0",
         "versionRange": "2.20.00.71"
+      },
+      {
+        "refId": "com.ti.SIMPLELINK_ACADEMY_ZIGBEEPLUGIN",
+        "versionRange": "2.20.02.02",
+        "require": "optional",
+        "semver": "2.20.2",
+        "version": "2.20.02.02"
       }
     ],
     "description": "<p>The SimpleLink� Zigbee SDK Plugin is a companion package to SimpleLink CC13X2 and CC26X2 SDKs, providing software and tool options for customers developing wireless applications for the Zigbee protocol.</p>",
@@ -5774,7 +5869,7 @@
       ]
     ],
     "packagePath": "simplelink_zigbee_sdk_plugin_2_20_00_06",
-    "packageOrder": 75,
+    "packageOrder": 76,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5854,7 +5949,7 @@
       ]
     ],
     "packagePath": "energia_core_18.0.0",
-    "packageOrder": 76,
+    "packageOrder": 77,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5903,7 +5998,7 @@
       ]
     ],
     "packagePath": "energia_tool_arm-none-eabi-gcc_6.3.1-20170620",
-    "packageOrder": 77,
+    "packageOrder": 78,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -5951,7 +6046,7 @@
       ]
     ],
     "packagePath": "energia_tool_ino2cpp_1.0.3",
-    "packageOrder": 78,
+    "packageOrder": 79,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6023,7 +6118,7 @@
       ]
     ],
     "packagePath": "energia_cc13xx_5.20.0",
-    "packageOrder": 79,
+    "packageOrder": 80,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6096,7 +6191,7 @@
       ]
     ],
     "packagePath": "energia_cc3220emt_5.6.2",
-    "packageOrder": 80,
+    "packageOrder": 81,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6169,7 +6264,7 @@
       ]
     ],
     "packagePath": "energia_msp432r_5.6.1",
-    "packageOrder": 81,
+    "packageOrder": 82,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6225,7 +6320,7 @@
       ]
     ],
     "packagePath": "watson_msp432e4_1_00_00_04",
-    "packageOrder": 82,
+    "packageOrder": 83,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6307,7 +6402,7 @@
       ]
     ],
     "packagePath": "watson_msp432e4_1_00_01_01",
-    "packageOrder": 83,
+    "packageOrder": 84,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6389,7 +6484,7 @@
       ]
     ],
     "packagePath": "watson_cc32xx_1_00_00_04",
-    "packageOrder": 84,
+    "packageOrder": 85,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6463,7 +6558,7 @@
       ]
     ],
     "packagePath": "watson_cc32xx_1_00_01_01",
-    "packageOrder": 85,
+    "packageOrder": 86,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6566,7 +6661,7 @@
       ]
     ],
     "packagePath": "sail_1_00_00_09",
-    "packageOrder": 86,
+    "packageOrder": 87,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6698,7 +6793,7 @@
       ]
     ],
     "packagePath": "sail_1_10_00_06",
-    "packageOrder": 87,
+    "packageOrder": 88,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6837,7 +6932,7 @@
       ]
     ],
     "packagePath": "sail_1_20_00_02",
-    "packageOrder": 88,
+    "packageOrder": 89,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -6933,7 +7028,7 @@
       ]
     ],
     "packagePath": "azure_cc3220_1_00_00_10",
-    "packageOrder": 89,
+    "packageOrder": 90,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7007,7 +7102,7 @@
       ]
     ],
     "packagePath": "aws_cc3220_1_00_00_12",
-    "packageOrder": 90,
+    "packageOrder": 91,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7081,7 +7176,7 @@
       ]
     ],
     "packagePath": "aws_cc3220_1_10_00_07",
-    "packageOrder": 91,
+    "packageOrder": 92,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7150,7 +7245,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_00_00_Software",
-    "packageOrder": 132,
+    "packageOrder": 137,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7199,7 +7294,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_01_00",
-    "packageOrder": 133,
+    "packageOrder": 138,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7248,7 +7343,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_02_00_Software",
-    "packageOrder": 134,
+    "packageOrder": 139,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7297,7 +7392,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_03_00_Software",
-    "packageOrder": 135,
+    "packageOrder": 140,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7346,7 +7441,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_04_00_Software",
-    "packageOrder": 136,
+    "packageOrder": 141,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7395,7 +7490,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_05_00_Software",
-    "packageOrder": 137,
+    "packageOrder": 142,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7452,7 +7547,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_00_00_00",
-    "packageOrder": 138,
+    "packageOrder": 143,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7509,7 +7604,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_00_01_00",
-    "packageOrder": 139,
+    "packageOrder": 144,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7566,7 +7661,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_01_00_00",
-    "packageOrder": 140,
+    "packageOrder": 145,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7613,7 +7708,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_00_00_00",
-    "packageOrder": 141,
+    "packageOrder": 146,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7661,7 +7756,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_01_00_00",
-    "packageOrder": 142,
+    "packageOrder": 147,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7709,7 +7804,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_02_00_00",
-    "packageOrder": 143,
+    "packageOrder": 148,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7777,7 +7872,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_0_2",
-    "packageOrder": 144,
+    "packageOrder": 149,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7867,7 +7962,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_0_4",
-    "packageOrder": 145,
+    "packageOrder": 150,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7957,7 +8052,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_1_3",
-    "packageOrder": 146,
+    "packageOrder": 151,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8047,7 +8142,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_2_1",
-    "packageOrder": 147,
+    "packageOrder": 152,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8137,7 +8232,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_3_0",
-    "packageOrder": 148,
+    "packageOrder": 153,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8227,7 +8322,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_4_3",
-    "packageOrder": 149,
+    "packageOrder": 154,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8317,7 +8412,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_5_5",
-    "packageOrder": 150,
+    "packageOrder": 155,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8399,7 +8494,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_6_1",
-    "packageOrder": 151,
+    "packageOrder": 156,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8482,7 +8577,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_6_2",
-    "packageOrder": 152,
+    "packageOrder": 157,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8563,7 +8658,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_0_2",
-    "packageOrder": 155,
+    "packageOrder": 160,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8644,7 +8739,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_0_4",
-    "packageOrder": 153,
+    "packageOrder": 158,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8725,7 +8820,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_1_3",
-    "packageOrder": 154,
+    "packageOrder": 159,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8803,7 +8898,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_2_1",
-    "packageOrder": 156,
+    "packageOrder": 161,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8880,7 +8975,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_3_0",
-    "packageOrder": 157,
+    "packageOrder": 162,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8961,7 +9056,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_4_3",
-    "packageOrder": 158,
+    "packageOrder": 163,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9042,7 +9137,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_5_5",
-    "packageOrder": 159,
+    "packageOrder": 164,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9120,7 +9215,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_6_1",
-    "packageOrder": 160,
+    "packageOrder": 165,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9194,7 +9289,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_6_2",
-    "packageOrder": 161,
+    "packageOrder": 166,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9269,7 +9364,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_0_0",
-    "packageOrder": 162,
+    "packageOrder": 167,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9345,7 +9440,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_1_1",
-    "packageOrder": 163,
+    "packageOrder": 168,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9421,7 +9516,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_1_2",
-    "packageOrder": 164,
+    "packageOrder": 169,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9498,7 +9593,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_2_0",
-    "packageOrder": 165,
+    "packageOrder": 170,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9575,7 +9670,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_3_0",
-    "packageOrder": 166,
+    "packageOrder": 171,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9652,7 +9747,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_3_1",
-    "packageOrder": 167,
+    "packageOrder": 172,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9729,7 +9824,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_4_0",
-    "packageOrder": 168,
+    "packageOrder": 173,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9806,7 +9901,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_5_0",
-    "packageOrder": 169,
+    "packageOrder": 174,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9822,6 +9917,133 @@
     "linkType": "local",
     "includedFilesForDownload": [
       "mmwave_industrial_toolbox_2_5_0"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "Code Composer Studio (CCS)",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe"
+    ]
+  },
+  {
+    "metadataVersion": "3.0.0",
+    "id": "xdctools",
+    "name": "XDCTools",
+    "version": "3.50.05.12",
+    "image": "xdctools_3_50_05_12_core/.metadata/.tirex/logo.png",
+    "type": "software",
+    "description": "Tools for developing and using embedded target content that extends or depends on <a href:\"http://www.eclipse.org/rtsc\">RTSC</a>",
+    "allowPartialDownload": false,
+    "_id": "BV3r9SrIA4slSI",
+    "package": "XDCTools",
+    "semver": "3.50.5",
+    "advanced": {},
+    "dependencies": [],
+    "rootCategory": [
+      "Software",
+      "XDCTools"
+    ],
+    "categories": [
+      [
+        "Software"
+      ]
+    ],
+    "packagePath": "xdctools_3_50_05_12_core",
+    "packageOrder": 174,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "xdctools__3.50.05.12"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "xdctools",
+    "packageVersion": "3.50.05.12",
+    "packageUId": "xdctools__3.50.05.12",
+    "includedFilesForDownload": [
+      "xdctools_3_50_05_12_core"
+    ],
+    "fullPaths": [
+      [
+        "Software"
+      ]
+    ],
+    "devicesVariants": [],
+    "devices": [],
+    "local": "full",
+    "localPackagePath": "c:\\ti\\xdctools_3_50_05_12_core"
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.5.1",
+    "comment": "rc2",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_5_1/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_5_1/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3_yox1GLhniM",
+    "package": "Industrial Toolbox",
+    "semver": "2.5.1",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_5_1/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_5_1",
+    "packageOrder": 175,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.5.1"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.5.1",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.5.1",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_5_1"
     ],
     "fullPaths": [
       [
@@ -9879,7 +10101,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_1_0_0",
-    "packageOrder": 170,
+    "packageOrder": 176,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9950,7 +10172,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_1_2_0",
-    "packageOrder": 171,
+    "packageOrder": 177,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10021,7 +10243,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_0_0",
-    "packageOrder": 172,
+    "packageOrder": 178,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10092,7 +10314,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_1_1",
-    "packageOrder": 173,
+    "packageOrder": 179,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10163,7 +10385,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_1_2",
-    "packageOrder": 174,
+    "packageOrder": 180,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10204,56 +10426,6 @@
     ]
   },
   {
-    "metadataVersion": "3.0.0",
-    "id": "xdctools",
-    "name": "XDCTools",
-    "version": "3.50.05.12",
-    "image": "xdctools_3_50_05_12_core/.metadata/.tirex/logo.png",
-    "type": "software",
-    "description": "Tools for developing and using embedded target content that extends or depends on <a href:\"http://www.eclipse.org/rtsc\">RTSC</a>",
-    "allowPartialDownload": false,
-    "_id": "BV3r9SrIA4slSI",
-    "package": "XDCTools",
-    "semver": "3.50.5",
-    "advanced": {},
-    "dependencies": [],
-    "rootCategory": [
-      "Software",
-      "XDCTools"
-    ],
-    "categories": [
-      [
-        "Software"
-      ]
-    ],
-    "packagePath": "xdctools_3_50_05_12_core",
-    "packageOrder": 174,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "xdctools__3.50.05.12"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "xdctools",
-    "packageVersion": "3.50.05.12",
-    "packageUId": "xdctools__3.50.05.12",
-    "includedFilesForDownload": [
-      "xdctools_3_50_05_12_core"
-    ],
-    "fullPaths": [
-      [
-        "Software"
-      ]
-    ],
-    "devicesVariants": [],
-    "devices": [],
-    "local": "full",
-    "localPackagePath": "c:\\ti\\xdctools_3_50_05_12_core"
-  },
-  {
     "id": "msp430ware",
     "installFolder": {
       "mac": "msp/MSP430Ware_3_60_00_10",
@@ -10288,7 +10460,7 @@
       ]
     ],
     "packagePath": "msp/MSP430Ware_3_60_00_10",
-    "packageOrder": 175,
+    "packageOrder": 181,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10343,7 +10515,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_02_10",
-    "packageOrder": 176,
+    "packageOrder": 182,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10398,7 +10570,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_03_07",
-    "packageOrder": 177,
+    "packageOrder": 183,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10453,7 +10625,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_04_05",
-    "packageOrder": 178,
+    "packageOrder": 184,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10468,54 +10640,6 @@
     "packageUId": "msp430ware__3.80.04.05",
     "includedFilesForDownload": [
       "msp430ware_3_80_04_05"
-    ],
-    "fullPaths": [
-      [
-        "Software"
-      ]
-    ],
-    "devicesVariants": [],
-    "devices": [],
-    "type": "software"
-  },
-  {
-    "allowPartialDownload": false,
-    "version": "2.1.3.156",
-    "name": "TM4C ARM Cortex-M4F MCU",
-    "id": "tm4c",
-    "license": "TivaWare_C_Series-2.1.3.156/EULA.txt",
-    "description": "Texas Instruments' TM4C12x MCUs offer the industry’s popular ARM® Cortex®-M4F core with scalable memory and package options, unparalleled connectivity peripherals, advanced application functions, industry-leading analog integration, and extensive software solutions. In addition, Texas Instruments offers a complete solution to get to market quickly, with evaluation and development boards, white papers, application notes, an easy-to-use peripheral driver library, and a strong support, sales, and distributor network.</p><p>For more information, go to <a target='_blank' href='http://www.ti.com/lsds/ti/microcontrollers_16-bit_32-bit/c2000_performance/control_automation/tm4c12x/overview.page'>TM4C12x MCUs</a>.</p><p><br><font size=2>LaunchPad, BoosterPack, and TivaWare are trademarks of Texas Instruments.<br>ARM and Cortex are registered trademarks of ARM Limited.<br>microSD is a registered trademark of SD-3C, LLC.<br>OLED is a registered trademark of LG Electronics Inc. Corporation.<br>All other trademarks are the property of their respective owners.</font></p>",
-    "image": "TivaWare_C_Series-2.1.3.156/.metadata/images/TivaWare.png",
-    "_id": "BV3EsF-KuytKGM",
-    "package": "TM4C ARM Cortex-M4F MCU",
-    "semver": "2.1.3",
-    "advanced": {},
-    "dependencies": [],
-    "rootCategory": [
-      "Software",
-      "TM4C ARM Cortex-M4F MCU"
-    ],
-    "categories": [
-      [
-        "Software"
-      ]
-    ],
-    "packagePath": "TivaWare_C_Series-2.1.3.156",
-    "packageOrder": 179,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "tm4c__2.1.3.156"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "tm4c",
-    "packageVersion": "2.1.3.156",
-    "packageUId": "tm4c__2.1.3.156",
-    "includedFilesForDownload": [
-      "TivaWare_C_Series-2.1.3.156"
     ],
     "fullPaths": [
       [
@@ -10548,7 +10672,7 @@
       ]
     ],
     "packagePath": "Sitara_1_02_00_00",
-    "packageOrder": 180,
+    "packageOrder": 185,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10572,6 +10696,84 @@
     "devicesVariants": [],
     "devices": [],
     "type": "software"
+  },
+  {
+    "id": "tm4c",
+    "name": "TM4C ARM® Cortex®-M4F MCU",
+    "version": "2.1.4.178",
+    "type": "software",
+    "license": "tivaware_c_series_2_1_4_178/EULA.txt",
+    "image": "tivaware_c_series_2_1_4_178/.metadata/images/TivaWare.png",
+    "description": "Texas Instruments' TM4C12x MCUs offer the industry’s popular ARM® Cortex®-M4F core with scalable memory and package options, unparalleled connectivity peripherals, advanced application functions, industry-leading analog integration, and extensive software solutions. In addition, Texas Instruments offers a complete solution to get to market quickly, with evaluation and development boards, white papers, application notes, an easy-to-use peripheral driver library, and a strong support, sales, and distributor network.</p><p>For more information, go to <a target='_blank' href='http://www.ti.com/lsds/ti/microcontrollers_16-bit_32-bit/c2000_performance/control_automation/tm4c12x/overview.page'>TM4C12x MCUs</a>.</p><p><br><font size=2>LaunchPad, BoosterPack, and TivaWare are trademarks of Texas Instruments.<br>ARM and Cortex are registered trademarks of ARM Limited.<br>microSD is a registered trademark of SD-3C, LLC.<br>OLED is a registered trademark of LG Electronics Inc. Corporation.<br>All other trademarks are the property of their respective owners.</font></p>",
+    "devices": [
+      "TM4C",
+      "TM4C129X",
+      "TM4C123X",
+      "TM4C123GH6PGE",
+      "TM4C129XNCZAD",
+      "TM4C1294NCPDT",
+      "TM4C129ENCPDT",
+      "TM4C123GH6PM"
+    ],
+    "metadataVersion": "3.0.0",
+    "_id": "BV3o-QYylUnKjY",
+    "package": "TM4C ARM® Cortex®-M4F MCU",
+    "semver": "2.1.4",
+    "advanced": {},
+    "dependencies": [],
+    "rootCategory": [
+      "Software",
+      "TM4C ARM® Cortex®-M4F MCU"
+    ],
+    "allowPartialDownload": false,
+    "categories": [
+      [
+        "Software"
+      ]
+    ],
+    "packagePath": "tivaware_c_series_2_1_4_178",
+    "packageOrder": 186,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "tm4c__2.1.4.178"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "tm4c",
+    "packageVersion": "2.1.4.178",
+    "packageUId": "tm4c__2.1.4.178",
+    "includedFilesForDownload": [
+      "tivaware_c_series_2_1_4_178"
+    ],
+    "fullPaths": [
+      [
+        "Software"
+      ]
+    ],
+    "devicesVariants": [
+      "TM4C129X",
+      "TM4C123X",
+      "TM4C123GH6PGE",
+      "TM4C129XNCZAD",
+      "TM4C1294NCPDT",
+      "TM4C129ENCPDT",
+      "TM4C123GH6PM"
+    ],
+    "devtools": [
+      "Code Composer Studio (CCS)",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe"
+    ]
   },
   {
     "id": "tirtos_msp43x",
@@ -10603,7 +10805,7 @@
       ]
     ],
     "packagePath": "tirtos_msp43x_2_20_00_06",
-    "packageOrder": 181,
+    "packageOrder": 187,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10658,7 +10860,7 @@
       ]
     ],
     "packagePath": "tirtos_cc13xx_cc26xx_2_21_00_06",
-    "packageOrder": 182,
+    "packageOrder": 188,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10713,7 +10915,7 @@
       ]
     ],
     "packagePath": "tirtos_tivac_2_16_00_08",
-    "packageOrder": 183,
+    "packageOrder": 189,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10768,7 +10970,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_01_00_03",
-    "packageOrder": 184,
+    "packageOrder": 190,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10823,7 +11025,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_00_06",
-    "packageOrder": 185,
+    "packageOrder": 191,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10878,7 +11080,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_01_09",
-    "packageOrder": 186,
+    "packageOrder": 192,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10925,7 +11127,7 @@
       ]
     ],
     "packagePath": "bios_6_50_01_12",
-    "packageOrder": 187,
+    "packageOrder": 193,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10971,7 +11173,7 @@
       ]
     ],
     "packagePath": "xdctools_3_30_04_52_core",
-    "packageOrder": 188,
+    "packageOrder": 194,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11020,7 +11222,7 @@
       ]
     ],
     "packagePath": "xdctools_3_31_01_33_core",
-    "packageOrder": 189,
+    "packageOrder": 195,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11066,7 +11268,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_00_06_core",
-    "packageOrder": 190,
+    "packageOrder": 196,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11112,7 +11314,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_01_22_core",
-    "packageOrder": 191,
+    "packageOrder": 197,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11158,7 +11360,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_00_10_core",
-    "packageOrder": 192,
+    "packageOrder": 198,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11204,7 +11406,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_01_12_core",
-    "packageOrder": 193,
+    "packageOrder": 199,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11250,7 +11452,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_02_20_core",
-    "packageOrder": 194,
+    "packageOrder": 200,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11299,7 +11501,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_03_33_core",
-    "packageOrder": 195,
+    "packageOrder": 201,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11347,7 +11549,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_04_43_core",
-    "packageOrder": 196,
+    "packageOrder": 202,
     "resourceType": "packageOverview",
     "includedResources": [
       {

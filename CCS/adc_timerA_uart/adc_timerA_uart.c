@@ -167,7 +167,7 @@ const Timer_A_CompareModeConfig compareConfig =
 /* Statics */
 volatile int16_t resultsBuffer[SAMPLES];
 volatile uint16_t resPos = 0;
-volatile uint8_t sendValues = 0;
+volatile uint8_t stateCounter = 0;
 
 int main(void)
 {
@@ -247,7 +247,7 @@ int main(void)
     while (1)
     {
         //MAP_PCM_gotoLPM0();
-        if (sendValues == 1)
+        if (stateCounter == 1)
         {
             //Calculate average
             /*float mean = 0.0;
@@ -274,7 +274,7 @@ int main(void)
                 sendReading(resultsBuffer[i]);
             }
             resPos = 0;
-            sendValues = 0;
+            stateCounter = 0;
         }
     }
 }
@@ -314,7 +314,7 @@ void ADC14_IRQHandler(void)
         //Stop reading values
         MAP_Interrupt_disableInterrupt(INT_ADC14);
         //Send values
-        sendValues = 1;
+        stateCounter = 1;
     }
 }
 
