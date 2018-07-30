@@ -5632,3 +5632,63 @@ java.io.IOException: Error opening \\.\COM4 (5)
 
 !ENTRY org.eclipse.e4.ui.workbench 1 0 2018-07-29 20:06:47.885
 !MESSAGE REX Sending 'GET' request to URL : http://localhost:55432/api/exit
+!SESSION 2018-07-30 12:06:04.368 -----------------------------------------------
+eclipse.buildId=4.7.1.M20171009-0410
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-07-30 12:06:07.881
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-07-30 12:06:07.921
+!MESSAGE debugServerDir=C:/ti/ccsv8/ccs_base/DebugServer
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-07-30 12:06:56.708
+!MESSAGE DS_ERROR: CS_DAP_0: Error connecting to the target: (Error -260 @ 0x0) An attempt to connect to the XDS110 failed. The cause may be one or more of: no XDS110 is connected, invalid firmware update, invalid XDS110 serial number, or faulty USB cable. The firmware and serial number may be updated using the xdsdfu utility found in the .../ccs_base/common/uscif/xds110 directory of your installation. View the ReadMe.txt file there for instructions. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-07-30 12:06:57.012
+!MESSAGE DS_ERROR: Error connecting to the target:
+(Error -260 @ 0x0)
+An attempt to connect to the XDS110 failed.
+The cause may be one or more of: no XDS110 is connected, invalid
+firmware update, invalid XDS110 serial number, or faulty USB
+cable. The firmware and serial number may be updated using the
+xdsdfu utility found in the .../ccs_base/common/uscif/xds110
+directory of your installation. View the ReadMe.txt file there
+for instructions.
+(Emulation package 8.0.27.9)
+
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-07-30 12:10:27.577
+!MESSAGE Indexed 'uart_adc_multi' (4 sources, 39 headers) in 1.11 sec: 2,594 declarations; 3,602 references; 0 unresolved inclusions; 24 syntax errors; 1,906 unresolved names (24%)
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-07-30 12:14:34.984
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-07-30 12:14:34.988
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.jface 2 0 2018-07-30 12:14:52.004
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-07-30 12:14:52.004
+!MESSAGE A conflict occurred for ALT+E:
+Binding(ALT+E,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.command1,Terminal view insert,
+		,
+		Category(org.eclipse.tm.terminal.category1,Terminal view commands,Terminal view commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@d34a99,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.tm.terminal.TerminalContext,,,system)
+Binding(ALT+E,
+	ParameterizedCommand(Command(com.ti.ccstudio.debug.ui.command.restoreDebugState,Restore Debug State,
+		Restore debug state for the selected core(s),
+		Category(com.ti.ccstudio.debug.ui.commandCategory,Code Composer Studio Debug Commands,Set of commands for Code Composer Studio debug actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ce0551,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.debug.ui.debugging,,,system)
