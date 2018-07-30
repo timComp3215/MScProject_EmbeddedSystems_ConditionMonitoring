@@ -1,6 +1,6 @@
 #define __unsigned_chars__ 1	/* Predefined */
 #define __DATE__ "Jul 30 2018"	/* Predefined */
-#define __TIME__ "12:10:45"	/* Predefined */
+#define __TIME__ "19:02:33"	/* Predefined */
 #define __STDC__ 1	/* Predefined */
 #define __STDC_VERSION__ 199409L	/* Predefined */
 #define __STDC_HOSTED__ 1	/* Predefined */

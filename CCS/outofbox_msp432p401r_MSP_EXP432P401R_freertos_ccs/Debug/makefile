@@ -22,7 +22,7 @@ $(GEN_CMDS__FLAG) \
 -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" \
 -l"ti/drivers/lib/drivers_msp432p401x.aem4f" \
 -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" \
--l"C:/ti/Tim/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib" \
+-l"D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib" \
 -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" \
 -llibc.a \
 
@@ -148,10 +148,10 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs.out"
 
 dependents:
-	-cd C:/ti/Tim/freertos_builds_MSP_EXP432P401R_release_ccs/Debug && $(MAKE) clean all
+	-cd D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/freertos_builds_MSP_EXP432P401R_release_ccs/Debug && $(MAKE) clean all
 
 # Tool invocations
-outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) C:/ti/Tim/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib
+outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS) D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
 	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs.map" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/lib" -i"C:/ti/simplelink_msp432p4_sdk_2_10_00_14/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include" --reread_libs --diag_suppress=10063 --diag_wrap=off --display_error_number --warn_sections --xml_link_info="outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs_linkInfo.xml" --rom_model -o "outofbox_msp432p401r_MSP_EXP432P401R_freertos_ccs.out" $(ORDERED_OBJS)
@@ -175,7 +175,7 @@ clean:
 
 .PHONY: all clean dependents
 .SECONDARY:
-C:/ti/Tim/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib:
+D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/freertos_builds_MSP_EXP432P401R_release_ccs/Debug/freertos_builds_MSP_EXP432P401R_release_ccs.lib:
 
 -include ../makefile.targets
 

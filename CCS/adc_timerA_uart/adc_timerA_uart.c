@@ -63,7 +63,7 @@
 #include <stdbool.h>
 
 //Sample size
-#define SAMPLES 16
+#define SAMPLES 256
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -161,8 +161,8 @@ void configure_analog(uint8_t channel)
     //Configure the ADC14 for either channel A0 or A1
 
     //Disable interrupts
-    ADC14_disableInterrupt(ADC_INT0);
-    Interrupt_disableInterrupt(INT_ADC14);
+    //ADC14_disableInterrupt(ADC_INT0);
+    //Interrupt_disableInterrupt(INT_ADC14);
 
     //Disable conversion
     ADC14_disableConversion();
@@ -200,7 +200,7 @@ void configure_analog(uint8_t channel)
 
     ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
 
-    ADC14_enableInterrupt(ADC_INT0);
+    //ADC14_enableInterrupt(ADC_INT0);
     //Interrupt_enableInterrupt(INT_ADC14);
 
     /* Tell ADC to wait for request on each sample - Conversion Trigger */
@@ -258,9 +258,10 @@ int main(void)
     //MAP_ADC14_setResolution(ADC_14BIT);
 
     /* Configuring GPIOs (5.5 - A0, 5.4 - A1, 6.0 - A15) */
-    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5, GPIO_PIN5,
-    GPIO_TERTIARY_MODULE_FUNCTION);
-
+    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5, GPIO_PIN5 | GPIO_PIN4,
+           GPIO_TERTIARY_MODULE_FUNCTION);
+    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN0,
+           GPIO_TERTIARY_MODULE_FUNCTION);
 
     /* Configuring ADC Memory */
     //MAP_ADC14_configureSingleSampleMode(ADC_MEM0, true);
@@ -285,27 +286,43 @@ int main(void)
     configure_analog(0);
 
     /* Enabling Interrupts */
-    MAP_Interrupt_enableInterrupt(INT_ADC14);
+    //MAP_Interrupt_enableInterrupt(INT_ADC14);
     MAP_Interrupt_enableMaster();
 
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
     int i;
+    int analogPin = 1;
 
     while (1)
     {
         //MAP_PCM_gotoLPM0();
         if (stateCounter == 1)
         {
+            //Reset ADC results buffer counter
+            resPos = 0;
+            //stateCounter = 0;
+
             //average_preprocess(resultsBuffer, SAMPLES);
 
             for (i=0; i<SAMPLES; i++)
             {
                 sendReading(resultsBuffer[i]);
             }
-            resPos = 0;
+
+            //Seemingly unnecessary pause in program execution
+            //i=0;
+            //while (i < 1000000)
+            //{
+            //    i++;
+            //}
+
+            //resPos = 0;
             stateCounter = 0;
+
+            configure_analog((analogPin%3));
+            analogPin++;
         }
     }
 }
@@ -322,7 +339,8 @@ void ADC14_IRQHandler(void)
     else
     {
         //Stop reading values
-        MAP_Interrupt_disableInterrupt(INT_ADC14);
+        Interrupt_disableInterrupt(INT_ADC14);
+        ADC14_disableInterrupt(ADC_INT0);
         //Send values
         stateCounter = 1;
     }
@@ -337,7 +355,8 @@ void PORT1_IRQHandler(void)
     if (status & GPIO_PIN1)
     {
         //Enable ADC reads
-        MAP_Interrupt_enableInterrupt(INT_ADC14);
+        ADC14_enableInterrupt(ADC_INT0);
+        Interrupt_enableInterrupt(INT_ADC14);
     }
 }
 

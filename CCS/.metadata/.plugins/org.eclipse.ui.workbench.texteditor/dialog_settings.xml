@@ -2,17 +2,17 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="NMEA_msg" key="selection"/>
+		<item value="resPos" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="resPos"/>
 			<item value="NMEA_msg"/>
 			<item value="calendarTime"/>
 			<item value="stateCounter"/>
 			<item value="state counter"/>
-			<item value="resPos"/>
 			<item value="MAP_ADC14_enableInterrupt(ADC_INT1);"/>
 			<item value="EUSCI_SPI_BUSY"/>
 			<item value="EUSCI"/>
