@@ -32,35 +32,27 @@
 /*******************************************************************************
  * MSP432 ADC14 - Single Channel Continuous Sample w/ Timer_A Trigger
  *
- * Description: In this ADC14 code example, a single input channel is sampled
- * using the standard 3.3v reference. The source of the sample trigger for this
- * example is Timer_A CCR1. The ADC is setup to continuously sample/convert
- * from A0 when the trigger starts and store the results in resultsBuffer (it
- * is setup to be a circular buffer where resPos overflows to 0). Timer_A is
- * setup in Up mode and a Compare value of 16384  is set as the compare trigger
- *  and reset trigger. Once the Timer_A is started, after 0.5s it will trigger
- * the ADC14 to start conversions. Essentially this example will use
- * the Timer_A module to trigger an ADC conversion every 0.5 seconds.
+
  *
  *                MSP432P401
  *             ------------------
  *         /|\|                  |
  *          | |                  |
- *          --|RST         P5.5  |<--- A0 (Analog Input)
+ *          --|RST         P5.5  |<--- A0  (Analog Input)
+ *            |            P5.4  |<--- A1  (Analog Input)
+ *            |                  |
+ *            |            P6.0  |<--- A15 (Analog Input)
  *            |                  |
  *            |                  |
- *            |                  |
- *            |                  |
- *            |                  |
- *
  *
  * Edited version of example code to send ADC reading over serial in ASCII
  * 9600 baud rate
  *
  * Read SAMPLES no of ADC reading on push button 1.1 (S1)
  *
- * Adding averaging function as preprocessing for FFT
- * Time data then centred around 0
+ * Remove averaging, add ability to read from one of 3 analog inputs
+ * Adding configure_analog function to do this
+ * Using this program as a testbed as it is more simple than FFT_uart program
  *
  ******************************************************************************/
 /* DriverLib Includes */
@@ -71,7 +63,7 @@
 #include <stdbool.h>
 
 //Sample size
-#define SAMPLES 512
+#define SAMPLES 16
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -135,17 +127,17 @@ const eUSCI_UART_Config uartConfig =
 };
 
 /* Timer_A Continuous Mode Configuration Parameter */
-/*const Timer_A_UpModeConfig upModeConfig =
+const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
-        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        125,
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 32.768 kHz
+        255,
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
-};*/
+};
 
-const Timer_A_UpModeConfig upModeConfig =
+/*const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_SMCLK,            // SMCLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 12 MHz
@@ -153,7 +145,7 @@ const Timer_A_UpModeConfig upModeConfig =
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
-};
+};*/
 
 /* Timer_A Compare Configuration Parameter */
 const Timer_A_CompareModeConfig compareConfig =
@@ -161,8 +153,62 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        100                                       // 16000 Period
+        254                                       // 16000 Period
 };
+
+void configure_analog(uint8_t channel)
+{
+    //Configure the ADC14 for either channel A0 or A1
+
+    //Disable interrupts
+    ADC14_disableInterrupt(ADC_INT0);
+    Interrupt_disableInterrupt(INT_ADC14);
+
+    //Disable conversion
+    ADC14_disableConversion();
+    //Disable ADC module
+    ADC14_disableModule();
+
+    //Enable ADC module
+    ADC14_enableModule();
+    ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
+            0);
+    ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
+    ADC14_setResolution(ADC_14BIT);
+
+    /* Configuring ADC Memory (ADC_MEM0 A15 in single sample mode)  */
+    ADC14_configureSingleSampleMode(ADC_MEM0, true);
+
+    /* Configure for input channel 15 (P6.0) and to use default Vref setting
+     * which uses Vcc = 3.3V */
+    if (channel == 0)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A0, false);
+    }
+    else if (channel == 1)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A1, false);
+    }
+    else if (channel == 2)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A15, false);
+
+    }
+
+    ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
+
+    ADC14_enableInterrupt(ADC_INT0);
+    //Interrupt_enableInterrupt(INT_ADC14);
+
+    /* Tell ADC to wait for request on each sample - Conversion Trigger */
+    //ADC14_enableSampleTimer(ADC_MANUAL_ITERATION);
+
+    /* Triggering the start of the sample */
+    ADC14_enableConversion();
+}
 
 /* Statics */
 volatile int16_t resultsBuffer[SAMPLES];
@@ -180,7 +226,7 @@ int main(void)
     /* Setting DCO to 12MHz */
     CS_setDCOCenteredFrequency(CS_DCO_FREQUENCY_12);
     //Increase oscillator frequency to 128 kHz
-    CS_setReferenceOscillatorFrequency(CS_REFO_128KHZ);
+    CS_setReferenceOscillatorFrequency(CS_REFO_32KHZ);
     MAP_CS_initClockSignal(CS_ACLK, CS_REFOCLK_SELECT, CS_CLOCK_DIVIDER_1);
 
     //Set serial pins to serial mode
@@ -205,20 +251,21 @@ int main(void)
     //MAP_Interrupt_enableInterrupt(INT_EUSCIA0);
 
     /* Initializing ADC (SMCLK/1/1) */
-    MAP_ADC14_enableModule();
-    MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
-            0);
-    MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
-    MAP_ADC14_setResolution(ADC_14BIT);
+    //MAP_ADC14_enableModule();
+    //MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
+    //        0);
+    //MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
+    //MAP_ADC14_setResolution(ADC_14BIT);
 
-    /* Configuring GPIOs (5.5 A0) */
+    /* Configuring GPIOs (5.5 - A0, 5.4 - A1, 6.0 - A15) */
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5, GPIO_PIN5,
     GPIO_TERTIARY_MODULE_FUNCTION);
 
+
     /* Configuring ADC Memory */
-    MAP_ADC14_configureSingleSampleMode(ADC_MEM0, true);
-    MAP_ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
-    ADC_INPUT_A0, false);
+    //MAP_ADC14_configureSingleSampleMode(ADC_MEM0, true);
+    //MAP_ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+    //ADC_INPUT_A0, false);
 
     /* Configuring Timer_A in continuous mode and sourced from ACLK */
     MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig);
@@ -228,12 +275,14 @@ int main(void)
 
     /* Configuring the sample trigger to be sourced from Timer_A0  and setting it
      * to automatic iteration after it is triggered*/
-    MAP_ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
+    //MAP_ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
 
     /* Enabling the interrupt when a conversion on channel 1 is complete and
      * enabling conversions */
-    MAP_ADC14_enableInterrupt(ADC_INT0);
-    MAP_ADC14_enableConversion();
+    //MAP_ADC14_enableInterrupt(ADC_INT0);
+    //MAP_ADC14_enableConversion();
+
+    configure_analog(0);
 
     /* Enabling Interrupts */
     MAP_Interrupt_enableInterrupt(INT_ADC14);
@@ -249,25 +298,7 @@ int main(void)
         //MAP_PCM_gotoLPM0();
         if (stateCounter == 1)
         {
-            //Calculate average
-            /*float mean = 0.0;
-            for (i=0; i<SAMPLES;i++)
-            {
-                mean += (float)(resultsBuffer[i]);
-            }
-
-            mean /= SAMPLES;
-
-            int16_t int_mean = (int16_t)(mean + 0.5);*/
-
-            //Pre process data by centering on zero
-            /*for (i=0; i<SAMPLES; i++)
-            {
-                resultsBuffer[i] -= int_mean;
-                //resultsBuffer[i] -= 127;
-            }*/
-
-            average_preprocess(resultsBuffer, SAMPLES);
+            //average_preprocess(resultsBuffer, SAMPLES);
 
             for (i=0; i<SAMPLES; i++)
             {
@@ -283,27 +314,6 @@ int main(void)
  * ADC_MEM0 */
 void ADC14_IRQHandler(void)
 {
-    /*uint64_t status;
-
-    status = MAP_ADC14_getEnabledInterruptStatus();
-    MAP_ADC14_clearInterruptFlag(status);
-
-    if (status & ADC_INT0)
-    {
-        if(resPos < SAMPLES)
-        {
-            resultsBuffer[resPos] = MAP_ADC14_getResult(ADC_MEM0);
-            resPos++;
-        }
-        else
-        {
-            //Stop reading values
-            MAP_Interrupt_disableInterrupt(INT_ADC14);
-            //Send values
-            sendValues = 1;
-        }
-    }*/
-
     if(resPos < SAMPLES)
     {
         resultsBuffer[resPos] = MAP_ADC14_getResult(ADC_MEM0);
