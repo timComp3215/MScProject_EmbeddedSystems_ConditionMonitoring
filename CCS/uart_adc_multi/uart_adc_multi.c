@@ -63,11 +63,10 @@ connection is not the problem
 #include <stdint.h>
 #include <stdbool.h>
 
-volatile uint32_t cal30;
-volatile uint32_t cal85;
-volatile float calDifference;
-volatile float tempC;
-volatile float tempF;
+//Volatiles
+volatile char color = 0;
+volatile uint16_t ADC_value;
+volatile uint8_t ADC_ready;
 
 void RGB(char color)
 {
@@ -129,9 +128,14 @@ void getVoltage(void)
     //Manually request conversion
     ADC14_toggleConversionTrigger();
 
+    while (ADC_ready == 0);
+
     uint16_t Voltage;
 
-    Voltage = ADC14_getResult(ADC_MEM0);
+    //Voltage = ADC14_getResult(ADC_MEM0);
+    Voltage = ADC_value;
+
+    ADC_ready = 0;
 
     UART_transmitData(EUSCI_A0_BASE, ascii_num[(Voltage / 10000)]);
     UART_transmitData(EUSCI_A0_BASE, ascii_num[((Voltage % 10000)/1000)]);
@@ -165,17 +169,20 @@ const eUSCI_UART_Config uartConfig =
 };
 //![Simple UART Config]
 
-//RGB select
-volatile char color = 0;
-
 void configure_analog(uint8_t channel)
 {
     //Configure the ADC14 for either channel A0 or A1
+
+    //Disable interrupts
+    ADC14_disableInterrupt(ADC_INT0);
+    Interrupt_disableInterrupt(INT_ADC14);
 
     //Disable conversion
     ADC14_disableConversion();
     //Disable ADC module
     ADC14_disableModule();
+
+    ADC_ready = 0;
 
     //Enable ADC module
     ADC14_enableModule();
@@ -203,7 +210,11 @@ void configure_analog(uint8_t channel)
     {
         ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
             ADC_INPUT_A15, false);
+
     }
+
+    ADC14_enableInterrupt(ADC_INT0);
+    Interrupt_enableInterrupt(INT_ADC14);
 
     /* Tell ADC to wait for request on each sample - Conversion Trigger */
     ADC14_enableSampleTimer(ADC_MANUAL_ITERATION);
@@ -336,6 +347,12 @@ int main(void)
         for(i=600000; i>0; i--);
 
     }
+}
+
+void ADC14_IRQHandler(void)
+{
+   ADC_value = MAP_ADC14_getResult(ADC_MEM0);
+   ADC_ready = 1;
 }
 
 void EUSCIA0_IRQHandler(void)
