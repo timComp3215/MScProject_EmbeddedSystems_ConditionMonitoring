@@ -121,7 +121,7 @@ print "Reading finished"
 for n in range(0, SAMPLES):
     #float_values.append((float(values[n])/16384) * 3.3)
     #Convert to g
-    float_values.append(((float(values[n])/16384) * 3.3)*10)
+    float_values.append(((float(values[n])/16384) * 3.3))
 
 #print values
 #Store readings in csv

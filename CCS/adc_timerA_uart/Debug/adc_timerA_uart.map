@@ -1,34 +1,34 @@
 ******************************************************************************
                   TI ARM Linker PC v18.1.2                     
 ******************************************************************************
->> Linked Mon Jul 30 20:21:14 2018
+>> Linked Tue Jul 31 10:41:13 2018
 
 OUTPUT FILE NAME:   <adc_timerA_uart.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000009c1
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000a3d
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  MAIN                  00000000   00040000  00000cf4  0003f30c  R  X
+  MAIN                  00000000   00040000  00000d68  0003f298  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  00000403  0000fbfd  RW X
-  SRAM_DATA             20000000   00010000  00000403  0000fbfd  RW  
+  SRAM_CODE             01000000   00010000  00002203  0000ddfd  RW X
+  SRAM_DATA             20000000   00010000  00002203  0000ddfd  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000cf8   00000cf8    r-x
+00000000    00000000    00000d68   00000d68    r-x
   00000000    00000000    000000e4   000000e4    r-- .intvecs
-  000000e4    000000e4    00000b04   00000b04    r-x .text
-  00000be8    00000be8    000000dc   000000dc    r-- .const
-  00000cc8    00000cc8    00000030   00000030    r-- .cinit
-20000000    20000000    00000203   00000000    rw-
-  20000000    20000000    00000200   00000000    rw- .bss
-  20000200    20000200    00000003   00000000    rw- .data
+  000000e4    000000e4    00000b78   00000b78    r-x .text
+  00000c5c    00000c5c    000000dc   000000dc    r-- .const
+  00000d38    00000d38    00000030   00000030    r-- .cinit
+20000000    20000000    00002003   00000000    rw-
+  20000000    20000000    00002000   00000000    rw- .bss
+  20002000    20002000    00000003   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -41,7 +41,7 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    000000e4     
                   00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
 
-.text      0    000000e4    00000b04     
+.text      0    000000e4    00000b78     
                   000000e4    00000184     adc_timerA_uart.obj (.text:main)
                   00000268    00000160     msp432p4xx_driverlib.lib : adc14.o (.text:_getIndexForMemRegister)
                   000003c8    000000a4                              : adc14.o (.text:ADC14_configureConversionMemory)
@@ -49,63 +49,64 @@ section   page    origin      length       input sections
                   00000508    00000084     adc_timerA_uart.obj (.text:configure_analog)
                   0000058c    00000080     msp432p4xx_driverlib.lib : interrupt.o (.text:Interrupt_disableInterrupt)
                   0000060c    00000080                              : interrupt.o (.text:Interrupt_enableInterrupt)
-                  0000068c    00000078     system_msp432p401r.obj (.text:SystemInit)
-                  00000704    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  0000076c    00000058     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_configureSingleSampleMode)
-                  000007c4    00000054     adc_timerA_uart.obj (.text:ADC14_IRQHandler)
-                  00000818    00000054     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_initModule)
-                  0000086c    00000054     adc_timerA_uart.obj (.text:sendReading)
-                  000008c0    00000048     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_setSampleHoldTrigger)
-                  00000908    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  0000094c    0000003c     adc_timerA_uart.obj (.text:EUSCIA0_IRQHandler)
-                  00000988    00000038     adc_timerA_uart.obj (.text:PORT1_IRQHandler)
-                  000009c0    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  000009f8    00000034     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
-                  00000a2c    00000034                              : uart.o (.text:UART_transmitData)
-                  00000a60    00000030                              : adc14.o (.text:ADC14_disableInterrupt)
-                  00000a90    00000030                              : adc14.o (.text:ADC14_enableInterrupt)
-                  00000ac0    00000030                              : adc14.o (.text:ADC14_setSampleHoldTime)
-                  00000af0    00000030                              : cs.o (.text:CS_setReferenceOscillatorFrequency)
-                  00000b20    00000028                              : adc14.o (.text:ADC14_enableConversion)
-                  00000b48    00000020                              : adc14.o (.text:ADC14_setResolution)
-                  00000b68    0000001c                              : adc14.o (.text:ADC14_disableModule)
-                  00000b84    00000012     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00000b96    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
-                  00000b98    00000010     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_disableConversion)
-                  00000ba8    00000010                              : adc14.o (.text:ADCIsConversionRunning)
-                  00000bb8    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  00000bc6    00000002     --HOLE-- [fill = 0]
-                  00000bc8    0000000c     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_enableModule)
-                  00000bd4    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
-                  00000be0    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000be4    00000004                                   : exit.c.obj (.text:abort:abort)
+                  0000068c    0000007a     rtsv7M4_T_le_v4SPD16_eabi.lib : memset_t2.asm.obj (.text)
+                  00000706    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
+                  00000708    00000078     system_msp432p401r.obj (.text:SystemInit)
+                  00000780    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  000007e8    00000058     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_configureSingleSampleMode)
+                  00000840    00000054     adc_timerA_uart.obj (.text:ADC14_IRQHandler)
+                  00000894    00000054     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_initModule)
+                  000008e8    00000054     adc_timerA_uart.obj (.text:sendReading)
+                  0000093c    00000048     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_setSampleHoldTrigger)
+                  00000984    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000009c8    0000003c     adc_timerA_uart.obj (.text:EUSCIA0_IRQHandler)
+                  00000a04    00000038     adc_timerA_uart.obj (.text:PORT1_IRQHandler)
+                  00000a3c    00000038     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000a74    00000034     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  00000aa8    00000034                              : uart.o (.text:UART_transmitData)
+                  00000adc    00000030                              : adc14.o (.text:ADC14_disableInterrupt)
+                  00000b0c    00000030                              : adc14.o (.text:ADC14_enableInterrupt)
+                  00000b3c    00000030                              : adc14.o (.text:ADC14_setSampleHoldTime)
+                  00000b6c    00000030                              : cs.o (.text:CS_setReferenceOscillatorFrequency)
+                  00000b9c    00000028                              : adc14.o (.text:ADC14_enableConversion)
+                  00000bc4    00000020                              : adc14.o (.text:ADC14_setResolution)
+                  00000be4    0000001c                              : adc14.o (.text:ADC14_disableModule)
+                  00000c00    00000010                              : adc14.o (.text:ADC14_disableConversion)
+                  00000c10    00000010                              : adc14.o (.text:ADCIsConversionRunning)
+                  00000c20    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000c2e    00000002     --HOLE-- [fill = 0]
+                  00000c30    0000000c     msp432p4xx_driverlib.lib : adc14.o (.text:ADC14_enableModule)
+                  00000c3c    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
+                  00000c48    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init)
+                  00000c54    00000004                                   : pre_init.c.obj (.text:_system_pre_init)
+                  00000c58    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.const     0    00000be8    000000dc     
-                  00000be8    00000080     msp432p4xx_driverlib.lib : adc14.o (.const:_ctlRegs)
-                  00000c68    00000024     adc_timerA_uart.obj (.const:uartConfig)
-                  00000c8c    00000018     adc_timerA_uart.obj (.const:upModeConfig)
-                  00000ca4    00000010     adc_timerA_uart.obj (.const:compareConfig)
-                  00000cb4    00000008     msp432p4xx_driverlib.lib : interrupt.o (.const:g_pulDisRegs)
-                  00000cbc    00000008                              : interrupt.o (.const:g_pulEnRegs)
+.const     0    00000c5c    000000dc     
+                  00000c5c    00000080     msp432p4xx_driverlib.lib : adc14.o (.const:_ctlRegs)
+                  00000cdc    00000024     adc_timerA_uart.obj (.const:uartConfig)
+                  00000d00    00000018     adc_timerA_uart.obj (.const:upModeConfig)
+                  00000d18    00000010     adc_timerA_uart.obj (.const:compareConfig)
+                  00000d28    00000008     msp432p4xx_driverlib.lib : interrupt.o (.const:g_pulDisRegs)
+                  00000d30    00000008                              : interrupt.o (.const:g_pulEnRegs)
 
-.cinit     0    00000cc8    00000030     
-                  00000cc8    0000000c     (__TI_handler_table)
-                  00000cd4    00000004     --HOLE-- [fill = 0]
-                  00000cd8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00000ce0    00000007     (.cinit..data.load) [load image, compression = lzss]
-                  00000ce7    00000001     --HOLE-- [fill = 0]
-                  00000ce8    00000010     (__TI_cinit_table)
+.cinit     0    00000d38    00000030     
+                  00000d38    0000000c     (__TI_handler_table)
+                  00000d44    00000004     --HOLE-- [fill = 0]
+                  00000d48    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00000d50    00000007     (.cinit..data.load) [load image, compression = lzss]
+                  00000d57    00000001     --HOLE-- [fill = 0]
+                  00000d58    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
 .binit     0    00000000    00000000     
 
-.bss       0    20000000    00000200     UNINITIALIZED
-                  20000000    00000200     (.common:resultsBuffer)
+.bss       0    20000000    00002000     UNINITIALIZED
+                  20000000    00002000     (.common:resultsBuffer)
 
-.data      0    20000200    00000003     UNINITIALIZED
-                  20000200    00000003     adc_timerA_uart.obj (.data)
+.data      0    20002000    00000003     UNINITIALIZED
+                  20002000    00000003     adc_timerA_uart.obj (.data)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -116,10 +117,10 @@ MODULE SUMMARY
        Module                        code   ro data   rw data
        ------                        ----   -------   -------
     .\
-       adc_timerA_uart.obj           804    76        1030   
+       adc_timerA_uart.obj           804    76        16390  
        system_msp432p401r.obj        120    0         0      
     +--+-----------------------------+------+---------+---------+
-       Total:                        924    76        1030   
+       Total:                        924    76        16390  
                                                              
     .\ccs\
        startup_msp432p401r_ccs.obj   14     228       0      
@@ -136,32 +137,33 @@ MODULE SUMMARY
                                                              
     C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        memcpy_t2.asm.obj             156    0         0      
+       memset_t2.asm.obj             122    0         0      
        copy_decompress_lzss.c.obj    104    0         0      
        autoinit.c.obj                68     0         0      
        boot_cortex_m.c.obj           56     0         0      
-       copy_zero_init.c.obj          18     0         0      
        copy_decompress_none.c.obj    14     0         0      
+       copy_zero_init.c.obj          12     0         0      
        exit.c.obj                    4      0         0      
        pre_init.c.obj                4      0         0      
     +--+-----------------------------+------+---------+---------+
-       Total:                        424    0         0      
+       Total:                        540    0         0      
                                                              
        Stack:                        0      0         1024   
        Linker Generated:             0      43        0      
     +--+-----------------------------+------+---------+---------+
-       Grand Total:                  2818   491       2054   
+       Grand Total:                  2934   491       17414  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00000ce8 records: 2, size/record: 8, table size: 16
-	.bss: load addr=00000cd8, load size=00000008 bytes, run addr=20000000, run size=00000200 bytes, compression=zero_init
-	.data: load addr=00000ce0, load size=00000007 bytes, run addr=20000200, run size=00000003 bytes, compression=lzss
+__TI_cinit_table @ 00000d58 records: 2, size/record: 8, table size: 16
+	.bss: load addr=00000d48, load size=00000008 bytes, run addr=20000000, run size=00002000 bytes, compression=zero_init
+	.data: load addr=00000d50, load size=00000007 bytes, run addr=20002000, run size=00000003 bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00000cc8 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00000d38 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -171,118 +173,125 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                              
 -------   ----                              
-000007c5  ADC14_IRQHandler                  
-000007c5  ADC14_IRQHandler                  
+00000841  ADC14_IRQHandler                  
+00000841  ADC14_IRQHandler                  
 000003c9  ADC14_configureConversionMemory   
-0000076d  ADC14_configureSingleSampleMode   
-00000b99  ADC14_disableConversion           
-00000a61  ADC14_disableInterrupt            
-00000b69  ADC14_disableModule               
-00000b21  ADC14_enableConversion            
-00000a91  ADC14_enableInterrupt             
-00000bc9  ADC14_enableModule                
-00000819  ADC14_initModule                  
-00000b49  ADC14_setResolution               
-00000ac1  ADC14_setSampleHoldTime           
-000008c1  ADC14_setSampleHoldTrigger        
-00000b97  AES256_IRQHandler                 
-00000b97  BusFault_Handler                  
-00000be5  C$$EXIT                           
-00000b97  COMP_E0_IRQHandler                
-00000b97  COMP_E1_IRQHandler                
-00000b97  CS_IRQHandler                     
-000009f9  CS_setDCOCenteredFrequency        
-00000af1  CS_setReferenceOscillatorFrequency
-00000b97  DMA_ERR_IRQHandler                
-00000b97  DMA_INT0_IRQHandler               
-00000b97  DMA_INT1_IRQHandler               
-00000b97  DMA_INT2_IRQHandler               
-00000b97  DMA_INT3_IRQHandler               
-00000b97  DebugMon_Handler                  
-00000b97  Default_Handler                   
-0000094d  EUSCIA0_IRQHandler                
-0000094d  EUSCIA0_IRQHandler                
-00000b97  EUSCIA1_IRQHandler                
-00000b97  EUSCIA2_IRQHandler                
-00000b97  EUSCIA3_IRQHandler                
-00000b97  EUSCIB0_IRQHandler                
-00000b97  EUSCIB1_IRQHandler                
-00000b97  EUSCIB2_IRQHandler                
-00000b97  EUSCIB3_IRQHandler                
-00000b97  FLCTL_IRQHandler                  
-00000b97  FPU_IRQHandler                    
-00000b97  HardFault_Handler                 
+000007e9  ADC14_configureSingleSampleMode   
+00000c01  ADC14_disableConversion           
+00000add  ADC14_disableInterrupt            
+00000be5  ADC14_disableModule               
+00000b9d  ADC14_enableConversion            
+00000b0d  ADC14_enableInterrupt             
+00000c31  ADC14_enableModule                
+00000895  ADC14_initModule                  
+00000bc5  ADC14_setResolution               
+00000b3d  ADC14_setSampleHoldTime           
+0000093d  ADC14_setSampleHoldTrigger        
+00000707  AES256_IRQHandler                 
+00000707  BusFault_Handler                  
+00000c59  C$$EXIT                           
+00000707  COMP_E0_IRQHandler                
+00000707  COMP_E1_IRQHandler                
+00000707  CS_IRQHandler                     
+00000a75  CS_setDCOCenteredFrequency        
+00000b6d  CS_setReferenceOscillatorFrequency
+00000707  DMA_ERR_IRQHandler                
+00000707  DMA_INT0_IRQHandler               
+00000707  DMA_INT1_IRQHandler               
+00000707  DMA_INT2_IRQHandler               
+00000707  DMA_INT3_IRQHandler               
+00000707  DebugMon_Handler                  
+00000707  Default_Handler                   
+000009c9  EUSCIA0_IRQHandler                
+000009c9  EUSCIA0_IRQHandler                
+00000707  EUSCIA1_IRQHandler                
+00000707  EUSCIA2_IRQHandler                
+00000707  EUSCIA3_IRQHandler                
+00000707  EUSCIB0_IRQHandler                
+00000707  EUSCIB1_IRQHandler                
+00000707  EUSCIB2_IRQHandler                
+00000707  EUSCIB3_IRQHandler                
+00000707  FLCTL_IRQHandler                  
+00000707  FPU_IRQHandler                    
+00000707  HardFault_Handler                 
 0000058d  Interrupt_disableInterrupt        
 0000060d  Interrupt_enableInterrupt         
-00000b97  MemManage_Handler                 
-00000b97  NMI_Handler                       
-00000b97  PCM_IRQHandler                    
-00000989  PORT1_IRQHandler                  
-00000989  PORT1_IRQHandler                  
-00000b97  PORT2_IRQHandler                  
-00000b97  PORT3_IRQHandler                  
-00000b97  PORT4_IRQHandler                  
-00000b97  PORT5_IRQHandler                  
-00000b97  PORT6_IRQHandler                  
-00000b97  PSS_IRQHandler                    
-00000b97  PendSV_Handler                    
-00000b97  RTC_C_IRQHandler                  
-00000bd5  Reset_Handler                     
-00000b97  SVC_Handler                       
-00000b97  SysTick_Handler                   
-0000068d  SystemInit                        
-00000b97  T32_INT1_IRQHandler               
-00000b97  T32_INT2_IRQHandler               
-00000b97  T32_INTC_IRQHandler               
-00000b97  TA0_0_IRQHandler                  
-00000b97  TA0_N_IRQHandler                  
-00000b97  TA1_0_IRQHandler                  
-00000b97  TA1_N_IRQHandler                  
-00000b97  TA2_0_IRQHandler                  
-00000b97  TA2_N_IRQHandler                  
-00000b97  TA3_0_IRQHandler                  
-00000b97  TA3_N_IRQHandler                  
-00000a2d  UART_transmitData                 
-00000b97  UsageFault_Handler                
+00000707  MemManage_Handler                 
+00000707  NMI_Handler                       
+00000707  PCM_IRQHandler                    
+00000a05  PORT1_IRQHandler                  
+00000a05  PORT1_IRQHandler                  
+00000707  PORT2_IRQHandler                  
+00000707  PORT3_IRQHandler                  
+00000707  PORT4_IRQHandler                  
+00000707  PORT5_IRQHandler                  
+00000707  PORT6_IRQHandler                  
+00000707  PSS_IRQHandler                    
+00000707  PendSV_Handler                    
+00000707  RTC_C_IRQHandler                  
+00000c3d  Reset_Handler                     
+00000707  SVC_Handler                       
+00000707  SysTick_Handler                   
+00000709  SystemInit                        
+00000707  T32_INT1_IRQHandler               
+00000707  T32_INT2_IRQHandler               
+00000707  T32_INTC_IRQHandler               
+00000707  TA0_0_IRQHandler                  
+00000707  TA0_N_IRQHandler                  
+00000707  TA1_0_IRQHandler                  
+00000707  TA1_N_IRQHandler                  
+00000707  TA2_0_IRQHandler                  
+00000707  TA2_N_IRQHandler                  
+00000707  TA3_0_IRQHandler                  
+00000707  TA3_N_IRQHandler                  
+00000aa9  UART_transmitData                 
+00000707  UsageFault_Handler                
 4000480c  WDTCTL_SYM                        
-00000b97  WDT_A_IRQHandler                  
+00000707  WDT_A_IRQHandler                  
 20010000  __STACK_END                       
 00000200  __STACK_SIZE                      
-00000ce8  __TI_CINIT_Base                   
-00000cf8  __TI_CINIT_Limit                  
-00000cc8  __TI_Handler_Table_Base           
-00000cd4  __TI_Handler_Table_Limit          
-00000909  __TI_auto_init_nobinit_nopinit    
-00000705  __TI_decompress_lzss              
-00000bb9  __TI_decompress_none              
+00000d58  __TI_CINIT_Base                   
+00000d68  __TI_CINIT_Limit                  
+00000d38  __TI_Handler_Table_Base           
+00000d44  __TI_Handler_Table_Limit          
+00000985  __TI_auto_init_nobinit_nopinit    
+00000781  __TI_decompress_lzss              
+00000c21  __TI_decompress_none              
 ffffffff  __TI_pprof_out_hndl               
 ffffffff  __TI_prof_data_size               
 ffffffff  __TI_prof_data_start              
 00000000  __TI_static_base__                
-00000b85  __TI_zero_init_nomemset           
+00000c49  __TI_zero_init                    
+0000068d  __aeabi_memclr                    
+0000068d  __aeabi_memclr4                   
+0000068d  __aeabi_memclr8                   
 0000046d  __aeabi_memcpy                    
 0000046d  __aeabi_memcpy4                   
 0000046d  __aeabi_memcpy8                   
+0000068f  __aeabi_memset                    
+0000068f  __aeabi_memset4                   
+0000068f  __aeabi_memset8                   
 ffffffff  __binit__                         
 ffffffff  __c_args__                        
 UNDEFED   __mpu_init                        
 2000fe00  __stack                           
-000009c1  _c_int00_noargs                   
+00000a3d  _c_int00_noargs                   
 UNDEFED   _system_post_cinit                
-00000be1  _system_pre_init                  
-00000be5  abort                             
+00000c55  _system_pre_init                  
+00000c59  abort                             
 ffffffff  binit                             
-00000ca4  compareConfig                     
+00000d18  compareConfig                     
 00000509  configure_analog                  
 00000000  interruptVectors                  
 000000e5  main                              
 0000046d  memcpy                            
-20000200  resPos                            
+00000695  memset                            
+20002000  resPos                            
 20000000  resultsBuffer                     
-0000086d  sendReading                       
-20000202  stateCounter                      
-00000c68  uartConfig                        
-00000c8c  upModeConfig                      
+000008e9  sendReading                       
+20002002  stateCounter                      
+00000cdc  uartConfig                        
+00000d00  upModeConfig                      
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -301,95 +310,102 @@ address   name
 00000509  configure_analog                  
 0000058d  Interrupt_disableInterrupt        
 0000060d  Interrupt_enableInterrupt         
-0000068d  SystemInit                        
-00000705  __TI_decompress_lzss              
-0000076d  ADC14_configureSingleSampleMode   
-000007c5  ADC14_IRQHandler                  
-000007c5  ADC14_IRQHandler                  
-00000819  ADC14_initModule                  
-0000086d  sendReading                       
-000008c1  ADC14_setSampleHoldTrigger        
-00000909  __TI_auto_init_nobinit_nopinit    
-0000094d  EUSCIA0_IRQHandler                
-0000094d  EUSCIA0_IRQHandler                
-00000989  PORT1_IRQHandler                  
-00000989  PORT1_IRQHandler                  
-000009c1  _c_int00_noargs                   
-000009f9  CS_setDCOCenteredFrequency        
-00000a2d  UART_transmitData                 
-00000a61  ADC14_disableInterrupt            
-00000a91  ADC14_enableInterrupt             
-00000ac1  ADC14_setSampleHoldTime           
-00000af1  CS_setReferenceOscillatorFrequency
-00000b21  ADC14_enableConversion            
-00000b49  ADC14_setResolution               
-00000b69  ADC14_disableModule               
-00000b85  __TI_zero_init_nomemset           
-00000b97  AES256_IRQHandler                 
-00000b97  BusFault_Handler                  
-00000b97  COMP_E0_IRQHandler                
-00000b97  COMP_E1_IRQHandler                
-00000b97  CS_IRQHandler                     
-00000b97  DMA_ERR_IRQHandler                
-00000b97  DMA_INT0_IRQHandler               
-00000b97  DMA_INT1_IRQHandler               
-00000b97  DMA_INT2_IRQHandler               
-00000b97  DMA_INT3_IRQHandler               
-00000b97  DebugMon_Handler                  
-00000b97  Default_Handler                   
-00000b97  EUSCIA1_IRQHandler                
-00000b97  EUSCIA2_IRQHandler                
-00000b97  EUSCIA3_IRQHandler                
-00000b97  EUSCIB0_IRQHandler                
-00000b97  EUSCIB1_IRQHandler                
-00000b97  EUSCIB2_IRQHandler                
-00000b97  EUSCIB3_IRQHandler                
-00000b97  FLCTL_IRQHandler                  
-00000b97  FPU_IRQHandler                    
-00000b97  HardFault_Handler                 
-00000b97  MemManage_Handler                 
-00000b97  NMI_Handler                       
-00000b97  PCM_IRQHandler                    
-00000b97  PORT2_IRQHandler                  
-00000b97  PORT3_IRQHandler                  
-00000b97  PORT4_IRQHandler                  
-00000b97  PORT5_IRQHandler                  
-00000b97  PORT6_IRQHandler                  
-00000b97  PSS_IRQHandler                    
-00000b97  PendSV_Handler                    
-00000b97  RTC_C_IRQHandler                  
-00000b97  SVC_Handler                       
-00000b97  SysTick_Handler                   
-00000b97  T32_INT1_IRQHandler               
-00000b97  T32_INT2_IRQHandler               
-00000b97  T32_INTC_IRQHandler               
-00000b97  TA0_0_IRQHandler                  
-00000b97  TA0_N_IRQHandler                  
-00000b97  TA1_0_IRQHandler                  
-00000b97  TA1_N_IRQHandler                  
-00000b97  TA2_0_IRQHandler                  
-00000b97  TA2_N_IRQHandler                  
-00000b97  TA3_0_IRQHandler                  
-00000b97  TA3_N_IRQHandler                  
-00000b97  UsageFault_Handler                
-00000b97  WDT_A_IRQHandler                  
-00000b99  ADC14_disableConversion           
-00000bb9  __TI_decompress_none              
-00000bc9  ADC14_enableModule                
-00000bd5  Reset_Handler                     
-00000be1  _system_pre_init                  
-00000be5  C$$EXIT                           
-00000be5  abort                             
-00000c68  uartConfig                        
-00000c8c  upModeConfig                      
-00000ca4  compareConfig                     
-00000cc8  __TI_Handler_Table_Base           
-00000cd4  __TI_Handler_Table_Limit          
-00000ce8  __TI_CINIT_Base                   
-00000cf8  __TI_CINIT_Limit                  
+0000068d  __aeabi_memclr                    
+0000068d  __aeabi_memclr4                   
+0000068d  __aeabi_memclr8                   
+0000068f  __aeabi_memset                    
+0000068f  __aeabi_memset4                   
+0000068f  __aeabi_memset8                   
+00000695  memset                            
+00000707  AES256_IRQHandler                 
+00000707  BusFault_Handler                  
+00000707  COMP_E0_IRQHandler                
+00000707  COMP_E1_IRQHandler                
+00000707  CS_IRQHandler                     
+00000707  DMA_ERR_IRQHandler                
+00000707  DMA_INT0_IRQHandler               
+00000707  DMA_INT1_IRQHandler               
+00000707  DMA_INT2_IRQHandler               
+00000707  DMA_INT3_IRQHandler               
+00000707  DebugMon_Handler                  
+00000707  Default_Handler                   
+00000707  EUSCIA1_IRQHandler                
+00000707  EUSCIA2_IRQHandler                
+00000707  EUSCIA3_IRQHandler                
+00000707  EUSCIB0_IRQHandler                
+00000707  EUSCIB1_IRQHandler                
+00000707  EUSCIB2_IRQHandler                
+00000707  EUSCIB3_IRQHandler                
+00000707  FLCTL_IRQHandler                  
+00000707  FPU_IRQHandler                    
+00000707  HardFault_Handler                 
+00000707  MemManage_Handler                 
+00000707  NMI_Handler                       
+00000707  PCM_IRQHandler                    
+00000707  PORT2_IRQHandler                  
+00000707  PORT3_IRQHandler                  
+00000707  PORT4_IRQHandler                  
+00000707  PORT5_IRQHandler                  
+00000707  PORT6_IRQHandler                  
+00000707  PSS_IRQHandler                    
+00000707  PendSV_Handler                    
+00000707  RTC_C_IRQHandler                  
+00000707  SVC_Handler                       
+00000707  SysTick_Handler                   
+00000707  T32_INT1_IRQHandler               
+00000707  T32_INT2_IRQHandler               
+00000707  T32_INTC_IRQHandler               
+00000707  TA0_0_IRQHandler                  
+00000707  TA0_N_IRQHandler                  
+00000707  TA1_0_IRQHandler                  
+00000707  TA1_N_IRQHandler                  
+00000707  TA2_0_IRQHandler                  
+00000707  TA2_N_IRQHandler                  
+00000707  TA3_0_IRQHandler                  
+00000707  TA3_N_IRQHandler                  
+00000707  UsageFault_Handler                
+00000707  WDT_A_IRQHandler                  
+00000709  SystemInit                        
+00000781  __TI_decompress_lzss              
+000007e9  ADC14_configureSingleSampleMode   
+00000841  ADC14_IRQHandler                  
+00000841  ADC14_IRQHandler                  
+00000895  ADC14_initModule                  
+000008e9  sendReading                       
+0000093d  ADC14_setSampleHoldTrigger        
+00000985  __TI_auto_init_nobinit_nopinit    
+000009c9  EUSCIA0_IRQHandler                
+000009c9  EUSCIA0_IRQHandler                
+00000a05  PORT1_IRQHandler                  
+00000a05  PORT1_IRQHandler                  
+00000a3d  _c_int00_noargs                   
+00000a75  CS_setDCOCenteredFrequency        
+00000aa9  UART_transmitData                 
+00000add  ADC14_disableInterrupt            
+00000b0d  ADC14_enableInterrupt             
+00000b3d  ADC14_setSampleHoldTime           
+00000b6d  CS_setReferenceOscillatorFrequency
+00000b9d  ADC14_enableConversion            
+00000bc5  ADC14_setResolution               
+00000be5  ADC14_disableModule               
+00000c01  ADC14_disableConversion           
+00000c21  __TI_decompress_none              
+00000c31  ADC14_enableModule                
+00000c3d  Reset_Handler                     
+00000c49  __TI_zero_init                    
+00000c55  _system_pre_init                  
+00000c59  C$$EXIT                           
+00000c59  abort                             
+00000cdc  uartConfig                        
+00000d00  upModeConfig                      
+00000d18  compareConfig                     
+00000d38  __TI_Handler_Table_Base           
+00000d44  __TI_Handler_Table_Limit          
+00000d58  __TI_CINIT_Base                   
+00000d68  __TI_CINIT_Limit                  
 20000000  resultsBuffer                     
-20000200  resPos                            
-20000202  stateCounter                      
+20002000  resPos                            
+20002002  stateCounter                      
 2000fe00  __stack                           
 20010000  __STACK_END                       
 4000480c  WDTCTL_SYM                        
@@ -402,4 +418,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                        
 UNDEFED   _system_post_cinit                
 
-[112 symbols]
+[119 symbols]

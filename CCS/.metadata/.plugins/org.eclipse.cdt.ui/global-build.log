@@ -13523,3 +13523,215 @@ Finished building target: "adc_timerA_uart.out"
  
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project adc_timerA_uart ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'adc_timerA_uart.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_timerA_uart ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_timerA_uart.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_timerA_uart" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_timerA_uart.d_raw"  "../adc_timerA_uart.c"
+Finished building: "../adc_timerA_uart.c"
+ 
+Building target: "adc_timerA_uart.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_timerA_uart.map" --stack_size=512 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_timerA_uart_linkInfo.xml" --rom_model -o "adc_timerA_uart.out" "./adc_timerA_uart.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a 
+<Linking>
+Finished building target: "adc_timerA_uart.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_timerA_uart ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_timerA_uart.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_timerA_uart" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_timerA_uart.d_raw"  "../adc_timerA_uart.c"
+Finished building: "../adc_timerA_uart.c"
+ 
+Building target: "adc_timerA_uart.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_timerA_uart.map" --stack_size=512 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_timerA_uart_linkInfo.xml" --rom_model -o "adc_timerA_uart.out" "./adc_timerA_uart.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a 
+<Linking>
+Finished building target: "adc_timerA_uart.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_timerA_uart ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'adc_timerA_uart.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'adc_FFT_Multi.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'adc_FFT_Multi.out' is up to date.
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
+
+**** Build of configuration Debug for project adc_FFT_Multi ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+Building file: "../adc_FFT_Multi.c"
+Invoking: ARM Compiler
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi.d_raw"  "../adc_FFT_Multi.c"
+Finished building: "../adc_FFT_Multi.c"
+ 
+Building target: "adc_FFT_Multi.out"
+Invoking: ARM Linker
+"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"adc_FFT_Multi.map" --heap_size=25960 --stack_size=2048 -i"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="adc_FFT_Multi_linkInfo.xml" --rom_model -o "adc_FFT_Multi.out" "./adc_FFT_Multi.obj" "./system_msp432p401r.obj" "./ccs/startup_msp432p401r_ccs.obj" "./kissFFT/kiss_fft.obj" "./kissFFT/kiss_fftr.obj" "../msp432p401r.cmd"  -l"ti/display/lib/display.aem4f" -l"ti/grlib/lib/ccs/m4f/grlib.a" -l"third_party/spiffs/lib/ccs/m4f/spiffs.a" -l"ti/drivers/lib/drivers_msp432p401x.aem4f" -l"third_party/fatfs/lib/ccs/m4f/fatfs.a" -l"ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib" -llibc.a -l"C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/ti/iqmathlib/ccs/QmathLib_CCS_MSP432.lib" 
+<Linking>
+Finished building target: "adc_FFT_Multi.out"
+ 
+
+**** Build Finished ****
