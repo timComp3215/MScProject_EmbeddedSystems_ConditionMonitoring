@@ -18,9 +18,13 @@ SAMPLES = 4096
 #Sampling frequency - purely for graphs to be correctly scaled
 fs = 16384
 
+frequency = 4095
+
 #set name of output file
 output_file = 'adc_output.csv'
+#output_file = 'MEMS/t_' + str(frequency) + '_adxl354.csv'
 fft_output_file = 'fft_output.csv'
+#fft_output_file = 'MEMS/f_' + str(frequency) + '_adxl354.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
@@ -121,7 +125,7 @@ print "Reading finished"
 for n in range(0, SAMPLES):
     #float_values.append((float(values[n])/16384) * 3.3)
     #Convert to g
-    float_values.append(((float(values[n])/16384) * 3.3))
+    float_values.append(((float(values[n])/16384) * 3.3)/0.206)
 
 #print values
 #Store readings in csv

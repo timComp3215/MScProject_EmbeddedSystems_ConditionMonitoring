@@ -2,16 +2,19 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="resPos" key="selection"/>
+		<item value="analogPin" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="analogPin"/>
+			<item value="stateCounter"/>
+			<item value="INT_ADC14"/>
+			<item value="ADC_INT0"/>
 			<item value="resPos"/>
 			<item value="NMEA_msg"/>
 			<item value="calendarTime"/>
-			<item value="stateCounter"/>
 			<item value="state counter"/>
 			<item value="MAP_ADC14_enableInterrupt(ADC_INT1);"/>
 			<item value="EUSCI_SPI_BUSY"/>
@@ -20,9 +23,6 @@
 			<item value="SAMPLE_FREQ"/>
 			<item value="sampleBuf"/>
 			<item value="sampleBuffer"/>
-			<item value="SMCLK"/>
-			<item value="HSMCLK"/>
-			<item value="CS_SMCLK"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -7,7 +7,7 @@ fs = 16384; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
-model_frequency = 2560;
+model_frequency = 95;
 
 N = fs * T;
 
@@ -22,8 +22,9 @@ x = zeros(N, 1);
 model_x = zeros(N, 1);
 
 M = csvread('adc_output.csv');
-
+%M = csvread('MEMS/t_95_adxl354.csv');
 board_F = csvread('fft_output.csv');
+%board_F = csvread('MEMS/f_95_adxl354.csv');
 
 for n = 1:N
     %x(n) = 1.33*cos(128*2*pi*t(n) + pi*0.5) + 2*cos(512*2*pi*t(n)) + ...
