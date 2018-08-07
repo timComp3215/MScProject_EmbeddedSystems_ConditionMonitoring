@@ -106,12 +106,95 @@ const eUSCI_UART_Config uartConfig =
  #include <ti/iqmathlib/IQmathLib.h>
 
  /* Specify the sample size and sample frequency. */
- #define SAMPLES         2048          // power of 2 no larger than 256
+ #define SAMPLES         4096          // power of 2 no larger than 256
  #define SAMPLE_FREQ     8192            // no larger than 16384
 
 volatile int bytes = 0;
 volatile char msg;
 char *information_bytes;
+
+void sendReading(int16_t reading)
+{
+    //Sends readings as 2 8bit bytes (16 bit data)
+    uint16_t reading_send;
+    if (reading >= 0)
+    {
+        reading_send = reading;
+    }
+    else
+    {
+        reading_send = (reading + 65536);
+    }
+    UART_transmitData(EUSCI_A0_BASE, (reading_send%256));
+    UART_transmitData(EUSCI_A0_BASE, (reading_send/256));
+}
+
+int16_t calc_mean(volatile int16_t *readings, uint16_t n)
+{
+    float mean = 0.0;
+    int i=0;
+    //Calculate mean
+    for (i=0; i<n;i++)
+    {
+        mean += (float)(readings[i]);
+    }
+
+    mean /= n;
+
+    return (int16_t)(mean + 0.5);
+}
+
+int16_t max(volatile int16_t *readings, uint16_t n)
+{
+    //This function finds the maximum value in a range
+    int16_t maximum = 0;
+    int i;
+    for (i=0; i<n; i++)
+    {
+        if (readings[i] > maximum)
+        {
+            maximum = readings[i];
+        }
+    }
+
+    return maximum;
+}
+
+int16_t RMS(volatile int16_t *readings, uint16_t n)
+{
+    //Calculate the root mean square of a range
+    int i;
+
+    float RMS;
+
+    for (i=0; i<n; i++)
+    {
+        //RMSE += (readings[i]-mean)*(readings[i]-mean)/n;
+        RMS += ((float)readings[i])*((float)readings[i])/(float)n;
+    }
+
+    RMS = sqrt(RMS);
+
+    return (int16_t)(RMS+0.5);
+}
+
+int16_t STD(volatile int16_t *readings, uint16_t n)
+{
+    int16_t mean = calc_mean(readings, n);
+
+    float STD;
+
+    int i;
+
+    for (i=0; i<n; i++)
+    {
+        STD += ((float)readings[i]-mean)*((float)readings[i]-mean)/(float)n;
+    }
+
+    STD = sqrt(STD);
+
+    return (int16_t)(STD+0.5);
+}
 
 int main(void)
     {
@@ -175,10 +258,20 @@ int main(void)
             int sendMsgCount;
             for (sendMsgCount = 0; sendMsgCount < sndMessageSize; sendMsgCount++)
             {
-                UART_transmitData(EUSCI_A0_BASE, (in[sendMsgCount]%256));
-                UART_transmitData(EUSCI_A0_BASE, (in[sendMsgCount]/256));
+                sendReading(in[sendMsgCount]);
+                //UART_transmitData(EUSCI_A0_BASE, (in[sendMsgCount]%256));
+                //UART_transmitData(EUSCI_A0_BASE, (in[sendMsgCount]/256));
                 //UART_transmitData(EUSCI_A0_BASE, '\n');
             }
+
+            int16_t fft_max = max(in, (SAMPLES/2));
+            sendReading(fft_max);
+
+            int16_t fft_RMS = RMS(in, (SAMPLES/2));
+            sendReading(fft_RMS);
+
+            int16_t fft_std = STD(in, (SAMPLES/2));
+            sendReading(fft_std);
 
             bytes = 0;
 

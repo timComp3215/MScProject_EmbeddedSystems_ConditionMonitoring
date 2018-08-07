@@ -25,7 +25,7 @@ x = zeros(N, 1);
 
 model_x = zeros(N, 1);
 
-frequency = 4095;
+frequency = 4053;
 
 filename = sprintf('t_%d_mma7361.csv', frequency);
 %filename = sprintf('t_random_mma7361.csv');

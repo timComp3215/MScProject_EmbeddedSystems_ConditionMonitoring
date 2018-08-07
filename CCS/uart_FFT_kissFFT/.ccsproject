@@ -14,4 +14,5 @@
 	<templateProperties value="id=uart_pc_echo_12mhz_brclk_MSP_EXP432P401R_nortos_ccs.projectspec.uart_pc_echo_12mhz_brclk_MSP_EXP432P401R_nortos_ccs,buildProfile=release,isHybrid=true,"/>
 	<origin value="C:\ti\simplelink_msp432p4_sdk_2_10_00_14\examples\nortos\MSP_EXP432P401R\driverlib\uart_pc_echo_12mhz_brclk\ccs\uart_pc_echo_12mhz_brclk_MSP_EXP432P401R_nortos_ccs.projectspec"/>
 	<filesToOpen value=""/>
+	<isTargetManual value="false"/>
 </projectOptions>

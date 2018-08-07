@@ -7057,3 +7057,254 @@ Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.
 
 !ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-08-01 15:48:49.223
 !MESSAGE No repository found at file:/c:/ti/ccsv8/eclipse/downloads/featurerepo/.
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 16:27:34.246
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 16:27:34.270
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 16:27:34.543
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 4 0 2018-08-01 19:26:13.304
+!MESSAGE An internal error was logged by 'com.ti.ccstudio.debug'.
+!STACK 0
+java.util.concurrent.ExecutionException: org.json.JSONException: Module Closed
+	at java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:357)
+	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1895)
+	at com.ti.ccstudio.debug.service.ApplicationService.getConnectedDebugProbes(ApplicationService.java:292)
+	at com.ti.ccstudio.debug.service.ApplicationService.detectXDS110ConnectedProbes(ApplicationService.java:347)
+	at com.ti.ccstudio.debug.service.ApplicationService.initDebugger(ApplicationService.java:409)
+	at com.ti.ccstudio.debug.service.ApplicationService.access$0(ApplicationService.java:399)
+	at com.ti.ccstudio.debug.service.ApplicationService$ThreadContextCache.retrieve(ApplicationService.java:136)
+	at com.ti.ccstudio.debug.dsf.extensions.concurrent.DataCache.wait(DataCache.java:59)
+	at com.ti.ccstudio.debug.service.ApplicationService.getCpuBeingDebugged(ApplicationService.java:1040)
+	at com.ti.ccstudio.debug.launch.CCSLaunchDelegate$2.execute(CCSLaunchDelegate.java:131)
+	at org.eclipse.cdt.dsf.concurrent.Query.run(Query.java:177)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.json.JSONException: Module Closed
+	at com.ti.cloudagent.communication.JSONInterface.call(JSONInterface.java:54)
+	at com.ti.cloudagent.Agent.createModule(Agent.java:171)
+	at com.ti.cloudagent.Agent.lambda$createSpecificModule$4(Agent.java:96)
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:822)
+	at java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:834)
+	at java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2155)
+	at com.ti.cloudagent.Agent.createSpecificModule(Agent.java:87)
+	at com.ti.cloudagent.Agent.createDeviceDetector(Agent.java:76)
+	... 16 more
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:31:27.508
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:31:27.549
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 4 0 2018-08-01 19:32:46.483
+!MESSAGE An internal error was logged by 'com.ti.ccstudio.debug'.
+!STACK 0
+java.util.concurrent.ExecutionException: org.json.JSONException: Module Closed
+	at java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:357)
+	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1895)
+	at com.ti.ccstudio.debug.service.ApplicationService.getConnectedDebugProbes(ApplicationService.java:292)
+	at com.ti.ccstudio.debug.service.ApplicationService.detectXDS110ConnectedProbes(ApplicationService.java:347)
+	at com.ti.ccstudio.debug.service.ApplicationService.initDebugger(ApplicationService.java:409)
+	at com.ti.ccstudio.debug.service.ApplicationService.access$0(ApplicationService.java:399)
+	at com.ti.ccstudio.debug.service.ApplicationService$ThreadContextCache.retrieve(ApplicationService.java:136)
+	at com.ti.ccstudio.debug.dsf.extensions.concurrent.DataCache.wait(DataCache.java:59)
+	at com.ti.ccstudio.debug.service.ApplicationService.getCpuBeingDebugged(ApplicationService.java:1040)
+	at com.ti.ccstudio.debug.launch.CCSLaunchDelegate$2.execute(CCSLaunchDelegate.java:131)
+	at org.eclipse.cdt.dsf.concurrent.Query.run(Query.java:177)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: org.json.JSONException: Module Closed
+	at com.ti.cloudagent.communication.JSONInterface.call(JSONInterface.java:54)
+	at com.ti.cloudagent.Agent.createModule(Agent.java:171)
+	at com.ti.cloudagent.Agent.lambda$createSpecificModule$4(Agent.java:96)
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:822)
+	at java.util.concurrent.CompletableFuture.uniHandleStage(CompletableFuture.java:834)
+	at java.util.concurrent.CompletableFuture.handle(CompletableFuture.java:2155)
+	at com.ti.cloudagent.Agent.createSpecificModule(Agent.java:87)
+	at com.ti.cloudagent.Agent.createDeviceDetector(Agent.java:76)
+	... 16 more
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.492
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.524
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -122 @ 0x0) A bad parameter value was detected within a function. It is likely a problem with `SC_ARGS' in SMG_call(). (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.721
+!MESSAGE DS_ERROR: CS_DAP_0: Unable to determine target status after 20 attempts
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.730
+!MESSAGE DS_ERROR: CS_DAP_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.748
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-01 19:42:33.792
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+!SESSION 2018-08-07 12:07:14.875 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180301-0715
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-08-07 12:07:19.030
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-08-07 12:07:19.061
+!MESSAGE debugServerDir=C:/ti/ccsv8/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 12:07:39.454
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 12:07:39.470
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 12:07:39.470
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-08-07 12:08:13.456
+!MESSAGE No repository found at file:/c:/ti/ccsv8/eclipse/downloads/featurerepo/.
+!SESSION 2018-08-07 17:14:12.014 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180301-0715
+java.version=1.8.0_112
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_GB
+Framework arguments:  -product com.ti.ccstudio.branding.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product com.ti.ccstudio.branding.product
+
+!ENTRY com.ti.common.core 4 0 2018-08-07 17:14:17.280
+!MESSAGE path=ccs_base/DebugServer
+
+!ENTRY com.ti.common.core 4 0 2018-08-07 17:14:17.342
+!MESSAGE debugServerDir=C:/ti/ccsv8/ccs_base/DebugServer
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 17:14:30.437
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 17:14:30.456
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-08-07 17:14:30.456
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-08-07 17:15:09.095
+!MESSAGE No repository found at file:/c:/ti/ccsv8/eclipse/downloads/featurerepo/.
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:38:43.320
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:38:43.398
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:48:17.342
+!MESSAGE DS_ERROR: CORTEX_M4_0: GEL: Encountered a problem loading file: D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\uart_FFT_kissFFT\Debug\uart_FFT_kissFFT.out Could not open file
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:38.968
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:39.009
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -122 @ 0x0) A bad parameter value was detected within a function. It is likely a problem with `SC_ARGS' in SMG_call(). (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:39.227
+!MESSAGE DS_ERROR: CS_DAP_0: Unable to determine target status after 20 attempts
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:39.243
+!MESSAGE DS_ERROR: CS_DAP_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:39.992
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 17:56:40.022
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:19:24.179
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:19:24.211
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -122 @ 0x0) A bad parameter value was detected within a function. It is likely a problem with `SC_ARGS' in SMG_call(). (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:19:24.422
+!MESSAGE DS_ERROR: CS_DAP_0: Unable to determine target status after 20 attempts
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:19:24.433
+!MESSAGE DS_ERROR: CS_DAP_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:43.935
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:43.966
+!MESSAGE DS_ERROR: CS_DAP_0: Error: (Error -122 @ 0x0) A bad parameter value was detected within a function. It is likely a problem with `SC_ARGS' in SMG_call(). (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:44.150
+!MESSAGE DS_ERROR: CS_DAP_0: Unable to determine target status after 20 attempts
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:44.157
+!MESSAGE DS_ERROR: CS_DAP_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:45.697
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:21:45.714
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:24:11.897
+!MESSAGE DS_ERROR: CORTEX_M4_0: JTAG Communication Error: (Error -261 @ 0x0) Invalid response was received from the XDS110. (Emulation package 8.0.27.9) 
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:24:11.897
+!MESSAGE DS_ERROR: CORTEX_M4_0: Failed to remove the debug state from the target before disconnecting.  There may still be breakpoint op-codes embedded in program memory.  It is recommended that you reset the emulator before you connect and reload your program before you continue debugging
+
+
+!ENTRY com.ti.ccstudio.debug 1 0 2018-08-07 18:37:40.357
+!MESSAGE DS_ERROR: CORTEX_M4_0: GEL: Encountered a problem loading file: D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\uart_FFT_kissFFT\Debug\uart_FFT_kissFFT.out Could not open file
+
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-08-07 18:53:43.889
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.debug.internal.ui.DebugUIPlugin$8

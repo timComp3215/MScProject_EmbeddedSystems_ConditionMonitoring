@@ -2,12 +2,13 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="analogPin" key="selection"/>
+		<item value="SAMPLE_FREQ" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="SAMPLE_FREQ"/>
 			<item value="analogPin"/>
 			<item value="stateCounter"/>
 			<item value="INT_ADC14"/>
@@ -20,7 +21,6 @@
 			<item value="EUSCI_SPI_BUSY"/>
 			<item value="EUSCI"/>
 			<item value="fft"/>
-			<item value="SAMPLE_FREQ"/>
 			<item value="sampleBuf"/>
 			<item value="sampleBuffer"/>
 		</list>
