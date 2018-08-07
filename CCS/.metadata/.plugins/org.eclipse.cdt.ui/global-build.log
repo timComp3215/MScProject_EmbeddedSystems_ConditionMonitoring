@@ -14428,3 +14428,11 @@ Finished building target: "uart_FFT_kissFFT.out"
 gmake[1]: 'uart_FFT_kissFFT.out' is up to date.
 
 **** Build Finished ****
+
+**** Build of configuration Debug for project uart_FFT_kissFFT ****
+
+"C:\\ti\\ccsv8\\utils\\bin\\gmake" -k -j 8 all -O 
+ 
+gmake[1]: 'uart_FFT_kissFFT.out' is up to date.
+
+**** Build Finished ****
