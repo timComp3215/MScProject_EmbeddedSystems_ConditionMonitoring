@@ -1,5 +1,5 @@
 clear all
-close all
+%close all
 
 %Initial program designed to analyse data in multiple slices at the
 %actual sampling frequency given
@@ -29,17 +29,16 @@ x_16 = zeros(N, 3, slices);
 x_18 = zeros(N, 3, slices);
 x_20 = zeros(N, 3, slices);
 
-D_00mm = csvread('Bending30.csv');
-D_02mm = csvread('Bending21.csv');
-D_04mm = csvread('Bending22.csv');
-D_06mm = csvread('Bending23.csv');
-D_08mm = csvread('Worn1.csv');
-D_10mm = csvread('Worn2.csv');
-D_12mm = csvread('Healthy1.csv');
-D_14mm = csvread('Healthy2.csv');
-D_16mm = csvread('Healthy3.csv');
-D_18mm = csvread('Worn0.csv');
-%D_20mm = csvread('Healthy0.csv');
+D_00mm = csvread('Healthy0.csv');
+D_02mm = csvread('Healthy1.csv');
+D_04mm = csvread('Healthy2.csv');
+D_06mm = csvread('Healthy3.csv');
+D_08mm = csvread('Bending21.csv');
+D_10mm = csvread('Bending22.csv');
+D_12mm = csvread('Worn1.csv');
+D_14mm = csvread('Worn2.csv');
+D_16mm = csvread('Worn3.csv');
+D_18mm = csvread('Bending23.csv');
 
 for n = 1:N
     for i = 1:3
@@ -181,7 +180,7 @@ for i = 1:3
     %subplot(3, 1, i);
     figure
     subplot(2, 1, 1)
-    plot(FT(:), F_10(:, i, 1));
+    plot(FT(:), F_12(:, i, 1));
     hold on 
     subplot(2, 1, 2)
     plot(FT(:), F_18(:, i, 1));
@@ -252,23 +251,23 @@ end
 for acc = 1:3
     figure
     for z = 1:slices
-        scatter3(F_stats_00(1, acc, z), F_stats_00(2, acc, z), F_stats_00(3, acc, z), 'ro');
-        hold on  
-        scatter3(F_stats_02(1, acc, z), F_stats_02(2, acc, z), F_stats_02(3, acc, z), 'bo');
-        scatter3(F_stats_04(1, acc, z), F_stats_04(2, acc, z), F_stats_04(3, acc, z), 'go');
-        scatter3(F_stats_06(1, acc, z), F_stats_06(2, acc, z), F_stats_06(3, acc, z), 'mo');
-        scatter3(F_stats_08(1, acc, z), F_stats_08(2, acc, z), F_stats_08(3, acc, z), 'k^');
-        scatter3(F_stats_10(1, acc, z), F_stats_10(2, acc, z), F_stats_10(3, acc, z), 'r^');
-        scatter3(F_stats_12(1, acc, z), F_stats_12(2, acc, z), F_stats_12(3, acc, z), 'bx');
-        scatter3(F_stats_14(1, acc, z), F_stats_14(2, acc, z), F_stats_14(3, acc, z), 'gx');
-        scatter3(F_stats_16(1, acc, z), F_stats_16(2, acc, z), F_stats_16(3, acc, z), 'mx');
-        scatter3(F_stats_18(1, acc, z), F_stats_18(2, acc, z), F_stats_18(3, acc, z), 'k^');
+        scatter3(F_stats_00(1, acc, z), F_stats_00(3, acc, z), F_stats_00(2, acc, z), 'ro');
+        hold on 
+        scatter3(F_stats_02(1, acc, z), F_stats_02(3, acc, z), F_stats_02(2, acc, z), 'bo');
+        scatter3(F_stats_04(1, acc, z), F_stats_04(3, acc, z), F_stats_04(2, acc, z), 'go');
+        scatter3(F_stats_06(1, acc, z), F_stats_06(3, acc, z), F_stats_06(2, acc, z), 'mo');
+        scatter3(F_stats_08(1, acc, z), F_stats_08(3, acc, z), F_stats_08(2, acc, z), 'k^');
+        scatter3(F_stats_10(1, acc, z), F_stats_10(3, acc, z), F_stats_10(2, acc, z), 'r^');
+        scatter3(F_stats_12(1, acc, z), F_stats_12(3, acc, z), F_stats_12(2, acc, z), 'bx');
+        scatter3(F_stats_14(1, acc, z), F_stats_14(3, acc, z), F_stats_14(2, acc, z), 'gx');
+        scatter3(F_stats_16(1, acc, z), F_stats_16(3, acc, z), F_stats_16(2, acc, z), 'mx');
+        scatter3(F_stats_18(1, acc, z), F_stats_18(3, acc, z), F_stats_18(2, acc, z), 'k^');
 %         scatter3(F_stats_20(1, acc, z), F_stats_20(2, acc, z), F_stats_20(3, acc, z), 'ro');
     end
     legend('0mm', '0.2 mm', '0.4mm', '0.6mm', '0.8mm', '1mm', '1.2mm', '1.4mm', '1.6mm', '1.8mm');
     xlabel('Maximum')
-    ylabel('RMS')
-    zlabel('Standard deviation')
+    ylabel('Std')
+    zlabel('RMS')
 end
 
 %{figure
