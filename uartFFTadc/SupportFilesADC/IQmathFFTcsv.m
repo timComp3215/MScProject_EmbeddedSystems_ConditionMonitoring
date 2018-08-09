@@ -7,7 +7,7 @@ fs = 16384; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
-model_frequency = 95;
+model_frequency = 53;
 
 N = fs * T;
 

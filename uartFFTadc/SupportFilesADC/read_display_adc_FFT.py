@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 16384
+fs = 8192
 
 frequency = 4095
 
@@ -28,6 +28,10 @@ fft_output_file = 'fft_output.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
+
+print "Sending measurement request"
+
+s.write('M')
 
 print "Reading time data from board.."
 
@@ -125,7 +129,7 @@ print "Reading finished"
 for n in range(0, SAMPLES):
     #float_values.append((float(values[n])/16384) * 3.3)
     #Convert to g
-    float_values.append(((float(values[n])/16384) * 3.3)/0.100)
+    float_values.append(float(values[n]))
 
 #print values
 #Store readings in csv

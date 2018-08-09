@@ -98,6 +98,50 @@
  *http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html
  */
 
+void configure_analog(uint8_t channel)
+{
+    //Configure the ADC14
+
+    //Disable conversion
+    ADC14_disableConversion();
+    //Disable ADC module
+    ADC14_disableModule();
+
+    //Enable ADC module
+    ADC14_enableModule();
+    ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
+            0);
+    ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
+    ADC14_setResolution(ADC_14BIT);
+
+    /* Configuring ADC Memory (ADC_MEM0 A15 in single sample mode)  */
+    ADC14_configureSingleSampleMode(ADC_MEM0, true);
+
+    /* Configure for input channel 15 (P6.0) and to use default Vref setting
+     * which uses Vcc = 3.3V */
+    if (channel == 0)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A0, false);
+    }
+    else if (channel == 1)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A1, false);
+    }
+    else if (channel == 2)
+    {
+        ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+            ADC_INPUT_A15, false);
+
+    }
+
+    ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
+
+    /* Triggering the start of the sample */
+    ADC14_enableConversion();
+}
+
 void sendReading(int16_t reading)
 {
     //Sends readings as 2 8bit bytes (16 bit data)
@@ -224,7 +268,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        1,                                  // 32.768 kHz / 8 = 4096 Hz
+        3,                                  // 32.768 kHz / 8 = 4096 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -246,7 +290,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        1// 16000 Period
+        3// 16000 Period
 };
 
 /* Statics */
@@ -288,24 +332,24 @@ int main(void)
     MAP_Interrupt_enableInterrupt(INT_PORT1);
 
     /* Enabling interrupts */
-    //MAP_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
-    //MAP_Interrupt_enableInterrupt(INT_EUSCIA0);
+    MAP_UART_enableInterrupt(EUSCI_A0_BASE, EUSCI_A_UART_RECEIVE_INTERRUPT);
+    MAP_Interrupt_enableInterrupt(INT_EUSCIA0);
 
     /* Initializing ADC (SMCLK/1/1) */
-    MAP_ADC14_enableModule();
-    MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
-            0);
-    MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
-    MAP_ADC14_setResolution(ADC_14BIT);
+    //MAP_ADC14_enableModule();
+    //MAP_ADC14_initModule(ADC_CLOCKSOURCE_SMCLK, ADC_PREDIVIDER_1, ADC_DIVIDER_1,
+    //        0);
+    //MAP_ADC14_setSampleHoldTime(ADC_PULSE_WIDTH_4, ADC_PULSE_WIDTH_4);
+    //MAP_ADC14_setResolution(ADC_14BIT);
 
     /* Configuring GPIOs (5.5 A0) */
     MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P5, GPIO_PIN5,
     GPIO_TERTIARY_MODULE_FUNCTION);
 
     /* Configuring ADC Memory */
-    MAP_ADC14_configureSingleSampleMode(ADC_MEM0, true);
-    MAP_ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
-    ADC_INPUT_A0, false);
+    //MAP_ADC14_configureSingleSampleMode(ADC_MEM0, true);
+    //MAP_ADC14_configureConversionMemory(ADC_MEM0, ADC_VREFPOS_AVCC_VREFNEG_VSS,
+    //ADC_INPUT_A0, false);
 
     /* Configuring Timer_A in continuous mode and sourced from ACLK */
     MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig);
@@ -315,12 +359,15 @@ int main(void)
 
     /* Configuring the sample trigger to be sourced from Timer_A0  and setting it
      * to automatic iteration after it is triggered*/
-    MAP_ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
+    //MAP_ADC14_setSampleHoldTrigger(ADC_TRIGGER_SOURCE1, false);
 
     /* Enabling the interrupt when a conversion on channel 1 is complete and
      * enabling conversions */
-    MAP_ADC14_enableInterrupt(ADC_INT0);
-    MAP_ADC14_enableConversion();
+    //MAP_ADC14_enableInterrupt(ADC_INT0);
+    //MAP_ADC14_enableConversion();
+
+    //Configure Analog
+    configure_analog(0);
 
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
@@ -334,8 +381,11 @@ int main(void)
     //Point information to input buffer
     information_bytes = resultsBuffer;
 
+    //BLUE LED
+    GPIO_setAsOutputPin(GPIO_PORT_P2, GPIO_PIN2);
+
     /* Enabling Interrupts */
-    MAP_Interrupt_enableInterrupt(INT_ADC14);
+    //MAP_Interrupt_enableInterrupt(INT_ADC14);
     MAP_Interrupt_enableMaster();
 
     int i;
@@ -345,6 +395,9 @@ int main(void)
         //MAP_PCM_gotoLPM0();
         if (stateCounter == 1)
         {
+            //Blue LED on
+            GPIO_setOutputHighOnPin(GPIO_PORT_P2, GPIO_PIN2);
+
             //Preprocess data
             average_preprocess(resultsBuffer, SAMPLES);
 
@@ -379,6 +432,12 @@ int main(void)
 
             resPos = 0;
             stateCounter = 0;
+
+            //Blue LED off
+            GPIO_setOutputLowOnPin(GPIO_PORT_P2, GPIO_PIN2);
+
+            //Enable Push Button
+            MAP_Interrupt_enableInterrupt(INT_PORT1);
         }
     }
 }
@@ -389,14 +448,17 @@ void ADC14_IRQHandler(void)
 {
     if(resPos < SAMPLES)
     {
-        //resultsBuffer[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
         information_bytes[resPos++] = MAP_ADC14_getResult(ADC_MEM0);
-        //resPos++;
     }
     else
     {
-        //Stop reading values
-        MAP_Interrupt_disableInterrupt(INT_ADC14);
+        //Disable ADC interrupts
+        Interrupt_disableInterrupt(INT_ADC14);
+        ADC14_disableInterrupt(ADC_INT0);
+
+        //Disable Push Button
+        MAP_Interrupt_disableInterrupt(INT_PORT1);
+
         //Send values
         stateCounter = 1;
     }
@@ -410,8 +472,9 @@ void PORT1_IRQHandler(void)
     /* Handles S1 button press */
     if (status & GPIO_PIN1)
     {
-        //Enable ADC reads
-        MAP_Interrupt_enableInterrupt(INT_ADC14);
+        //Enable ADC interrupts
+        ADC14_enableInterrupt(ADC_INT0);
+        Interrupt_enableInterrupt(INT_ADC14);
     }
 }
 
@@ -422,9 +485,13 @@ void EUSCIA0_IRQHandler(void)
       while(!(UCA0IFG&UCTXIFG));
 //      asm(" nop");
         //UCA0TXBUF = UCA0RXBUF;
-        uint8_t color = UCA0RXBUF;
-        UART_transmitData(EUSCI_A0_BASE, color);
-        UART_transmitData(EUSCI_A0_BASE, '\n');
-//      __no_operation();
+        uint8_t msg = UCA0RXBUF;
+
+        if (msg == 'M')//M for measurement
+        {
+            //Enable ADC interrupts
+            ADC14_enableInterrupt(ADC_INT0);
+            Interrupt_enableInterrupt(INT_ADC14);
+        }
     }
 }
