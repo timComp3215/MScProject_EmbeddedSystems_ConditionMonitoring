@@ -144,6 +144,16 @@ subplot(3, 1, 2)
 plot(f_bins, F_healthy(:, 1, 2))
 subplot(3, 1, 3)
 plot(f_bins, F_healthy(:, 1, 3))
+
+for i = 1:3
+    figure
+    subplot(3, 1, 1)
+    plot(f_bins, F_healthy(:, 1, i))
+    subplot(3, 1, 2)
+    plot(f_bins, F_bend(:, 1, i))
+    subplot(3, 1, 3)
+    plot(f_bins, F_worn(:, 1, i))
+end
 %%
 
 FT = zeros(round(N/2), 1);
@@ -311,3 +321,66 @@ leg = legend([h1 h2 h3], 'Healthy', 'Bending', 'Bearing Fault', 'Location', 'nor
 title(leg, 'Average')
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
+
+F_healthy_average = zeros(round(N/2), 1);
+for n = 1:round(N/2)
+    F_healthy_average(n, 1) = mean(F_healthy(n, :, 2));
+end
+
+
+F_bend_average = zeros(round(N/2), 1);
+for n = 1:round(N/2)
+    F_bend_average(n, 1) = mean(F_bend(n, :, 2));
+end
+
+
+F_worn_average = zeros(round(N/2), 1);
+for n = 1:round(N/2)
+    F_worn_average(n, 1) = mean(F_worn(n, :, 2));
+end
+
+
+figure('color', 'w', 'Position', [100, 100, 2000, 1100])
+ha = tight_subplot(3, 1,[.04 .05],[.075 .035],[.04 .02]);
+axes(ha(1));
+plot(f_bins, F_healthy_average, 'r', 'LineWidth', 1);
+ylim([0 0.1])
+xlim([0 1500])
+ax = gca;
+ax.YAxis.Exponent = -3;
+yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+set(gca,'XTickLabel',[]);
+legend('Healthy')
+grid on
+%xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+
+axes(ha(2));
+plot(f_bins, F_bend_average, 'b', 'LineWidth', 1);
+ylim([0 0.1])
+xlim([0 1500])
+ax = gca;
+ax.YAxis.Exponent = -3;
+yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+set(gca,'XTickLabel',[]);
+grid on
+legend('Bending')
+%xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+
+axes(ha(3));
+plot(f_bins, F_worn_average, 'g', 'LineWidth', 1);
+ylim([0 0.15])
+xlim([0 1500])
+ax = gca;
+ax.YAxis.Exponent = -3;
+yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+grid on
+legend('Faulty Bearing')
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
+%%
+
+
