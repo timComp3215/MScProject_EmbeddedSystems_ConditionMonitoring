@@ -26,7 +26,7 @@ D_10mm = csvread('Healthy5.csv');
 D_12mm = csvread('Healthy6.csv');
 D_14mm = csvread('Healthy7.csv');
 D_16mm = csvread('Healthy8.csv');
-D_18mm = csvread('Healthy9.csv');
+D_18mm = csvread('NotSoHealthy.csv');
 
 for i = 1:3
         x_healthy(:, 1, i) = D_00mm(:, 2 + i);
@@ -52,7 +52,7 @@ D_10mm = csvread('Bending26.csv');
 D_12mm = csvread('Bending27.csv');
 D_14mm = csvread('Bending28.csv');
 D_16mm = csvread('Bending29.csv');
-D_18mm = csvread('Bending30.csv');
+D_18mm = csvread('NotSoBend.csv');
 
 for i = 1:3
         x_bend(:, 1, i) = D_00mm(:, 2 + i);
