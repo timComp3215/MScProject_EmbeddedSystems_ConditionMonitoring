@@ -26,7 +26,7 @@ D_10mm = csvread('Healthy5.csv');
 D_12mm = csvread('Healthy6.csv');
 D_14mm = csvread('Healthy7.csv');
 D_16mm = csvread('Healthy8.csv');
-D_18mm = csvread('NotSoHealthy.csv');
+D_18mm = csvread('Healthy9.csv');
 
 for i = 1:3
         x_healthy(:, 1, i) = D_00mm(:, 2 + i);
@@ -52,7 +52,7 @@ D_10mm = csvread('Bending26.csv');
 D_12mm = csvread('Bending27.csv');
 D_14mm = csvread('Bending28.csv');
 D_16mm = csvread('Bending29.csv');
-D_18mm = csvread('NotSoBend.csv');
+D_18mm = csvread('Bending30.csv');
 
 for i = 1:3
         x_bend(:, 1, i) = D_00mm(:, 2 + i);
@@ -93,14 +93,38 @@ for i = 1:3
         x_worn(:, 10, i) = D_18mm(:, 2 + i);
 end
 %%
+%Remove DC component
+x_healthy_mean = zeros(10, 3);
+x_bend_mean = zeros(10, 3);
+x_worn_mean = zeros(10, 3);
+
+for z = 1:10
+    for i = 1:3
+        x_healthy_mean(z, i) = mean(x_healthy(:, z, i));
+        x_bend_mean(z, i) = mean(x_healthy(:, z, i));
+        x_worn_mean(z, i) = mean(x_healthy(:, z, i));
+        for n = 1:N
+            x_healthy(n, z, i) = x_healthy(n, z, i) - x_healthy_mean(z, i);
+            x_bend(n, z, i) = x_bend(n, z, i) - x_bend_mean(z, i);
+            x_worn(n, z, i) = x_worn(n, z, i) - x_worn_mean(z, i);
+        end
+    end
+end
+
+
+
+%%
 
 figure
 subplot(3, 1, 1)
 plot(t, x_healthy(:, 1, 1))
+ylim([-1 1])
 subplot(3, 1, 2)
-plot(t, x_healthy(:, 1, 2))
+plot(t, x_bend(:, 1, 1))
+ylim([-1 1])
 subplot(3, 1, 3)
-plot(t, x_healthy(:, 1, 3))
+plot(t, x_worn(:, 1, 1))
+ylim([-1 1])
 %%
 
 freq = (0:N-1) .* fs/N;
@@ -383,4 +407,19 @@ ylabel('Magnitude (g)')
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
 
+mean_values = mean(x_healthy(:, 1, 3));
+x_mean = zeros(N, 1);
 
+for n = 1:N
+    x_mean(n) = x_healthy(n, 1, 3) - mean_values;
+end
+
+tempf = fft(x_mean);
+tempf = abs(tempf/N);
+F_mean = tempf(1:round(N/2), 1);
+
+figure
+subplot(2, 1, 1)
+plot(f_bins, F_healthy(:, 1, 3))
+subplot(2, 1, 2)
+plot(f_bins, F_mean)
