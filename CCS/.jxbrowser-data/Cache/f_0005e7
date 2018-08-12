@@ -80,16 +80,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -180,16 +180,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -280,16 +280,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -380,16 +380,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -480,16 +480,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -580,16 +580,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -616,10 +616,10 @@
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC13X0SDK",
-        "versionRange": "2.10.02.10",
+        "versionRange": "2.20.03.05",
         "require": "optional",
-        "semver": "2.10.2",
-        "version": "2.10.02.10"
+        "semver": "2.20.3",
+        "version": "2.20.03.05"
       }
     ],
     "metadataVersion": "2.1.0",
@@ -680,16 +680,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -784,16 +784,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -888,16 +888,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -924,10 +924,10 @@
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC13X2SDK",
-        "versionRange": "2.10.02.10",
+        "versionRange": "2.20.03.05",
         "require": "optional",
-        "semver": "2.10.2",
-        "version": "2.10.02.10"
+        "semver": "2.20.3",
+        "version": "2.20.03.05"
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC13X2SDK_CN",
@@ -992,16 +992,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1096,16 +1096,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1207,16 +1207,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1318,16 +1318,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1429,16 +1429,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1540,16 +1540,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1651,16 +1651,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -1976,16 +1976,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2069,16 +2069,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2162,16 +2162,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2255,16 +2255,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2356,16 +2356,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2457,16 +2457,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2492,10 +2492,10 @@
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC26X2SDK",
-        "versionRange": "2.10.02.10",
+        "versionRange": "2.20.03.05",
         "require": "optional",
-        "semver": "2.10.2",
-        "version": "2.10.02.10"
+        "semver": "2.20.3",
+        "version": "2.20.03.05"
       },
       {
         "refId": "com.ti.SIMPLELINK_ACADEMY_CC26X2SDK_CN",
@@ -2558,16 +2558,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2646,16 +2646,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2741,16 +2741,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2836,16 +2836,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -2931,16 +2931,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3026,16 +3026,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3058,6 +3058,13 @@
         "refId": "xdctools",
         "semver": "3.50.7",
         "versionRange": "3.50.07.20"
+      },
+      {
+        "refId": "com.ti.SIMPLELINK_ACADEMY_CC2640R2SDK",
+        "versionRange": "2.20.03.05",
+        "require": "optional",
+        "semver": "2.20.3",
+        "version": "2.20.03.05"
       }
     ],
     "description": "Welcome to the SimpleLink CC2640R2 SDK",
@@ -3114,16 +3121,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3200,16 +3207,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3286,16 +3293,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3372,16 +3379,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3459,16 +3466,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3546,16 +3553,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3633,16 +3640,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3720,16 +3727,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3813,16 +3820,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3906,16 +3913,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -3999,16 +4006,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4092,16 +4099,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4208,16 +4215,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4324,16 +4331,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4438,16 +4445,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4552,16 +4559,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4674,16 +4681,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4777,16 +4784,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -4888,16 +4895,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5011,16 +5018,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5127,16 +5134,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5243,16 +5250,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5350,16 +5357,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5476,16 +5483,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5602,16 +5609,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5701,16 +5708,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5800,16 +5807,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -5911,16 +5918,16 @@
       "SmartRF Studio",
       "SmartRF Packet Sniffer 2",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6359,16 +6366,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6441,16 +6448,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432E401Y LaunchPad",
       "MSP432E411Y BGA EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6515,16 +6522,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6589,16 +6596,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6714,16 +6721,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6846,16 +6853,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -6985,16 +6992,16 @@
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
       "MSP432P401R LaunchPad - Red 2.x (Red)",
       "MSP432P4111 LaunchPad",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -7059,16 +7066,172 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "id": "com.ti.AZURE_CC32XX",
+    "name": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "description": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "devices": [
+      "CC3220",
+      "CC3220S",
+      "CC3220SF"
+    ],
+    "image": "azure_cc3220_2_00_00_07/.metadata/.tirex/simplelink_cc32xx.png",
+    "rootCategory": [
+      "Software",
+      "SimpleLink SDK Plugins",
+      "SimpleLink CC32XX SDK Azure IoT Plugin"
+    ],
+    "version": "2.00.00.07",
+    "type": "software",
+    "allowPartialDownload": false,
+    "metadataVersion": "2.1.0",
+    "_id": "BV32F-TqRk4TQY",
+    "package": "SimpleLink CC32XX SDK Azure IoT Plugin",
+    "semver": "2.0.0",
+    "advanced": {},
+    "dependencies": [],
+    "categories": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins"
+      ]
+    ],
+    "packagePath": "azure_cc3220_2_00_00_07",
+    "packageOrder": 91,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.AZURE_CC32XX__2.00.00.07"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.AZURE_CC32XX",
+    "packageVersion": "2.00.00.07",
+    "packageUId": "com.ti.AZURE_CC32XX__2.00.00.07",
+    "includedFilesForDownload": [
+      "azure_cc3220_2_00_00_07"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins"
+      ]
+    ],
+    "devicesVariants": [
+      "CC3220S",
+      "CC3220SF"
+    ],
+    "devtools": [
+      "CC3220S-LAUNCHXL",
+      "CC3220SF-LAUNCHXL",
+      "IAR Embedded Workbench for ARM",
+      "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "id": "com.ti.AZURE_MSP432E4",
+    "name": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "description": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "devices": [
+      "MSP432E4",
+      "MSP432E401Y",
+      "MSP432E411Y"
+    ],
+    "image": "azure_msp432e4_2_00_00_07/.metadata/.tirex/simplelink_msp432e4.png",
+    "rootCategory": [
+      "Software",
+      "SimpleLink SDK Plugins",
+      "SimpleLink MSP432E4 SDK Azure IoT Plugin"
+    ],
+    "version": "2.00.00.07",
+    "type": "software",
+    "allowPartialDownload": false,
+    "metadataVersion": "2.1.0",
+    "_id": "BV31HRmq_zB0X4",
+    "package": "SimpleLink MSP432E4 SDK Azure IoT Plugin",
+    "semver": "2.0.0",
+    "advanced": {},
+    "dependencies": [],
+    "categories": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins"
+      ]
+    ],
+    "packagePath": "azure_msp432e4_2_00_00_07",
+    "packageOrder": 92,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.AZURE_MSP432E4__2.00.00.07"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.AZURE_MSP432E4",
+    "packageVersion": "2.00.00.07",
+    "packageUId": "com.ti.AZURE_MSP432E4__2.00.00.07",
+    "includedFilesForDownload": [
+      "azure_msp432e4_2_00_00_07"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins"
+      ]
+    ],
+    "devicesVariants": [
+      "MSP432E401Y",
+      "MSP432E411Y"
+    ],
+    "devtools": [
+      "KEIL ULink",
+      "SEGGER J-Link",
+      "IAR I-JET",
+      "IAR Embedded Workbench for ARM",
+      "KEIL MDK-ARM",
+      "MSP-GANG",
+      "MSP432 Adapter for MSP-GANG",
+      "ELPROTRONIC",
+      "SEGGER",
+      "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
+      "MSP432E401Y LaunchPad",
+      "MSP432E411Y BGA EVM",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -7102,7 +7265,7 @@
       ]
     ],
     "packagePath": "aws_cc3220_1_00_00_12",
-    "packageOrder": 91,
+    "packageOrder": 93,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7133,16 +7296,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -7176,7 +7339,7 @@
       ]
     ],
     "packagePath": "aws_cc3220_1_10_00_07",
-    "packageOrder": 92,
+    "packageOrder": 94,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7207,16 +7370,16 @@
       "CC3220SF-LAUNCHXL",
       "IAR Embedded Workbench for ARM",
       "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -7245,7 +7408,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_00_00_Software",
-    "packageOrder": 137,
+    "packageOrder": 143,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7294,7 +7457,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_01_00",
-    "packageOrder": 138,
+    "packageOrder": 144,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7343,7 +7506,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_02_00_Software",
-    "packageOrder": 139,
+    "packageOrder": 145,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7392,7 +7555,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_03_00_Software",
-    "packageOrder": 140,
+    "packageOrder": 146,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7441,7 +7604,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_04_00_Software",
-    "packageOrder": 141,
+    "packageOrder": 147,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7490,7 +7653,7 @@
       ]
     ],
     "packagePath": "C2000Ware_1_00_05_00_Software",
-    "packageOrder": 142,
+    "packageOrder": 148,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7547,7 +7710,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_00_00_00",
-    "packageOrder": 143,
+    "packageOrder": 149,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7604,7 +7767,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_00_01_00",
-    "packageOrder": 144,
+    "packageOrder": 150,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7661,7 +7824,7 @@
       ]
     ],
     "packagePath": "C2000Ware_DigitalPower_SDK_1_01_00_00",
-    "packageOrder": 145,
+    "packageOrder": 151,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7708,7 +7871,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_00_00_00",
-    "packageOrder": 146,
+    "packageOrder": 152,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7756,7 +7919,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_01_00_00",
-    "packageOrder": 147,
+    "packageOrder": 153,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7804,7 +7967,7 @@
       ]
     ],
     "packagePath": "powerSUITE_2_02_00_00",
-    "packageOrder": 148,
+    "packageOrder": 154,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7872,7 +8035,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_0_2",
-    "packageOrder": 149,
+    "packageOrder": 155,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7905,16 +8068,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -7962,7 +8125,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_0_4",
-    "packageOrder": 150,
+    "packageOrder": 156,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -7995,16 +8158,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8052,7 +8215,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_1_3",
-    "packageOrder": 151,
+    "packageOrder": 157,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8085,16 +8248,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8142,7 +8305,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_2_1",
-    "packageOrder": 152,
+    "packageOrder": 158,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8175,16 +8338,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8232,7 +8395,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_3_0",
-    "packageOrder": 153,
+    "packageOrder": 159,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8265,16 +8428,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8322,7 +8485,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_4_3",
-    "packageOrder": 154,
+    "packageOrder": 160,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8355,16 +8518,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8412,7 +8575,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_5_5",
-    "packageOrder": 155,
+    "packageOrder": 161,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8445,16 +8608,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8494,7 +8657,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_6_1",
-    "packageOrder": 156,
+    "packageOrder": 162,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8527,16 +8690,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8577,7 +8740,7 @@
       ]
     ],
     "packagePath": "mmwave_training_1_6_2",
-    "packageOrder": 157,
+    "packageOrder": 163,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8611,16 +8774,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8658,7 +8821,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_0_2",
-    "packageOrder": 160,
+    "packageOrder": 166,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8692,16 +8855,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8739,7 +8902,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_0_4",
-    "packageOrder": 158,
+    "packageOrder": 164,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8773,16 +8936,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8820,7 +8983,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_1_3",
-    "packageOrder": 159,
+    "packageOrder": 165,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8854,16 +9017,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8898,7 +9061,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_2_1",
-    "packageOrder": 161,
+    "packageOrder": 167,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -8928,16 +9091,16 @@
       "IWR1443 Industrial EVM",
       "IWR1642 Industrial EVM",
       "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -8975,7 +9138,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_3_0",
-    "packageOrder": 162,
+    "packageOrder": 168,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9009,16 +9172,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9056,7 +9219,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_4_3",
-    "packageOrder": 163,
+    "packageOrder": 169,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9090,16 +9253,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9137,7 +9300,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_5_5",
-    "packageOrder": 164,
+    "packageOrder": 170,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9171,16 +9334,16 @@
       "mmWave Sensors Development Pack",
       "AWR1443 Automotive EVM",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9215,7 +9378,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_6_1",
-    "packageOrder": 165,
+    "packageOrder": 171,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9245,16 +9408,16 @@
       "IWR1443 Industrial EVM",
       "IWR1642 Industrial EVM",
       "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9289,7 +9452,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_1_6_2",
-    "packageOrder": 166,
+    "packageOrder": 172,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9319,16 +9482,16 @@
       "IWR1443 Industrial EVM",
       "IWR1642 Industrial EVM",
       "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9364,7 +9527,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_0_0",
-    "packageOrder": 167,
+    "packageOrder": 173,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -9395,553 +9558,16 @@
       "IWR1443 Industrial EVM",
       "IWR1642 Industrial EVM",
       "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.1.1",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_1_1/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_1_1/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3bC0ij7SJz4o",
-    "package": "Industrial Toolbox",
-    "semver": "2.1.1",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_1_1/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_1_1",
-    "packageOrder": 168,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.1.1"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.1.1",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.1.1",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_1_1"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
+      "XDS560v2 System Trace USB Debug Probe",
       "UniFlash",
       "PinMux",
       "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.1.2",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_1_2/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_1_2/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV34QhNHRe9L14",
-    "package": "Industrial Toolbox",
-    "semver": "2.1.2",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_1_2/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_1_2",
-    "packageOrder": 169,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.1.2"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.1.2",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.1.2",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_1_2"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.2.0",
-    "comment": "rc3",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_2_0/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_2_0/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3QD5tfyjVO8I",
-    "package": "Industrial Toolbox",
-    "semver": "2.2.0",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_2_0/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_2_0",
-    "packageOrder": 170,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.2.0"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.2.0",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.2.0",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_2_0"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.3.0",
-    "comment": "rc6",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_3_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_3_0/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3vjxHa-dHBDc",
-    "package": "Industrial Toolbox",
-    "semver": "2.3.0",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_3_0/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_3_0",
-    "packageOrder": 171,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.3.0"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.3.0",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.3.0",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_3_0"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.3.1",
-    "comment": "rc2",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_3_1/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_3_1/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3XiiOUY-LSFs",
-    "package": "Industrial Toolbox",
-    "semver": "2.3.1",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_3_1/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_3_1",
-    "packageOrder": 172,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.3.1"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.3.1",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.3.1",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_3_1"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.4.0",
-    "comment": "rc3",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_4_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_4_0/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3L-Vkq4uDdE0",
-    "package": "Industrial Toolbox",
-    "semver": "2.4.0",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_4_0/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_4_0",
-    "packageOrder": 173,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.4.0"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.4.0",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.4.0",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_4_0"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
-    ]
-  },
-  {
-    "metadataVersion": "3.00.00",
-    "id": "com.ti.mmwave_industrial_toolbox",
-    "name": "Industrial Toolbox",
-    "version": "2.5.0",
-    "comment": "rc1",
-    "type": "software",
-    "license": "mmwave_industrial_toolbox_2_5_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
-    "devices": [
-      "IWR1XXX",
-      "IWR1443",
-      "IWR1642"
-    ],
-    "allowPartialDownload": false,
-    "image": "mmwave_industrial_toolbox_2_5_0/.metadata/.html/images/logo.png",
-    "dependencies": [],
-    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
-    "rootCategory": [
-      "Software",
-      "mmWave Sensors",
-      "Industrial Toolbox"
-    ],
-    "_id": "BV3fUOnHjTk_GI",
-    "package": "Industrial Toolbox",
-    "semver": "2.5.0",
-    "advanced": {},
-    "link": "mmwave_industrial_toolbox_2_5_0/.metadata/.html/index.html",
-    "categories": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "packagePath": "mmwave_industrial_toolbox_2_5_0",
-    "packageOrder": 174,
-    "resourceType": "packageOverview",
-    "includedResources": [
-      {
-        "package": "com.ti.mmwave_industrial_toolbox__2.5.0"
-      }
-    ],
-    "includedFiles": [
-      "."
-    ],
-    "packageId": "com.ti.mmwave_industrial_toolbox",
-    "packageVersion": "2.5.0",
-    "packageUId": "com.ti.mmwave_industrial_toolbox__2.5.0",
-    "linkType": "local",
-    "includedFilesForDownload": [
-      "mmwave_industrial_toolbox_2_5_0"
-    ],
-    "fullPaths": [
-      [
-        "Software",
-        "mmWave Sensors"
-      ]
-    ],
-    "devicesVariants": [
-      "IWR1443",
-      "IWR1642"
-    ],
-    "devtools": [
-      "IWR1443 Industrial EVM",
-      "IWR1642 Industrial EVM",
-      "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
-      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
-      "XDS100v2 JTAG Debug Probe (ARM version)",
-      "XDS110 Debug Probe",
-      "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -9998,6 +9624,543 @@
     "metadataVersion": "3.00.00",
     "id": "com.ti.mmwave_industrial_toolbox",
     "name": "Industrial Toolbox",
+    "version": "2.1.1",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_1_1/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_1_1/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3bC0ij7SJz4o",
+    "package": "Industrial Toolbox",
+    "semver": "2.1.1",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_1_1/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_1_1",
+    "packageOrder": 174,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.1.1"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.1.1",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.1.1",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_1_1"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.1.2",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_1_2/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_1_2/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV34QhNHRe9L14",
+    "package": "Industrial Toolbox",
+    "semver": "2.1.2",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_1_2/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_1_2",
+    "packageOrder": 175,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.1.2"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.1.2",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.1.2",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_1_2"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.2.0",
+    "comment": "rc3",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_2_0/license/SRAS 3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_2_0/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3QD5tfyjVO8I",
+    "package": "Industrial Toolbox",
+    "semver": "2.2.0",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_2_0/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_2_0",
+    "packageOrder": 176,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.2.0"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.2.0",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.2.0",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_2_0"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.3.0",
+    "comment": "rc6",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_3_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_3_0/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3vjxHa-dHBDc",
+    "package": "Industrial Toolbox",
+    "semver": "2.3.0",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_3_0/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_3_0",
+    "packageOrder": 177,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.3.0"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.3.0",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.3.0",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_3_0"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.3.1",
+    "comment": "rc2",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_3_1/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_3_1/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3XiiOUY-LSFs",
+    "package": "Industrial Toolbox",
+    "semver": "2.3.1",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_3_1/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_3_1",
+    "packageOrder": 178,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.3.1"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.3.1",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.3.1",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_3_1"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.4.0",
+    "comment": "rc3",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_4_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_4_0/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3L-Vkq4uDdE0",
+    "package": "Industrial Toolbox",
+    "semver": "2.4.0",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_4_0/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_4_0",
+    "packageOrder": 179,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.4.0"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.4.0",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.4.0",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_4_0"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
+    "version": "2.5.0",
+    "comment": "rc1",
+    "type": "software",
+    "license": "mmwave_industrial_toolbox_2_5_0/license/SRAS-3841-325565-v1-Radar_Demo_Clickwrap.pdf",
+    "devices": [
+      "IWR1XXX",
+      "IWR1443",
+      "IWR1642"
+    ],
+    "allowPartialDownload": false,
+    "image": "mmwave_industrial_toolbox_2_5_0/.metadata/.html/images/logo.png",
+    "dependencies": [],
+    "description": "Welcome to the mmWave Industrial Toolbox!  The mmmWave Industrial Toolbox is a collection of cloud tools designed to simplify evaluating, experimenting and developing with mmWave sensors.  The series includes technical collateral, follow-along labs, experiments and reference chirp designs.",
+    "rootCategory": [
+      "Software",
+      "mmWave Sensors",
+      "Industrial Toolbox"
+    ],
+    "_id": "BV3fUOnHjTk_GI",
+    "package": "Industrial Toolbox",
+    "semver": "2.5.0",
+    "advanced": {},
+    "link": "mmwave_industrial_toolbox_2_5_0/.metadata/.html/index.html",
+    "categories": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "packagePath": "mmwave_industrial_toolbox_2_5_0",
+    "packageOrder": 180,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.mmwave_industrial_toolbox__2.5.0"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.mmwave_industrial_toolbox",
+    "packageVersion": "2.5.0",
+    "packageUId": "com.ti.mmwave_industrial_toolbox__2.5.0",
+    "linkType": "local",
+    "includedFilesForDownload": [
+      "mmwave_industrial_toolbox_2_5_0"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "mmWave Sensors"
+      ]
+    ],
+    "devicesVariants": [
+      "IWR1443",
+      "IWR1642"
+    ],
+    "devtools": [
+      "IWR1443 Industrial EVM",
+      "IWR1642 Industrial EVM",
+      "mmWave Sensors Development Pack",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
+  },
+  {
+    "metadataVersion": "3.00.00",
+    "id": "com.ti.mmwave_industrial_toolbox",
+    "name": "Industrial Toolbox",
     "version": "2.5.1",
     "comment": "rc2",
     "type": "software",
@@ -10028,7 +10191,7 @@
       ]
     ],
     "packagePath": "mmwave_industrial_toolbox_2_5_1",
-    "packageOrder": 175,
+    "packageOrder": 181,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10059,16 +10222,16 @@
       "IWR1443 Industrial EVM",
       "IWR1642 Industrial EVM",
       "mmWave Sensors Development Pack",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10101,7 +10264,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_1_0_0",
-    "packageOrder": 176,
+    "packageOrder": 182,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10129,16 +10292,16 @@
     "devtools": [
       "mmWave Sensors Development Pack",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10172,7 +10335,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_1_2_0",
-    "packageOrder": 177,
+    "packageOrder": 183,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10200,16 +10363,16 @@
     "devtools": [
       "mmWave Sensors Development Pack",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10243,7 +10406,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_0_0",
-    "packageOrder": 178,
+    "packageOrder": 184,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10271,16 +10434,16 @@
     "devtools": [
       "mmWave Sensors Development Pack",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10314,7 +10477,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_1_1",
-    "packageOrder": 179,
+    "packageOrder": 185,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10342,16 +10505,16 @@
     "devtools": [
       "mmWave Sensors Development Pack",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10385,7 +10548,7 @@
       ]
     ],
     "packagePath": "mmwave_automotive_toolbox_2_1_2",
-    "packageOrder": 180,
+    "packageOrder": 186,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10413,16 +10576,16 @@
     "devtools": [
       "mmWave Sensors Development Pack",
       "AWR1642 Automotive EVM",
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10460,7 +10623,7 @@
       ]
     ],
     "packagePath": "msp/MSP430Ware_3_60_00_10",
-    "packageOrder": 181,
+    "packageOrder": 187,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10515,7 +10678,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_02_10",
-    "packageOrder": 182,
+    "packageOrder": 188,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10570,7 +10733,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_03_07",
-    "packageOrder": 183,
+    "packageOrder": 189,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10625,7 +10788,7 @@
       ]
     ],
     "packagePath": "msp430ware_3_80_04_05",
-    "packageOrder": 184,
+    "packageOrder": 190,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10672,7 +10835,7 @@
       ]
     ],
     "packagePath": "Sitara_1_02_00_00",
-    "packageOrder": 185,
+    "packageOrder": 191,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10732,7 +10895,7 @@
       ]
     ],
     "packagePath": "tivaware_c_series_2_1_4_178",
-    "packageOrder": 186,
+    "packageOrder": 192,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10763,16 +10926,16 @@
       "TM4C123GH6PM"
     ],
     "devtools": [
-      "Code Composer Studio (CCS)",
-      "UniFlash",
-      "PinMux",
-      "GUI Composer",
       "XDS100v2 JTAG Debug Probe (14-pin TI version)",
       "XDS100v2 JTAG Debug Probe (20-pin TI version)",
       "XDS100v2 JTAG Debug Probe (ARM version)",
       "XDS110 Debug Probe",
       "XDS200 USB Debug Probe",
-      "XDS560v2 System Trace USB Debug Probe"
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
     ]
   },
   {
@@ -10805,7 +10968,7 @@
       ]
     ],
     "packagePath": "tirtos_msp43x_2_20_00_06",
-    "packageOrder": 187,
+    "packageOrder": 193,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10860,7 +11023,7 @@
       ]
     ],
     "packagePath": "tirtos_cc13xx_cc26xx_2_21_00_06",
-    "packageOrder": 188,
+    "packageOrder": 194,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10915,7 +11078,7 @@
       ]
     ],
     "packagePath": "tirtos_tivac_2_16_00_08",
-    "packageOrder": 189,
+    "packageOrder": 195,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -10970,7 +11133,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_01_00_03",
-    "packageOrder": 190,
+    "packageOrder": 196,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11025,7 +11188,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_00_06",
-    "packageOrder": 191,
+    "packageOrder": 197,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11080,7 +11243,7 @@
       ]
     ],
     "packagePath": "tirtos_simplelink_2_13_01_09",
-    "packageOrder": 192,
+    "packageOrder": 198,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11127,7 +11290,7 @@
       ]
     ],
     "packagePath": "bios_6_50_01_12",
-    "packageOrder": 193,
+    "packageOrder": 199,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11173,7 +11336,7 @@
       ]
     ],
     "packagePath": "xdctools_3_30_04_52_core",
-    "packageOrder": 194,
+    "packageOrder": 200,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11222,7 +11385,7 @@
       ]
     ],
     "packagePath": "xdctools_3_31_01_33_core",
-    "packageOrder": 195,
+    "packageOrder": 201,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11268,7 +11431,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_00_06_core",
-    "packageOrder": 196,
+    "packageOrder": 202,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11314,7 +11477,7 @@
       ]
     ],
     "packagePath": "xdctools_3_32_01_22_core",
-    "packageOrder": 197,
+    "packageOrder": 203,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11360,7 +11523,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_00_10_core",
-    "packageOrder": 198,
+    "packageOrder": 204,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11406,7 +11569,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_01_12_core",
-    "packageOrder": 199,
+    "packageOrder": 205,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11452,7 +11615,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_02_20_core",
-    "packageOrder": 200,
+    "packageOrder": 206,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11501,7 +11664,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_03_33_core",
-    "packageOrder": 201,
+    "packageOrder": 207,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11549,7 +11712,7 @@
       ]
     ],
     "packagePath": "xdctools_3_50_04_43_core",
-    "packageOrder": 202,
+    "packageOrder": 208,
     "resourceType": "packageOverview",
     "includedResources": [
       {
@@ -11572,5 +11735,86 @@
     ],
     "devicesVariants": [],
     "devices": []
+  },
+  {
+    "metadataVersion": "3.0.0",
+    "id": "com.ti.SIMPLELINK_SDK_NFC_PLUGIN",
+    "name": "SimpleLink SDK NFC Plugin",
+    "version": "2.20.00.08",
+    "type": "software",
+    "image": "simplelink_sdk_nfc_plugin_2_20_00_08/.metadata/.tirex/simplelink_sdk_plugin.png",
+    "description": "SimpleLink SDK NFC Plugin",
+    "dependencies": [
+      {
+        "version": "2.20.00.10",
+        "refId": "com.ti.SIMPLELINK_CC32XX_SDK",
+        "semver": "2.20.0",
+        "versionRange": "2.20.00.10"
+      }
+    ],
+    "allowPartialDownload": false,
+    "devices": [
+      "CC32XX",
+      "CC3200"
+    ],
+    "rootCategory": [
+      "Software",
+      "SimpleLink SDK Plugins",
+      "Connectivity",
+      "SimpleLink SDK NFC Plugin"
+    ],
+    "_id": "BV35jkvCbz6AgQ",
+    "package": "SimpleLink SDK NFC Plugin",
+    "semver": "2.20.0",
+    "advanced": {},
+    "categories": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins",
+        "Connectivity"
+      ]
+    ],
+    "packagePath": "simplelink_sdk_nfc_plugin_2_20_00_08",
+    "packageOrder": 214,
+    "resourceType": "packageOverview",
+    "includedResources": [
+      {
+        "package": "com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08"
+      }
+    ],
+    "includedFiles": [
+      "."
+    ],
+    "packageId": "com.ti.SIMPLELINK_SDK_NFC_PLUGIN",
+    "packageVersion": "2.20.00.08",
+    "packageUId": "com.ti.SIMPLELINK_SDK_NFC_PLUGIN__2.20.00.08",
+    "includedFilesForDownload": [
+      "simplelink_sdk_nfc_plugin_2_20_00_08"
+    ],
+    "fullPaths": [
+      [
+        "Software",
+        "SimpleLink SDK Plugins",
+        "Connectivity"
+      ]
+    ],
+    "devicesVariants": [
+      "CC3200"
+    ],
+    "devtools": [
+      "CC3200-LAUNCHXL",
+      "IAR Embedded Workbench for ARM",
+      "Open On-Chip Debugger (OpenOCD) for SimpleLink™ Connected MCUs",
+      "XDS100v2 JTAG Debug Probe (14-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (20-pin TI version)",
+      "XDS100v2 JTAG Debug Probe (ARM version)",
+      "XDS110 Debug Probe",
+      "XDS200 USB Debug Probe",
+      "XDS560v2 System Trace USB Debug Probe",
+      "UniFlash",
+      "PinMux",
+      "GUI Composer",
+      "Code Composer Studio (CCS)"
+    ]
   }
 ]

@@ -104,7 +104,7 @@
                                         async-show="asyncValues[0] && !asyncValues[1]"
                                         async>
                                         <a href="">
-                                            <span class="hamMenuText">Scan Desktop</span>
+                                            <span test_id="scan" class="hamMenuText">Scan Desktop</span>
                                             <i class="material-icons" style="font-size: 1.2em; top: 3px; padding-left: 7px;">desktop_windows</i>
                                         </a>
                                     </li>
@@ -154,6 +154,7 @@
                                     async>
                                     cloud_queue </i>
                                 <i id="cloudOff" class="material-icons cloud"
+                                   test_id="cloudOff"
                                    style="top:-1px; color:red; font-weight:bold; position: relative"
                                    async-values="[serverstate.isInOfflineMode()]"
                                    async-show="asyncValues[0]"
@@ -216,7 +217,7 @@
                 <div class="modal-body">
                     <iframe ng-src="{{licenseUrl}}" height="90%" width="100%"></iframe>
                     <div class="modal-footer">
-                        <button class="btn-info" ng-click="agree()">I Have Read And Agree</button>
+                        <button test_id="licenseAgree" class="btn-info" ng-click="agree()">I Have Read And Agree</button>
                         <button class="btn-danger" ng-click="disagree()">Disagree</button>
                     </div>
                 </div>
@@ -384,7 +385,9 @@
                     </table>
                     <!-- ng-show="waitingScreen && show_progress_screen"-->
                     <div ng-show="show_progress_screen && waitingScreen" style="padding-top: 10px;">
-                        <div class="download-message"> {{ waitingMessage }} </div>
+                        <div class="download-message"> {{ waitingMessage }} <br/>
+                            Do not close Resource Explorer while operation is in progress.
+                        </div>
                         <div class="progress">
                             <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{ progressBar }}" aria-valuemin="0" aria-valuemax="100" ng-style="{width : ( progressBar + '%' ) }" >{{ progressBar }}%</div>
                         </div>
@@ -392,7 +395,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" ng-click="install()" ng-disabled="show_progress_screen">OK</button>
-                    <button type="button" class="btn btn-default" ng-click="cancel()" ng-disabled="!canCancel">Cancel</button>
                 </div>
             </script>
 
@@ -478,7 +480,7 @@
                                         {{path}}
                                     </td>
                                     <td style="width:25%;" class="endCol">
-                                        <input type="radio" name="installPath" value="{{path}}" ng-click="$parent.setDefaultInstall(path)" ng-model="$parent.defaultInstall" tooltip-placement="bottom" tooltip="Set Default"/>
+                                        <input type="radio" name="installPath" test_id="{{path}}" value="{{path}}" ng-click="$parent.setDefaultInstall(path)" ng-model="$parent.defaultInstall" tooltip-placement="bottom" tooltip="Set Default"/>
                                     </td>
                                     <td style="width:15%;"class="endCol">
                                         <button type="button" class="removeBtn btn" ng-click="folderPaths.removeFolderPath(path)"> Remove </button>
@@ -487,9 +489,10 @@
                                 </tr>
                             </table>
                             <div style="margin:0.5em 0 0.5em 0">
-                                <input type="text" ng-model="newFolderPath" style="width: 70%;">
+                                <input test_id="newFolderPath" type="text" ng-model="newFolderPath" style="width: 70%;">
                                 <button type="button"
                                         id="addFolderPath"
+                                        test_id="addFolderPath"
                                         class="btn btn-default"
                                         ng-click="folderPaths.addFolderPath(newFolderPath)"> Add Folder </button>
                             </div>
@@ -513,17 +516,6 @@
                         <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
                     </div>
                 </div>
-            </script>
-
-            <!-- needed for goolge analytics-->
-            <script>
-             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                                      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-             })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-             ga('create', 'UA-62823528-1', 'auto');
-             ga('send', 'pageview');
             </script>
 
             <div ng-controller="OverviewController"  >
@@ -653,7 +645,7 @@
 				        width="100%" frameborder="0"></iframe>
                             </div>
 
-                            <div ng-show="showIntro">
+                            <div ng-show="showIntro" test-id="rex-title">
 			        <!-- this div is for take a tour, it has to be the same as the package layout code. Have to keep on updating layout code in both places. poor design and needs to be fixed in the future-->
 
                                 <img src="images/tirex_logo_256.png" height="130" style="float:right;padding-right:15px;padding-left:30px" />
@@ -792,7 +784,7 @@
 							            <i data-toggle="tooltip" tooltip="Info" tooltip-placement="bottom" class="material-icons" ng-show="!isPackageOffline(package)" style=" color:#B8B8B8; position: relative; float:right; top: -0.2em;">info_outline</i>
                                     </div>
                                     <div test_id="package-container" class="container" ng-click="goToPackage(package.selectedPackage)">
-							            <img ng-src="content/{{package.selectedPackage.image}}" class="{{package.selectedPackage.image}}"/>
+							            <img  test_id="{{package.id}}" ng-src="content/{{package.selectedPackage.image}}" class="{{package.selectedPackage.image}}"/>
                                     </div>
                                     <div class="description text-center">
 							            <div class="name">{{package.name}}</div>
@@ -802,7 +794,7 @@
 							            <select data-toggle="tooltip" tooltip="Select a package version" tooltip-placement="bottom" class="form-control" ng-model="package.selectedVersion" style="top:1%;" ng-options="version for version in package.versions.slice().reverse()" ng-click="$event.stopPropagation()" ng-change="versionToggled2(package.selectedVersion, package.id)">
                                             <option> {{ version }} </option>
 							            </select>
-							            <div test_id="install-icon" style="margin-bottom: 0.5em;" ng-disabled="!cloud() || isPackageOffline(package) === 'full' " class="btn btn-info btn-mini icon-size" style="top:100%;" ng-click="homemakeOffline(package)">
+							            <div test_id="{{package.id + '-install-icon'}}" style="margin-bottom: 0.5em;" ng-disabled="!cloud() || isPackageOffline(package) === 'full' " class="btn btn-info btn-mini icon-size" style="top:100%;" ng-click="homemakeOffline(package)">
                                             <img data-toggle="tooltip" tooltip="Download and install" tooltip-placement="bottom" ng-src="{{downloadIcn()}}" ng-class="{'grey':isLocalServer()}" style="" height="{{isLocalServer()?16:13}}">
 							            </div>
                                     </div>
@@ -1161,7 +1153,11 @@
                             </div>
                         </div>
                     </div>
-
+                    <script>
+                        /* Script for Geo location */
+                        $.getJSON("http://www.ti.com/general/docs/readAkamaiHeaders0.tsp", function(data){window.tiUserGeo = data;});
+                    </script>
+                    <div id="tiPrivacy"></div>
                 </ui-layout>
 
             </div>

@@ -80,7 +80,7 @@ disp(rms(board_F))
 disp('std')
 disp(std(FT(:, 2)))
 disp(std(board_F))
-
+%%
 figure('Color', 'w', 'Position', [500 200 1500 1000]) 
 ha = tight_subplot(2,1,[.075 .07],[.075 .05],[.065 .02]);
 axes(ha(1));

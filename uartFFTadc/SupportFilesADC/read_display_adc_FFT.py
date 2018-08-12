@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 4096
+fs = 16384
 
 frequency = 4095
 
@@ -127,8 +127,8 @@ s.close()
 print "Reading finished"
 
 for n in range(0, SAMPLES):
-    #float_values.append((float(values[n])/16384) * 3.3)
     #Convert to g
+    #float_values.append(((float(values[n])/16384) * 3.3))
     float_values.append(float(values[n]))
 
 #print values

@@ -7,7 +7,7 @@ fs = 16384; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
-model_frequency = 53;
+model_frequency = 7533;
 
 N = fs * T;
 
@@ -34,7 +34,8 @@ for n = 1:N
     %x(n) = ((M(n)-mean(M))/16384.0)*3.3;
     %x(n) = (M(n)/16384.0)*3.3;
     x(n) = M(n);
-    model_x(n) = max(M)*sin(model_frequency*2*pi*t(n));
+    %model_x(n) = max(M)*sin(model_frequency*2*pi*t(n));
+    model_x(n) = 2482.5*sin(model_frequency*2*pi*t(n));
     %x2(n) = int16(x(n)*(2^12));
 end
 
@@ -84,11 +85,12 @@ plot(FT(:, 1), FT(:, 3));
 legend('Board', 'ADC', 'Model');
 
 figure;
-plot(board_freq, board_F);
+h1 = plot(board_freq, board_F);
 hold on
 %plot(FT(:, 1), FT(:, 2));
-plot(FT(:, 1), FT(:, 3));
-legend('Board', 'Model');
+[Max_f, I_f] = max(FT(:, 3));
+h2 = plot(FT(I_f, 1), FT(I_f, 3), 'rx');
+legend([h1 h2], 'Board', 'Model');
 
 disp('Max');
 disp(max(board_F));
