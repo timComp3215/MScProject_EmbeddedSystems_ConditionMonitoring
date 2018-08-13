@@ -18,13 +18,14 @@ SAMPLES = 4096
 #Sampling frequency - purely for graphs to be correctly scaled
 fs = 4096
 
-frequency = 4
+frequency = 0
+test = 2
 
 #set name of output file
 #output_file = 'adc_output.csv'
-output_file = 'Big/t_Phase1_' + str(frequency) + '.csv'
+output_file = 'Small/t_' + str(frequency) + '_' + str(test) + '.csv'
 #fft_output_file = 'fft_output.csv'
-fft_output_file = 'Big/f_Phase1_' + str(frequency) + '.csv'
+fft_output_file = 'Small/f_' + str(frequency) + '_' + str(test) + '.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
