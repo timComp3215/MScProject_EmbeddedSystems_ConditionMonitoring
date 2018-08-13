@@ -3,11 +3,11 @@ close all
 
 %Include noise
 
-fs = 16384; %Sample frequency
+fs = 512; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
-model_frequency = 7533;
+model_frequency = 50;
 
 N = fs * T;
 
