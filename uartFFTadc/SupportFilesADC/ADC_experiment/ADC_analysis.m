@@ -108,29 +108,29 @@ FT(:, 1) = freq(1:round(N/2));
 % plot(FT(:, 1), FT(:, 3));
 % legend('Board', 'ADC', 'Model');
 
-figure('color', 'w', 'Position', [50, 100, 2000, 550])
-ha = tight_subplot(1,1,[.075 .07],[.125 .02],[.06 .03]);
+figure('color', 'w', 'Position', [50, 100, 2000, 800])
+ha = tight_subplot(1,1,[.075 .07],[.1 .02],[.05 .01]);
 axes(ha(1));
-h1 = plot(board_freq, board_F(:, 1), 'b', 'LineWidth', 1);
+h1 = plot(board_freq, board_F(:, 1), 'b', 'LineWidth', 1.5);
 hold on
 
-plot(board_freq, board_F(:, 2), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 3), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 4), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 5), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 6), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 7), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 8), 'b', 'LineWidth', 1)
-plot(board_freq, board_F(:, 9), 'b', 'LineWidth', 1)
+plot(board_freq, board_F(:, 2), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 3), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 4), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 5), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 6), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 7), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 8), 'b', 'LineWidth', 1.5)
+plot(board_freq, board_F(:, 9), 'b', 'LineWidth', 1.5)
 
 
 [Max_f, I_f] = max(model_F(:, 1));
-h2 = plot(FT(I_f, 1), model_F(I_f, 1), 'rd', 'LineWidth', 1);
+h2 = plot(FT(I_f, 1), model_F(I_f, 1), 'rd', 'LineWidth', 2, 'MarkerSize', 10);
 
 %plot(FT(:, 1), FT(:, 2));
 for z = 2:9
     [Max_f, I_f] = max(model_F(:, z));
-    plot(FT(I_f, 1), model_F(I_f, z), 'rd', 'LineWidth', 1);
+    plot(FT(I_f, 1), model_F(I_f, z), 'rd', 'LineWidth', 2, 'MarkerSize', 10);
 end
 xlim([0 8192])
 legend([h1 h2], 'Board', 'Model', 'Location', 'North');
@@ -138,7 +138,7 @@ xlabel('Frequency (Hz)')
 ylabel('Magnitude')
 
 
-set(findall(gcf,'-property','FontSize'),'FontSize',18)
+set(findall(gcf,'-property','FontSize'),'FontSize',20)
 
 % disp('Max');
 % disp(max(board_F));

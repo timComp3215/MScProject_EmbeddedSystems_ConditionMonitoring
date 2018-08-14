@@ -1,5 +1,5 @@
 clear all
-%close all
+close all
 
 %Initial program designed to analyse data in multiple slices at the
 %actual sampling frequency given
@@ -293,128 +293,27 @@ set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
 view(2)
 %%
+%Compare with original data plot
+F_healthy_average = csvread('F_healthy_average.csv');
 
-% %%
-% figure('color', 'w', 'Position', [100, 100, 2000, 550])
-% ha = tight_subplot(1,3,[.075 .07],[.15 .075],[.042 .02]);
-% for i = 1:3
-%     axes(ha(i));
-%         
-%     scatter3(F_stats_healthy_adxl(1, i, 1), F_stats_healthy_adxl(1, i, 2), F_stats_healthy_adxl(1, i, 3), 'ro');
-%     hold on  
-%     scatter3(F_stats_healthy_adxl(2, i, 1), F_stats_healthy_adxl(2, i, 2), F_stats_healthy_adxl(2, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(3, i, 1), F_stats_healthy_adxl(3, i, 2), F_stats_healthy_adxl(3, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(4, i, 1), F_stats_healthy_adxl(4, i, 2), F_stats_healthy_adxl(4, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(5, i, 1), F_stats_healthy_adxl(5, i, 2), F_stats_healthy_adxl(5, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(6, i, 1), F_stats_healthy_adxl(6, i, 2), F_stats_healthy_adxl(6, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(7, i, 1), F_stats_healthy_adxl(7, i, 2), F_stats_healthy_adxl(7, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(8, i, 1), F_stats_healthy_adxl(8, i, 2), F_stats_healthy_adxl(8, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(9, i, 1), F_stats_healthy_adxl(9, i, 2), F_stats_healthy_adxl(9, i, 3), 'ro');
-%     scatter3(F_stats_healthy_adxl(10, i, 1), F_stats_healthy_adxl(10, i, 2), F_stats_healthy_adxl(10, i, 3), 'ro');
-%     
-%   
-%     scatter3(F_stats_bend_adxl(1, i, 1), F_stats_bend_adxl(1, i, 2), F_stats_bend_adxl(1, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(2, i, 1), F_stats_bend_adxl(2, i, 2), F_stats_bend_adxl(2, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(3, i, 1), F_stats_bend_adxl(3, i, 2), F_stats_bend_adxl(3, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(4, i, 1), F_stats_bend_adxl(4, i, 2), F_stats_bend_adxl(4, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(5, i, 1), F_stats_bend_adxl(5, i, 2), F_stats_bend_adxl(5, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(6, i, 1), F_stats_bend_adxl(6, i, 2), F_stats_bend_adxl(6, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(7, i, 1), F_stats_bend_adxl(7, i, 2), F_stats_bend_adxl(7, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(8, i, 1), F_stats_bend_adxl(8, i, 2), F_stats_bend_adxl(8, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(9, i, 1), F_stats_bend_adxl(9, i, 2), F_stats_bend_adxl(9, i, 3), 'bs');
-%     scatter3(F_stats_bend_adxl(10, i, 1), F_stats_bend_adxl(10, i, 2), F_stats_bend_adxl(10, i, 3), 'bs');
-%     
-%     scatter3(F_stats_worn(1, i, 1), F_stats_worn(1, i, 2), F_stats_worn(1, i, 3), 'g^');
-%     scatter3(F_stats_worn(2, i, 1), F_stats_worn(2, i, 2), F_stats_worn(2, i, 3), 'g^');
-%     scatter3(F_stats_worn(3, i, 1), F_stats_worn(3, i, 2), F_stats_worn(3, i, 3), 'g^');
-%     scatter3(F_stats_worn(4, i, 1), F_stats_worn(4, i, 2), F_stats_worn(4, i, 3), 'g^');
-%     scatter3(F_stats_worn(5, i, 1), F_stats_worn(5, i, 2), F_stats_worn(5, i, 3), 'g^');
-%     scatter3(F_stats_worn(6, i, 1), F_stats_worn(6, i, 2), F_stats_worn(6, i, 3), 'g^');
-%     scatter3(F_stats_worn(7, i, 1), F_stats_worn(7, i, 2), F_stats_worn(7, i, 3), 'g^');
-%     scatter3(F_stats_worn(8, i, 1), F_stats_worn(8, i, 2), F_stats_worn(8, i, 3), 'g^');
-%     scatter3(F_stats_worn(9, i, 1), F_stats_worn(9, i, 2), F_stats_worn(9, i, 3), 'g^');
-%     scatter3(F_stats_worn(10, i, 1), F_stats_worn(10, i, 2), F_stats_worn(10, i, 3), 'g^');
-%     
-%     h1 = scatter3(F_stats_healthy_avg(1, i), F_stats_healthy_avg(2, i), F_stats_healthy_avg(3, i), 'ro', 'MarkerFaceColor', 'r', 'LineWidth', 5);
-%     h2 = scatter3(F_stats_bend_avg(1, i), F_stats_bend_avg(2, i), F_stats_bend_avg(3, i), 'bs', 'MarkerFaceColor', 'b', 'LineWidth', 5);
-%     h3 = scatter3(F_stats_worn_avg(1, i), F_stats_worn_avg(2, i), F_stats_worn_avg(3, i), 'g^', 'LineWidth', 5);
-%     %legend('0mm', '0.2 mm', '0.4mm', '0.6mm', '0.8mm', '1mm', '1.2mm', '1.4mm', '1.6mm', '1.8mm', 'average');
-%     
-%     xlabel('Max')
-%     ylabel('Std')
-%     zlabel('RMS')
-%     
-%     
-%     text1 = sprintf('Bearing %d', i);
-%     title(text1);
-%     
-%     view([0 90])
-% end
-% %Legend on 3rd graph only
-% leg = legend([h1 h2 h3], 'Healthy', 'Bending', 'Bearing Fault', 'Location', 'northeast');
-% title(leg, 'Average')
-% set(findall(gcf,'-property','FontSize'),'FontSize',18)
-% %%
-% 
-% F_healthy_average = zeros(round(N/2), 1);
-% for n = 1:round(N/2)
-%     F_healthy_average(n, 1) = mean(F_healthy_adxl(n, :, 2));
-% end
-% 
-% 
-% F_bend_average = zeros(round(N/2), 1);
-% for n = 1:round(N/2)
-%     F_bend_average(n, 1) = mean(F_bend(n, :, 2));
-% end
-% 
-% 
-% F_worn_average = zeros(round(N/2), 1);
-% for n = 1:round(N/2)
-%     F_worn_average(n, 1) = mean(F_worn(n, :, 2));
-% end
-% 
-% 
-% figure('color', 'w', 'Position', [100, 100, 2000, 1100])
-% ha = tight_subplot(3, 1,[.04 .05],[.075 .035],[.04 .02]);
-% axes(ha(1));
-% plot(f_bins, F_healthy_average, 'r', 'LineWidth', 1);
-% ylim([0 0.1])
-% xlim([0 1500])
-% ax = gca;
-% ax.YAxis.Exponent = -3;
-% yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
-% set(gca,'XTickLabel',[]);
-% legend('Healthy')
-% grid on
-% %xlabel('Frequency (Hz)')
-% ylabel('Magnitude (g)')
-% 
-% axes(ha(2));
-% plot(f_bins, F_bend_average, 'b', 'LineWidth', 1);
-% ylim([0 0.1])
-% xlim([0 1500])
-% ax = gca;
-% ax.YAxis.Exponent = -3;
-% yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
-% set(gca,'XTickLabel',[]);
-% grid on
-% legend('Bending')
-% %xlabel('Frequency (Hz)')
-% ylabel('Magnitude (g)')
-% 
-% axes(ha(3));
-% plot(f_bins, F_worn_average, 'g', 'LineWidth', 1);
-% ylim([0 0.15])
-% xlim([0 1500])
-% ax = gca;
-% ax.YAxis.Exponent = -3;
-% yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
-% grid on
-% legend('Faulty Bearing')
-% xlabel('Frequency (Hz)')
-% ylabel('Magnitude (g)')
-% 
-% set(findall(gcf,'-property','FontSize'),'FontSize',18)
-% %%
+f_bins2 = (0:12500-1) .* 5000/25000;
 
+figure
+subplot(2, 1, 1)
+plot(f_bins2, F_healthy_average);
+xlim([0 1500])
+subplot(2, 1, 2)
+plot(f_bins, f_healthy_average_adxl);
+xlim([0 1500])
 
+F_bend_average = csvread('F_bend_average.csv');
+
+f_bins2 = (0:12500-1) .* 5000/25000;
+
+figure
+subplot(2, 1, 1)
+plot(f_bins2, F_bend_average);
+xlim([0 1500])
+subplot(2, 1, 2)
+plot(f_bins, f_bend_average_adxl);
+xlim([0 1500])
