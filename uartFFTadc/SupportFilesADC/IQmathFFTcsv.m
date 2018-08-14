@@ -3,7 +3,7 @@ close all
 
 %Include noise
 
-fs = 512; %Sample frequency
+fs = 2048; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 4096/fs;
 
@@ -100,3 +100,6 @@ disp(rms(board_F));
 
 disp('Std')
 disp(std(board_F));
+
+disp('RMS (A)')
+disp((rms(x) * 3.3) / (16384 * 0.07667))

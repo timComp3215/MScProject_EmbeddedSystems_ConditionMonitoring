@@ -16,15 +16,16 @@ import matplotlib.pyplot as plt
 SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 2048
+fs = 4096
 
-frequency = 4095
+current = 3
+test = 3
 
 #set name of output file
 output_file = 'adc_output.csv'
-#output_file = 'MEMS/t_' + str(frequency) + '_adxl002.csv'
+#output_file = 'Big/t_' + str(current) + 'A_' + str(test) + '.csv'
 fft_output_file = 'fft_output.csv'
-#fft_output_file = 'MEMS/f_' + str(frequency) + '_adxl002.csv'
+#fft_output_file = 'Big/f_' + str(current) + 'A_' + str(test) + '.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
