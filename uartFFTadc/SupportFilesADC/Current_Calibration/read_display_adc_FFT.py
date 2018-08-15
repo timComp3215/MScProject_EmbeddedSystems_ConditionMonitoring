@@ -22,10 +22,10 @@ current = 3
 test = 3
 
 #set name of output file
-output_file = 'adc_output.csv'
-#output_file = 'Big/t_' + str(current) + 'A_' + str(test) + '.csv'
-fft_output_file = 'fft_output.csv'
-#fft_output_file = 'Big/f_' + str(current) + 'A_' + str(test) + '.csv'
+#output_file = 'adc_output.csv'
+output_file = 'Big/t_' + str(current) + 'A_' + str(test) + '.csv'
+#fft_output_file = 'fft_output.csv'
+fft_output_file = 'Big/f_' + str(current) + 'A_' + str(test) + '.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
