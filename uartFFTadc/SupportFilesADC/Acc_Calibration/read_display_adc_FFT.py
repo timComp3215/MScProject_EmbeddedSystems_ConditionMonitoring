@@ -18,14 +18,14 @@ SAMPLES = 4096
 #Sampling frequency - purely for graphs to be correctly scaled
 fs = 16384
 
-frequency = 3553
+frequency = 2053
 test = 3
 
 #set name of output file
 #output_file = 'adc_output.csv'
-output_file = 'A/t_' + str(frequency) + 'Hz_' + str(test) + '.csv'
+output_file = 'B/t_' + str(frequency) + 'Hz_' + str(test) + '.csv'
 #fft_output_file = 'fft_output.csv'
-fft_output_file = 'A/f_' + str(frequency) + 'Hz_' + str(test) + '.csv'
+fft_output_file = 'B/f_' + str(frequency) + 'Hz_' + str(test) + '.csv'
 
 #Connect to serial channel and send input
 s = serial.Serial('COM4', 9600)
@@ -129,7 +129,7 @@ print "Reading finished"
 
 for n in range(0, SAMPLES):
     #Convert to g
-    float_values.append(((float(values[n])/16384) * 3.3)/0.8)
+    float_values.append(((float(values[n])/16384) * 3.3)/0.4)
     #float_values.append(float(values[n]))
 
 #print values
