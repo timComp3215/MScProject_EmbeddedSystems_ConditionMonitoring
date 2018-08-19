@@ -423,3 +423,13 @@ subplot(2, 1, 1)
 plot(f_bins, F_healthy(:, 1, 3))
 subplot(2, 1, 2)
 plot(f_bins, F_mean)
+
+%%
+figure
+loglog(rms(x_healthy(:, :, 2))*9.81, max(abs(x_healthy(:, :, 2))*9.81), 'bs')
+hold on
+loglog(rms(x_bend(:, :, 2))*9.81, max(abs(x_bend(:, :, 2))*9.81), 'g^')
+loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 2))*9.81), 'rx')
+legend('Healthy', 'Bending', 'Worn')
+xlim([1 100])
+ylim([3 300])
