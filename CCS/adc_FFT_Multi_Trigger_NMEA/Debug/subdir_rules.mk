@@ -5,17 +5,10 @@
 SHELL = cmd.exe
 
 # Each subdirectory must supply rules for building sources it contributes
-adc_FFT_Multi_Trigger.obj: ../adc_FFT_Multi_Trigger.c $(GEN_OPTS) | $(GEN_HDRS)
+adc_FFT_Multi_Trigger_NMEA.obj: ../adc_FFT_Multi_Trigger_NMEA.c $(GEN_OPTS) | $(GEN_HDRS)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: ARM Compiler'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi_Trigger_NMEA" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi_Trigger.d_raw" $(GEN_OPTS__FLAG) "$<"
-	@echo 'Finished building: "$<"'
-	@echo ' '
-
-adc_FFT_uart.obj: ../adc_FFT_uart.c $(GEN_OPTS) | $(GEN_HDRS)
-	@echo 'Building file: "$<"'
-	@echo 'Invoking: ARM Compiler'
-	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi_Trigger_NMEA" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_uart.d_raw" $(GEN_OPTS__FLAG) "$<"
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O1 --opt_for_speed=0 --include_path="D:/Tim/Documents/GitHub/MScProject_EmbeddedSystems_ConditionMonitoring/CCS/adc_FFT_Multi_Trigger_NMEA" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source" --include_path="C:/ti/simplelink_msp432p4_sdk_2_20_00_12/source/third_party/CMSIS/Include" --include_path="C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.2.LTS/include" --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on --preproc_with_compile --preproc_dependency="adc_FFT_Multi_Trigger_NMEA.d_raw" $(GEN_OPTS__FLAG) "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 

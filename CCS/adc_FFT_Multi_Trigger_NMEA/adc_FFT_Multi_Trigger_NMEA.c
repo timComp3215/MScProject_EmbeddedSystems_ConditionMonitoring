@@ -46,6 +46,8 @@
  * Testing reading of multiple channels via reading one channel, performing processing and
  * thereby triggering reading of another channel
  *
+ * Send readings out as NMEA message
+ *
  ******************************************************************************/
 /* DriverLib Includes */
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
@@ -70,7 +72,8 @@
 //Sample size
 #define SAMPLES 4096
 //Sampling rate (Hz)
-#define FS 16384
+#define FSV 16384 //Vibration
+#define FSM 4096 //MCSA
 
 //![Simple UART Config]
 /* UART Configuration Parameter. These are the configuration parameters to
@@ -79,6 +82,17 @@
  * at:
  *http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSP430BaudRateConverter/index.html
  */
+
+//Define structure of NMEA message
+struct NMEA_msg {
+    char type;
+    char domain;
+    uint16_t max_freq;
+    uint16_t max;
+    uint16_t RMS;
+    uint16_t std;
+    char condition;
+};
 
 void configure_analog(uint8_t channel)
 {
@@ -140,6 +154,79 @@ void sendReading(int16_t reading)
     }
     UART_transmitData(EUSCI_A0_BASE, (reading_send%256));
     UART_transmitData(EUSCI_A0_BASE, (reading_send/256));
+}
+
+void sendASCII(uint8_t data)
+{
+    /* Send the byte as an ASCII number */
+
+    uint8_t ascii_num[10] = {0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39};
+
+    if (data <= 9)
+    {
+        UART_transmitData(EUSCI_A0_BASE, ascii_num[data]);
+    }
+    else
+    {
+        UART_transmitData(EUSCI_A0_BASE, '?');//Error symbol
+    }
+
+}
+
+void sendNMEA(struct NMEA_msg msg)
+{
+    //Send an NMEA string
+
+    //Format
+    //$PCBM
+    UART_transmitData(EUSCI_A0_BASE, '$');
+    UART_transmitData(EUSCI_A0_BASE, 'E');
+    UART_transmitData(EUSCI_A0_BASE, 'C');
+    UART_transmitData(EUSCI_A0_BASE, 'M');
+    UART_transmitData(EUSCI_A0_BASE, 'S');
+    UART_transmitData(EUSCI_A0_BASE, ',');
+
+    //Letter 1 - V = Vibration, M = MCSA
+    UART_transmitData(EUSCI_A0_BASE, msg.type);
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //Letter 2 - T = Time-based data, F = Frequency based data
+    UART_transmitData(EUSCI_A0_BASE, msg.domain);
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //max frequency
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max_freq/10000));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max_freq%10000)/1000);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max_freq%1000)/100);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max_freq%100)/10);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max_freq%10));
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //max
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max/10000));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max%10000)/1000);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max%1000)/100);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max%100)/10);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.max%10));
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //RMS
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.RMS/10000));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.RMS%10000)/1000);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.RMS%1000)/100);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.RMS%100)/10);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.RMS%10));
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //std
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.std/10000));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.std%10000)/1000);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.std%1000)/100);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.std%100)/10);
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.std%10));
+    UART_transmitData(EUSCI_A0_BASE, ',');
+    //Condition
+    UART_transmitData(EUSCI_A0_BASE, msg.condition);
+
+    //<cr><lf>
+    UART_transmitData(EUSCI_A0_BASE, 0x13);
+    UART_transmitData(EUSCI_A0_BASE, 0x10);
+
 }
 
 int16_t calc_mean(volatile int16_t *readings, uint16_t n)
@@ -266,33 +353,42 @@ const eUSCI_UART_Config uartConfig =
 };
 
 /* Timer_A Continuous Mode Configuration Parameter */
-const Timer_A_UpModeConfig upModeConfig =
+const Timer_A_UpModeConfig upModeConfig_V =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        1,                                  // 32.768 kHz / 8 = 4096 Hz
+        1,                                  // 32.768 kHz / 2 = 16384 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
 };
 
-/*const Timer_A_UpModeConfig upModeConfig =
-{
-        TIMER_A_CLOCKSOURCE_SMCLK,            // SMCLK Clock Source
-        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // SMCLK/1 = 12 MHz
-        12000,                                // 12 Mhz / 12000 = 1 kHz
-        TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
-        TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
-        TIMER_A_DO_CLEAR                     // Clear Counter
-};*/
-
 /* Timer_A Compare Configuration Parameter */
-const Timer_A_CompareModeConfig compareConfig =
+const Timer_A_CompareModeConfig compareConfig_V =
 {
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
         1// 16000 Period
+};
+
+const Timer_A_UpModeConfig upModeConfig_M =
+{
+        TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
+        TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
+        7,                                  // 32.768 kHz / 8 = 4096 Hz
+        TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
+        TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
+        TIMER_A_DO_CLEAR                     // Clear Counter
+};
+
+/* Timer_A Compare Configuration Parameter */
+const Timer_A_CompareModeConfig compareConfig_M =
+{
+        TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
+        TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
+        TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
+        7// 16000 Period
 };
 
 /* Statics */
@@ -344,10 +440,10 @@ int main(void)
                    GPIO_TERTIARY_MODULE_FUNCTION);
 
     /* Configuring Timer_A in continuous mode and sourced from ACLK */
-    MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig);
+    MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig_M);
 
     /* Configuring Timer_A0 in CCR1 to trigger at 16000 (0.5s) */
-    MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig);
+    MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_M);
 
     //Configure Analog - A0
     configure_analog(1);
@@ -373,6 +469,8 @@ int main(void)
     int i;
     uint8_t analogPin = 1;
 
+    struct NMEA_msg message;
+
     while (1)
     {
         //MAP_PCM_gotoLPM0();
@@ -389,12 +487,6 @@ int main(void)
             //Preprocess data
             average_preprocess(resultsBuffer, SAMPLES);
 
-            //Send time data
-            /*for (i=0; i<SAMPLES; i++)
-            {
-                sendReading(resultsBuffer[i]);
-            }*/
-
             //Perform FFT
             kiss_fftr(kiss_fftr_state,resultsBuffer,fft_out);
 
@@ -403,44 +495,59 @@ int main(void)
                 resultsBuffer[i] = _Qmag(fft_out[i].r, fft_out[i].i);
             }
 
-            //Send frequency data
-            /*for (i=0; i<((SAMPLES/2)); i++)
-            {
-                sendReading(resultsBuffer[i]);
-            }*/
+            //Frequency domain
+            message.domain = 'F';
+
+            uint16_t fft_max_freq = max_index(resultsBuffer, (SAMPLES/2));
+            //sendReading(fft_max_freq);
+            //message.max_freq = fft_max_freq;
 
             int16_t fft_max = max(resultsBuffer, (SAMPLES/2));
-            sendReading(fft_max);
+            //sendReading(fft_max);
+            message.max = fft_max;
 
             int16_t fft_RMS = RMS(resultsBuffer, (SAMPLES/2));
-            sendReading(fft_RMS);
+            //sendReading(fft_RMS);
+            message.RMS = fft_RMS;
 
             int16_t fft_std = STD(resultsBuffer, (SAMPLES/2));
-            sendReading(fft_std);
+            //sendReading(fft_std);
+            message.std = fft_std;
 
-            uint16_t fft_max_freq = max_index(resultsBuffer, (SAMPLES/2))*(FS/SAMPLES);
-            sendReading(fft_max_freq);
 
             //Configure analog channel
             if (analogPin == 1)
             {
-                UART_transmitData(EUSCI_A0_BASE, 'A');
-                UART_transmitData(EUSCI_A0_BASE, '1');
+                //MCSA
+                message.type = 'M';
+                message.condition = 'H';
+                message.max_freq = fft_max_freq*(FSM/SAMPLES);
                 //Is frequency high enough?
-                if (fft_max_freq > 3500)
+                if (fft_max_freq > 1500)
                 {
                     analogPin = 0;
                     configure_analog(analogPin);
                     enableReads = 1;
+                    /* Configuring Timer_A in continuous mode and sourced from ACLK */
+                    MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig_V);
+                    /* Configuring Timer_A0 in CCR1 to trigger at 16000 (0.5s) */
+                    MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_V);
                 }
             }
             else if(analogPin == 0)
             {
-                UART_transmitData(EUSCI_A0_BASE, 'A');
-                UART_transmitData(EUSCI_A0_BASE, '0');
+                message.type = 'V';
+                message.condition = 'H';
+                message.max_freq = fft_max_freq*(FSV/SAMPLES);
                 analogPin = 1;
                 configure_analog(analogPin);
+                /* Configuring Timer_A in continuous mode and sourced from ACLK */
+                MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig_M);
+                /* Configuring Timer_A0 in CCR1 to trigger at 16000 (0.5s) */
+                MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_M);
             }
+
+            sendNMEA(message);
 
             MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
