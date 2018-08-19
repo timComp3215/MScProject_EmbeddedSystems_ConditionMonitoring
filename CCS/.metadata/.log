@@ -13628,3 +13628,87 @@ Binding(ALT+E,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.debug.ui.debugging,,,system)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:31:19.466
+!MESSAGE Indexed 'adc_FFT_Multi_Trigger_NMEA' (6 sources, 73 headers) in 1.56 sec: 6,592 declarations; 11,955 references; 1 unresolved inclusions; 28 syntax errors; 1,711 unresolved names (8.4%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:31:55.529
+!MESSAGE Indexed 'adc_FFT_Multi_Trigger_NMEA' (5 sources, 66 headers) in 1.36 sec: 6,318 declarations; 11,278 references; 1 unresolved inclusions; 28 syntax errors; 1,685 unresolved names (8.7%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:32:31.496
+!MESSAGE Indexed 'adc_FFT_uart2' (5 sources, 67 headers) in 1.15 sec: 6,370 declarations; 13,047 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2018-08-19 13:32:40.435
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1514)
+	at org.eclipse.ltk.core.refactoring.resource.RenameResourceChange.perform(RenameResourceChange.java:115)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:280)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:257)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:305)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:96)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:216)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:86)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_uart'.
+!SUBENTRY 1 org.eclipse.core.resources 1 4 2018-08-19 13:32:40.435
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.resources 1 4 2018-08-19 13:32:40.435
+!MESSAGE Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_uart'.
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2018-08-19 13:32:55.123
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1514)
+	at org.eclipse.ltk.core.refactoring.resource.RenameResourceChange.perform(RenameResourceChange.java:115)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:280)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:257)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:305)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:96)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:216)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:86)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_uart'.
+!SUBENTRY 1 org.eclipse.core.resources 1 4 2018-08-19 13:32:55.123
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.resources 1 4 2018-08-19 13:32:55.123
+!MESSAGE Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_uart'.
+
+!ENTRY org.eclipse.ltk.ui.refactoring 4 10000 2018-08-19 13:33:08.778
+!MESSAGE Internal Error
+!STACK 1
+org.eclipse.core.internal.resources.ResourceException: Problems encountered while moving resources.
+	at org.eclipse.core.internal.resources.Resource.move(Resource.java:1514)
+	at org.eclipse.ltk.core.refactoring.resource.RenameResourceChange.perform(RenameResourceChange.java:115)
+	at org.eclipse.ltk.core.refactoring.CompositeChange.perform(CompositeChange.java:280)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation$1.run(PerformChangeOperation.java:257)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.executeChange(PerformChangeOperation.java:305)
+	at org.eclipse.ltk.internal.ui.refactoring.UIPerformChangeOperation.executeChange(UIPerformChangeOperation.java:96)
+	at org.eclipse.ltk.core.refactoring.PerformChangeOperation.run(PerformChangeOperation.java:216)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2240)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2267)
+	at org.eclipse.ltk.internal.ui.refactoring.WorkbenchRunnableAdapter.run(WorkbenchRunnableAdapter.java:86)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)
+Contains: Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_UART'.
+!SUBENTRY 1 org.eclipse.core.resources 1 4 2018-08-19 13:33:08.778
+!MESSAGE Problems encountered while moving resources.
+!SUBENTRY 2 org.eclipse.core.resources 1 4 2018-08-19 13:33:08.778
+!MESSAGE Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_EmbeddedSystems_ConditionMonitoring\CCS\adc_FFT_UART'.
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:33:42.886
+!MESSAGE Indexed 'adc_FFT_uart' (5 sources, 4 headers) in 0.172 sec: 381 declarations; 2,829 references; 15 unresolved inclusions; 0 syntax errors; 491 unresolved names (13%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:34:15.131
+!MESSAGE Indexed 'adc_FFT_Multi_Trigger_NMEA' (6 sources, 66 headers) in 1.19 sec: 6,427 declarations; 11,835 references; 1 unresolved inclusions; 28 syntax errors; 1,711 unresolved names (8.6%)
