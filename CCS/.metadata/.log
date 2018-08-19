@@ -13712,3 +13712,6 @@ Contains: Resource already exists on disk: 'D:\Tim\Documents\GitHub\MScProject_E
 
 !ENTRY org.eclipse.cdt.core 1 0 2018-08-19 13:34:15.131
 !MESSAGE Indexed 'adc_FFT_Multi_Trigger_NMEA' (6 sources, 66 headers) in 1.19 sec: 6,427 declarations; 11,835 references; 1 unresolved inclusions; 28 syntax errors; 1,711 unresolved names (8.6%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-08-19 15:15:58.832
+!MESSAGE Indexed 'adc_FFT_Multi_Trigger_NMEA_rtc' (6 sources, 73 headers) in 1.54 sec: 6,654 declarations; 12,563 references; 1 unresolved inclusions; 28 syntax errors; 1,711 unresolved names (8.2%)
