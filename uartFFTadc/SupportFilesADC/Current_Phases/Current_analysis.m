@@ -79,21 +79,6 @@ plot(t, x_big_3(:, 2));
 subplot(3, 1, 3)
 plot(t, x_big_3(:, 3));
 
-rms_big = zeros(3, 1);
-rms_big(1) = (mean(rms(x_big_1))*3.3)/(16384*0.013333);
-rms_big(2) = (mean(rms(x_big_2))*3.3)/(16384*0.013333);
-rms_big(3) = (mean(rms(x_big_3))*3.3)/(16384*0.013333);
-
-sensitivity_small = zeros(3, 1);
-sensitivity_small(1) = 1000*(mean(rms(x_small_1))*3.3)/(16384*1);
-sensitivity_small(2) = 1000*(mean(rms(x_small_2))*3.3)/(16384*2);
-sensitivity_small(3) = 1000*(mean(rms(x_small_3))*3.3)/(16384*3);
-
-sensitivity_big = zeros(3, 1);
-sensitivity_big(1) = 1000*(mean(rms(x_big_1))*3.3)/(16384*1);
-sensitivity_big(2) = 1000*(mean(rms(x_big_2))*3.3)/(16384*2);
-sensitivity_big(3) = 1000*(mean(rms(x_big_3))*3.3)/(16384*3);
-
 %%
 
 rms_small = zeros(3, 5);
@@ -143,6 +128,9 @@ rms_big = (rms_big * 3.3)/(16384*0.013333);
 
 figure
 bar(rms_big, 'r')
+
+avg_rms_small = mean(rms_small');
+avg_rms_big = mean(rms_big');
 
 %%
 

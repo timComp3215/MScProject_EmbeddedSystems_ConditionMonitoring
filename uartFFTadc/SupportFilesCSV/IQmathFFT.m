@@ -82,22 +82,22 @@ disp(std(FT(:, 2)))
 disp(std(board_F))
 %%
 figure('Color', 'w', 'Position', [500 200 1500 1000]) 
-ha = tight_subplot(2,1,[.075 .07],[.075 .05],[.065 .02]);
+ha = tight_subplot(2,1,[.09 .07],[.071 .032],[.06 .012]);
 axes(ha(1));
 plot(t, x2);
-xlabel('Amplitude')
-ylabel('Time (s)')
+ylabel('Amplitude')
+xlabel('Time (s)')
 text(0.01,25000, 'a)', 'FontSize', 14, 'FontWeight', 'bold')
 axes(ha(2));
-plot(FT(:, 1), FT(:, 2), 'LineWidth', 2);
+plot(FT(:, 1), FT(:, 2), 'b-', 'LineWidth', 2);
 hold on
-plot(FT(:, 1), board_F, 'rx', 'MarkerSize', 10);
+plot(FT(:, 1), board_F, 'rx', 'LineWidth', 2, 'MarkerSize', 10);
 xlim([0 4096])
 legend('Matlab', 'On-board')
-xlabel('Magnitude')
-ylabel('Frequency (Hz)')
+ylabel('Magnitude')
+xlabel('Frequency (Hz)')
 text(75,4500, 'b)', 'FontSize', 14, 'FontWeight', 'bold')
-set(findall(gcf,'-property','FontSize'),'FontSize',14)
+set(findall(gcf,'-property','FontSize'),'FontSize', 18)
 
 % Y = fft(x);
 % Y = abs(Y/N);
