@@ -8,25 +8,32 @@ close all
 %Include noise
 
 fs = 5000; %Sample frequency
+fs2 = 8192; %Sample frequency
 %T = 0.125/4; %Measurement time period
 T = 25000/fs;
+T2 = 4096/fs2;
 
 N = fs * T;
+N2 = fs2 * T2;
 
 t = linspace(0, T, N);
+t2 = linspace(0, T2, N2);
+
+f_bins = (0:(N/2)-1) .* fs/N;
+f_bins2 = (0:(N2/2)-1) .* fs2/N2;
 
 x_healthy = zeros(N, 10, 3);
 
-D_00mm = csvread('Healthy0.csv');
-D_02mm = csvread('Healthy1.csv');
-D_04mm = csvread('Healthy2.csv');
-D_06mm = csvread('Healthy3.csv');
-D_08mm = csvread('Healthy4.csv');
-% D_10mm = csvread('Healthy5.csv');
-% D_12mm = csvread('Healthy6.csv');
-% D_14mm = csvread('Healthy7.csv');
-% D_16mm = csvread('Healthy8.csv');
-% D_18mm = csvread('Healthy9.csv');
+D_00mm = csvread('Ref/Healthy1.csv');
+D_02mm = csvread('Ref/Healthy2.csv');
+D_04mm = csvread('Ref/Healthy3.csv');
+D_06mm = csvread('Ref/Healthy4.csv');
+D_08mm = csvread('Ref/Healthy5.csv');
+D_10mm = csvread('Ref/Healthy6.csv');
+D_12mm = csvread('Ref/Healthy7.csv');
+D_14mm = csvread('Ref/Healthy8.csv');
+D_16mm = csvread('Ref/Healthy9.csv');
+D_18mm = csvread('Ref/Healthy10.csv');
 
 for i = 1:3
         x_healthy(:, 1, i) = D_00mm(:, 2 + i);
@@ -34,64 +41,64 @@ for i = 1:3
         x_healthy(:, 3, i) = D_04mm(:, 2 + i);
         x_healthy(:, 4, i) = D_06mm(:, 2 + i);
         x_healthy(:, 5, i) = D_08mm(:, 2 + i);
-%         x_healthy(:, 6, i) = D_10mm(:, 2 + i);
-%         x_healthy(:, 7, i) = D_12mm(:, 2 + i);
-%         x_healthy(:, 8, i) = D_14mm(:, 2 + i);
-%         x_healthy(:, 9, i) = D_16mm(:, 2 + i);
-%         x_healthy(:, 10, i) = D_18mm(:, 2 + i);
+        x_healthy(:, 6, i) = D_10mm(:, 2 + i);
+        x_healthy(:, 7, i) = D_12mm(:, 2 + i);
+        x_healthy(:, 8, i) = D_14mm(:, 2 + i);
+        x_healthy(:, 9, i) = D_16mm(:, 2 + i);
+        x_healthy(:, 10, i) = D_18mm(:, 2 + i);
 end
 %%
-x_bend = zeros(N, 10, 3);
-
-D_00mm = csvread('Bending21.csv');
-D_02mm = csvread('Bending22.csv');
-D_04mm = csvread('Bending23.csv');
-D_06mm = csvread('Bending24.csv');
-D_08mm = csvread('Bending25.csv');
-D_10mm = csvread('Bending26.csv');
-D_12mm = csvread('Bending27.csv');
-D_14mm = csvread('Bending28.csv');
-D_16mm = csvread('Bending29.csv');
-D_18mm = csvread('Bending30.csv');
-
-for i = 1:3
-        x_bend(:, 1, i) = D_00mm(:, 2 + i);
-        x_bend(:, 2, i) = D_02mm(:, 2 + i);
-        x_bend(:, 3, i) = D_04mm(:, 2 + i);
-        x_bend(:, 4, i) = D_06mm(:, 2 + i);
-        x_bend(:, 5, i) = D_08mm(:, 2 + i);
-        x_bend(:, 6, i) = D_10mm(:, 2 + i);
-        x_bend(:, 7, i) = D_12mm(:, 2 + i);
-        x_bend(:, 8, i) = D_14mm(:, 2 + i);
-        x_bend(:, 9, i) = D_16mm(:, 2 + i);
-        x_bend(:, 10, i) = D_18mm(:, 2 + i);
-end
-
-x_worn = zeros(N, 10, 3);
-
-D_00mm = csvread('Worn0.csv');
-D_02mm = csvread('Worn1.csv');
-D_04mm = csvread('Worn2.csv');
-D_06mm = csvread('Worn3.csv');
-D_08mm = csvread('Worn4.csv');
-D_10mm = csvread('Worn5.csv');
-D_12mm = csvread('Worn6.csv');
-D_14mm = csvread('Worn7.csv');
-D_16mm = csvread('Worn8.csv');
-D_18mm = csvread('Worn9.csv');
-
-for i = 1:3
-        x_worn(:, 1, i) = D_00mm(:, 2 + i);
-        x_worn(:, 2, i) = D_02mm(:, 2 + i);
-        x_worn(:, 3, i) = D_04mm(:, 2 + i);
-        x_worn(:, 4, i) = D_06mm(:, 2 + i);
-        x_worn(:, 5, i) = D_08mm(:, 2 + i);
-        x_worn(:, 6, i) = D_10mm(:, 2 + i);
-        x_worn(:, 7, i) = D_12mm(:, 2 + i);
-        x_worn(:, 8, i) = D_14mm(:, 2 + i);
-        x_worn(:, 9, i) = D_16mm(:, 2 + i);
-        x_worn(:, 10, i) = D_18mm(:, 2 + i);
-end
+% x_bend = zeros(N, 10, 3);
+% 
+% D_00mm = csvread('Bending21.csv');
+% D_02mm = csvread('Bending22.csv');
+% D_04mm = csvread('Bending23.csv');
+% D_06mm = csvread('Bending24.csv');
+% D_08mm = csvread('Bending25.csv');
+% D_10mm = csvread('Bending26.csv');
+% D_12mm = csvread('Bending27.csv');
+% D_14mm = csvread('Bending28.csv');
+% D_16mm = csvread('Bending29.csv');
+% D_18mm = csvread('Bending30.csv');
+% 
+% for i = 1:3
+%         x_bend(:, 1, i) = D_00mm(:, 2 + i);
+%         x_bend(:, 2, i) = D_02mm(:, 2 + i);
+%         x_bend(:, 3, i) = D_04mm(:, 2 + i);
+%         x_bend(:, 4, i) = D_06mm(:, 2 + i);
+%         x_bend(:, 5, i) = D_08mm(:, 2 + i);
+%         x_bend(:, 6, i) = D_10mm(:, 2 + i);
+%         x_bend(:, 7, i) = D_12mm(:, 2 + i);
+%         x_bend(:, 8, i) = D_14mm(:, 2 + i);
+%         x_bend(:, 9, i) = D_16mm(:, 2 + i);
+%         x_bend(:, 10, i) = D_18mm(:, 2 + i);
+% end
+% 
+% x_worn = zeros(N, 10, 3);
+% 
+% D_00mm = csvread('Worn0.csv');
+% D_02mm = csvread('Worn1.csv');
+% D_04mm = csvread('Worn2.csv');
+% D_06mm = csvread('Worn3.csv');
+% D_08mm = csvread('Worn4.csv');
+% D_10mm = csvread('Worn5.csv');
+% D_12mm = csvread('Worn6.csv');
+% D_14mm = csvread('Worn7.csv');
+% D_16mm = csvread('Worn8.csv');
+% D_18mm = csvread('Worn9.csv');
+% 
+% for i = 1:3
+%         x_worn(:, 1, i) = D_00mm(:, 2 + i);
+%         x_worn(:, 2, i) = D_02mm(:, 2 + i);
+%         x_worn(:, 3, i) = D_04mm(:, 2 + i);
+%         x_worn(:, 4, i) = D_06mm(:, 2 + i);
+%         x_worn(:, 5, i) = D_08mm(:, 2 + i);
+%         x_worn(:, 6, i) = D_10mm(:, 2 + i);
+%         x_worn(:, 7, i) = D_12mm(:, 2 + i);
+%         x_worn(:, 8, i) = D_14mm(:, 2 + i);
+%         x_worn(:, 9, i) = D_16mm(:, 2 + i);
+%         x_worn(:, 10, i) = D_18mm(:, 2 + i);
+% end
 %%
 %Remove DC component
 x_healthy_mean = zeros(10, 3);
@@ -111,7 +118,147 @@ for z = 1:10
     end
 end
 
+%%
 
+x_A_healthy = zeros(N2, 5);
+
+x_A_healthy(:, 1) = csvread('A/t_H_1.csv');
+x_A_healthy(:, 2) = csvread('A/t_H_2.csv');
+x_A_healthy(:, 3) = csvread('A/t_H_3.csv');
+x_A_healthy(:, 4) = csvread('A/t_H_4.csv');
+x_A_healthy(:, 5) = csvread('A/t_H_5.csv');
+
+x_A_healthy = (x_A_healthy*3.3)/(16384*0.8);
+
+x_B_healthy = zeros(N2, 5);
+
+x_B_healthy(:, 1) = csvread('B/t_H_1.csv');
+x_B_healthy(:, 2) = csvread('B/t_H_2.csv');
+x_B_healthy(:, 3) = csvread('B/t_H_3.csv');
+x_B_healthy(:, 4) = csvread('B/t_H_4.csv');
+x_B_healthy(:, 5) = csvread('B/t_H_5.csv');
+
+x_B_healthy = (x_B_healthy*3.3)/(16384*0.4);
+
+x_C_healthy = zeros(N2, 5);
+
+x_C_healthy(:, 1) = csvread('C/t_H_1.csv');
+x_C_healthy(:, 2) = csvread('C/t_H_2.csv');
+x_C_healthy(:, 3) = csvread('C/t_H_3.csv');
+x_C_healthy(:, 4) = csvread('C/t_H_4.csv');
+x_C_healthy(:, 5) = csvread('C/t_H_5.csv');
+
+x_C_healthy = (x_C_healthy*3.3)/(16384*0.04);
+
+%%
+
+figure
+subplot(2, 2, 1)
+plot(t, x_healthy(:, 3, 2))
+xlim([0 0.5])
+subplot(2, 2, 2)
+plot(t2, x_A_healthy(:, 3))
+xlim([0 0.5])
+subplot(2, 2, 3)
+plot(t2, x_B_healthy(:, 3))
+xlim([0 0.5])
+subplot(2, 2, 4)
+plot(t2, x_C_healthy(:, 3))
+xlim([0 0.5])
+
+%%
+f_A_healthy = zeros(N2/2, 5);
+
+f_A_healthy(:, 1) = csvread('A/f_H_1.csv');
+f_A_healthy(:, 2) = csvread('A/f_H_2.csv');
+f_A_healthy(:, 3) = csvread('A/f_H_3.csv');
+f_A_healthy(:, 4) = csvread('A/f_H_4.csv');
+f_A_healthy(:, 5) = csvread('A/f_H_5.csv');
+
+f_A_healthy = (f_A_healthy*3.3)/(16384*0.8);
+
+f_B_healthy = zeros(N2/2, 5);
+
+f_B_healthy(:, 1) = csvread('B/f_H_1.csv');
+f_B_healthy(:, 2) = csvread('B/f_H_2.csv');
+f_B_healthy(:, 3) = csvread('B/f_H_3.csv');
+f_B_healthy(:, 4) = csvread('B/f_H_4.csv');
+f_B_healthy(:, 5) = csvread('B/f_H_5.csv');
+
+f_B_healthy = (f_B_healthy*3.3)/(16384*0.4);
+
+f_C_healthy = zeros(N2/2, 5);
+
+f_C_healthy(:, 1) = csvread('C/f_H_1.csv');
+f_C_healthy(:, 2) = csvread('C/f_H_2.csv');
+f_C_healthy(:, 3) = csvread('C/f_H_3.csv');
+f_C_healthy(:, 4) = csvread('C/f_H_4.csv');
+f_C_healthy(:, 5) = csvread('C/f_H_5.csv');
+
+f_C_healthy = (f_C_healthy*3.3)/(16384*0.04);
+
+%%
+
+F_healthy = zeros(round(N/2), 10, 3);
+
+for z = 1:10
+    for i = 1:3
+        tempf = fft(x_healthy(:, z, i));
+        tempf = abs(tempf/N);
+        F_healthy(:, z, i) = tempf(1:round(N/2), 1);
+    end
+end
+
+%%
+F_healthy_average = zeros(round(N/2), 1);
+for n = 1:round(N/2)
+    F_healthy_average(n, 1) = mean(F_healthy(n, :, 2));
+end
+
+F_A_healthy_average = zeros(N2/2, 1);
+for n = 1:round(N2/2)
+    F_A_healthy_average(n, 1) = mean(f_A_healthy(n, :));
+end
+
+F_B_healthy_average = zeros(N2/2, 1);
+for n = 1:round(N2/2)
+    F_B_healthy_average(n, 1) = mean(f_B_healthy(n, :));
+end
+
+F_C_healthy_average = zeros(N2/2, 1);
+for n = 1:round(N2/2)
+    F_C_healthy_average(n, 1) = mean(f_C_healthy(n, :));
+end
+
+%%
+
+figure
+subplot(2, 2, 1)
+plot(f_bins, F_healthy_average);
+xlim([0 1500])
+ylim([0 0.16])
+subplot(2, 2, 2)
+plot(f_bins2, F_A_healthy_average);
+xlim([0 1500])
+ylim([0 0.016])
+subplot(2, 2, 3)
+plot(f_bins2, F_B_healthy_average);
+xlim([0 1500])
+ylim([0 0.016])
+subplot(2, 2, 4)
+plot(f_bins2, F_C_healthy_average);
+xlim([0 1500])
+ylim([0 0.016])
+
+%%
+
+figure
+plot(f_bins, F_healthy_average)
+hold on
+plot(f_bins2, F_A_healthy_average*10)
+plot(f_bins2, F_B_healthy_average*10)
+xlim([0 1500])
+legend('Ref', 'A', 'B')
 
 %%
 
