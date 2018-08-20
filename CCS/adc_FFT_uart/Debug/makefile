@@ -10,7 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
-"./adc_FFT_Multi_Trigger.obj" \
+"./adc_FFT_uart.obj" \
 "./system_msp432p401r.obj" \
 "./ccs/startup_msp432p401r_ccs.obj" \
 "./kissFFT/kiss_fft.obj" \
@@ -169,8 +169,8 @@ adc_FFT_uart.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "adc_FFT_Multi_Trigger.obj" "system_msp432p401r.obj" "ccs\startup_msp432p401r_ccs.obj" "kissFFT\kiss_fft.obj" "kissFFT\kiss_fftr.obj" 
-	-$(RM) "adc_FFT_Multi_Trigger.d" "system_msp432p401r.d" "ccs\startup_msp432p401r_ccs.d" "kissFFT\kiss_fft.d" "kissFFT\kiss_fftr.d" 
+	-$(RM) "adc_FFT_uart.obj" "system_msp432p401r.obj" "ccs\startup_msp432p401r_ccs.obj" "kissFFT\kiss_fft.obj" "kissFFT\kiss_fftr.obj" 
+	-$(RM) "adc_FFT_uart.d" "system_msp432p401r.d" "ccs\startup_msp432p401r_ccs.d" "kissFFT\kiss_fft.d" "kissFFT\kiss_fftr.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

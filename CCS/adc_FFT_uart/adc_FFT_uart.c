@@ -270,7 +270,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        1,                                  // 32.768 kHz / 8 = 4096 Hz
+        3,                                  // 32.768 kHz / 8 = 4096 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -292,7 +292,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        1// 16000 Period
+        3// 16000 Period
 };
 
 /* Statics */
@@ -350,7 +350,7 @@ int main(void)
     MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig);
 
     //Configure Analog - A0
-    configure_analog(1);
+    configure_analog(0);
 
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
@@ -371,7 +371,7 @@ int main(void)
     MAP_Interrupt_enableMaster();
 
     int i;
-    uint8_t analogPin = 1;
+    uint8_t analogPin = 0;
 
     while (1)
     {
@@ -419,7 +419,7 @@ int main(void)
             sendReading(fft_std);
 
             //Configure analog channel
-            if (analogPin == 1)
+            /*if (analogPin == 1)
             {
                 analogPin = 0;
                 configure_analog(analogPin);
@@ -428,7 +428,7 @@ int main(void)
             {
                 analogPin = 1;
                 configure_analog(analogPin);
-            }
+            }*/
 
             MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);
 
