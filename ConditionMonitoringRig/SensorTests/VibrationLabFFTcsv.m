@@ -33,7 +33,7 @@ D_10mm = csvread('Ref/Healthy6.csv');
 D_12mm = csvread('Ref/Healthy7.csv');
 D_14mm = csvread('Ref/Healthy8.csv');
 D_16mm = csvread('Ref/Healthy9.csv');
-D_18mm = csvread('Ref/Healthy10.csv');
+D_18mm = csvread('Ref/Bend1.csv');
 
 for i = 1:3
         x_healthy(:, 1, i) = D_00mm(:, 2 + i);
