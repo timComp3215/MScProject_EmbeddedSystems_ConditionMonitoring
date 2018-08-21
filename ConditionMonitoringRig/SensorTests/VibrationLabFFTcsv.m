@@ -47,6 +47,8 @@ for i = 1:3
         x_healthy(:, 9, i) = D_16mm(:, 2 + i);
         x_healthy(:, 10, i) = D_18mm(:, 2 + i);
 end
+
+x_healthy = x_healthy / 10;
 %%
 % x_bend = zeros(N, 10, 3);
 % 
@@ -235,19 +237,19 @@ end
 figure
 subplot(2, 2, 1)
 plot(f_bins, F_healthy_average);
-xlim([0 1500])
-ylim([0 0.16])
+xlim([0 4096])
+ylim([0 0.016])
 subplot(2, 2, 2)
 plot(f_bins2, F_A_healthy_average);
-xlim([0 1500])
+xlim([0 4096])
 ylim([0 0.016])
 subplot(2, 2, 3)
 plot(f_bins2, F_B_healthy_average);
-xlim([0 1500])
+xlim([0 4096])
 ylim([0 0.016])
 subplot(2, 2, 4)
 plot(f_bins2, F_C_healthy_average);
-xlim([0 1500])
+xlim([0 4096])
 ylim([0 0.016])
 
 %%
@@ -259,6 +261,78 @@ plot(f_bins2, F_A_healthy_average*10)
 plot(f_bins2, F_B_healthy_average*10)
 xlim([0 1500])
 legend('Ref', 'A', 'B')
+
+%%
+y = zeros(N2, 5);
+
+for z = 1:5
+    y(:, z) = lowpass(x_B_healthy(:, z), 1500, 8192);
+end
+
+F_y = zeros(round(N2/2), 5);
+
+for z = 1:5
+
+    tempf = fft(y(:, z));
+    tempf = abs(tempf/N2);
+    F_y(:, z) = tempf(1:round(N2/2), 1);
+
+end
+
+F_y_average = zeros(N2/2, 1);
+for n = 1:round(N2/2)
+    F_y_average(n, 1) = mean(F_y(n, :));
+end
+
+figure
+subplot(3, 1, 3)
+plot(f_bins2, F_y_average)
+xlim([0 4096])
+subplot(3, 1, 1)
+plot(f_bins, F_healthy_average)
+xlim([0 4096])
+subplot(3, 1, 2)
+plot(f_bins2, F_A_healthy_average)
+xlim([0 4096])
+
+%%
+
+figure
+plot(f_bins, F_healthy_average)
+hold on
+plot(f_bins2, F_A_healthy_average)
+plot(f_bins2, F_y_average)
+xlim([0 1500])
+legend('Ref', 'A', 'Bavg')
+
+
+%%
+max_healthy = max(F_healthy(:, :, 2));
+max_A_healthy = max(f_A_healthy);
+max_y = max(F_y);
+
+max_healthy_avg = max(F_healthy_average);
+max_A_healthy_avg = max(F_A_healthy_average);
+max_y_avg = max(F_y_average);
+
+std_healthy = std(F_healthy(:, :, 2));
+std_A_healthy = std(f_A_healthy);
+std_y = std(F_y);
+
+std_healthy_avg = std(F_healthy_average);
+std_A_healthy_avg = std(F_A_healthy_average);
+std_y_avg = std(F_y_average);
+
+figure
+scatter(max_healthy_avg, std_healthy_avg);
+hold on
+scatter(max_A_healthy_avg, std_A_healthy_avg);
+scatter(max_y_avg, std_y_avg);
+
+scatter(max_healthy, std_healthy);
+scatter(max_A_healthy, std_A_healthy);
+scatter(max_y, std_y);
+legend('Ref', 'A', 'Y')
 
 %%
 
