@@ -195,10 +195,10 @@ void sendNMEA(struct NMEA_msg msg)
     //Format
     //$PCBM
     UART_transmitData(EUSCI_A0_BASE, '$');
-    UART_transmitData(EUSCI_A0_BASE, 'E');
+    UART_transmitData(EUSCI_A0_BASE, 'P');
     UART_transmitData(EUSCI_A0_BASE, 'C');
+    UART_transmitData(EUSCI_A0_BASE, 'B');
     UART_transmitData(EUSCI_A0_BASE, 'M');
-    UART_transmitData(EUSCI_A0_BASE, 'S');
     UART_transmitData(EUSCI_A0_BASE, ',');
 
     //Letter 1 - V = Vibration, M = MCSA
@@ -208,11 +208,11 @@ void sendNMEA(struct NMEA_msg msg)
     UART_transmitData(EUSCI_A0_BASE, msg.domain);
     UART_transmitData(EUSCI_A0_BASE, ',');
     //Hour
-    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.hour/100));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.hour/10));
     UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.hour%10));
     UART_transmitData(EUSCI_A0_BASE, ',');
     //Minute
-    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.min/100));
+    UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.min/10));
     UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.min%10));
     UART_transmitData(EUSCI_A0_BASE, ',');
     //max frequency
@@ -252,11 +252,11 @@ void sendNMEA(struct NMEA_msg msg)
     UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.runTime%1000)/100);
     UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.runTime%100)/10);
     UART_transmitData(EUSCI_A0_BASE, 0x30 + (msg.runTime%10));
-    //UART_transmitData(EUSCI_A0_BASE, ',');
+    UART_transmitData(EUSCI_A0_BASE, ',');
 
     //<cr><lf>
-    UART_transmitData(EUSCI_A0_BASE, 0x13);
-    UART_transmitData(EUSCI_A0_BASE, 0x10);
+    UART_transmitData(EUSCI_A0_BASE, 0x0d);
+    UART_transmitData(EUSCI_A0_BASE, 0x0a);
 
 }
 
@@ -430,6 +430,7 @@ volatile uint8_t stateCounter = 0;
 volatile uint8_t enableReads = 0;
 volatile uint16_t runTime = 0;//Count total runtime at full speed
 volatile uint8_t RTC_trigger = 0;//Treat RTC trigger differently than other triggers
+volatile uint8_t setHealthyState = 1;//Save a set of variables as the healthy state
 
 int main(void)
 {
@@ -517,11 +518,22 @@ int main(void)
     MAP_Interrupt_enableMaster();
 
     int i;
-    uint8_t analogPin = 1;
+    enum analogPin {Pin_MCSA = 1, Pin_Vib = 0};
+    uint8_t analogPin = Pin_MCSA;
 
     struct NMEA_msg message;
 
     RTC_C_Calendar currentTime;
+
+    uint16_t fft_max_freq;
+    uint16_t fft_max;
+    uint16_t fft_RMS;
+    uint16_t fft_std;
+
+    float fft_max_freq_healthy;
+    float fft_max_healthy;
+    float fft_RMS_healthy;
+    float fft_std_healthy;
 
     PCM_gotoLPM0();
 
@@ -537,8 +549,32 @@ int main(void)
             //Blue LED on
             GPIO_setOutputHighOnPin(GPIO_PORT_P2, GPIO_PIN2);
 
+            currentTime = RTC_C_getCalendarTime();
+
+            message.hour = currentTime.hours;
+            message.min = currentTime.minutes;
+
             //Preprocess data
             average_preprocess(resultsBuffer, SAMPLES);
+
+            //If vibration, also transmit data about the time domain of the signal
+            if (analogPin == Pin_Vib)
+            {
+                message.type = 'V';
+                message.domain = 'T';
+
+                message.max_freq = 0;
+                fft_max = max(resultsBuffer, SAMPLES);
+                message.max = fft_max;
+
+                fft_RMS = RMS(resultsBuffer, SAMPLES);
+                message.RMS = fft_RMS;
+
+                fft_std = STD(resultsBuffer, SAMPLES);
+                message.std = fft_std;
+
+                sendNMEA(message);
+            }
 
             //Perform FFT
             kiss_fftr(kiss_fftr_state,resultsBuffer,fft_out);
@@ -548,40 +584,35 @@ int main(void)
                 resultsBuffer[i] = _Qmag(fft_out[i].r, fft_out[i].i);
             }
 
-            currentTime = RTC_C_getCalendarTime();
-
-            message.hour = currentTime.hours;
-            message.min = currentTime.minutes;
-
             //Frequency domain
             message.domain = 'F';
 
-            uint16_t fft_max_freq = max_index(resultsBuffer, (SAMPLES/2));
+            fft_max_freq = max_index(resultsBuffer, (SAMPLES/2));
             //sendReading(fft_max_freq);
             //message.max_freq = fft_max_freq;
 
-            int16_t fft_max = max(resultsBuffer, (SAMPLES/2));
+            fft_max = max(resultsBuffer, (SAMPLES/2));
             //sendReading(fft_max);
             message.max = fft_max;
 
-            int16_t fft_RMS = RMS(resultsBuffer, (SAMPLES/2));
+            fft_RMS = RMS(resultsBuffer, (SAMPLES/2));
             //sendReading(fft_RMS);
             message.RMS = fft_RMS;
 
-            int16_t fft_std = STD(resultsBuffer, (SAMPLES/2));
+            fft_std = STD(resultsBuffer, (SAMPLES/2));
             //sendReading(fft_std);
             message.std = fft_std;
 
 
             //Configure analog channel
-            if (analogPin == 1)
+            if (analogPin == Pin_MCSA)
             {
                 //MCSA
                 message.type = 'M';
                 message.condition = 'H';
                 message.max_freq = fft_max_freq*(FSM/SAMPLES);
                 //Is frequency high enough?
-                if (fft_max_freq > 1500)
+                if (fft_max_freq < 1500)
                 {
                     if (RTC_trigger == 1)
                     {
@@ -598,10 +629,31 @@ int main(void)
                     MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_V);
                 }
             }
-            else if(analogPin == 0)
+            else if(analogPin == Pin_Vib)
             {
+
+                //Save stats as healthy state
+                if (setHealthyState == 1)
+                {
+                    setHealthyState = 0;
+                    fft_max_freq_healthy = fft_max_freq;
+                    fft_max_healthy = fft_max;
+                    fft_RMS_healthy = fft_RMS;
+                    fft_std_healthy = fft_std;
+                }
+
                 message.type = 'V';
-                message.condition = 'H';
+
+                //Evaluate healthy state
+                if ((fft_max_freq > (0.9*fft_max_freq_healthy)) && (fft_max_freq < (1.1*fft_max_freq_healthy)))
+                {
+                    message.condition = 'H';
+                }
+                else
+                {
+                    message.condition = 'U';
+                }
+
                 message.max_freq = fft_max_freq*(FSV/SAMPLES);
                 analogPin = 1;
                 configure_analog(analogPin);
@@ -674,6 +726,7 @@ void PORT1_IRQHandler(void)
     {
         //Enable ADC interrupts in main
         enableReads = 1;
+        setHealthyState = 1;
     }
 }
 
