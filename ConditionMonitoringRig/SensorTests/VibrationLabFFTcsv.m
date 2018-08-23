@@ -33,7 +33,7 @@ D_10mm = csvread('Ref/Healthy6.csv');
 D_12mm = csvread('Ref/Healthy7.csv');
 D_14mm = csvread('Ref/Healthy8.csv');
 D_16mm = csvread('Ref/Healthy9.csv');
-D_18mm = csvread('Ref/Bend1.csv');
+D_18mm = csvread('Ref/Healthy10.csv');
 
 for i = 1:3
         x_healthy(:, 1, i) = D_00mm(:, 2 + i);
@@ -178,6 +178,15 @@ f_A_healthy(:, 4) = csvread('A/f_H_4.csv');
 f_A_healthy(:, 5) = csvread('A/f_H_5.csv');
 
 f_A_healthy = (f_A_healthy*3.3)/(16384*0.8);
+
+f_A_bend = zeros(N2/2, 5);
+f_A_bend(:, 1) = csvread('A/f_B_1.csv');
+f_A_bend(:, 2) = csvread('A/f_B_2.csv');
+f_A_bend(:, 3) = csvread('A/f_B_3.csv');
+f_A_bend(:, 4) = csvread('A/f_B_4.csv');
+f_A_bend(:, 5) = csvread('A/f_B_5.csv');
+
+f_A_bend = (f_A_bend*3.3)/(16384*0.8);
 
 f_B_healthy = zeros(N2/2, 5);
 

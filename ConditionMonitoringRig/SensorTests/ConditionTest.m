@@ -247,64 +247,93 @@ figure
 subplot(2, 2, 1)
 plot(f_bins, F_healthy_average1);
 xlim([0 4096])
+ylim([0 0.018])
 legend('Healthy')
 subplot(2, 2, 2)
 plot(f_bins, F_bend_average);
 xlim([0 4096])
+ylim([0 0.018])
 legend('Bent')
 subplot(2, 2, 3)
 plot(f_bins2, F_A_healthy_average);
 xlim([0 4096])
-legend('Healthy_sensor')
+ylim([0 0.018])
+legend('Healthy_A')
 subplot(2, 2, 4)
 plot(f_bins2, F_A_bend_average);
 xlim([0 4096])
-legend('Bent_sensor')
+ylim([0 0.018])
+legend('Bent_A')
 
 %%
 
 rms_healthy = zeros(5, 1);
+rms_healthy2 = zeros(5, 1);
 rms_bend = zeros(5, 1);
 rms_A_healthy = zeros(5, 1);
 rms_A_bend = zeros(5, 1);
 
 for z = 1:5
     rms_healthy(z) = rms(F_healthy(:, z));
+    rms_healthy2(z) = rms(F_healthy(:, 5+z));
     rms_bend(z) = rms(F_bend(:, z));
     rms_A_healthy(z) = rms(f_A_healthy(:, z));
     rms_A_bend(z) = rms(f_A_bend(:, z));
 end
 
 max_healthy = zeros(5, 1);
+max_healthy2 = zeros(5, 1);
 max_bend = zeros(5, 1);
 max_A_healthy = zeros(5, 1);
 max_A_bend = zeros(5, 1);
 
 for z = 1:5
     max_healthy(z) = max(F_healthy(:, z));
+    max_healthy2(z) = max(F_healthy(:, 5+z));
     max_bend(z) = max(F_bend(:, z));
     max_A_healthy(z) = max(f_A_healthy(:, z));
     max_A_bend(z) = max(f_A_bend(:, z));
 end
 
 std_healthy = zeros(5, 1);
+std_healthy2 = zeros(5, 1);
 std_bend = zeros(5, 1);
 std_A_healthy = zeros(5, 1);
 std_A_bend = zeros(5, 1);
 
 for z = 1:5
     std_healthy(z) = std(F_healthy(:, z));
+    std_healthy2(z) = std(F_healthy(:, 5+z));
     std_bend(z) = std(F_bend(:, z));
     std_A_healthy(z) = std(f_A_healthy(:, z));
     std_A_bend(z) = std(f_A_bend(:, z));
 end
+
+%%
+
+max_healthy_avg = max(F_healthy_average1);
+max_bend_avg = max(F_bend_average);
+max_A_healthy_avg = max(F_A_healthy_average);
+max_A_bend_avg = max(F_A_bend_average);
+
+std_healthy_avg = std(F_healthy_average1);
+std_bend_avg = std(F_bend_average);
+std_A_healthy_avg = std(F_A_healthy_average);
+std_A_bend_avg = std(F_A_bend_average);
+
+rms_healthy_avg = rms(F_healthy_average1);
+rms_bend_avg = rms(F_bend_average);
+rms_A_healthy_avg = rms(F_A_healthy_average);
+rms_A_bend_avg = rms(F_A_bend_average);
+
 %%
 
 figure
 scatter(max_healthy, std_healthy);
 hold on
+scatter(max_healthy2, std_healthy2);
 scatter(max_bend, std_bend);
-legend('H', 'B')
+legend('H', 'H2', 'B')
 
 %%
 
@@ -319,10 +348,57 @@ legend('H', 'B')
 figure
 scatter(max_healthy, std_healthy);
 hold on
+scatter(max_healthy2, std_healthy2);
 scatter(max_bend, std_bend);
 scatter(max_A_healthy, std_A_healthy);
 scatter(max_A_bend, std_A_bend);
-legend('H', 'B', 'H_A', 'H_B')
+legend('H', 'H2', 'B', 'H_A', 'B_A')
+%legend('H', 'B', 'H_A', 'B_A')
+
+%%
+
+figure
+scatter(max_healthy_avg, std_healthy_avg)
+hold on
+scatter(max_bend_avg, std_bend_avg);
+scatter(max_A_healthy_avg, std_A_healthy_avg);
+scatter(max_A_bend_avg, std_A_bend_avg);
+legend('H', 'B', 'H_A', 'B_A')
+
+%%
+
+figure
+h1 = scatter(max_healthy_avg, std_healthy_avg, 'ro', 'MarkerFaceColor', 'r');
+hold on
+h2 = scatter(max_bend_avg, std_bend_avg,  'bo', 'MarkerFaceColor', 'b');
+h3 = scatter(max_A_healthy_avg, std_A_healthy_avg,  'mo', 'MarkerFaceColor', 'm');
+h4 = scatter(max_A_bend_avg, std_A_bend_avg,  'co', 'MarkerFaceColor', 'c');
+
+scatter(max_healthy, std_healthy, 'ro');
+scatter(max_bend, std_bend, 'bo');
+scatter(max_A_healthy, std_A_healthy, 'mo');
+scatter(max_A_bend, std_A_bend, 'co');
+legend([h1 h2 h3 h4], 'H_{ref}', 'B_{ref}', 'H_A', 'B_A')
+
+%%
+
+figure
+h1 = scatter3(max_healthy_avg, std_healthy_avg, rms_healthy_avg, 'ro', 'MarkerFaceColor', 'r');
+hold on
+h2 = scatter3(max_bend_avg, std_bend_avg, rms_bend_avg, 'bs', 'MarkerFaceColor', 'b');
+h3 = scatter3(max_A_healthy_avg, std_A_healthy_avg, rms_A_healthy_avg, 'm^', 'MarkerFaceColor', 'm');
+h4 = scatter3(max_A_bend_avg, std_A_bend_avg, rms_A_bend_avg, 'cd', 'MarkerFaceColor', 'c');
+
+scatter3(max_healthy, std_healthy, rms_healthy, 'ro');
+scatter3(max_bend, std_bend, rms_bend, 'bs');
+scatter3(max_A_healthy, std_A_healthy, rms_A_healthy, 'm^');
+scatter3(max_A_bend, std_A_bend, rms_A_bend, 'cd');
+legend([h1 h2 h3 h4], 'H_{ref}', 'B_{ref}', 'H_A', 'B_A')
+
+xlabel('Max')
+ylabel('std')
+zlabel('rms')
+view(2)
 
 %%
 
@@ -333,6 +409,7 @@ scatter3(max_bend, std_bend, rms_bend);
 scatter3(max_A_healthy, std_A_healthy, rms_A_healthy);
 scatter3(max_A_bend, std_A_bend, rms_A_bend);
 legend('H', 'B', 'H_A', 'H_B')
+
 
 %%
 y = zeros(N2, 5);

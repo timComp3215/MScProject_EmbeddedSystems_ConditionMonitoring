@@ -14,33 +14,6 @@
  <void id="ArrayList0" method="get">
   <object idref="SolutionManager$PersistState0"/>
   <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
-   <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\AnalysisLibrary\DataProviders\EnergyTrace\null</string>
-  </void>
-  <void method="add">
    <string>C:\ti\ccsv8\ccs_base\dvt_4.1.0.201805141352\CodeGen\solutions\CodeGenCoverage</string>
   </void>
  </void>

@@ -407,6 +407,26 @@ ylabel('Magnitude (g)')
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
 
+figure
+h1 = scatter3(max(F_healthy_average), std(F_healthy_average), rms(F_healthy_average), 'ro');
+hold on
+h2 = scatter3(max(F_bend_average), std(F_bend_average), rms(F_bend_average), 'bs');
+h3 = scatter3(max(F_worn_average), std(F_worn_average), rms(F_worn_average), 'g^');
+
+for z = 1:10
+    scatter3(F_stats_healthy(z, 2, 1), F_stats_healthy(z, 2, 2), F_stats_healthy(z, 2, 3), 'ro');
+    scatter3(F_stats_bend(z, 2, 1), F_stats_bend(z, 2, 2), F_stats_bend(z, 2, 3), 'bs');
+    scatter3(F_stats_worn(z, 2, 1), F_stats_worn(z, 2, 2), F_stats_worn(z, 2, 3), 'g^');
+end
+
+legend([h1 h2 h3], 'Healthy', 'Bend', 'Worn')
+
+xlabel('Max')
+ylabel('std')
+zlabel('rms')
+view(2)
+
+%%
 mean_values = mean(x_healthy(:, 1, 3));
 x_mean = zeros(N, 1);
 
