@@ -76,36 +76,28 @@ x_bend(:, 5) = D_08mm(:, 2 + i);
 %         x_bend(:, 10, i) = D_18mm(:, 2 + i);
 x_bend = x_bend / 10;
 % 
-% x_worn = zeros(N, 10, 3);
-% 
-% D_00mm = csvread('Worn0.csv');
-% D_02mm = csvread('Worn1.csv');
-% D_04mm = csvread('Worn2.csv');
-% D_06mm = csvread('Worn3.csv');
-% D_08mm = csvread('Worn4.csv');
-% D_10mm = csvread('Worn5.csv');
-% D_12mm = csvread('Worn6.csv');
-% D_14mm = csvread('Worn7.csv');
-% D_16mm = csvread('Worn8.csv');
-% D_18mm = csvread('Worn9.csv');
-% 
-% for i = 1:3
-%         x_worn(:, 1, i) = D_00mm(:, 2 + i);
-%         x_worn(:, 2, i) = D_02mm(:, 2 + i);
-%         x_worn(:, 3, i) = D_04mm(:, 2 + i);
-%         x_worn(:, 4, i) = D_06mm(:, 2 + i);
-%         x_worn(:, 5, i) = D_08mm(:, 2 + i);
-%         x_worn(:, 6, i) = D_10mm(:, 2 + i);
-%         x_worn(:, 7, i) = D_12mm(:, 2 + i);
-%         x_worn(:, 8, i) = D_14mm(:, 2 + i);
-%         x_worn(:, 9, i) = D_16mm(:, 2 + i);
-%         x_worn(:, 10, i) = D_18mm(:, 2 + i);
-% end
+ x_worn = zeros(N, 5);
+
+D_00mm = csvread('Ref/Worn11.csv');
+D_02mm = csvread('Ref/Worn12.csv');
+D_04mm = csvread('Ref/Worn13.csv');
+D_06mm = csvread('Ref/Worn14.csv');
+D_08mm = csvread('Ref/Worn15.csv');
+
+i = 2; %Bearing 2 only
+x_worn(:, 1) = D_00mm(:, 2 + i);
+x_worn(:, 2) = D_02mm(:, 2 + i);
+x_worn(:, 3) = D_04mm(:, 2 + i);
+x_worn(:, 4) = D_06mm(:, 2 + i);
+x_worn(:, 5) = D_08mm(:, 2 + i);
+
+x_worn = x_worn / 10;
+
 %%
 %Remove DC component
 x_healthy_mean = zeros(10);
-x_bend_mean = zeros(10);
-x_worn_mean = zeros(10, 3);
+x_bend_mean = zeros(5);
+x_worn_mean = zeros(5);
 
 for z = 1:10
     x_healthy_mean(z) = mean(x_healthy(:, z));
@@ -121,11 +113,12 @@ end
 for z = 1:5
 %     x_healthy_mean(z) = mean(x_healthy(:, z));
     x_bend_mean(z) = mean(x_healthy(:, z));
-%         x_worn_mean(z, i) = mean(x_healthy(:, z, i));
+    x_worn_mean(z) = mean(x_healthy(:, z));
+    
     for n = 1:N
 %         x_healthy(n, z) = x_healthy(n, z) - x_healthy_mean(z);
         x_bend(n, z) = x_bend(n, z) - x_bend_mean(z);
-%             x_worn(n, z, i) = x_worn(n, z, i) - x_worn_mean(z, i);
+        x_worn(n, z) = x_worn(n, z) - x_worn_mean(z);
     end
 end
 
@@ -151,6 +144,15 @@ x_A_bend(:, 5) = csvread('A/t_B_5.csv');
 
 x_A_bend = (x_A_bend*3.3)/(16384*0.8);
 
+x_A_worn = zeros(N2, 5);
+
+x_A_worn(:, 1) = csvread('A/t_W_1.csv');
+x_A_worn(:, 2) = csvread('A/t_W_2.csv');
+x_A_worn(:, 3) = csvread('A/t_W_3.csv');
+x_A_worn(:, 4) = csvread('A/t_W_4.csv');
+x_A_worn(:, 5) = csvread('A/t_W_5.csv');
+
+x_A_worn = (x_A_worn*3.3)/(16384*0.8);
 
 %%
 
@@ -168,6 +170,7 @@ f_A_healthy(:, 5) = csvread('A/f_H_24.csv');
 f_A_healthy = (f_A_healthy*3.3)/(16384*0.8);
 
 f_A_bend = zeros(N2/2, 5);
+
 f_A_bend(:, 1) = csvread('A/f_B_1.csv');
 f_A_bend(:, 2) = csvread('A/f_B_2.csv');
 f_A_bend(:, 3) = csvread('A/f_B_3.csv');
@@ -176,6 +179,14 @@ f_A_bend(:, 5) = csvread('A/f_B_5.csv');
 
 f_A_bend = (f_A_bend*3.3)/(16384*0.8);
 
+f_A_worn = zeros(N2/2, 5);
+f_A_worn(:, 1) = csvread('A/f_W_1.csv');
+f_A_worn(:, 2) = csvread('A/f_W_2.csv');
+f_A_worn(:, 3) = csvread('A/f_W_3.csv');
+f_A_worn(:, 4) = csvread('A/f_W_4.csv');
+f_A_worn(:, 5) = csvread('A/f_W_5.csv');
+
+f_A_worn = (f_A_worn*3.3)/(16384*0.8);
 
 %%
 
@@ -187,12 +198,20 @@ for z = 1:10
     F_healthy(:, z) = tempf(1:round(N/2), 1);
 end
 
-F_bend = zeros(round(N/2), 10);
+F_bend = zeros(round(N/2), 5);
 
 for z = 1:5
     tempf = fft(x_bend(:, z));
     tempf = abs(tempf/N);
     F_bend(:, z) = tempf(1:round(N/2), 1);
+end
+
+F_worn = zeros(round(N/2), 5);
+
+for z = 1:5
+    tempf = fft(x_worn(:, z));
+    tempf = abs(tempf/N);
+    F_worn(:, z) = tempf(1:round(N/2), 1);
 end
 
 %%
@@ -211,6 +230,11 @@ for n = 1:round(N/2)
     F_bend_average(n, 1) = mean(F_bend(n, :));
 end
 
+F_worn_average = zeros(round(N/2), 1);
+for n = 1:round(N/2)
+    F_worn_average(n, 1) = mean(F_worn(n, :));
+end
+
 F_A_healthy_average = zeros(N2/2, 1);
 for n = 1:round(N2/2)
     F_A_healthy_average(n, 1) = mean(f_A_healthy(n, :));
@@ -221,110 +245,215 @@ for n = 1:round(N2/2)
     F_A_bend_average(n, 1) = mean(f_A_bend(n, :));
 end
 
+F_A_worn_average = zeros(N2/2, 1);
+for n = 1:round(N2/2)
+    F_A_worn_average(n, 1) = mean(f_A_worn(n, :));
+end
+
 %%
 
-figure
-subplot(2, 2, 1)
+figure('color', 'w', 'Position', [100, 100, 1500, 1000])
+ha = tight_subplot(2, 3,[.07 .03],[.075 .01],[.051 .011]);
+
+axes(ha(1));
 plot(t, x_healthy(:, 1));
-legend('Healthy')
+legend('Healthy_{ref}')
+ylim([-0.2 0.2])
 xlim([0 0.5])
-subplot(2, 2, 2)
+ylabel('Acceleration (g)')
+xticklabels('')
+
+axes(ha(2));
 plot(t, x_bend(:, 1));
 xlim([0 0.5])
-legend('Bent')
-subplot(2, 2, 3)
+ylim([-0.2 0.2])
+legend('Bent_{ref}')
+xticklabels('')
+yticklabels('')
+
+axes(ha(3));
+plot(t, x_worn(:, 1));
+xlim([0 0.5])
+ylim([-0.2 0.2])
+legend('BF_{ref}')
+xticklabels('')
+yticklabels('')
+
+axes(ha(4));
 plot(t2, x_A_healthy(:, 1));
 xlim([0 0.5])
-legend('Healthy_sensor')
-subplot(2, 2, 4)
+ylim([-0.2 0.2])
+legend('Healthy_A')
+ylabel('Acceleration (g)')
+xlabel('Time (s)')
+
+axes(ha(5));
 plot(t2, x_A_bend(:, 1));
-legend('Bent_sensor')
+ylim([-0.2 0.2])
+legend('Bent_A')
 xlim([0 0.5])
+yticklabels('')
+xlabel('Time (s)')
+
+axes(ha(6));
+plot(t2, x_A_worn(:, 1));
+legend('BF_A')
+xlim([0 0.5])
+ylim([-0.2 0.2])
+yticklabels('')
+xlabel('Time (s)')
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
 %%
 
-figure
-subplot(2, 2, 1)
-plot(f_bins, F_healthy_average1);
-xlim([0 4096])
+figure('color', 'w', 'Position', [100, 100, 1500, 1000])
+ha = tight_subplot(2, 3,[.07 .02],[.075 .034],[.045 .005]);
+
+axes(ha(1));
+plot(f_bins, F_healthy_average1, 'LineWidth', 1);
+xlim([0 3000])
 ylim([0 0.018])
-legend('Healthy')
-subplot(2, 2, 2)
-plot(f_bins, F_bend_average);
-xlim([0 4096])
+yticks([0 0.004 0.008 0.012 0.016])
+ax = gca;
+ax.YAxis.Exponent = -3;
+xticklabels('')
+ylabel('Magnitude (g)')
+legend('Healthy_{ref}')
+
+axes(ha(2));
+plot(f_bins, F_bend_average, 'LineWidth', 1);
+xlim([0 3000])
 ylim([0 0.018])
-legend('Bent')
-subplot(2, 2, 3)
-plot(f_bins2, F_A_healthy_average);
-xlim([0 4096])
+yticks([0 0.004 0.008 0.012 0.016])
+xticklabels('')
+yticklabels('')
+legend('Bent_{ref}')
+
+axes(ha(3));
+plot(f_bins, F_worn_average, 'LineWidth', 1);
+xlim([0 3000])
 ylim([0 0.018])
+yticks([0 0.004 0.008 0.012 0.016])
+xticklabels('')
+yticklabels('')
+legend('BF_{ref}')
+
+axes(ha(4));
+plot(f_bins2, F_A_healthy_average, 'LineWidth', 1);
+xlim([0 3000])
+ylim([0 0.018])
+yticks([0 0.004 0.008 0.012 0.016])
+ax = gca;
+ax.YAxis.Exponent = -3;
+xticks([0 1000 2000 3000])
+xticklabels([0 1 2 3])
+xlabel('Frequency (kHz)')
+ylabel('Magnitude (g)')
 legend('Healthy_A')
-subplot(2, 2, 4)
-plot(f_bins2, F_A_bend_average);
-xlim([0 4096])
+
+axes(ha(5));
+plot(f_bins2, F_A_bend_average, 'LineWidth', 1);
+xlim([0 3000])
 ylim([0 0.018])
+yticks([0 0.004 0.008 0.012 0.016])
+yticklabels('')
+xticks([0 1000 2000 3000])
+xticklabels([0 1 2 3])
+xlabel('Frequency (kHz)')
 legend('Bent_A')
+
+axes(ha(6));
+plot(f_bins2, F_A_worn_average, 'LineWidth', 1 );
+xlim([0 3000])
+ylim([0 0.018])
+yticks([0 0.004 0.008 0.012 0.016])
+yticklabels('')
+xticks([0 1000 2000 3000])
+xticklabels([0 1 2 3])
+xlabel('Frequency (kHz)')
+legend('BF_A')
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
 %%
 
 rms_healthy = zeros(5, 1);
 rms_healthy2 = zeros(5, 1);
 rms_bend = zeros(5, 1);
+rms_worn = zeros(5, 1);
 rms_A_healthy = zeros(5, 1);
 rms_A_bend = zeros(5, 1);
+rms_A_worn = zeros(5, 1);
 
 for z = 1:5
     rms_healthy(z) = rms(F_healthy(:, z));
     rms_healthy2(z) = rms(F_healthy(:, 5+z));
     rms_bend(z) = rms(F_bend(:, z));
+    rms_worn(z) = rms(F_worn(:, z));
     rms_A_healthy(z) = rms(f_A_healthy(:, z));
     rms_A_bend(z) = rms(f_A_bend(:, z));
+    rms_A_worn(z) = rms(f_A_worn(:, z));
 end
 
 max_healthy = zeros(5, 1);
 max_healthy2 = zeros(5, 1);
 max_bend = zeros(5, 1);
+max_worn = zeros(5, 1);
 max_A_healthy = zeros(5, 1);
 max_A_bend = zeros(5, 1);
+max_A_worn = zeros(5, 1);
 
 for z = 1:5
     max_healthy(z) = max(F_healthy(:, z));
     max_healthy2(z) = max(F_healthy(:, 5+z));
     max_bend(z) = max(F_bend(:, z));
+    max_worn(z) = max(F_worn(:, z));
     max_A_healthy(z) = max(f_A_healthy(:, z));
     max_A_bend(z) = max(f_A_bend(:, z));
+    max_A_worn(z) = max(f_A_worn(:, z));
 end
 
 std_healthy = zeros(5, 1);
 std_healthy2 = zeros(5, 1);
 std_bend = zeros(5, 1);
+std_worn = zeros(5, 1);
 std_A_healthy = zeros(5, 1);
 std_A_bend = zeros(5, 1);
+std_A_worn = zeros(5, 1);
 
 for z = 1:5
     std_healthy(z) = std(F_healthy(:, z));
     std_healthy2(z) = std(F_healthy(:, 5+z));
     std_bend(z) = std(F_bend(:, z));
+    std_worn(z) = std(F_worn(:, z));
     std_A_healthy(z) = std(f_A_healthy(:, z));
     std_A_bend(z) = std(f_A_bend(:, z));
+    std_A_worn(z) = std(f_A_worn(:, z));
 end
 
 %%
 
 max_healthy_avg = max(F_healthy_average1);
 max_bend_avg = max(F_bend_average);
+max_worn_avg = max(F_worn_average);
 max_A_healthy_avg = max(F_A_healthy_average);
 max_A_bend_avg = max(F_A_bend_average);
+max_A_worn_avg = max(F_A_worn_average);
 
 std_healthy_avg = std(F_healthy_average1);
 std_bend_avg = std(F_bend_average);
+std_worn_avg = std(F_worn_average);
 std_A_healthy_avg = std(F_A_healthy_average);
 std_A_bend_avg = std(F_A_bend_average);
+std_A_worn_avg = std(F_A_worn_average);
 
 rms_healthy_avg = rms(F_healthy_average1);
 rms_bend_avg = rms(F_bend_average);
+rms_worn_avg = rms(F_worn_average);
 rms_A_healthy_avg = rms(F_A_healthy_average);
 rms_A_bend_avg = rms(F_A_bend_average);
+rms_A_worn_avg = rms(F_A_worn_average);
 
 %%
 
@@ -333,7 +462,8 @@ scatter(max_healthy, std_healthy);
 hold on
 scatter(max_healthy2, std_healthy2);
 scatter(max_bend, std_bend);
-legend('H', 'H2', 'B')
+scatter(max_worn, std_worn);
+legend('H', 'H2', 'B', 'W')
 
 %%
 
@@ -341,7 +471,8 @@ figure
 scatter(max_A_healthy, std_A_healthy);
 hold on
 scatter(max_A_bend, std_A_bend);
-legend('H', 'B')
+scatter(max_A_worn, std_A_worn);
+legend('H', 'B', 'W')
 
 %%
 
@@ -370,36 +501,81 @@ legend('H', 'B', 'H_A', 'B_A')
 figure
 h1 = scatter(max_healthy_avg, std_healthy_avg, 'ro', 'MarkerFaceColor', 'r');
 hold on
-h2 = scatter(max_bend_avg, std_bend_avg,  'bo', 'MarkerFaceColor', 'b');
-h3 = scatter(max_A_healthy_avg, std_A_healthy_avg,  'mo', 'MarkerFaceColor', 'm');
-h4 = scatter(max_A_bend_avg, std_A_bend_avg,  'co', 'MarkerFaceColor', 'c');
+h2 = scatter(max_bend_avg, std_bend_avg,  'bs', 'MarkerFaceColor', 'b');
+h3 = scatter(max_worn_avg, std_worn_avg,  'g^', 'MarkerFaceColor', 'g');
+h4 = scatter(max_A_healthy_avg, std_A_healthy_avg,  'mo', 'MarkerFaceColor', 'm');
+h5 = scatter(max_A_bend_avg, std_A_bend_avg,  'cs', 'MarkerFaceColor', 'c');
+h6 = scatter(max_A_worn_avg, std_A_worn_avg,  'k^', 'MarkerFaceColor', 'k');
 
 scatter(max_healthy, std_healthy, 'ro');
-scatter(max_bend, std_bend, 'bo');
+scatter(max_bend, std_bend, 'bs');
+scatter(max_worn, std_worn, 'g^');
 scatter(max_A_healthy, std_A_healthy, 'mo');
-scatter(max_A_bend, std_A_bend, 'co');
-legend([h1 h2 h3 h4], 'H_{ref}', 'B_{ref}', 'H_A', 'B_A')
+scatter(max_A_bend, std_A_bend, 'cs');
+scatter(max_A_worn, std_A_worn, 'k^');
+legend([h1 h2 h3 h4 h5 h6], 'H_{ref}', 'B_{ref}', 'W_ref', 'H_A', 'B_A', 'W_A', 'Location', 'East')
 
 %%
 
-figure
-h1 = scatter3(max_healthy_avg, std_healthy_avg, rms_healthy_avg, 'ro', 'MarkerFaceColor', 'r');
+max_healthy_avg = mean(max_healthy);
+max_bend_avg = mean(max_bend);
+max_worn_avg = mean(max_worn);
+max_A_healthy_avg = mean(max_A_healthy);
+max_A_bend_avg = mean(max_A_bend);
+max_A_worn_avg = mean(max_A_worn);
+
+std_healthy_avg = mean(std_healthy);
+std_bend_avg = mean(std_bend);
+std_worn_avg = mean(std_worn);
+std_A_healthy_avg = mean(std_A_healthy);
+std_A_bend_avg = mean(std_A_bend);
+std_A_worn_avg = mean(std_A_worn);
+
+rms_healthy_avg = mean(rms_healthy);
+rms_bend_avg = mean(rms_bend);
+rms_worn_avg = mean(rms_worn);
+rms_A_healthy_avg = mean(rms_A_healthy);
+rms_A_bend_avg = mean(rms_A_bend);
+rms_A_worn_avg = mean(rms_A_worn);
+
+%%
+
+figure('color', 'w', 'Position', [300, 300, 1400, 500])
+ha = tight_subplot(1, 2 ,[.045 .1],[.15 .07],[.055 .0]);
+
+axes(ha(1));
+h1 = scatter(max_healthy_avg, std_healthy_avg, 'ro', 'MarkerFaceColor', 'r', 'LineWidth', 6);
 hold on
-h2 = scatter3(max_bend_avg, std_bend_avg, rms_bend_avg, 'bs', 'MarkerFaceColor', 'b');
-h3 = scatter3(max_A_healthy_avg, std_A_healthy_avg, rms_A_healthy_avg, 'm^', 'MarkerFaceColor', 'm');
-h4 = scatter3(max_A_bend_avg, std_A_bend_avg, rms_A_bend_avg, 'cd', 'MarkerFaceColor', 'c');
+h2 = scatter(max_bend_avg, std_bend_avg,  'bs', 'MarkerFaceColor', 'b', 'LineWidth', 6);
+h3 = scatter(max_worn_avg, std_worn_avg,  'g^', 'MarkerFaceColor', 'g', 'LineWidth', 6);
+scatter(max_healthy, std_healthy, 'ro', 'LineWidth', 1);
+scatter(max_bend, std_bend, 'bs', 'LineWidth', 1);
+scatter(max_worn, std_worn, 'g^', 'LineWidth', 1);
+xlabel('Maximum (g)')
+ylabel('std (g)')
+xlim([0 0.02])
+ylim([0.0001 0.0003])
 
-scatter3(max_healthy, std_healthy, rms_healthy, 'ro');
-scatter3(max_bend, std_bend, rms_bend, 'bs');
-scatter3(max_A_healthy, std_A_healthy, rms_A_healthy, 'm^');
-scatter3(max_A_bend, std_A_bend, rms_A_bend, 'cd');
-legend([h1 h2 h3 h4], 'H_{ref}', 'B_{ref}', 'H_A', 'B_A')
+legend([h1 h2 h3], 'H_{ref}', 'B_{ref}', 'BF_{ref}', 'Location', 'EastOutside')
 
-xlabel('Max')
-ylabel('std')
-zlabel('rms')
-view(2)
+axes(ha(2));
+h4 = scatter(max_A_healthy_avg, std_A_healthy_avg,   'ro', 'MarkerFaceColor', 'r', 'LineWidth', 6);
+hold on
+h5 = scatter(max_A_bend_avg, std_A_bend_avg,  'bs', 'MarkerFaceColor', 'b', 'LineWidth', 6);
+h6 = scatter(max_A_worn_avg, std_A_worn_avg,  'g^', 'MarkerFaceColor', 'g', 'LineWidth', 6);
+scatter(max_A_healthy, std_A_healthy, 'ro', 'LineWidth', 1);
+scatter(max_A_bend, std_A_bend, 'bs', 'LineWidth', 1);
+scatter(max_A_worn, std_A_worn, 'g^', 'LineWidth', 1);
 
+xlabel('Maximum (g)')
+ylabel('std (g)')
+
+xlim([0 0.02])
+ylim([0.00025 0.0005])
+
+legend([h4 h5 h6], 'H_A', 'B_A', 'BF_A', 'Location', 'EastOutside')
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
 
 figure
@@ -410,168 +586,56 @@ scatter3(max_A_healthy, std_A_healthy, rms_A_healthy);
 scatter3(max_A_bend, std_A_bend, rms_A_bend);
 legend('H', 'B', 'H_A', 'H_B')
 
-
 %%
-y = zeros(N2, 5);
+figure('color', 'w', 'Position', [300, 300, 1200, 500])
+ha = tight_subplot(1, 2 ,[.045 .07],[.17 .034],[.065 .013]);
 
-for z = 1:5
-    y(:, z) = lowpass(x_B_healthy(:, z), 1500, 8192);
-end
-
-F_y = zeros(round(N2/2), 5);
-
-for z = 1:5
-
-    tempf = fft(y(:, z));
-    tempf = abs(tempf/N2);
-    F_y(:, z) = tempf(1:round(N2/2), 1);
-
-end
-
-F_y_average = zeros(N2/2, 1);
-for n = 1:round(N2/2)
-    F_y_average(n, 1) = mean(F_y(n, :));
-end
-
-figure
-subplot(3, 1, 3)
-plot(f_bins2, F_y_average)
-xlim([0 4096])
-subplot(3, 1, 1)
-plot(f_bins, F_healthy_average)
-xlim([0 4096])
-subplot(3, 1, 2)
-plot(f_bins2, F_A_healthy_average)
-xlim([0 4096])
-
-%%
-
-figure
-plot(f_bins, F_healthy_average)
+axes(ha(1));
+h1 = loglog(mean(rms(x_healthy(:, 1:5))*9.81), mean(max(abs(x_healthy(:, 1:5))*9.81)), 'ro', 'MarkerFaceColor', 'r', 'MarkerSize', 10);
 hold on
-plot(f_bins2, F_A_healthy_average)
-plot(f_bins2, F_y_average)
-xlim([0 1500])
-legend('Ref', 'A', 'Bavg')
-
-
-%%
-max_healthy = max(F_healthy(:, :, 2));
-max_A_healthy = max(f_A_healthy);
-max_y = max(F_y);
-
-max_healthy_avg = max(F_healthy_average);
-max_A_healthy_avg = max(F_A_healthy_average);
-max_y_avg = max(F_y_average);
-
-std_healthy = std(F_healthy(:, :, 2));
-std_A_healthy = std(f_A_healthy);
-std_y = std(F_y);
-
-std_healthy_avg = std(F_healthy_average);
-std_A_healthy_avg = std(F_A_healthy_average);
-std_y_avg = std(F_y_average);
-
-figure
-scatter(max_healthy_avg, std_healthy_avg);
-hold on
-scatter(max_A_healthy_avg, std_A_healthy_avg);
-scatter(max_y_avg, std_y_avg);
-
-scatter(max_healthy, std_healthy);
-scatter(max_A_healthy, std_A_healthy);
-scatter(max_y, std_y);
-legend('Ref', 'A', 'Y')
-
-%%
-
-figure
-subplot(3, 1, 1)
-plot(t, x_healthy(:, 1, 1))
-ylim([-1 1])
-subplot(3, 1, 2)
-plot(t, x_bend(:, 1, 1))
-ylim([-1 1])
-subplot(3, 1, 3)
-plot(t, x_worn(:, 1, 1))
-ylim([-1 1])
-%%
-
-freq = (0:N-1) .* fs/N;
-
-F_healthy = zeros(round(N/2), 10, 3);
-
-for z = 1:10
-    for i = 1:3
-        tempf = fft(x_healthy(:, z, i));
-        tempf = abs(tempf/N);
-        F_healthy(:, z, i) = tempf(1:round(N/2), 1);
-    end
-end
-%%
-F_bend = zeros(round(N/2), 10, 3);
-
-for z = 1:10
-    for i = 1:3
-        tempf = fft(x_bend(:, z, i));
-        tempf = abs(tempf/N);
-        F_bend(:, z, i) = tempf(1:round(N/2), 1);
-    end
-end
-
-F_worn = zeros(round(N/2), 10, 3);
-
-for z = 1:10
-    for i = 1:3
-        tempf = fft(x_worn(:, z, i));
-        tempf = abs(tempf/N);
-        F_worn(:, z, i) = tempf(1:round(N/2), 1);
-    end
-end
-%%
-f_bins = freq(1:round(N/2));
-%%
-figure
-subplot(3, 1, 1)
-plot(f_bins, F_healthy(:, 1, 1))
-subplot(3, 1, 2)
-plot(f_bins, F_healthy(:, 1, 2))
-subplot(3, 1, 3)
-plot(f_bins, F_healthy(:, 1, 3))
-
-for i = 1:3
-    figure
-    subplot(3, 1, 1)
-    plot(f_bins, F_healthy(:, 1, i))
-    subplot(3, 1, 2)
-    plot(f_bins, F_bend(:, 1, i))
-    subplot(3, 1, 3)
-    plot(f_bins, F_worn(:, 1, i))
-end
-
-%%
-figure
-loglog(rms(x_healthy(:, 1:5))*9.81, max(abs(x_healthy(:, 1:5))*9.81), 'bs')
-hold on
-loglog(rms(x_bend(:, :))*9.81, max(abs(x_bend(:, :))*9.81), 'g^')
-% loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 2))*9.81), 'rx')
-plot([0.1 10], [.3 30])
-plot([0.1 10], [.6 60])
-plot([0.1 10], [1 100])
-legend('Healthy', 'Bending', 'Zone2', 'Zone3', 'Zone4')
-xlim([.1 10])
-ylim([.3 30])
-
-%%
-
-figure
-loglog(rms(x_A_healthy(:, 1:5))*9.81, max(abs(x_A_healthy(:, 1:5))*9.81), 'bs')
-hold on
-loglog(rms(x_A_bend(:, :))*9.81, max(abs(x_A_bend(:, :))*9.81), 'g^')
-% loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 2))*9.81), 'rx')
-plot([0.1 10], [.3 30])
-plot([0.1 10], [.6 60])
-plot([0.1 10], [1 100])
-legend('Healthy', 'Bending', 'Zone2', 'Zone3', 'Zone4')
+loglog(rms(x_healthy(:, 1:5))*9.81, max(abs(x_healthy(:, 1:5))*9.81), 'ro', 'MarkerSize', 10);
+h2 = loglog(mean(rms(x_bend(:, :))*9.81), mean(max(abs(x_bend(:, :))*9.81)), 'bs', 'MarkerFaceColor', 'b', 'MarkerSize', 10);
+loglog(rms(x_bend(:, :))*9.81, max(abs(x_bend(:, :))*9.81), 'bs', 'MarkerSize', 10);
+h3 = loglog(mean(rms(x_worn(:, :))*9.81), mean(max(abs(x_worn(:, :))*9.81)), 'g^', 'MarkerFaceColor', 'g', 'MarkerSize', 10);
+loglog(rms(x_worn(:, :))*9.81, max(abs(x_worn(:, :))*9.81), 'g^', 'MarkerSize', 10);
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
+legend([h1 h2 h3], 'Healthy_{ref}', 'Bending_{ref}', 'BF_{ref}', 'Location', 'East')
 xlim([.1 1])
-ylim([.3 3])
+ylim([.3 4])
+xticks([0.1 0.5 1])
+xticklabels({'0.1', '0.5', '1.0'})
+yticks([0.3 1 2 3 4])
+ylabel('Maximum acceleration (ms^{-2})')
+xlabel('RMS acceleration (ms^{-2})')
+text(0.14,0.35,'Low');
+text(0.14,0.7,'Normal');
+text(0.14,1.3,'Alert');
+text(0.14,2.5,'Alarm');
+
+
+axes(ha(2));
+h1 = loglog(mean(rms(x_A_healthy(:, 1:5))*9.81), mean(max(abs(x_A_healthy(:, 1:5))*9.81)), 'ro', 'MarkerFaceColor', 'r', 'MarkerSize', 10);
+hold on
+loglog(rms(x_A_healthy(:, 1:5))*9.81, max(abs(x_A_healthy(:, 1:5))*9.81), 'ro', 'MarkerSize', 10);
+h2 = loglog(mean(rms(x_A_bend(:, :))*9.81), mean(max(abs(x_A_bend(:, :))*9.81)), 'bs', 'MarkerFaceColor', 'b', 'MarkerSize', 10);
+loglog(rms(x_A_bend(:, :))*9.81, max(abs(x_A_bend(:, :))*9.81), 'bs', 'MarkerSize', 10);
+h3 = loglog(mean(rms(x_A_worn(:, :))*9.81), mean(max(abs(x_A_worn(:, :))*9.81)), 'g^', 'MarkerFaceColor', 'g', 'MarkerSize', 10);
+loglog(rms(x_A_worn(:, :))*9.81, max(abs(x_A_worn(:, :))*9.81), 'g^', 'MarkerSize', 10);
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
+legend([h1 h2 h3], 'Healthy_{A}', 'Bending_{A}', 'BF_{A}', 'Location', 'East')
+xlim([.1 1])
+ylim([.3 4])
+xticks([0.1 0.5 1])
+xticklabels({'0.1', '0.5', '1.0'})
+yticks([0.3 1 2 3 4])
+xlabel('RMS acceleration (ms^{-2})')
+text(0.14,0.35,'Low');
+text(0.14,0.7,'Normal');
+text(0.14,1.3,'Alert');
+text(0.14,2.5,'Alarm');
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
