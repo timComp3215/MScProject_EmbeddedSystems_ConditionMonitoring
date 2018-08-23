@@ -530,6 +530,7 @@ int main(void)
     uint16_t fft_RMS;
     uint16_t fft_std;
 
+    uint8_t setHealthyCount = 0;
     float fft_max_freq_healthy;
     float fft_max_healthy;
     float fft_RMS_healthy;
@@ -635,11 +636,21 @@ int main(void)
                 //Save stats as healthy state
                 if (setHealthyState == 1)
                 {
-                    setHealthyState = 0;
+                    setHealthyCount++;
                     fft_max_freq_healthy = fft_max_freq;
                     fft_max_healthy = fft_max;
                     fft_RMS_healthy = fft_RMS;
                     fft_std_healthy = fft_std;
+
+                    if (setHealthyCount == 1)
+                    {
+                        setHealthyCount = 0;
+                        setHealthyState = 0;
+                    }
+                    else
+                    {
+                        enableReads = 1;
+                    }
                 }
 
                 message.type = 'V';
@@ -647,11 +658,11 @@ int main(void)
                 //Evaluate healthy state
                 if ((fft_max_freq > (0.9*fft_max_freq_healthy)) && (fft_max_freq < (1.1*fft_max_freq_healthy)))
                 {
-                    message.condition = 'H';
+                    message.condition = 'H';//Healthy
                 }
                 else
                 {
-                    message.condition = 'U';
+                    message.condition = 'U';//Unhealthy
                 }
 
                 message.max_freq = fft_max_freq*(FSV/SAMPLES);

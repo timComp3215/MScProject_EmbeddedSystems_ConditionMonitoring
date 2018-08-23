@@ -9,27 +9,27 @@ CMD_SRCS += \
 ../msp432p401r.cmd 
 
 C_SRCS += \
-../adc_FFT_uart.c \
+../adc_FFT_Multi_Trigger.c \
 ../system_msp432p401r.c 
 
 C_DEPS += \
-./adc_FFT_uart.d \
+./adc_FFT_Multi_Trigger.d \
 ./system_msp432p401r.d 
 
 OBJS += \
-./adc_FFT_uart.obj \
+./adc_FFT_Multi_Trigger.obj \
 ./system_msp432p401r.obj 
 
 OBJS__QUOTED += \
-"adc_FFT_uart.obj" \
+"adc_FFT_Multi_Trigger.obj" \
 "system_msp432p401r.obj" 
 
 C_DEPS__QUOTED += \
-"adc_FFT_uart.d" \
+"adc_FFT_Multi_Trigger.d" \
 "system_msp432p401r.d" 
 
 C_SRCS__QUOTED += \
-"../adc_FFT_uart.c" \
+"../adc_FFT_Multi_Trigger.c" \
 "../system_msp432p401r.c" 
 
 

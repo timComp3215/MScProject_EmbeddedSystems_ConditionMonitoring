@@ -18,8 +18,8 @@ SAMPLES = 4096
 #Sampling frequency - purely for graphs to be correctly scaled
 fs = 8192
 
-condition = 'B'
-test = 4
+condition = 'W'
+test = 5
 
 #set name of output file
 #output_file = 'adc_output.csv'
