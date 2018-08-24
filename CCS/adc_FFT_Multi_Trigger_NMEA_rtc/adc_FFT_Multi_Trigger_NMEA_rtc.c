@@ -299,16 +299,16 @@ void average_preprocess(volatile int16_t *readings, uint16_t n)
     }
 }
 
-int16_t max(volatile int16_t *readings, uint16_t n)
+uint16_t max(volatile int16_t *readings, uint16_t n)
 {
     //This function finds the maximum value in a range
-    int16_t maximum = 0;
+    uint16_t maximum = 0;
     int i;
     for (i=0; i<n; i++)
     {
-        if (readings[i] > maximum)
+        if (abs(readings[i]) > maximum)
         {
-            maximum = readings[i];
+            maximum = abs(readings[i]);
         }
     }
 
@@ -319,14 +319,14 @@ uint16_t max_index(volatile int16_t *readings, uint16_t n)
 {
     //This function finds the maximum value in a range
     uint16_t index = 0;
-    int16_t maximum = 0;
+    uint16_t maximum = 0;
     int i;
     for (i=0; i<n; i++)
     {
-        if (readings[i] > maximum)
+        if (abs(readings[i]) > maximum)
         {
             index = i;
-            maximum = readings[i];
+            maximum = abs(readings[i]);
         }
     }
 
@@ -531,6 +531,8 @@ int main(void)
     uint16_t fft_std;
 
     uint8_t setHealthyCount = 0;
+    float t_rms_healthy;
+    float t_max_healthy;
     float fft_max_freq_healthy;
     float fft_max_healthy;
     float fft_RMS_healthy;
@@ -574,6 +576,33 @@ int main(void)
                 fft_std = STD(resultsBuffer, SAMPLES);
                 message.std = fft_std;
 
+                if (setHealthyState == 1)
+                {
+                    t_rms_healthy = fft_RMS;
+                    t_max_healthy = fft_max;
+                }
+
+                //Condition checking
+                //In healthy RMS range
+                if ((fft_RMS > 0.8*t_rms_healthy) && (fft_RMS < 1.2*t_rms_healthy))
+                {
+                    //Max is too high
+                    if (fft_max > 1.5*t_max_healthy)
+                    {
+                        message.condition = 'F';//Faulty bearing
+                    }
+                    else
+                    {
+                        //Healthy
+                        message.condition = 'H';
+                    }
+                }
+                else
+                {
+                    //outside healthy RMS range
+                    message.condition = 'U'; //Unhealthy
+                }
+
                 sendNMEA(message);
             }
 
@@ -610,24 +639,42 @@ int main(void)
             {
                 //MCSA
                 message.type = 'M';
-                message.condition = 'H';
                 message.max_freq = fft_max_freq*(FSM/SAMPLES);
-                //Is frequency high enough?
-                if (fft_max_freq < 1500)
-                {
-                    if (RTC_trigger == 1)
-                    {
-                        RTC_trigger = 0;
-                        runTime++;
-                    }
 
-                    analogPin = 0;
-                    configure_analog(analogPin);
-                    enableReads = 1;
-                    /* Configuring Timer_A in continuous mode and sourced from ACLK */
-                    MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig_V);
-                    /* Configuring Timer_A0 in CCR1 to trigger at 16000 (0.5s) */
-                    MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_V);
+                //Check condition
+                if (fft_max > 15)
+                {
+                    //Is frequency high enough?
+                    if ((fft_max_freq >= 48) && (fft_max_freq <= 52))
+                    {
+                        message.condition = 'R';//Running
+                        if (RTC_trigger == 1)
+                        {
+                            RTC_trigger = 0;
+                            runTime++;
+                        }
+
+                        analogPin = 0;
+                        configure_analog(analogPin);
+                        enableReads = 1;
+                        /* Configuring Timer_A in continuous mode and sourced from ACLK */
+                        MAP_Timer_A_configureUpMode(TIMER_A0_BASE, &upModeConfig_V);
+                        /* Configuring Timer_A0 in CCR1 to trigger at 16000 (0.5s) */
+                        MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig_V);
+                    }
+                    else if (fft_max_freq > 52)
+                    {
+                        //Too fast - unhealthy
+                        message.condition = 'U';
+                    }
+                    else
+                    {
+                        message.condition = 'L';//Loading up/Loading down
+                    }
+                }
+                else
+                {
+                    message.condition = 'S';//Stopped
                 }
             }
             else if(analogPin == Pin_Vib)
@@ -636,33 +683,27 @@ int main(void)
                 //Save stats as healthy state
                 if (setHealthyState == 1)
                 {
-                    setHealthyCount++;
+                    setHealthyState = 0;
                     fft_max_freq_healthy = fft_max_freq;
                     fft_max_healthy = fft_max;
                     fft_RMS_healthy = fft_RMS;
                     fft_std_healthy = fft_std;
-
-                    if (setHealthyCount == 1)
-                    {
-                        setHealthyCount = 0;
-                        setHealthyState = 0;
-                    }
-                    else
-                    {
-                        enableReads = 1;
-                    }
                 }
 
                 message.type = 'V';
 
                 //Evaluate healthy state
-                if ((fft_max_freq > (0.9*fft_max_freq_healthy)) && (fft_max_freq < (1.1*fft_max_freq_healthy)))
+                if ((fft_max > (0.8*fft_max_healthy)) && (fft_max < (1.2*fft_max_healthy)))
                 {
                     message.condition = 'H';//Healthy
                 }
+                else if ((fft_std <= fft_std_healthy) && (fft_max < 0.5*fft_max_healthy))
+                {
+                    message.condition = 'B';//Bending
+                }
                 else
                 {
-                    message.condition = 'U';//Unhealthy
+                    message.condition = 'U'; //Unhealthy
                 }
 
                 message.max_freq = fft_max_freq*(FSV/SAMPLES);

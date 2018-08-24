@@ -270,7 +270,7 @@ const Timer_A_UpModeConfig upModeConfig =
 {
         TIMER_A_CLOCKSOURCE_ACLK,            // ACLK Clock Source
         TIMER_A_CLOCKSOURCE_DIVIDER_1,       // ACLK/1 = 128 kHz
-        3,                                  // 32.768 kHz / 8 = 4096 Hz
+        7,                                  // 32.768 kHz / 8 = 4096 Hz
         TIMER_A_TAIE_INTERRUPT_DISABLE,      // Disable Timer ISR
         TIMER_A_CCIE_CCR0_INTERRUPT_DISABLE, // Disable CCR0
         TIMER_A_DO_CLEAR                     // Clear Counter
@@ -292,7 +292,7 @@ const Timer_A_CompareModeConfig compareConfig =
         TIMER_A_CAPTURECOMPARE_REGISTER_1,          // Use CCR1
         TIMER_A_CAPTURECOMPARE_INTERRUPT_DISABLE,   // Disable CCR interrupt
         TIMER_A_OUTPUTMODE_SET_RESET,               // Toggle output but
-        3// 16000 Period
+        7// 16000 Period
 };
 
 /* Statics */

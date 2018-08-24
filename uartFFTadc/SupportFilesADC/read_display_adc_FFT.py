@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 SAMPLES = 4096
 
 #Sampling frequency - purely for graphs to be correctly scaled
-fs = 8192
+fs = 4096
 
 frequency = 4095
 
