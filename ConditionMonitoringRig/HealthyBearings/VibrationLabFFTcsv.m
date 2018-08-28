@@ -92,24 +92,29 @@ for i = 1:3
         x_worn(:, 9, i) = D_16mm(:, 2 + i);
         x_worn(:, 10, i) = D_18mm(:, 2 + i);
 end
+
+x_worn = x_worn / 10;
+x_bend = x_bend / 10;
+x_healthy = x_healthy / 10;
+
 %%
 %Remove DC component
-x_healthy_mean = zeros(10, 3);
-x_bend_mean = zeros(10, 3);
-x_worn_mean = zeros(10, 3);
-
-for z = 1:10
-    for i = 1:3
-        x_healthy_mean(z, i) = mean(x_healthy(:, z, i));
-        x_bend_mean(z, i) = mean(x_healthy(:, z, i));
-        x_worn_mean(z, i) = mean(x_healthy(:, z, i));
-        for n = 1:N
-            x_healthy(n, z, i) = x_healthy(n, z, i) - x_healthy_mean(z, i);
-            x_bend(n, z, i) = x_bend(n, z, i) - x_bend_mean(z, i);
-            x_worn(n, z, i) = x_worn(n, z, i) - x_worn_mean(z, i);
-        end
-    end
-end
+% x_healthy_mean = zeros(10, 3);
+% x_bend_mean = zeros(10, 3);
+% x_worn_mean = zeros(10, 3);
+% 
+% for z = 1:10
+%     for i = 1:3
+%         x_healthy_mean(z, i) = mean(x_healthy(:, z, i));
+%         x_bend_mean(z, i) = mean(x_healthy(:, z, i));
+%         x_worn_mean(z, i) = mean(x_healthy(:, z, i));
+%         for n = 1:N
+%             x_healthy(n, z, i) = x_healthy(n, z, i) - x_healthy_mean(z, i);
+%             x_bend(n, z, i) = x_bend(n, z, i) - x_bend_mean(z, i);
+%             x_worn(n, z, i) = x_worn(n, z, i) - x_worn_mean(z, i);
+%         end
+%     end
+% end
 
 
 
@@ -226,7 +231,7 @@ for i = 1:3
 end
 
 figure('color', 'w', 'Position', [100, 800, 2000, 550])
-ha = tight_subplot(1,3,[.075 .07],[.08 .075],[.04 .04]);
+ha = tight_subplot(1,3,[.075 .07],[.09 .075],[.04 .04]);
 for i = 1:3
     axes(ha(i));
         
@@ -270,9 +275,9 @@ for i = 1:3
     h3 = scatter3(F_stats_worn_avg(1, i), F_stats_worn_avg(2, i), F_stats_worn_avg(3, i), 'g^', 'LineWidth', 5);
     %legend('0mm', '0.2 mm', '0.4mm', '0.6mm', '0.8mm', '1mm', '1.2mm', '1.4mm', '1.6mm', '1.8mm', 'average');
 
-    xlabel('Max')
-    ylabel('Std')
-    zlabel('RMS')
+    xlabel('Maximim (g)')
+    ylabel('std (g)')
+    zlabel('RMS (g)')
     
     text1 = sprintf('Bearing %d', i);
     title(text1);
@@ -330,9 +335,9 @@ for i = 1:3
     h3 = scatter3(F_stats_worn_avg(1, i), F_stats_worn_avg(2, i), F_stats_worn_avg(3, i), 'g^', 'LineWidth', 5);
     %legend('0mm', '0.2 mm', '0.4mm', '0.6mm', '0.8mm', '1mm', '1.2mm', '1.4mm', '1.6mm', '1.8mm', 'average');
     
-    xlabel('Max')
-    ylabel('Std')
-    zlabel('RMS')
+    xlabel('Maximum (g)')
+    ylabel('std (g)')
+    zlabel('RMS (g)')
     
     
     text1 = sprintf('Bearing %d', i);
@@ -365,14 +370,14 @@ end
 
 
 figure('color', 'w', 'Position', [100, 100, 2000, 1100])
-ha = tight_subplot(3, 1,[.04 .05],[.075 .035],[.04 .02]);
+ha = tight_subplot(3, 1,[.04 .05],[.075 .035],[.05 .02]);
 axes(ha(1));
 plot(f_bins, F_healthy_average, 'r', 'LineWidth', 1);
-ylim([0 0.1])
+ylim([0 0.016])
 xlim([0 1500])
 ax = gca;
 ax.YAxis.Exponent = -3;
-yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+yticks([0 0.0025 0.005 0.0075 0.01 0.0125 0.015])
 set(gca,'XTickLabel',[]);
 legend('Healthy')
 grid on
@@ -381,11 +386,11 @@ ylabel('Magnitude (g)')
 
 axes(ha(2));
 plot(f_bins, F_bend_average, 'b', 'LineWidth', 1);
-ylim([0 0.1])
+ylim([0 0.0161])
 xlim([0 1500])
 ax = gca;
 ax.YAxis.Exponent = -3;
-yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+yticks([0 0.0025 0.005 0.0075 0.01 0.0125 0.015])
 set(gca,'XTickLabel',[]);
 grid on
 legend('Bending')
@@ -394,13 +399,13 @@ ylabel('Magnitude (g)')
 
 axes(ha(3));
 plot(f_bins, F_worn_average, 'g', 'LineWidth', 1);
-ylim([0 0.15])
+ylim([0 0.016])
 xlim([0 1500])
 ax = gca;
 ax.YAxis.Exponent = -3;
-yticks([0 0.025 0.05 0.075 0.1 0.125 0.15])
+yticks([0 0.0025 0.005 0.0075 0.01 0.0125 0.015])
 grid on
-legend('Faulty Bearing')
+legend('Bearing Fault')
 xlabel('Frequency (Hz)')
 ylabel('Magnitude (g)')
 
@@ -445,11 +450,74 @@ subplot(2, 1, 2)
 plot(f_bins, F_mean)
 
 %%
-figure
-loglog(rms(x_healthy(:, :, 2))*9.81, max(abs(x_healthy(:, :, 2))*9.81), 'bs')
+figure('color', 'w', 'Position', [200 200 1800 500])
+ha = tight_subplot(1,3,[.075 .07],[.17 .08],[.045 .02]);
+
+axes(ha(1));
+h1 = loglog(rms(x_healthy(:, :, 2))*9.81, max(abs(x_healthy(:, :, 1))*9.81), 'ro');
 hold on
-loglog(rms(x_bend(:, :, 2))*9.81, max(abs(x_bend(:, :, 2))*9.81), 'g^')
-loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 2))*9.81), 'rx')
-legend('Healthy', 'Bending', 'Worn')
-xlim([1 100])
-ylim([3 300])
+h2 = loglog(rms(x_bend(:, :, 2))*9.81, max(abs(x_bend(:, :, 1))*9.81), 'bs');
+h3 = loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 1))*9.81), 'g^');
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
+legend([h1 h2 h3], 'Healthy', 'Bending', 'BF')
+xlim([.1 1])
+ylim([.3 3])
+xticks([0.1 0.5 1])
+xticklabels({'0.1', '0.5', '1.0'})
+yticks([0.3 1 2 3])
+ylabel('Maximum acceleration (ms^{-2})')
+xlabel('RMS acceleration (ms^{-2})')
+text(0.14,0.35,'Low');
+text(0.14,0.7,'Normal');
+text(0.14,1.2,'Alert');
+text(0.14,2.2,'Alarm');
+title('Bearing 1')
+
+axes(ha(2));
+h1 = loglog(rms(x_healthy(:, :, 2))*9.81, max(abs(x_healthy(:, :, 2))*9.81), 'ro');
+hold on
+h2 = loglog(rms(x_bend(:, :, 2))*9.81, max(abs(x_bend(:, :, 2))*9.81), 'bs');
+h3 = loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 2))*9.81), 'g^');
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
+legend([h1 h2 h3], 'Healthy', 'Bending', 'BF')
+xlim([.1 1])
+ylim([.3 3])
+xticks([0.1 0.5 1])
+xticklabels({'0.1', '0.5', '1.0'})
+yticks([0.3 1 2 3])
+ylabel('Maximum acceleration (ms^{-2})')
+xlabel('RMS acceleration (ms^{-2})')
+text(0.14,0.35,'Low');
+text(0.14,0.7,'Normal');
+text(0.14,1.2,'Alert');
+text(0.14,2.2,'Alarm');
+title('Bearing 2')
+
+axes(ha(3));
+h1 = loglog(rms(x_healthy(:, :, 2))*9.81, max(abs(x_healthy(:, :, 3))*9.81), 'ro');
+hold on
+h2 = loglog(rms(x_bend(:, :, 2))*9.81, max(abs(x_bend(:, :, 3))*9.81), 'bs');
+h3 = loglog(rms(x_worn(:, :, 2))*9.81, max(abs(x_worn(:, :, 3))*9.81), 'g^');
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
+legend([h1 h2 h3], 'Healthy', 'Bending', 'BF')
+xlim([.1 1])
+ylim([.3 3])
+xticks([0.1 0.5 1])
+xticklabels({'0.1', '0.5', '1.0'})
+yticks([0.3 1 2 3])
+ylabel('Maximum acceleration (ms^{-2})')
+xlabel('RMS acceleration (ms^{-2})')
+text(0.14,0.35,'Low');
+text(0.14,0.7,'Normal');
+text(0.14,1.2,'Alert');
+text(0.14,2.2,'Alarm');
+title('Bearing 3')
+
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)

@@ -256,7 +256,7 @@ figure('color', 'w', 'Position', [100, 100, 1500, 1000])
 ha = tight_subplot(2, 3,[.07 .03],[.075 .01],[.051 .011]);
 
 axes(ha(1));
-plot(t, x_healthy(:, 1));
+plot(t, x_healthy(:, 1), 'r');
 legend('Healthy_{ref}')
 ylim([-0.2 0.2])
 xlim([0 0.5])
@@ -264,7 +264,7 @@ ylabel('Acceleration (g)')
 xticklabels('')
 
 axes(ha(2));
-plot(t, x_bend(:, 1));
+plot(t, x_bend(:, 1), 'b');
 xlim([0 0.5])
 ylim([-0.2 0.2])
 legend('Bent_{ref}')
@@ -272,7 +272,7 @@ xticklabels('')
 yticklabels('')
 
 axes(ha(3));
-plot(t, x_worn(:, 1));
+plot(t, x_worn(:, 1), 'g');
 xlim([0 0.5])
 ylim([-0.2 0.2])
 legend('BF_{ref}')
@@ -280,7 +280,7 @@ xticklabels('')
 yticklabels('')
 
 axes(ha(4));
-plot(t2, x_A_healthy(:, 1));
+plot(t2, x_A_healthy(:, 1), 'r');
 xlim([0 0.5])
 ylim([-0.2 0.2])
 legend('Healthy_A')
@@ -288,7 +288,7 @@ ylabel('Acceleration (g)')
 xlabel('Time (s)')
 
 axes(ha(5));
-plot(t2, x_A_bend(:, 1));
+plot(t2, x_A_bend(:, 1), 'b');
 ylim([-0.2 0.2])
 legend('Bent_A')
 xlim([0 0.5])
@@ -296,7 +296,7 @@ yticklabels('')
 xlabel('Time (s)')
 
 axes(ha(6));
-plot(t2, x_A_worn(:, 1));
+plot(t2, x_A_worn(:, 1), 'g');
 legend('BF_A')
 xlim([0 0.5])
 ylim([-0.2 0.2])
@@ -311,7 +311,7 @@ figure('color', 'w', 'Position', [100, 100, 1500, 1000])
 ha = tight_subplot(2, 3,[.07 .02],[.075 .034],[.045 .005]);
 
 axes(ha(1));
-plot(f_bins, F_healthy_average1, 'LineWidth', 1);
+plot(f_bins, F_healthy_average1, 'r', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -322,7 +322,7 @@ ylabel('Magnitude (g)')
 legend('Healthy_{ref}')
 
 axes(ha(2));
-plot(f_bins, F_bend_average, 'LineWidth', 1);
+plot(f_bins, F_bend_average, 'b', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -331,7 +331,7 @@ yticklabels('')
 legend('Bent_{ref}')
 
 axes(ha(3));
-plot(f_bins, F_worn_average, 'LineWidth', 1);
+plot(f_bins, F_worn_average, 'g', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -340,7 +340,7 @@ yticklabels('')
 legend('BF_{ref}')
 
 axes(ha(4));
-plot(f_bins2, F_A_healthy_average, 'LineWidth', 1);
+plot(f_bins2, F_A_healthy_average, 'r', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -353,7 +353,7 @@ ylabel('Magnitude (g)')
 legend('Healthy_A')
 
 axes(ha(5));
-plot(f_bins2, F_A_bend_average, 'LineWidth', 1);
+plot(f_bins2, F_A_bend_average, 'b', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -364,7 +364,7 @@ xlabel('Frequency (kHz)')
 legend('Bent_A')
 
 axes(ha(6));
-plot(f_bins2, F_A_worn_average, 'LineWidth', 1 );
+plot(f_bins2, F_A_worn_average, 'g', 'LineWidth', 1);
 xlim([0 3000])
 ylim([0 0.018])
 yticks([0 0.004 0.008 0.012 0.016])
@@ -541,7 +541,7 @@ rms_A_worn_avg = mean(rms_A_worn);
 %%
 
 figure('color', 'w', 'Position', [300, 300, 1400, 500])
-ha = tight_subplot(1, 2 ,[.045 .1],[.15 .07],[.055 .0]);
+ha = tight_subplot(1, 2 ,[.045 .07],[.15 .07],[.055 .01]);
 
 axes(ha(1));
 h1 = scatter(max_healthy_avg, std_healthy_avg, 'ro', 'MarkerFaceColor', 'r', 'LineWidth', 6);
@@ -555,8 +555,10 @@ xlabel('Maximum (g)')
 ylabel('std (g)')
 xlim([0 0.02])
 ylim([0.0001 0.0003])
+grid on
 
-legend([h1 h2 h3], 'H_{ref}', 'B_{ref}', 'BF_{ref}', 'Location', 'EastOutside')
+leg = legend([h1 h2 h3], 'H_{ref}', 'B_{ref}', 'BF_{ref}', 'Location', 'EastOutside');
+title(leg, 'Average')
 
 axes(ha(2));
 h4 = scatter(max_A_healthy_avg, std_A_healthy_avg,   'ro', 'MarkerFaceColor', 'r', 'LineWidth', 6);
@@ -572,8 +574,10 @@ ylabel('std (g)')
 
 xlim([0 0.02])
 ylim([0.00025 0.0005])
+grid on
 
-legend([h4 h5 h6], 'H_A', 'B_A', 'BF_A', 'Location', 'EastOutside')
+leg = legend([h4 h5 h6], 'H_A', 'B_A', 'BF_A', 'Location', 'EastOutside')
+title(leg, 'Average')
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
@@ -601,7 +605,8 @@ loglog(rms(x_worn(:, :))*9.81, max(abs(x_worn(:, :))*9.81), 'g^', 'MarkerSize', 
 plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
 plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
 plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
-legend([h1 h2 h3], 'Healthy_{ref}', 'Bending_{ref}', 'BF_{ref}', 'Location', 'East')
+leg = legend([h1 h2 h3], 'Healthy_{ref}', 'Bending_{ref}', 'BF_{ref}', 'Location', 'East');
+title(leg, 'Average')
 xlim([.1 1])
 ylim([.3 4])
 xticks([0.1 0.5 1])
@@ -626,7 +631,8 @@ loglog(rms(x_A_worn(:, :))*9.81, max(abs(x_A_worn(:, :))*9.81), 'g^', 'MarkerSiz
 plot([0.1 10], [.3 30], 'g', 'LineWidth', 1)
 plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1)
 plot([0.1 10], [1 100], 'r', 'LineWidth', 1)
-legend([h1 h2 h3], 'Healthy_{A}', 'Bending_{A}', 'BF_{A}', 'Location', 'East')
+leg = legend([h1 h2 h3], 'Healthy_{A}', 'Bending_{A}', 'BF_{A}', 'Location', 'East');
+title(leg, 'Average')
 xlim([.1 1])
 ylim([.3 4])
 xticks([0.1 0.5 1])
@@ -637,5 +643,66 @@ text(0.14,0.35,'Low');
 text(0.14,0.7,'Normal');
 text(0.14,1.3,'Alert');
 text(0.14,2.5,'Alarm');
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
+
+%%
+healthy_max = mean(max(abs(x_A_healthy(:, 1:5))*9.81));
+healthy_rms = mean(rms(x_A_healthy(:, 1:5))*9.81);
+
+figure('Color', 'w', 'Position', [100 100 1500 600])
+ha = tight_subplot(1, 2 ,[.045 .07],[.15 .06],[.055 .02]);
+
+axes(ha(1));
+h1 = loglog(mean(rms(x_A_healthy(:, 1:5))*9.81), mean(max(abs(x_A_healthy(:, 1:5))*9.81)), 'ro', 'MarkerFaceColor', 'r', 'MarkerSize', 10);
+hold on
+h2 = loglog(mean(rms(x_A_bend(:, :))*9.81), mean(max(abs(x_A_bend(:, :))*9.81)), 'bs', 'MarkerFaceColor', 'b', 'MarkerSize', 10);
+h3 = loglog(mean(rms(x_A_worn(:, :))*9.81), mean(max(abs(x_A_worn(:, :))*9.81)), 'g^', 'MarkerFaceColor', 'g', 'MarkerSize', 10);
+
+plot([0.1 10], [.3 30], 'g', 'LineWidth', 1.5)
+plot([0.1 10], [.6 60], 'Color', [1 0.8 0], 'LineWidth', 1.5)
+plot([0.1 10], [1 100], 'r', 'LineWidth', 1.5)
+plot([0.8*healthy_rms 0.8*healthy_rms], [.1 5*healthy_max], 'k', 'LineWidth', 2')
+plot([1.2*healthy_rms 1.2*healthy_rms], [.1 5*healthy_max], 'k', 'LineWidth', 2')
+plot([0.8*healthy_rms 1.2*healthy_rms], [1.5*healthy_max 1.5*healthy_max], 'k', 'LineWidth', 2')
+xlim([.1 1])
+ylim([.3 4])
+grid on
+text(0.5,2.7,'Unhealthy');
+text(0.11,2.7,'Unhealthy');
+text(0.28,2.6,'BF');
+text(0.25,0.5,'Healthy');
+ylabel('Maximum acceleration (ms^{-2})')
+xlabel('RMS acceleration (ms^{-2})')
+title('ISO bearing fault chart')
+
+leg = legend([h1 h2 h3], 'Healthy_{A}', 'Bending_{A}', 'BF_{A}', 'Location', 'SouthEast');
+
+axes(ha(2));
+
+h4 = scatter(max_A_healthy_avg, std_A_healthy_avg,   'ro', 'MarkerFaceColor', 'r', 'LineWidth', 6);
+hold on
+h5 = scatter(max_A_bend_avg, std_A_bend_avg,  'bs', 'MarkerFaceColor', 'b', 'LineWidth', 6);
+h6 = scatter(max_A_worn_avg, std_A_worn_avg,  'g^', 'MarkerFaceColor', 'g', 'LineWidth', 6);
+plot([0.8*max_A_healthy_avg 0.8*max_A_healthy_avg], [0 1], 'k', 'LineWidth', 2')
+plot([1.2*max_A_healthy_avg 1.2*max_A_healthy_avg], [0 1], 'k', 'LineWidth', 2')
+plot([0 0.5*max_A_healthy_avg], [std_A_healthy_avg std_A_healthy_avg], 'k', 'LineWidth', 2')
+plot([0.5*max_A_healthy_avg 0.5*max_A_healthy_avg], [0 std_A_healthy_avg], 'k', 'LineWidth', 2')
+
+text(0.001,0.00038,'Bending');
+text(0.012,0.00038,'Healthy');
+text(0.001,0.00048,'Unhealthy');
+ht = text(0.0187,0.00036,'Unhealthy');
+set(ht,'Rotation',90)
+
+xlabel('Maximum (g)')
+ylabel('std (g)')
+
+title('Fault classification chart')
+leg = legend([h4 h5 h6], 'Healthy_{A}', 'Bending_{A}', 'BF_{A}', 'Location', 'SouthEast');
+
+xlim([0 0.02])
+ylim([0.00025 0.0005])
+grid on
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)

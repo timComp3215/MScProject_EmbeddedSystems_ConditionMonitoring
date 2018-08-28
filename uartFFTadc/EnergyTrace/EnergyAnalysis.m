@@ -11,6 +11,8 @@ LPM0 = readtable('EnergyTrace_LPM0.csv');
 Vib = readtable('EnergyTrace_Vib.csv');
 MCSA = readtable('EnergyTrace_Current.csv');
 Both = readtable('EnergyTrace_Both.csv');
+Running = readtable('EnergyTrace_Running.csv');
+Running_LPM0 = readtable('EnergyTrace_Running_LPM0.csv');
 
 %%
 
@@ -21,6 +23,8 @@ current_LPM0 = str2double(LPM0.Current_nA_(:))/1000000;
 current_Vib = str2double(Vib.Current_nA_(:))/1000000;
 current_MCSA = str2double(MCSA.Current_nA_(:))/1000000;
 current_Both = str2double(Both.Current_nA_(:))/1000000; 
+current_Running= str2double(Running.Current_nA_(:))/1000000; 
+current_Running_LPM0= str2double(Running_LPM0.Current_nA_(:))/1000000; 
 
 %%
 
@@ -32,10 +36,12 @@ plot(t+3.5, current_base, 'LineWidth', 1);
 hold on
 plot(t+1, current_LPM0, 'LineWidth', 1);
 plot(t+6, current_Vib, 'LineWidth', 1);
-plot(t+2.25, current_MCSA, 'LineWidth', 1);
-plot(t+4.75, current_Both, 'LineWidth', 1);
+plot(t+0.25, current_MCSA, 'LineWidth', 1);
+plot(t+2.75, current_Both, 'LineWidth', 1);
+%plot(t+5, current_Running, 'LineWidth', 1);
+plot(t+5.25, current_Running_LPM0, 'LineWidth', 1);
 
-legend('Base program', 'LPM0', 'Acceleromter only', 'Current Sensor only', 'Full system', 'Location', 'East')
+legend('Base program', 'LPM0', 'Acceleromter only', 'Current Sensor only', 'Both sensors', 'Running with LPM0', 'Location', 'East')
 
 ylabel('Current (mA)')
 xlabel('Time (s)')

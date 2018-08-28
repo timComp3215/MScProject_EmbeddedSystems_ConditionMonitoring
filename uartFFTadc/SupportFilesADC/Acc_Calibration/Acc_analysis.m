@@ -410,7 +410,7 @@ rms_C(6) = (mean(rms(x_C_2553))*3.3)/(16384*0.04);
 
 %%
 
-figure('color', 'w', 'Position', [50, 50, 2000, 550])
+figure('color', 'w', 'Position', [50, 50, 2000, 600])
 ha = tight_subplot(1, 2, [.025 .07],[.14 .02],[.035 .014]);
 axes(ha(1));
 
@@ -428,7 +428,7 @@ plot(frequencies_B, (max(average_f_B)*3.3)/(16384*0.4), 'g-o', 'LineWidth', 1.5,
 plot(frequencies_C, (max(average_f_C)*3.3)/(16384*0.04), 'k-^', 'LineWidth', 1.5, 'MarkerSize', 10)
 xlabel('Vibration Frequency (Hz)')
 ylabel('Maximum of Frequency Spectrum (g)')
-legend('MEMS (A)', 'MEMS(B)', 'MEMS (C)')
+legend('A', 'B', 'C')
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
@@ -442,7 +442,7 @@ xlim([0 0.05])
 ylim([-1.2 1.2])
 set(gca,'XTickLabel',[]);
 ylabel('Acceleration (g)')
-legend('MEMS (A)')
+legend('A')
 
 axes(ha(2));
 plot(t, (x_B_2553(:, 3)*3.3)/(16384*0.4), 'g', 'LineWidth', 1.5)
@@ -450,7 +450,7 @@ xlim([0 0.05])
 ylim([-1.2 1.2])
 set(gca,'XTickLabel',[]);
 ylabel('Acceleration (g)')
-legend('MEMS (B)')
+legend('B')
 
 axes(ha(3));
 plot(t, (x_C_2553(:, 3)*3.3)/(16384*0.04), 'k', 'LineWidth', 1.5)
@@ -458,7 +458,7 @@ xlim([0 0.05])
 ylim([-1.2 1.2])
 xlabel('Time (s)')
 ylabel('Acceleration (g)')
-legend('MEMS (C)')
+legend('C')
 
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
@@ -467,33 +467,33 @@ set(findall(gcf,'-property','FontSize'),'FontSize',18)
 figure('color', 'w', 'Position', [50, 50, 2000, 1000])
 ha = tight_subplot(3, 1, [.025 .05],[.075 .02],[.042 .012]);
 axes(ha(1));
-plot(f_bins, (average_f_A(:, 6)*3.3)/(16384*0.8), 'm', 'LineWidth', 1.5)
+plot(f_bins, (average_f_A(:, 6)*3.3)/(16384*0.8), 'm', 'LineWidth', 2)
 xlim([0 8192])
 ylim([0 0.35])
 set(gca,'XTickLabel',[]);
 yticks([0 0.05 0.1 0.15 0.2 0.25 0.3 0.35])
 ylabel('Acceleration (g)')
-legend('MEMS (A)')
+legend('A')
 grid on
 
 axes(ha(2));
-plot(f_bins, (average_f_B(:, 6)*3.3)/(16384*0.4), 'g', 'LineWidth', 1.5)
+plot(f_bins, (average_f_B(:, 6)*3.3)/(16384*0.4), 'g', 'LineWidth', 2)
 xlim([0 8192])
 ylim([0 0.35])
 set(gca,'XTickLabel',[]);
 yticks([0 0.05 0.1 0.15 0.2 0.25 0.3 0.35])
 ylabel('Acceleration (g)')
-legend('MEMS (B)')
+legend('B')
 grid on
 
 axes(ha(3));
-plot(f_bins, (average_f_C(:, 6)*3.3)/(16384*0.04), 'k', 'LineWidth', 1.5)
+plot(f_bins, (average_f_C(:, 6)*3.3)/(16384*0.04), 'k', 'LineWidth', 2)
 xlim([0 8192])
 ylim([0 0.35])
 xlabel('Frequency (Hz)')
 yticks([0 0.05 0.1 0.15 0.2 0.25 0.3 0.35])
 ylabel('Acceleration (g)')
-legend('MEMS (C)')
+legend('C')
 grid on
 
 

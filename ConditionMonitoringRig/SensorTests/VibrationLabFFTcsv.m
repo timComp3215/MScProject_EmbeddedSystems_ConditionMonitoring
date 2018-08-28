@@ -243,23 +243,51 @@ end
 
 %%
 
-figure
-subplot(2, 2, 1)
-plot(f_bins, F_healthy_average);
+figure('color', 'w', 'Position', [100, 100, 2000, 1200])
+ha = tight_subplot(2,2,[.075 .05],[.06 .03],[.032 .005]);
+
+axes(ha(1));
+plot(f_bins, F_healthy_average, 'r', 'LineWidth', 1);
 xlim([0 4096])
 ylim([0 0.016])
-subplot(2, 2, 2)
-plot(f_bins2, F_A_healthy_average);
+ax = gca;
+ax.YAxis.Exponent = -3;
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+legend('Ref')
+
+axes(ha(2));
+plot(f_bins2, F_A_healthy_average, 'm', 'LineWidth', 1);
 xlim([0 4096])
 ylim([0 0.016])
-subplot(2, 2, 3)
-plot(f_bins2, F_B_healthy_average);
+ax = gca;
+ax.YAxis.Exponent = -3;
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+legend('MEMS A')
+
+axes(ha(3));
+plot(f_bins2, F_B_healthy_average, 'g', 'LineWidth', 1);
 xlim([0 4096])
 ylim([0 0.016])
-subplot(2, 2, 4)
-plot(f_bins2, F_C_healthy_average);
+ax = gca;
+ax.YAxis.Exponent = -3;
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+legend('MEMS B')
+
+axes(ha(4));
+plot(f_bins2, F_C_healthy_average, 'k', 'LineWidth', 1);
 xlim([0 4096])
 ylim([0 0.016])
+ax = gca;
+ax.YAxis.Exponent = -3;
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (g)')
+legend('MEMS C')
+
+
+set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
 %%
 
