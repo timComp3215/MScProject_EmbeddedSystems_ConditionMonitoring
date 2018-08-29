@@ -261,8 +261,10 @@ figure('color', 'w', 'Position', [200 200 1800 600])
 ha = tight_subplot(1, 2, [.025 .07],[.14 .06],[.05 .01]);
 
 axes(ha(1));
+plot(f_bins, f_Small_0_mean, 'r-x', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Small_250_mean, 'b-o', 'MarkerSize', 10, 'LineWidth', 1)
 hold on
+plot(f_bins, f_Small_250_mean, 'b-o', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Small_500_mean, 'g-d', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Small_750_mean, 'm-^', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Small_1000_mean, 'c-v', 'MarkerSize', 10, 'LineWidth', 1)
@@ -275,8 +277,9 @@ title('CT1')
 
 
 axes(ha(2));
-plot(f_bins, f_Big_250_mean, 'b-o', 'MarkerSize', 10, 'LineWidth', 1)
+plot(f_bins, f_Big_0_mean, 'r-x', 'MarkerSize', 10, 'LineWidth', 1)
 hold on
+plot(f_bins, f_Big_250_mean, 'b-o', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Big_500_mean, 'g-d', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Big_750_mean, 'm-^', 'MarkerSize', 10, 'LineWidth', 1)
 plot(f_bins, f_Big_1000_mean, 'c-v', 'MarkerSize', 10, 'LineWidth', 1)
@@ -286,7 +289,7 @@ xlim([0 75])
 ylabel('Magnitude (A)')
 xlabel('Frequency (Hz)')
 title('CT2')
-legend('250 RPM', '500 RPM', '750 RPM', '1000 RPM', '1250 RPM', '1500 RPM', 'Location', 'East')
+legend('0 RPM', '250 RPM', '500 RPM', '750 RPM', '1000 RPM', '1250 RPM', '1500 RPM', 'Location', 'East')
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
