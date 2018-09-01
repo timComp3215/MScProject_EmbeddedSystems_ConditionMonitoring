@@ -145,6 +145,7 @@ plot(f_bins(1:200), (f_small_3A(1:200)*3.3)/(16384*0.07667), 'b-', 'LineWidth', 
 ylabel('Magnitude (A)')
 xlabel('Frequency (Hz)')
 legend('CT1 @ 3A')
+ylim([0 2.5])
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 %%
@@ -163,6 +164,7 @@ plot(f_bins(1:200), (f_big_3A(1:200)*3.3)/(16384*0.01333333), 'r-', 'LineWidth',
 ylabel('Magnitude (A)')
 xlabel('Frequency (Hz)')
 legend('CT2 @ 3A')
+ylim([0 2.5])
 
 set(findall(gcf,'-property','FontSize'),'FontSize',18)
 
