@@ -350,7 +350,7 @@ int main(void)
     MAP_Timer_A_initCompare(TIMER_A0_BASE, &compareConfig);
 
     //Configure Analog - A0
-    configure_analog(0);
+    configure_analog(0);/
 
     /* Starting the Timer */
     MAP_Timer_A_startCounter(TIMER_A0_BASE, TIMER_A_UP_MODE);

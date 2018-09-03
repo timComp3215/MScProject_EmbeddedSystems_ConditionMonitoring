@@ -796,6 +796,12 @@ void EUSCIA0_IRQHandler(void)
             //Enable ADC interrupts in main
             enableReads = 1;
         }
+        else if (msg == 'H')
+        {
+            //Enable ADC interrupts in main
+            enableReads = 1;
+            setHealthyState = 1;
+        }
     }
 }
 
