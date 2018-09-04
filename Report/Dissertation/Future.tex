@@ -1,0 +1,67 @@
+\chapter{Conclusion and Future Works}
+
+\section{Conclusion}
+
+
+
+
+\section{Future Work}
+
+This project is intended to provide a platform for future work on condition monitoring in the maritime industry.
+As such, it is important to emphasise the areas that should be investigated.
+This section lays out three areas for future research.
+
+\subsubsection{FDD and the cloud}
+
+Efforts should be made to implement more sophisticated FDD methods onto embedded systems for on-board processing.
+As cloud computing becomes available on larger scales, the amount of data being generated for processing could become overwhelming \cite{FutureInternet}.
+There is a need to perform processing at nodes and send limited amounts of data to the cloud \cite{CM_cloud}.
+In the cloud, machine learning techniques can take specific statistical markers - as extacted by the embedded CMS - and train models to detect faults.
+\par
+
+Simple and useful improvements to the embedded CMS presented in this paper include:
+\begin{itemize}
+    \item Use in-place FFT to increase the number of sample which can be stored and therefore the resolution of the frequency domain
+    \item Employ some form of envelope analysis to inspect different frequency ranges for statistical markers of condition
+    \item Implement order tracking for vibration analysis
+    \item Connect the embedded CMS to a cloud solution which performs analysis on the data
+\end{itemize}
+
+\subsubsection{Condition Monitoring Laboratory}
+
+While the CML has provided a testbench for this project, distinct improvements are required to further develop and test CMSs.
+Presently, it is simply too difficult to ensure a healthy condition will be maintained between tests.
+Consequently, large amounts of time are spent calibrating the CML.
+The separate elements of the CML should be fixed to prevent movement and misalignment.
+\par
+
+There is damage to the shaft, bearing and flexible coupling.
+This, again, makes it hard to present a healthy condition against which other conditions can be compared.
+These elements should be replaced and the method for swapping bearings, to use a faulty bearing for example, should be made easier.
+\par
+
+The system for inducing bending in the shaft needs to be improved.
+Either recalibration should be possible or the linear actuator could be replaced with a stepper motor.
+It is simply unreliable at inducing bending to a repeatable level.
+\par
+
+Acquiring a motor which has easier access to the internal components could allow for testing and diagnosis of electrical faults.
+This would provide more information about the relative merits of MCSA and vibration analysis for a wider range of faults.
+More complex MCSA diagnosis techniques such as Park's Vector could be assessed on the embedded system.
+
+\subsubsection{Preparation for real world application}
+
+Although the embedded CMS presented had some features which would be suitable in a real working environment, there are still significant changes which need to be made before it could be implemented on a ship.
+Encasing of the processor board and sensors is essential to prevent damage to these components.
+Suitable wiring should be used to prevent damage or interference in the signals.
+\par
+
+Before deployment of this system, it should be tested within a relatively controlled environment on board a ship.
+Lloyd's Register have proposed testing on a local ferry.
+This would be an excellent opportunity to find out how the system performs and what further challenges remain.
+\par
+
+Further work will be required to reduce the energy usage of the system and show that it can be powered in a sustainable manner.
+By switching off sensors when they are not required and using low power modes for as long as possible, power consumption may be reduced to a level where the system can be powered from energy harvesting \cite{Embedded_Energy_Harvesting}.
+This would have a great impact on CBM in the maritime industry, as the embedded CMS would become essentially free to run.
+Even if the performance of the system is compromised slightly, this would present a much more realistic proposition for ship operators, builders and pump manufacturers alike \cite{CBM_norway_bd}.

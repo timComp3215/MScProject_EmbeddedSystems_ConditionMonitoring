@@ -1,0 +1,125 @@
+%This is the main file which pulls together all of the separate sections
+\documentclass[12pt, twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {Images/} }
+\usepackage{titling}
+
+\usepackage{hyperref}
+\usepackage{subcaption}
+
+\usepackage{textcomp}
+
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\newcommand*\abs[1]{\lvert#1\rvert}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{footnote}
+\usepackage{makecell}
+
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{siunitx}
+
+\usepackage{afterpage}
+
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage[nottoc]{tocbibind}
+
+\usepackage{notoccite}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[LO]{\leftmark}
+\fancyhead[LE]{}
+\fancyhead[RE]{\rightmark}
+\fancyhead[RO]{}
+
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm]{geometry}
+
+\title{\vspace{-10ex}
+	{\small University of Southampton}\\
+	{\small Faculty of Physical Sciences and Engineering}\\
+	{\small School of Electronics and Computer Science}\\
+	[2cm]
+	{\includegraphics{coat_of_arms.jpg}}\\[2cm]
+	\textbf{{Embedded System for Condition Monitoring of Marine Pumps}}}
+	
+\author{By\\ \\
+	\textbf{Timothy James Guite}}
+	
+\date{\parbox{\linewidth}{\centering%
+  \today\endgraf\bigskip
+  Supervisor: Dr Alex Weddell\\
+Second Examiner: Dr Frederic Gardes\endgraf\bigskip
+A dissertation submitted in partial fulfillment of the degree of \\
+\textbf{MSc Embedded Systems}}}
+
+
+\begin{document}
+
+\pagenumbering{Roman} 
+
+\maketitle
+
+\maketitle
+
+\begin{abstract}
+
+This will be the abstract which discusses the findings of the paper in $<$ 600 words.
+
+\end{abstract}
+
+\chapter*{Acknowledgements}
+
+I would like to thank the following people and groups for their help in completion of this project:\\
+\\
+Dr Alex Weddell, for his help and guidance in this project.\\
+\\
+Professor Ling Wang and the design innovation team at Lloyd's Register for forming the industrial partnership that drove this project.\\
+\\
+Dr Terry Harvery and Imran Bashir for their practical help in the nCATS laboratory.\\
+\\
+The technicians in the ECS Student Laboratory and Mechanical Workshop for being so helpful and engaging, no matter the problems brought to them.\\
+\\
+Joyce Lewis, for helping me find the right course.
+
+\input{AI.tex}
+
+
+\tableofcontents
+
+\listoffigures
+
+\input{abbreviations.tex}
+
+ 
+
+\input{Introduction.tex}
+
+\pagenumbering{arabic}
+
+\input{LitReview.tex}
+
+\input{ConditionMonitoringRig.tex}
+
+\input{BasicTesting.tex}
+
+\input{EmbeddedRig.tex}
+
+\input{LongTest.tex}
+
+\input{Future.tex}
+
+%Sets the bibliography style to UNSRT and imports the 
+%bibliography file "samples.bib".
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
