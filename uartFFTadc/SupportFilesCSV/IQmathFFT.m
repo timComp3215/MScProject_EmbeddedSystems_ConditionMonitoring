@@ -93,7 +93,7 @@ plot(FT(:, 1), FT(:, 2), 'b-', 'LineWidth', 2);
 hold on
 plot(FT(:, 1), board_F, 'rx', 'LineWidth', 2, 'MarkerSize', 10);
 xlim([0 4096])
-legend('Matlab', 'On-board')
+legend('Matlab', 'Online')
 ylabel('Magnitude')
 xlabel('Frequency (Hz)')
 text(75,4500, 'b)', 'FontSize', 14, 'FontWeight', 'bold')

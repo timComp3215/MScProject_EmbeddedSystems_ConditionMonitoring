@@ -133,7 +133,7 @@ for z = 2:9
     plot(FT(I_f, 1), model_F(I_f, z), 'rd', 'LineWidth', 2, 'MarkerSize', 10);
 end
 xlim([0 8192])
-legend([h1 h2], 'Board', 'Model', 'Location', 'North');
+legend([h1 h2], 'Online', 'Model', 'Location', 'North');
 xlabel('Frequency (Hz)')
 ylabel('Magnitude')
 
